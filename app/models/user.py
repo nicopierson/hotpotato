@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    recipe = db.relationship('Recipe', back_populates='user')
+    recipeRelation = db.relationship('Recipe', back_populates='userRelation')
 
     @property
     def password(self):
