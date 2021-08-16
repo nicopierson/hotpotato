@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     recipeRelation = db.relationship('Recipe', back_populates='userRelation')
     comment_relation = db.relationship('Comment', back_populates='user_relation')
+    like_relation = db.relationship('Like', back_populates='user_relation')
 
     follows = db.Table(
         "follows",

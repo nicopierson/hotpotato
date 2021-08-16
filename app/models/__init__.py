@@ -1,4 +1,5 @@
 from .db import db
+from .like import Like
 from .user import User
 from .recipe import Recipe
 from .comment import Comment

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f08a7b0b1e23
+Revision ID: aa0ebffba39c
 Revises: 
-Create Date: 2021-08-16 13:21:53.659749
+Create Date: 2021-08-16 14:03:30.656933
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f08a7b0b1e23'
+revision = 'aa0ebffba39c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,6 +27,12 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    op.create_table('follows',
+    sa.Column('user_id_follow_owner', sa.Integer(), nullable=True),
+    sa.Column('user_id_follower', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id_follow_owner'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['user_id_follower'], ['users.id'], )
+    )
     op.create_table('recipes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('thumbnail_url', sa.String(length=500), nullable=True),
@@ -35,6 +41,23 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
+    )
+    op.create_table('comments',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('comment', sa.String(length=500), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('recipe_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['recipe_id'], ['recipes.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('likes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('recipe_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['recipe_id'], ['recipes.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('recipe_directions',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -68,6 +91,9 @@ def downgrade():
     op.drop_table('recipe_photos')
     op.drop_table('recipe_ingredients')
     op.drop_table('recipe_directions')
+    op.drop_table('likes')
+    op.drop_table('comments')
     op.drop_table('recipes')
+    op.drop_table('follows')
     op.drop_table('users')
     # ### end Alembic commands ###
