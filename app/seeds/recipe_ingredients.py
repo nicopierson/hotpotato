@@ -206,5 +206,5 @@ def seed_recipe_ingredients():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_recipe_ingredients():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE recipe_ingredients RESTART IDENTITY CASCADE;')
     db.session.commit()

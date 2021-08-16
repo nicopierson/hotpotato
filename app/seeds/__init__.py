@@ -1,6 +1,7 @@
 from app.seeds.recipe_ingredients import seed_recipe_ingredients
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .likes import seed_likes, undo_likes
 from .recipes import seed_recipes, undo_recipes
 from .comments import seed_comments, undo_comments
 from .recipe_photos import seed_recipe_photos, undo_recipe_photos
@@ -23,6 +24,7 @@ def seed():
     seed_recipe_photos()
     seed_recipe_ingredients()
     seed_recipe_directions()
+    seed_likes()
 
 
 
@@ -38,6 +40,7 @@ def undo():
     undo_recipe_photos()
     undo_recipe_ingredients()
     undo_recipe_directions()
+    undo_likes()
 
 
 
