@@ -11,6 +11,7 @@ class Recipe(db.Model):
     userRelation = db.relationship('User', back_populates='recipeRelation')
     comment_relation = db.relationship('Comment', back_populates='recipe_relation')
     photo_relation = db.relationship('RecipePhoto', back_populates='recipe_relation')
+    recipe_ingredient_relation = db.relationship('RecipeIngredient', back_populates='recipe_relation')
     recipe_direction_relation = db.relationship('RecipeDirection', back_populates='recipe_relation')
 
 

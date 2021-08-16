@@ -8,3 +8,4 @@ class RecipeIngredient(db.Model):
     ingredient = db.Column(db.String(255), nullable=False)
     measurement = db.Column(db.String(255))
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    recipe_relation = db.relationship('Recipe', back_populates='recipe_ingredient_relation')
