@@ -19,9 +19,15 @@ def seed_users():
     wes = User(
         username='wes', email='wes@gmail.com', password='password')
 
-    # add followers to wes
+    # add followers users
     wes.followers.append(demo)
     wes.followers.append(marnie)
+    nico.followers.append(leslie)
+    nico.followers.append(wes)
+    leslie.followers.append(casey)
+    leslie.followers.append(nico)
+    casey.followers.append(demo)
+    casey.followers.append(leslie)
 
     db.session.add(demo)
     db.session.add(marnie)
