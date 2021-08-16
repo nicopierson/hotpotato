@@ -1,4 +1,5 @@
 from app.models import db, User
+from sqlalchemy import insert
 
 
 # Adds a demo user, you can add other users here if you want
@@ -18,6 +19,9 @@ def seed_users():
     wes = User(
         username='wes', email='wes@gmail.com', password='password')
 
+    # add followers to wes
+    wes.followers.append(demo)
+    wes.followers.append(marnie)
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -28,7 +32,6 @@ def seed_users():
     db.session.add(wes)
 
     db.session.commit()
-
 
 
 # Uses a raw SQL query to TRUNCATE the users table.

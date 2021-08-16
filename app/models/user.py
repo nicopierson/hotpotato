@@ -12,6 +12,21 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     recipeRelation = db.relationship('Recipe', back_populates='userRelation')
 
+    follows = db.Table(
+        "follows",
+        db.Column("user_id_follow_owner", db.Integer,
+                  db.ForeignKey("users.id")),
+        db.Column("user_id_follower", db.Integer, db.ForeignKey("users.id"))
+    )
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.user_id_follow_owner == id),
+        secondaryjoin=(follows.c.user_id_follower == id),
+        backref=db.backref("following", lazy="dynamic"),
+        lazy="dynamic"
+    )
+
     @property
     def password(self):
         return self.hashed_password
@@ -29,3 +44,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    # def add_follower(self, user_id_follow_owner, user_id_follower ):
+    #     self.follows
