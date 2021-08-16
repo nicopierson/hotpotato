@@ -1,4 +1,4 @@
-"""add recipe directions
+"""recipe directions model
 
 Revision ID: d8d06784f204
 Revises: 432b9dfc041a
