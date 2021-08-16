@@ -10,3 +10,7 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     userRelation = db.relationship('User', back_populates='recipeRelation')
     comment_relation = db.relationship('Comment', back_populates='recipe_relation')
+    photo_relation = db.relationship('RecipePhoto', back_populates='recipe_relation')
+    recipe_direction_relation = db.relationship('RecipeDirection', back_populates='recipe_relation')
+
+
