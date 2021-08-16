@@ -2,7 +2,7 @@ from app.models import db, RecipeDirection
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_recipes():
+def seed_recipe_directions():
     broccoli_tofu_1 = RecipeDirection(
         steps=1, directions="Dab the tofu with a kitchen towel or paper towel to get rid of any extra moisture. Cut into 1/2 inch cubes and toss them in a mixture of cornflour, salt and pepper.", 
         recipe_id=1)
@@ -129,6 +129,6 @@ def seed_recipes():
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
-def undo_recipes():
+def undo_recipe_directions():
     db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
