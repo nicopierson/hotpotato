@@ -1,5 +1,4 @@
-from app.models.recipe_ingredient import RecipeIngredient
-from app.models import db, Recipe
+from app.models import db, RecipeIngredient
 
 
 # Adds a demo user, you can add other users here if you want
