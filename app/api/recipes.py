@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Recipe, db, RecipeDirection, RecipeIngredient, RecipePhoto
-from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm, RecipePhotosCreateForm
+from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm, RecipePhotosCreateForm, RecipeDirectionsUpdateForm
 
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -37,6 +37,16 @@ def current_user_matches_client_user(user_sent_id):
         return user_sent_id == current_user.id
     print("current_user is not logged in or invalid user")
     return False
+
+
+def current_recipe_id_belongs_to_user(recipe_id, current_user_id):
+    recipe_to_check = Recipe.query.get(recipe_id)
+    return recipe_to_check and recipe_to_check.user_id == current_user_id
+
+
+def direction_belongs_to_user_recipe(directionId, users_recipe_id):
+    direction_to_check = RecipeDirection.query.get(directionId)
+    return direction_to_check and direction_to_check.recipe_id == users_recipe_id
 
 # ---------------recipes query routes-----------------
 
@@ -129,13 +139,17 @@ def get_all_recipes_directions_for_a_recipe(id):
     return {'recipes_directions': [directions.to_dict() for directions in all_recipes_directions_for_recipe]}
 
 
-def current_recipe_id_belongs_to_user(recipe_id, current_user_id):
-    recipe_to_check = Recipe.query.get(recipe_id)
-    return recipe_to_check and recipe_to_check.user_id == current_user_id
+@recipe_routes.route('/directions/<int:id>', methods=['GET'])
+# gets a single direction for a given directionID
+def get_directions_by_id(id):
+    single_direction = RecipeDirection.query.get(id)
+    single_direction_user = single_direction.get_direction_user()
+    return {'recipes_directions': single_direction.to_dict(), 'user_that_owns_direction': single_direction_user}
 
 
 @recipe_routes.route('/<int:recipeId>/directions', methods=['POST'])
 @login_required
+# adds a direction a recipe
 def add_single_direction(recipeId):
     form = RecipeDirectionsCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -144,8 +158,6 @@ def add_single_direction(recipeId):
         if current_user_matches_client_user(form.user_id.data) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
             if RecipeDirection.step_is_valid(form.recipe_id.data, form.steps.data):
                 add_a_direction = RecipeDirection()
-                # TODO if step is already in directions, return invalid step. (write check_step_valid() instance method)
-
                 form.populate_obj(add_a_direction)
                 db.session.add(add_a_direction)
                 db.session.commit()
@@ -155,29 +167,33 @@ def add_single_direction(recipeId):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# # @recipe_routes.route('/<int:recipeid>/directions/<int:directionId>', methods=['PUT', 'DELETE'])
-# # @login_required
-# # def update_delete_direction(recipeid, directionId):
-# #     # add authorization
-# #     if request.method == 'PUT':
-# #         form = RecipeDirectionsCreateForm()
-# #         form['csrf_token'].data = request.cookies['csrf_token']
-# #         # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user.
-# #         if form.validate_on_submit():.
-#     # TODO add drag and drop capabilities to edit content
-# #             direction_by_id = RecipeDirection.query.get(directionId)
-# #             form.populate_obj(direction_by_id)
-# #             db.session.add(direction_by_id)
-# #             db.session.commit()
-# #             return direction_by_id.to_dict()
-# #     elif request.method == 'DELETE':
-# #         direction_to_delete = RecipeDirection.query.get(id)
-# #         if direction_to_delete:
-# #             db.session.delete(direction_to_delete)
-# #             db.session.commit()
-# #             return {'message': 'Direction Deleted'}
+@recipe_routes.route('/<int:recipeid>/directions/<int:directionId>', methods=['PUT', 'DELETE'])
+@login_required
+def update_delete_direction(recipeid, directionId):
+    # TODO add ability to change steps later. Currently only able to update content
+    if request.method == 'PUT':
+        form = RecipeDirectionsUpdateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
 
-# #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        if form.validate_on_submit():
+            # Validate and check that direction belongs to this recipe and the recipe belongs to user
+            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and direction_belongs_to_user_recipe(directionId, form.recipe_id.data):
+                direction_by_id = RecipeDirection.query.get(directionId)
+                form.populate_obj(direction_by_id)
+                db.session.add(direction_by_id)
+                db.session.commit()
+                return direction_by_id.to_dict()
+            return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
+    elif request.method == 'DELETE':
+        direction_to_delete = RecipeDirection.query.get(directionId)
+        user_that_owns_direction = direction_to_delete.get_direction_user()
+        if direction_to_delete:
+            if user_that_owns_direction == current_user.id:
+                db.session.delete(direction_to_delete)
+                db.session.commit()
+                return {'message': 'Direction Deleted'}
+        return authorization_errors_to_error_messages("Can't delete, invalid user")
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # # ---------------recipes_ingredients CRUD routes-----------------
