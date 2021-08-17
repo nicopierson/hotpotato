@@ -18,3 +18,8 @@ class RecipeDirection(db.Model):
             'steps': self.steps,
             'directions': self.directions,
         }
+
+    @staticmethod
+    def step_is_valid(recipe_id, step):
+        return step == RecipeDirection.query.filter_by(
+            recipe_id=recipe_id).count() + 1

@@ -20,6 +20,10 @@ def authorization_errors_to_error_messages(message="unauthorized user"):
     return {'errors': message}, 401
 
 
+def input_errors_to_error_messages(message="incorrect input"):
+    return {'errors': message}, 401
+
+
 def viewUser():
     # delete later, for testing
     print("DATA: ", current_user)
@@ -125,20 +129,29 @@ def get_all_recipes_directions_for_a_recipe(id):
     return {'recipes_directions': [directions.to_dict() for directions in all_recipes_directions_for_recipe]}
 
 
-@recipe_routes.route('/<int:recipeId>/recipe-directions', methods=['POST'])
+def current_recipe_id_belongs_to_user(recipe_id, current_user_id):
+    recipe_to_check = Recipe.query.get(recipe_id)
+    return recipe_to_check and recipe_to_check.user_id == current_user_id
+
+
+@recipe_routes.route('/<int:recipeId>/directions', methods=['POST'])
 @login_required
 def add_single_direction(recipeId):
     form = RecipeDirectionsCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (write instance method: authorized_user_valid)
-    # TODO if step is already in directions, return invalid step.
-    if form.validate_on_submit():
-        add_a_direction = RecipeDirection()
-        form.populate_obj(add_a_direction)
-        db.session.add(add_a_direction)
-        db.session.commit()
-        return add_a_direction.to_dict()
 
+    if form.validate_on_submit():
+        if current_user_matches_client_user(form.user_id.data) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
+            if RecipeDirection.step_is_valid(form.recipe_id.data, form.steps.data):
+                add_a_direction = RecipeDirection()
+                # TODO if step is already in directions, return invalid step. (write check_step_valid() instance method)
+
+                form.populate_obj(add_a_direction)
+                db.session.add(add_a_direction)
+                db.session.commit()
+                return add_a_direction.to_dict()
+            return input_errors_to_error_messages("Please enter the correct step")
+        return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
