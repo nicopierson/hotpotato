@@ -12,3 +12,10 @@ class Like(db.Model):
     user_relation = db.relationship('User', back_populates='like_relation')
     recipe_relation = db.relationship(
         'Recipe', back_populates='like_relation')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'recipe_id': self.recipe_id
+        }
