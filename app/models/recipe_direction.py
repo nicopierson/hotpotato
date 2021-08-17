@@ -17,4 +17,13 @@ class RecipeDirection(db.Model):
             'id': self.id,
             'steps': self.steps,
             'directions': self.directions,
+            'recipe_id': self.recipe_id,
         }
+
+    def get_direction_user(self):
+        return self.recipe_relation.user_id
+
+    @staticmethod
+    def step_is_valid(recipe_id, step):
+        return step == RecipeDirection.query.filter_by(
+            recipe_id=recipe_id).count() + 1
