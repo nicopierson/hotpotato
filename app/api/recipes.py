@@ -236,7 +236,7 @@ def update_delete_ingredient(recipeid, ingredientId):
         form = RecipeIngredientsCreateForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(ingredientId, form.recipe_id.data):
+            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(ingredientId, form.recipe_id.data, RecipeIngredient):
                 ingredient_by_id = RecipeIngredient.query.get(ingredientId)
                 form.populate_obj(ingredient_by_id)
                 db.session.add(ingredient_by_id)
@@ -290,7 +290,7 @@ def update_photo_video(recipeid, photoId):
         form['csrf_token'].data = request.cookies['csrf_token']
         # TODO AUTHORIZATION ensure that the recipeId and photos belongs to user. (maybe do it in the form)
         if form.validate_on_submit():
-            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(photoId, form.recipe_id.data):
+            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(photoId, form.recipe_id.data, RecipePhoto):
                 photovideo_by_id = RecipePhoto.query.get(photoId)
                 form.populate_obj(photovideo_by_id)
                 db.session.add(photovideo_by_id)
