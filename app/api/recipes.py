@@ -25,6 +25,8 @@ def get_recipes_by_page(page=1):
 
 
 @recipe_routes.route('/<int:id>')
+# gets a single recipe based on id
 def get_single_recipe(id):
     single_recipe = Recipe.query.get(id)
-    return single_recipe.to_dict()
+    # print("lazy loaded", single_recipe.photo_relation)
+    return single_recipe.get_recipes_with_all_relationship()
