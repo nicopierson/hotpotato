@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
         secondary=follows,
         primaryjoin=(follows.c.user_id_follow_owner == id),
         secondaryjoin=(follows.c.user_id_follower == id),
-        backref=db.backref("following", lazy="dynamic"),
+        backref=db.backref("follows", lazy="dynamic"),
         lazy="dynamic"
     )
 
@@ -40,12 +40,35 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    # returns all follows as an array of Users
+    def get_follows(self):
+        return self.follows.all()
+    
+    # returns all followers as an array of Users
+    def get_followers(self):
+        return self.followers.all()
+    
+    def follow(self, user):
+        if not self.is_following(user):
+            self.follows.append(user)
+            
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.follows.remove(user)
+            
+    def is_following(self, user):
+        return len(list(filter(
+            lambda follows: follows.id == user.id, self.follows.all()))) > 0
+
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email
         }
-
-    # def add_follower(self, user_id_follow_owner, user_id_follower ):
-    #     self.follows
+        
+    # not useful to get all followers as there will be many repeats
+    @staticmethod
+    def get_all_followers():
+        follower_list = [ user for users in User.query.all() for user in users.followers.all()]
+        return follower_list
