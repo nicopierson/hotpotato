@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Recipe from './components/Recipe';
+import Comment from './components/Comment';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Comment />
       <Recipe />
       <Switch>
         <Route path='/login' exact={true}>
