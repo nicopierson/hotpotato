@@ -68,7 +68,12 @@ class User(db.Model, UserMixin):
         }
         
     # not useful to get all followers as there will be many repeats
+    # returns list of list of follow and follower
     @staticmethod
     def get_all_followers():
-        follower_list = [ user for users in User.query.all() for user in users.followers.all()]
+        follower_list = [ [users, user] for users in User.query.all() for user in users.followers.all() ]
         return follower_list
+
+    @staticmethod
+    def to_list(followers):
+        return [ follower.id for follower in followers ]
