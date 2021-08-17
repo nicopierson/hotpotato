@@ -10,14 +10,15 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     userRelation = db.relationship('User', back_populates='recipeRelation')
     comment_relation = db.relationship(
-        'Comment', back_populates='recipe_relation')
+        'Comment', back_populates='recipe_relation', cascade="all, delete-orphan")
     photo_relation = db.relationship(
-        'RecipePhoto', back_populates='recipe_relation')
+        'RecipePhoto', back_populates='recipe_relation', cascade="all, delete-orphan")
     recipe_ingredient_relation = db.relationship(
-        'RecipeIngredient', back_populates='recipe_relation')
+        'RecipeIngredient', back_populates='recipe_relation', cascade="all, delete-orphan")
     recipe_direction_relation = db.relationship(
-        'RecipeDirection', back_populates='recipe_relation')
-    like_relation = db.relationship('Like', back_populates='recipe_relation')
+        'RecipeDirection', back_populates='recipe_relation', cascade="all, delete-orphan")
+    like_relation = db.relationship(
+        'Like', back_populates='recipe_relation', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

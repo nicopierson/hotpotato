@@ -15,6 +15,8 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+# ---------------recipes query routes-----------------
+
 
 @recipe_routes.route('/', methods=['GET'])
 def get_all_recipes():
@@ -43,6 +45,9 @@ def get_single_recipe(id):
     return single_recipe.get_recipes_with_all_relationship()
 
 
+# ---------------recipes CRUD route-----------------
+
+
 @recipe_routes.route('/users/<int:id>', methods=['GET'])
 # gets all recipes for a given user ID
 def get_all_recipes_for_a_user(id):
@@ -64,3 +69,48 @@ def create_recipe_post():
         return create_recipe.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@recipe_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+@login_required
+def create_recipe_post(id):
+    # add authorization
+    if request.method == 'PUT':
+        form = RecipeCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        # TODO ensure that the current user is the correct one
+        if form.validate_on_submit():
+            recipe_by_id = Recipe.query.get(id)
+            form.populate_obj(recipe_by_id)
+            db.session.add(recipe_by_id)
+            db.session.commit()
+            return recipe_by_id.to_dict()
+    elif request.method == 'DELETE':
+        recipe_to_delete = Recipe.query.get(id)
+        if recipe_to_delete:
+            db.session.delete(recipe_to_delete)
+            db.session.commit()
+            return {'message': 'Recipe Deleted'}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# ---------------recipes_directions CRUD routes-----------------
+
+
+@recipe_routes.route('/<int:id>/recipe-directions', methods=['POST'])
+@login_required
+def create_recipe_post():
+    form = RecipeCreateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # TODO ensure that the current user is the correct one
+    if form.validate_on_submit():
+        create_recipe = Recipe()
+        form.populate_obj(create_recipe)
+        db.session.add(create_recipe)
+        db.session.commit()
+        return create_recipe.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# ---------------recipes_ingredients CRUD routes-----------------
