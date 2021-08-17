@@ -19,6 +19,21 @@ def validation_errors_to_error_messages(validation_errors):
 def authorization_errors_to_error_messages(message="unauthorized user"):
     return {'errors': message}, 401
 
+
+def viewUser():
+    # delete later, for testing
+    print("DATA: ", current_user)
+    print("the current user is: ", current_user.get_id())
+    print("the current user DIR: ", dir(current_user))
+
+
+def current_user_matches_client_user(user_sent_id):
+    # move to utils later
+    if current_user:
+        return user_sent_id == current_user.id
+    print("current_user is not logged in or invalid user")
+    return False
+
 # ---------------recipes query routes-----------------
 
 
@@ -56,31 +71,16 @@ def get_single_recipe(id):
     return single_recipe.get_recipes_with_all_relationship()
 
 
-def viewUser():
-    # delete later, for testing
-    print("DATA: ", current_user)
-    print("the current user is: ", current_user.get_id())
-    print("the current user DIR: ", dir(current_user))
 # ---------------recipes CRUD route-----------------
-
-
-def validate_user_match_user(user_sent_id):
-    if current_user:
-        return user_sent_id == current_user.id
-    print("current_user is not logged in or invalid user")
-    return False
-# move to utils later
 
 
 @recipe_routes.route('/', methods=['POST'])
 @login_required
 def create_recipe_post():
-    viewUser()
     form = RecipeCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # TODO ensure that the current user is the correct one
     if form.validate_on_submit():
-        if validate_user_match_user(form.user_id.data):
+        if current_user_matches_client_user(form.user_id.data):
             create_recipe = Recipe()
             form.populate_obj(create_recipe)
             db.session.add(create_recipe)
@@ -94,52 +94,52 @@ def create_recipe_post():
 @recipe_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required
 def recipe_update_delete(id):
-    # add authorization
     if request.method == 'PUT':
         form = RecipeCreateForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        # TODO ensure that the current user is the correct one
         if form.validate_on_submit():
-            recipe_by_id = Recipe.query.get(id)
-            form.populate_obj(recipe_by_id)
-            db.session.add(recipe_by_id)
-            db.session.commit()
-            return recipe_by_id.to_dict()
+            if current_user_matches_client_user(form.user_id.data):
+                recipe_by_id = Recipe.query.get(id)
+                form.populate_obj(recipe_by_id)
+                db.session.add(recipe_by_id)
+                db.session.commit()
+                return recipe_by_id.to_dict()
+            return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
     elif request.method == 'DELETE':
         recipe_to_delete = Recipe.query.get(id)
-        if recipe_to_delete:
+        if recipe_to_delete and (recipe_to_delete.user_id == current_user.id):
             db.session.delete(recipe_to_delete)
             db.session.commit()
             return {'message': 'Recipe Deleted'}
-
+        return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # # ---------------recipes_directions CRUD routes-----------------
 
 
-# @recipe_routes.route('/<int:id>/directions', methods=['GET'])
-# # gets all recipes for a given user ID
-# def get_all_recipes_directions_for_a_recipe(id):
-#     all_recipes_directions_for_recipe = RecipeDirection.query.filter_by(
-#         recipe_id=id).all()
-#     return {'recipes_directions': [directions.to_dict() for directions in all_recipes_directions_for_recipe]}
+@recipe_routes.route('/<int:id>/directions', methods=['GET'])
+# gets all recipes for a given user ID
+def get_all_recipes_directions_for_a_recipe(id):
+    all_recipes_directions_for_recipe = RecipeDirection.query.filter_by(
+        recipe_id=id).all()
+    return {'recipes_directions': [directions.to_dict() for directions in all_recipes_directions_for_recipe]}
 
 
-# @recipe_routes.route('/<int:recipeId>/recipe-directions', methods=['POST'])
-# @login_required
-# def add_single_direction(recipeId):
-#     form = RecipeDirectionsCreateForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (write instance method: authorized_user_valid)
-#     # TODO if step is already in directions, return invalid step.
-#     if form.validate_on_submit():
-#         add_a_direction = RecipeDirection()
-#         form.populate_obj(add_a_direction)
-#         db.session.add(add_a_direction)
-#         db.session.commit()
-#         return add_a_direction.to_dict()
+@recipe_routes.route('/<int:recipeId>/recipe-directions', methods=['POST'])
+@login_required
+def add_single_direction(recipeId):
+    form = RecipeDirectionsCreateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (write instance method: authorized_user_valid)
+    # TODO if step is already in directions, return invalid step.
+    if form.validate_on_submit():
+        add_a_direction = RecipeDirection()
+        form.populate_obj(add_a_direction)
+        db.session.add(add_a_direction)
+        db.session.commit()
+        return add_a_direction.to_dict()
 
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # # @recipe_routes.route('/<int:recipeid>/directions/<int:directionId>', methods=['PUT', 'DELETE'])
