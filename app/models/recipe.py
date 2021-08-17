@@ -37,7 +37,7 @@ class Recipe(db.Model):
 
             'photos': [{'id': photo.id, 'video_url': photo.video_url, 'img_url': photo.img_url, 'recipe_id': photo.recipe_id} for photo in self.photo_relation],
 
-
+            # if not sorted, use python sort
             'recipe_ingredients': [ingredient.to_dict() for ingredient in self.recipe_ingredient_relation],
 
             'recipe_directions': [direction.to_dict() for direction in self.recipe_direction_relation],
