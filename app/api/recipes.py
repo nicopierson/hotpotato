@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Recipe, db, RecipeDirection, RecipeIngredient, RecipePhoto
-from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm
+from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm
 
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -129,7 +129,8 @@ def add_single_direction(recipeId):
 #         form = RecipeDirectionsCreateForm()
 #         form['csrf_token'].data = request.cookies['csrf_token']
 #         # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user.
-#         if form.validate_on_submit():
+#         if form.validate_on_submit():.
+    # TODO add drag and drop capabilities to edit content
 #             direction_by_id = RecipeDirection.query.get(directionId)
 #             form.populate_obj(direction_by_id)
 #             db.session.add(direction_by_id)
@@ -147,5 +148,50 @@ def add_single_direction(recipeId):
 
 # ---------------recipes_ingredients CRUD routes-----------------
 
+@recipe_routes.route('/<int:id>/ingredients', methods=['GET'])
+# gets all recipes for a given user ID
+def get_all_recipes_ingredients_for_a_recipe(id):
+    all_recipes_ingredients_for_recipe = RecipeIngredient.query.filter_by(
+        recipe_id=id).all()
+    return {'recipes_ingredients': [ingredients.to_dict() for ingredients in all_recipes_ingredients_for_recipe]}
 
+
+@recipe_routes.route('/<int:recipeId>/recipe-ingredients', methods=['POST'])
+@login_required
+def add_single_ingredients(recipeId):
+    form = RecipeIngredientsCreateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (write instance method: authorized_user_valid)
+    if form.validate_on_submit():
+        add_an_ingredient = RecipeIngredient()
+        form.populate_obj(add_an_ingredient)
+        db.session.add(add_an_ingredient)
+        db.session.commit()
+        return add_an_ingredient.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@recipe_routes.route('/<int:recipeid>/ingredient/<int:ingredientId>', methods=['PUT', 'DELETE'])
+@login_required
+def update_delete_direction(recipeid, ingredientId):
+    # add authorization
+    if request.method == 'PUT':
+        form = RecipeIngredientsCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (maybe do it in the form)
+        if form.validate_on_submit():
+            ingredient_by_id = RecipeIngredient.query.get(ingredientId)
+            form.populate_obj(ingredient_by_id)
+            db.session.add(ingredient_by_id)
+            db.session.commit()
+            return ingredient_by_id.to_dict()
+    elif request.method == 'DELETE':
+        ingredient_to_delete = RecipeIngredient.query.get(id)
+        if ingredient_to_delete:
+            db.session.delete(ingredient_to_delete)
+            db.session.commit()
+            return {'message': 'Ingredient Deleted'}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 # ---------------recipes_photos CRUD routes-----------------
