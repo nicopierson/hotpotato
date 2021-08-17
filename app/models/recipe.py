@@ -32,10 +32,14 @@ class Recipe(db.Model):
             'id': self.id,
             'thumbnail_url': self.thumbnail_url,
             'name': self.name,
-            'comments': [{'id': comment.id, 'comment': comment.comment, 'user_id': comment.user_id, 'recipe_id': comment.recipe_id} for comment in self.comment_relation],
-            'photos': [{'id': photo.id, 'video_url': photo.video_url, 'img_url': photo.img_url,  'recipe_id': photo.recipe_id} for photo in self.photo_relation]
-            # 'photos': self.photo_relation,
-            # 'recipe_ingredients': [self.recipe_ingredient_relation,
-            # 'recipe_directions': self.recipe_direction_relation,
+
+            'comments': [{'id': comment.id, 'comment': comment.comment, 'user_id': comment.user_id, 'recipe_id': comment.recipe_id, 'username': comment.user_relation.username} for comment in self.comment_relation],
+
+            'photos': [{'id': photo.id, 'video_url': photo.video_url, 'img_url': photo.img_url, 'recipe_id': photo.recipe_id} for photo in self.photo_relation],
+
+
+            'recipe_ingredients': [ingredient.to_dict() for ingredient in self.recipe_ingredient_relation],
+
+            'recipe_directions': [direction.to_dict() for direction in self.recipe_direction_relation],
             # 'likes': self.like_relation,
         }
