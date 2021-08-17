@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Recipe, db, RecipeDirection, RecipeIngredient, RecipePhoto
-from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm
+from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm, RecipePhotosCreateForm
 
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -194,4 +194,52 @@ def update_delete_direction(recipeid, ingredientId):
             return {'message': 'Ingredient Deleted'}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 # ---------------recipes_photos CRUD routes-----------------
+@recipe_routes.route('/<int:id>/photos', methods=['GET'])
+# gets all recipes for a given user ID
+def get_all_recipes_photos_for_a_recipe(id):
+    all_recipes_photos_for_recipe = RecipePhoto.query.filter_by(
+        recipe_id=id).all()
+    return {'recipes_videos_photos': [photo.to_dict() for photo in all_recipes_photos_for_recipe]}
+
+
+@recipe_routes.route('/<int:recipeId>/photos', methods=['POST'])
+@login_required
+def add_photo_video(recipeId):
+    form = RecipePhotosCreateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # TODO AUTHORIZATION ensure that the recipeId and photos belongs to user. (write instance method: authorized_user_valid)
+    if form.validate_on_submit():
+        add_photo_and_video = RecipePhoto()
+        form.populate_obj(add_photo_and_video)
+        db.session.add(add_photo_and_video)
+        db.session.commit()
+        return add_photo_and_video.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@recipe_routes.route('/<int:recipeid>/photos/<int:photoId>', methods=['PUT', 'DELETE'])
+@login_required
+def update_photo_video(recipeid, photoId):
+    # add authorization
+    if request.method == 'PUT':
+        form = RecipePhotosCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        # TODO AUTHORIZATION ensure that the recipeId and photos belongs to user. (maybe do it in the form)
+        if form.validate_on_submit():
+            photovideo_by_id = RecipePhoto.query.get(photoId)
+            form.populate_obj(photovideo_by_id)
+            db.session.add(photovideo_by_id)
+            db.session.commit()
+            return photovideo_by_id.to_dict()
+    elif request.method == 'DELETE':
+        photovideo_to_delete = RecipePhoto.query.get(id)
+        if photovideo_to_delete:
+            db.session.delete(photovideo_to_delete)
+            db.session.commit()
+            return {'message': 'Photo Deleted'}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
