@@ -17,6 +17,7 @@ class RecipeDirection(db.Model):
             'id': self.id,
             'steps': self.steps,
             'directions': self.directions,
+            'recipe_id': self.recipe_id,
         }
 
     def get_direction_user(self):

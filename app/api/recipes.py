@@ -45,8 +45,14 @@ def current_recipe_id_belongs_to_user(recipe_id, current_user_id):
 
 
 def direction_belongs_to_user_recipe(directionId, users_recipe_id):
+    # refactor to use below
     direction_to_check = RecipeDirection.query.get(directionId)
     return direction_to_check and direction_to_check.recipe_id == users_recipe_id
+
+
+def item_belongs_to_user_recipe(itemId, users_recipe_id, classObj):
+    item_to_check = classObj.query.get(itemId)
+    return item_to_check and item_to_check.recipe_id == users_recipe_id
 
 # ---------------recipes query routes-----------------
 
@@ -196,100 +202,107 @@ def update_delete_direction(recipeid, directionId):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# # ---------------recipes_ingredients CRUD routes-----------------
+# ---------------recipes_ingredients CRUD routes-----------------
 
-# @recipe_routes.route('/<int:id>/ingredients', methods=['GET'])
-# # gets all recipes for a given user ID
-# def get_all_recipes_ingredients_for_a_recipe(id):
-#     all_recipes_ingredients_for_recipe = RecipeIngredient.query.filter_by(
-#         recipe_id=id).all()
-#     return {'recipes_ingredients': [ingredients.to_dict() for ingredients in all_recipes_ingredients_for_recipe]}
-
-
-# @recipe_routes.route('/<int:recipeId>/recipe-ingredients', methods=['POST'])
-# @login_required
-# def add_single_ingredients(recipeId):
-#     form = RecipeIngredientsCreateForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (write instance method: authorized_user_valid)
-#     if form.validate_on_submit():
-#         add_an_ingredient = RecipeIngredient()
-#         form.populate_obj(add_an_ingredient)
-#         db.session.add(add_an_ingredient)
-#         db.session.commit()
-#         return add_an_ingredient.to_dict()
-
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+@recipe_routes.route('/<int:id>/ingredients', methods=['GET'])
+# gets all recipes for a given recipe ID
+def get_all_recipes_ingredients_for_a_recipe(id):
+    all_recipes_ingredients_for_recipe = RecipeIngredient.query.filter_by(
+        recipe_id=id).all()
+    return {'recipes_ingredients': [ingredients.to_dict() for ingredients in all_recipes_ingredients_for_recipe]}
 
 
-# @recipe_routes.route('/<int:recipeid>/ingredient/<int:ingredientId>', methods=['PUT', 'DELETE'])
-# @login_required
-# def update_delete_direction(recipeid, ingredientId):
-#     # add authorization
-#     if request.method == 'PUT':
-#         form = RecipeIngredientsCreateForm()
-#         form['csrf_token'].data = request.cookies['csrf_token']
-#         # TODO AUTHORIZATION ensure that the recipeId and instructions belongs to user. (maybe do it in the form)
-#         if form.validate_on_submit():
-#             ingredient_by_id = RecipeIngredient.query.get(ingredientId)
-#             form.populate_obj(ingredient_by_id)
-#             db.session.add(ingredient_by_id)
-#             db.session.commit()
-#             return ingredient_by_id.to_dict()
-#     elif request.method == 'DELETE':
-#         ingredient_to_delete = RecipeIngredient.query.get(id)
-#         if ingredient_to_delete:
-#             db.session.delete(ingredient_to_delete)
-#             db.session.commit()
-#             return {'message': 'Ingredient Deleted'}
-
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+@recipe_routes.route('/<int:recipeId>/ingredients', methods=['POST'])
+@login_required
+# add a single ingredient with the given recipe id
+def add_single_ingredients(recipeId):
+    form = RecipeIngredientsCreateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if current_user_matches_client_user(form.user_id.data) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
+            add_an_ingredient = RecipeIngredient()
+            form.populate_obj(add_an_ingredient)
+            db.session.add(add_an_ingredient)
+            db.session.commit()
+            return add_an_ingredient.to_dict()
+        return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# # ---------------recipes_photos CRUD routes-----------------
-# @recipe_routes.route('/<int:id>/photos', methods=['GET'])
-# # gets all recipes for a given user ID
-# def get_all_recipes_photos_for_a_recipe(id):
-#     all_recipes_photos_for_recipe = RecipePhoto.query.filter_by(
-#         recipe_id=id).all()
-#     return {'recipes_videos_photos': [photo.to_dict() for photo in all_recipes_photos_for_recipe]}
+@recipe_routes.route('/<int:recipeid>/ingredients/<int:ingredientId>', methods=['PUT', 'DELETE'])
+@login_required
+def update_delete_ingredient(recipeid, ingredientId):
+    if request.method == 'PUT':
+        form = RecipeIngredientsCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(ingredientId, form.recipe_id.data):
+                ingredient_by_id = RecipeIngredient.query.get(ingredientId)
+                form.populate_obj(ingredient_by_id)
+                db.session.add(ingredient_by_id)
+                db.session.commit()
+                return ingredient_by_id.to_dict()
+    if request.method == 'DELETE':
+        ingredient_to_delete = RecipeIngredient.query.get(ingredientId)
+        user_that_owns_ingredient = ingredient_to_delete.get_ingredient_user()
+        if ingredient_to_delete:
+            if user_that_owns_ingredient == current_user.id:
+                db.session.delete(ingredient_to_delete)
+                db.session.commit()
+                return {'message': 'Ingredient Deleted'}
+        return authorization_errors_to_error_messages("Can't delete, invalid user")
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# @recipe_routes.route('/<int:recipeId>/photos', methods=['POST'])
-# @login_required
-# def add_photo_video(recipeId):
-#     form = RecipePhotosCreateForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     # TODO AUTHORIZATION ensure that the recipeId and photos belongs to user. (write instance method: authorized_user_valid)
-#     if form.validate_on_submit():
-#         add_photo_and_video = RecipePhoto()
-#         form.populate_obj(add_photo_and_video)
-#         db.session.add(add_photo_and_video)
-#         db.session.commit()
-#         return add_photo_and_video.to_dict()
-
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+# ---------------recipes_photos CRUD routes-----------------
 
 
-# @recipe_routes.route('/<int:recipeid>/photos/<int:photoId>', methods=['PUT', 'DELETE'])
-# @login_required
-# def update_photo_video(recipeid, photoId):
-#     # add authorization
-#     if request.method == 'PUT':
-#         form = RecipePhotosCreateForm()
-#         form['csrf_token'].data = request.cookies['csrf_token']
-#         # TODO AUTHORIZATION ensure that the recipeId and photos belongs to user. (maybe do it in the form)
-#         if form.validate_on_submit():
-#             photovideo_by_id = RecipePhoto.query.get(photoId)
-#             form.populate_obj(photovideo_by_id)
-#             db.session.add(photovideo_by_id)
-#             db.session.commit()
-#             return photovideo_by_id.to_dict()
-#     elif request.method == 'DELETE':
-#         photovideo_to_delete = RecipePhoto.query.get(id)
-#         if photovideo_to_delete:
-#             db.session.delete(photovideo_to_delete)
-#             db.session.commit()
-#             return {'message': 'Photo Deleted'}
+@recipe_routes.route('/<int:id>/photos', methods=['GET'])
+# gets all recipes for a given user ID
+def get_all_recipes_photos_for_a_recipe(id):
+    all_recipes_photos_for_recipe = RecipePhoto.query.filter_by(
+        recipe_id=id).all()
+    return {'recipes_videos_photos': [photo.to_dict() for photo in all_recipes_photos_for_recipe]}
 
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@recipe_routes.route('/<int:recipeId>/photos', methods=['POST'])
+@login_required
+def add_photo_video(recipeId):
+    form = RecipePhotosCreateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if current_user_matches_client_user(form.user_id.data) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
+            add_photo_and_video = RecipePhoto()
+            form.populate_obj(add_photo_and_video)
+            db.session.add(add_photo_and_video)
+            db.session.commit()
+            return add_photo_and_video.to_dict()
+        return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@recipe_routes.route('/<int:recipeid>/photos/<int:photoId>', methods=['PUT', 'DELETE'])
+@login_required
+def update_photo_video(recipeid, photoId):
+    # add authorization
+    if request.method == 'PUT':
+        form = RecipePhotosCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        # TODO AUTHORIZATION ensure that the recipeId and photos belongs to user. (maybe do it in the form)
+        if form.validate_on_submit():
+            if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(photoId, form.recipe_id.data):
+                photovideo_by_id = RecipePhoto.query.get(photoId)
+                form.populate_obj(photovideo_by_id)
+                db.session.add(photovideo_by_id)
+                db.session.commit()
+                return photovideo_by_id.to_dict()
+    elif request.method == 'DELETE':
+        photovideo_to_delete = RecipePhoto.query.get(photoId)
+        user_that_owns_photo = photovideo_to_delete.get_photo_user()
+        if photovideo_to_delete:
+            if user_that_owns_photo == current_user.id:
+                db.session.delete(photovideo_to_delete)
+                db.session.commit()
+                return {'message': 'Photo Deleted'}
+        return authorization_errors_to_error_messages("Can't delete, invalid user")
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

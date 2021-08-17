@@ -17,4 +17,8 @@ class RecipeIngredient(db.Model):
             'id': self.id,
             'ingredient': self.ingredient,
             'measurement': self.measurement,
+            'recipe_id': self.recipe_id,
         }
+
+    def get_ingredient_user(self):
+        return self.recipe_relation.user_id
