@@ -2,27 +2,35 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipe } from '../../store/recipe';
 
+import styles from './ShowDirections.module.css';
+
 const ShowDirections = ({ setShowEdit }) => {
     const dispatch = useDispatch();
     const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
 
-    const recipe_directions = useSelector(state => state.recipe[1].recipe_directions);
-    console.log(recipe_directions);
+    const recipe_directions = useSelector(state => state.recipe[recipeId]?.recipe_directions);
 
     useEffect(() => {
         dispatch(getRecipe(recipeId))
     }, [dispatch]);
 
     return (
-        <div>
-            <h2>Show Directions</h2>
+        <div className={styles.directions_inner_container}>
             <div>
-                <button
+                <h2>Show Directions</h2>
+                <i 
                     onClick={() => setShowEdit(true)}
+                    className='fas fa-edit'
                 >
-                    Edit
-                </button>
+                </i>
             </div>
+            { recipe_directions &&
+                recipe_directions.map(direction => (
+                    <div key={ direction.id } className={styles.directions_item}>
+                        <p><span>{ direction.steps }.</span> { direction.directions }</p>
+                    </div>
+                ))
+            }
         </div>
     )
 };
