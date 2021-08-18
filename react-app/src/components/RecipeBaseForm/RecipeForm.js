@@ -26,14 +26,16 @@ export const RecipeForm = () => {
 
   const onFormSubmitCreateRecipeBase = (e)=>{
     e.preventDefault();
-    if(!user) history.push('/')
-    else{
+    // if(!user) history.push('/')
+    // else{
       const payload = {
-
-        title,
-        imageUrl,
-        userId
+        name: title,
+        thumbnail_url: imageUrl,
+        user_id: userId
       }
+      console.log('our payload', payload)
+      console.log('our payload', payload)
+      console.log('our payload', payload)
       setErrors([]);
       return dispatch(createRecipe(payload)).then((data)=>{
         //add push to view-recipe/id later
@@ -43,7 +45,7 @@ export const RecipeForm = () => {
         const data = await res.json();
         if(data && data.errors) setErrors(data.errors);
       })
-    }
+    // }
   }
 
 

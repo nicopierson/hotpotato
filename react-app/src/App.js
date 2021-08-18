@@ -29,8 +29,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Comment />
-      <Recipe />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
