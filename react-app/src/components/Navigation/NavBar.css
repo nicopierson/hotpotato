@@ -44,3 +44,8 @@
 .navbar-title {
     font-weight: 900;
 }
+
+.button-fix{
+    max-width: 10px;
+    max-height: 10px;
+}

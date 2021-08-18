@@ -3,14 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import Recipe from './components/testRedux/Recipe';
-import Comment from './components/testRedux/Comment';
-import Follow from './components/testRedux/Follow';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,9 +27,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      {/* <Follow />
-      <Comment /> 
-      <Recipe /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />

@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
+import { CreateRecipeButton } from './CreateRecipeButton';
 
 const NavBar = () => {
   return (
@@ -44,6 +45,9 @@ const NavBar = () => {
               Users
             </NavLink>
           </li> */}
+          <li className="button-fix">
+            <CreateRecipeButton />
+          </li>
           <li className="navbar-li">
             <LogoutButton />
           </li>
