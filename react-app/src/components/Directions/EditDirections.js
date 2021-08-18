@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getRecipe, updateDirections } from '../../store/recipe';
+import { getRecipe, updateDirection } from '../../store/recipe';
 
 import styles from './EditDirections.module.css';
 
@@ -9,7 +9,7 @@ const EditDirections = ({ setShowEdit }) => {
     const dispatch = useDispatch();
     const [directions, setDirections] = useState([]);
     const [directionsId, setDirectionsId] = useState([]);
-    const recipeId = 4; //! REMOVE LATER: with useParams to get from the url
+    const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
 
     const recipe_directions = useSelector(state => state.recipe[recipeId]?.recipe_directions);
 
@@ -37,7 +37,7 @@ const EditDirections = ({ setShowEdit }) => {
                 directions: direction,
                 recipe_id: recipeId,
             }
-            dispatch(updateDirections(payload));
+            dispatch(updateDirection(payload));
         });
         setShowEdit(false);
     };

@@ -101,7 +101,7 @@ export const updateRecipe = (payload) => async(dispatch) => {
     }
 }
 
-export const updateDirections = (payload) => async(dispatch) => {
+export const updateDirection = (payload) => async(dispatch) => {
     const response = await fetch(`/api/recipes/${payload.recipe_id}/directions/${payload.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
@@ -111,6 +111,20 @@ export const updateDirections = (payload) => async(dispatch) => {
     if (response.ok) {
         const direction = await response.json();
         await dispatch(getRecipe(payload.recipe_id));
+        return direction;
+    } else {
+        return ['An errror occurred. Please try again.'];
+    }
+};
+
+export const deleteDirection = (id, recipe_id) => async(dispatch) => {
+    const response = await fetch(`/api/recipes/${recipe_id}/directions/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        const direction = await response.json();
+        await dispatch(getRecipe(recipe_id));
         return direction;
     } else {
         return ['An errror occurred. Please try again.'];
