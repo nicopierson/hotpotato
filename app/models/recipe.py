@@ -26,6 +26,7 @@ class Recipe(db.Model):
             'thumbnail_url': self.thumbnail_url,
             'name': self.name,
             'user_id': self.user_id,
+            'likes': len(self.like_relation),
         }
 
     def get_recipes_with_all_relationship(self):
@@ -42,5 +43,5 @@ class Recipe(db.Model):
             'recipe_ingredients': [ingredient.to_dict() for ingredient in self.recipe_ingredient_relation],
 
             'recipe_directions': [direction.to_dict() for direction in self.recipe_direction_relation],
-            # 'likes': self.like_relation,
+            'likes': len(self.like_relation),
         }

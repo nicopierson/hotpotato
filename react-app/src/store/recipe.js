@@ -1,4 +1,4 @@
-const SET_RECIPE = 'recipes/setRecipe';
+export const SET_RECIPE = 'recipes/setRecipe';
 const SET_ALL_RECIPES = 'recipes/setAllRecipes';
 const DELETE_RECIPE = 'recipes/deleteRecipe';
 const ADD_RECIPE = 'recipes/addRecipe';
