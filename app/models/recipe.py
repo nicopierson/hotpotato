@@ -34,14 +34,10 @@ class Recipe(db.Model):
             'id': self.id,
             'thumbnail_url': self.thumbnail_url,
             'name': self.name,
-
             'comments': [{'id': comment.id, 'comment': comment.comment, 'user_id': comment.user_id, 'recipe_id': comment.recipe_id, 'username': comment.user_relation.username} for comment in self.comment_relation],
-
             'photos': [{'id': photo.id, 'video_url': photo.video_url, 'img_url': photo.img_url, 'recipe_id': photo.recipe_id} for photo in self.photo_relation],
-
-            # if not sorted, use python sort
-            'recipe_ingredients': [ingredient.to_dict() for ingredient in self.recipe_ingredient_relation],
-
-            'recipe_directions': [direction.to_dict() for direction in self.recipe_direction_relation],
+            'recipe_ingredients': sorted([ingredient.to_dict() for ingredient in self.recipe_ingredient_relation], key = lambda i: i['id']),
+            # example of sorting a diction by the key of age ---> sorted(lis, key = lambda i: i['age'])
+            'recipe_directions': sorted([direction.to_dict() for direction in self.recipe_direction_relation], key = lambda i: i['steps']),
             'likes': len(self.like_relation),
         }
