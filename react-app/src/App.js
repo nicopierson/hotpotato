@@ -31,9 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      {/* <Like />
-      <Follow />
-      <Comment /> 
+      {/* <Comment /> 
       <Recipe /> */}
       <Switch>
         <Route path='/login' exact={true}>

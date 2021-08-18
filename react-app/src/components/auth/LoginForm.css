@@ -1,0 +1,70 @@
+body, html {
+  height: 100%;
+  background-image: url("https://hotpotatorecipes.s3.us-west-1.amazonaws.com/monika-grabkowska-ECxiHN817xE-unsplash+(1).jpg");
+  
+  /* Full height */
+  height: 100%;
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#signin-form.form-container {
+    top: 50%;
+    float: right;
+    background-color: white;
+    display: flex;
+    height: 310px;
+    min-width: 400px;
+    justify-content: center;
+    padding: 1.5em;
+    border-radius: 7px;
+    margin-right: 8em;
+}
+
+.signup-form {
+    min-width: 100%;
+}
+
+input.form-input-field {
+    width: 90%;
+    border: 0px solid lightgray;
+    border-bottom-width: .125px;
+    background-color: transparent;
+    padding: 1em;
+}
+
+.form-input {
+    padding: 1em;
+}
+
+#login-btn {
+    float: right;
+    background-color: #1473E6;
+    border-color: #1473E6;
+    border-radius: 7px;
+    color: white;
+    padding: .75em;
+    margin-right: 1.6em;
+    margin-top: 1em;
+}
+
+.form-title {
+    font-size: 35px;
+    font-weight: bolder;
+    margin-bottom: .25em;
+}
+
+.already-signed-up {
+    margin-bottom: 1.5em;
+}
+
+.already-signed-up-btn {
+    font-weight: bolder;
+    color: #1473E6;
+    float: right;
+    margin-right: 6em;
+}
+
