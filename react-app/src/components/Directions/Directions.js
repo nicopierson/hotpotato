@@ -2,11 +2,13 @@ import { useState } from 'react';
 import EditDirections from './EditDirections';
 import ShowDirections from './ShowDirections';
 
+import styles from './Directions.module.css';
+
 const Directions = () => {
     const [showEdit, setShowEdit] = useState(false);
 
     return (
-        <div>
+        <div className={styles.directions_container}>
             {!showEdit && 
                 <ShowDirections setShowEdit={setShowEdit} />
             }
