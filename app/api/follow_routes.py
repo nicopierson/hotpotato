@@ -41,9 +41,10 @@ def add_follower(id):
     """
     follower = User.query.get_or_404(current_user.id)
     followed = User.query.get_or_404(id)
-    if follower.follow(followed):
+    user = follower.follow(followed)
+    if user:
         db.session.commit()
-        return jsonify({ "followed_id": followed.id })
+        return jsonify({ "following": user.to_dict() })
     return {'errors': ['Conflict: Already Following']}, 409
 
 
@@ -55,8 +56,9 @@ def remove_follower(id):
     """
     follower = User.query.get_or_404(current_user.id)
     followed = User.query.get_or_404(id)
-    if follower.unfollow(followed):
+    user = follower.unfollow(followed)
+    if user:
         db.session.commit()
-        return jsonify({ "followed_id": followed.id })
+        return jsonify({ "following": user.to_dict() })
     else:
         return {'errors': ['Conflict: Not following']}, 409

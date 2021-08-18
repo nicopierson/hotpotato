@@ -10,7 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.likes_routes import like_routes
 from .api.recipes import recipe_routes
-from .api.follower_routes import follow_routes
+from .api.follow_routes import follow_routes
 from .api.comments import comment_routes
 
 

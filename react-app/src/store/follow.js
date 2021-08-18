@@ -30,7 +30,7 @@ const addFollowing = (user) => ({
 });
 
 export const getFollowing = (id) => async (dispatch) => {
-    const response = await fetch(`/api/follows/${id}`);
+    const response = await fetch(`/api/follows/followings/${id}`);
     const data = await response.json();
 
     if (response.ok) {
@@ -67,7 +67,7 @@ export const getAllFollowings = () => async (dispatch) => {
 
 // TODO Test State
 export const removeFollowing = (id) => async (dispatch) => {
-    const response = await fetch(`/api/follows/${id}`, {
+    const response = await fetch(`/api/follows/users/${id}`, {
         method: 'DELETE',
     });
 
@@ -80,8 +80,8 @@ export const removeFollowing = (id) => async (dispatch) => {
 }
 
 // TODO Test State
-export const createFollowing = (followed_id) => async (dispatch) => {
-    const response = await fetch(`/api/follows/${followed_id}`, {
+export const createFollowing = (id) => async (dispatch) => {
+    const response = await fetch(`/api/follows/users/${id}`, {
         method: 'POST',
         // headers: { 'Content-Type': 'application/json' },
         // body: JSON.stringify({ payload }),
