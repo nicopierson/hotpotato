@@ -34,7 +34,7 @@ def recipe_id_post(id):
         db.session.add(like)
         db.session.commit()
   
-    return {'like': {"recipe_id": id, "user_id": current_user.id}}
+    return {"like": {"recipe_id": id, "user_id": current_user.id}}
 
 
 @like_routes.route('/<int:id>', methods=['DELETE'])
@@ -45,7 +45,7 @@ def recipe_id_delete(id):
     db.session.delete(like)
     db.session.commit()
 
-    return {"like_id": id}
+    return {"like": like.to_dict()}
 
 
 @like_routes.route('/users/<int:id>')
