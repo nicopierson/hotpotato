@@ -42,7 +42,7 @@
 .button-style-exit, .button-style-stay{
   padding: 10px;
   /* width: 40%; */
-  background-color: rgb(117, 231, 203);
+  background-color: rgb(117, 185, 231);
   border-style: none;
   border-radius: 2px;
   margin-top: 15px;
@@ -65,5 +65,5 @@
 }
 
 .button-style-stay{
-  background-color: rgb(255, 105, 105);
+  background-color: rgb(236, 171, 72);
 }

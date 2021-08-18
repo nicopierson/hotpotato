@@ -1,9 +1,9 @@
-import React from 'react'
-import React, { useState } from 'react';
+import React , { useState }from 'react';
 import { Modal } from '../../context/Modal';
 import { ModalVerify } from '../../context/Modal';
 import { RecipeForm } from './RecipeForm';
-import './CreateRecipeButton.css'
+import './CreateRecipeButton.css';
+import './CreateRecipeForm.css';
 
 
 const RecipeFormModal = () => {

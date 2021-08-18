@@ -27,13 +27,14 @@ export function ModalProvider({ children }) {
 
 
 export function Modal({ onClose, children }) {
+  // if modalNode doesn't exist, then don't render this component
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
-
+        {/* when user clicks on the back, trigger callback upstream and provide option to close mdoal */}
       <div id="modal-content">
         {children}
       </div>
