@@ -41,7 +41,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     # returns all follows as an array of Users
-    def get_follows(self):
+    def get_followings(self):
         return self.follows.all()
     
     # returns all followers as an array of Users
@@ -51,13 +51,13 @@ class User(db.Model, UserMixin):
     def follow(self, user):
         if not self.is_following(user):
             self.follows.append(user)
-            return True
+            return user
         return False
             
     def unfollow(self, user):
         if self.is_following(user):
             self.follows.remove(user)
-            return True
+            return user
         return False
             
     def is_following(self, user):
