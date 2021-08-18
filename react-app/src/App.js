@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer';
 // import Comment from './components/testRedux/Comment';
 // import Follow from './components/testRedux/Follow';
 // import Like from './components/testRedux/Like';
+import RecipePhoto from './components/Recipe/RecipePhoto';
 
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/recipes' exact={true}>
+            <RecipePhoto loaded={loaded}/>
         </ProtectedRoute>
       </Switch>
       <Footer />
