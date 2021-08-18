@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import Footer from './components/Footer/Footer';
 // import Recipe from './components/testRedux/Recipe';
 // import Comment from './components/testRedux/Comment';
 // import Follow from './components/testRedux/Follow';
@@ -52,6 +53,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
