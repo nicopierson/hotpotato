@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes, getRecipe } from "../store/recipe";
+import { getAllRecipes, getRecipe } from "../../store/recipe";
 
 const Recipe = () => {
 

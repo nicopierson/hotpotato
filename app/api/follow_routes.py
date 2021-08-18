@@ -21,7 +21,7 @@ def get_followers(id):
     Retrieves all followers for a user
     """
     followers = User.query.get_or_404(id).get_followers()
-    return jsonify([ user.to_dict() for user in followers ])
+    return jsonify({ "followers": [ user.to_dict() for user in followers ] })
 
 
 @follow_routes.route('/followings/<int:id>')

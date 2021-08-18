@@ -1,13 +1,7 @@
-const SET_FOLLOWING = 'follows/setFollowing';
 const SET_ALL_FOLLOWERS = 'follows/setAllFollowers';
 const SET_ALL_FOLLOWINGS = 'follows/setAllFollowings';
 const DELETE_FOLLOWING = 'follows/deleteFollowing';
 const ADD_FOLLOWING = 'follows/addFollowing';
-
-const setFollowing = (user) => ({
-    type: SET_FOLLOWING,
-    user,
-});
 
 const setAllFollowers = (users) => ({
     type: SET_ALL_FOLLOWERS,
@@ -29,43 +23,30 @@ const addFollowing = (user) => ({
     user,
 });
 
-export const getFollowing = (id) => async (dispatch) => {
-    const response = await fetch(`/api/follows/followings/${id}`);
-    const data = await response.json();
+export const getAllFollowers = (id) => async (dispatch) => {
+    const response = await fetch(`/api/follows/followers/${id}`)
+    const { followers } = await response.json();
 
     if (response.ok) {
-        await dispatch(setFollowing(data));
+        await dispatch(setAllFollowers(followers));
         return response;
     } else {
         return ['An error occurred. Please try again.']
     }
 }
 
-export const getAllFollowers = () => async (dispatch) => {
-    const response = await fetch('/api/follows')
-    const data = await response.json();
+export const getAllFollowings = (id) => async (dispatch) => {
+    const response = await fetch(`/api/follows/followings/${id}`)
+    const { followings } = await response.json();
 
     if (response.ok) {
-        await dispatch(setAllFollowers(data));
+        await dispatch(setAllFollowings(followings));
         return response;
     } else {
         return ['An error occurred. Please try again.']
     }
 }
 
-export const getAllFollowings = () => async (dispatch) => {
-    const response = await fetch('/api/follows')
-    const data = await response.json();
-
-    if (response.ok) {
-        await dispatch(setAllFollowings(data));
-        return response;
-    } else {
-        return ['An error occurred. Please try again.']
-    }
-}
-
-// TODO Test State
 export const removeFollowing = (id) => async (dispatch) => {
     const response = await fetch(`/api/follows/users/${id}`, {
         method: 'DELETE',
@@ -79,54 +60,46 @@ export const removeFollowing = (id) => async (dispatch) => {
     }
 }
 
-// TODO Test State
 export const createFollowing = (id) => async (dispatch) => {
     const response = await fetch(`/api/follows/users/${id}`, {
         method: 'POST',
-        // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify({ payload }),
     });
 
     if (response.ok) {
-        const follow = await response.json();
-        await dispatch(addFollowing(follow));
-        return follow;
+        const { following } = await response.json();
+        await dispatch(addFollowing(following));
+        return following;
     } else {
         return ['An error occurred. Please try again.']
     }
 }
 
 // should look like this "followers": { [1]: User1, [2]: User2 }, "following": { [1]: User2 }
-const initialState = { "followers": {}, "following": {} };
+const initialState = { "followers": {}, "followings": {} };
 
 export default function reducer(state = initialState, action) {
-    let newState = {}
+    let newState = { 
+        "followings": { ...state.followings },
+        "followers": { ...state.followers } 
+    };
     switch (action.type) {
-        case SET_FOLLOWING:
-            newState = { ...state.followers, ...state.following };
-            newState.following[action.user.id] = action.user;
-            return newState;
         case SET_ALL_FOLLOWERS:
-            newState = { ...state.following, ...state.followers };
             action.users.forEach(user => {
                 newState.followers[user.id] = user;
             });
             return newState;
         case SET_ALL_FOLLOWINGS:
-            newState = { ...state.following, ...state.followers };
             action.users.forEach(user => {
                 newState.followings[user.id] = user;
             });
             return newState;
         case ADD_FOLLOWING:
-            newState = { ...state.followers, ...state.following };
             if (!state.followings[action.user.id]) {
                 newState.followings[action.user.id] = action.user;
             }
             return newState;
         case DELETE_FOLLOWING:
-            newState = { ...state.followers, ...state.following };
-            delete newState.following[action.id];
+            delete newState.followings[action.id];
             return newState;
         default:
             return state;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComment, getAllComments, createComment, updateComment, deleteComment } from "../store/comments";
+import { getComment, getAllComments, createComment, updateComment, deleteComment } from "../../store/comments";
 
 const Comment = () => {
 
