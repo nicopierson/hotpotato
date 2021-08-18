@@ -44,8 +44,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <>
-      <div className="form-container">
+    <div className="signup-page-container">
+      <div id="signup-form" className="form-container">
         <form onSubmit={onSignUp} className="signup-form">
           <div>
             {errors.map((error, ind) => (
@@ -116,7 +116,7 @@ const SignUpForm = () => {
           <button id="signup-btn" type="submit">Sign Up</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

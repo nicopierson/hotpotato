@@ -69,10 +69,10 @@ export const deleteRecipe = (id) => async (dispatch) => {
 
 // TODO Test State
 export const createRecipe = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/recipes`, {
+    const response = await fetch(`/api/recipes/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify( payload ),
     });
 
     if (response.ok) {

@@ -1,4 +1,13 @@
 /* TODO Add site wide styles */
 * {
     font-family: 'Roboto', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+}
+
+ul {
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
 }
