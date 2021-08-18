@@ -23,7 +23,7 @@ def recipe_id(id):
 def recipe_id_post(id):
     
     Recipe.query.get_or_404(id)
-    likes = Like.query.filter(Like.user_id == current_user.id,id == Like.recipe_id).all()
+    likes = Like.query.filter(Like.user_id == current_user.id, id == Like.recipe_id).all()
     if len(likes):
         return {'errors': ['Conflict: Already Liked']}, 409
     else:
