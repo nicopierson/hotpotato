@@ -10,7 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.likes_routes import like_routes
 from .api.recipes import recipe_routes
-from .api.follower_routes import follower_routes
+from .api.follower_routes import follow_routes
 from .api.comments import comment_routes
 
 
@@ -39,7 +39,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(recipe_routes, url_prefix='/api/recipes')
-app.register_blueprint(follower_routes, url_prefix='/api/followers')
+app.register_blueprint(follow_routes, url_prefix='/api/follows')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
 
 db.init_app(app)

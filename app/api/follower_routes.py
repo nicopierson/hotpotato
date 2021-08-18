@@ -2,28 +2,38 @@ from flask import Blueprint, jsonify
 from app.models import db, User
 from flask_login import current_user, login_required
 
-follower_routes = Blueprint('followers', __name__)
+follow_routes = Blueprint('followers', __name__)
 
 
-@follower_routes.route('/')
+@follow_routes.route('/')
 def followers():
     """
-    Retrieves all followers and returns followed and followers dict
+    Retrieves all rows of table as followers and returns following and 
+    follower dict relationship
     """
     followers = User.get_all_followers()
-    return jsonify([ {"followed": followed.to_dict(), "follower": follower.to_dict()} for followed, follower in followers])
+    return jsonify({ "follows": [ { "following": following.to_dict(), "follower": follower.to_dict() } for following, follower in followers ] })
 
 
-@follower_routes.route('/users/<int:id>')
+@follow_routes.route('/followers/<int:id>')
 def get_followers(id):
     """
     Retrieves all followers for a user
     """
     followers = User.query.get_or_404(id).get_followers()
     return jsonify([ user.to_dict() for user in followers ])
+
+
+@follow_routes.route('/followings/<int:id>')
+def get_followings(id):
+    """
+    Retrieves all followers for a user
+    """
+    followings = User.query.get_or_404(id).get_followings()
+    return jsonify({ "followings": [ user.to_dict() for user in followings ] })
     
 
-@follower_routes.route('/users/<int:id>', methods=['POST'])
+@follow_routes.route('/users/<int:id>', methods=['POST'])
 @login_required
 def add_follower(id):
     """
@@ -37,7 +47,7 @@ def add_follower(id):
     return {'errors': ['Conflict: Already Following']}, 409
 
 
-@follower_routes.route('/users/<int:id>', methods=['DELETE'])
+@follow_routes.route('/users/<int:id>', methods=['DELETE'])
 @login_required
 def remove_follower(id):
     """
