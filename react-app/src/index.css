@@ -1,4 +1,7 @@
 /* TODO Add site wide styles */
 * {
     font-family: 'Roboto', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
 }

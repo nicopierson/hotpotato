@@ -1,0 +1,38 @@
+.navbar-container {
+    position: fixed;
+    background-color: white;
+    margin: 0;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.navbar-ul {
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-search {
+    width: 30%;
+}
+
+.navbar-search-input {
+    width: 100%;
+}
+
+.navbar-title-and-feed {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-create-and-auth {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-title {
+    font-weight: 900;
+}
