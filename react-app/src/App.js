@@ -30,9 +30,9 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Follow />
+      {/* <Follow />
       <Comment /> 
-      <Recipe />
+      <Recipe /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
