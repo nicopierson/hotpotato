@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getRecipe } from '../../store/recipe';
+import { getRecipe, updateDirections } from '../../store/recipe';
 
 import styles from './EditDirections.module.css';
 
 const EditDirections = ({ setShowEdit }) => {
     const dispatch = useDispatch();
     const [directions, setDirections] = useState([]);
-    const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
+    const [directionsId, setDirectionsId] = useState([]);
+    const recipeId = 4; //! REMOVE LATER: with useParams to get from the url
 
     const recipe_directions = useSelector(state => state.recipe[recipeId]?.recipe_directions);
 
@@ -16,19 +17,32 @@ const EditDirections = ({ setShowEdit }) => {
         dispatch(getRecipe(recipeId));
         if (recipe_directions && directions.length === 0) {
             const addDirections = [];
+            const directionsId = [];
             recipe_directions.forEach(direction => {
                 addDirections.push(direction.directions);
+                directionsId.push(direction.id);
             });
             setDirections(addDirections);
+            setDirectionsId(directionsId);
         }
     }, [dispatch]);
 
     const handleEdit = (e) => {
         e.preventDefault();
-        console.log(directions);
+        // make a dispatch for each direction
+        directions.forEach((direction, idx) => {
+            const payload = {
+                id: directionsId[idx],
+                steps: idx + 1,
+                directions: direction,
+                recipe_id: recipeId,
+            }
+            dispatch(updateDirections(payload));
+        });
+        setShowEdit(false);
     };
 
-    const updateDirection = (e, idx) => {
+    const handleDirections = (e, idx) => {
         e.preventDefault();
         let directionsCopy =[ ...directions ];
         directionsCopy[idx] = e.target.value;
@@ -49,7 +63,7 @@ const EditDirections = ({ setShowEdit }) => {
                                 <input
                                     type='text'
                                     name={`step-${step + 1}`}
-                                    onChange={(e) => updateDirection(e, step)}
+                                    onChange={(e) => handleDirections(e, step)}
                                     value={direction}
                                 > 
                                 </input>

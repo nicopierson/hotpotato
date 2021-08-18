@@ -97,9 +97,25 @@ export const updateRecipe = (payload) => async(dispatch) => {
         await dispatch(editRecipe(recipe));
         return recipe;
     } else {
-        return ['An error occurred. Please try again.']
+        return ['An error occurred. Please try again.'];
     }
 }
+
+export const updateDirections = (payload) => async(dispatch) => {
+    const response = await fetch(`/api/recipes/${payload.recipe_id}/directions/${payload.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+        const direction = await response.json();
+        await dispatch(getRecipe(payload.recipe_id));
+        return direction;
+    } else {
+        return ['An errror occurred. Please try again.'];
+    }
+};
 
 export default function reducer(state = {}, action) {
     let newState = {}

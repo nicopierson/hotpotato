@@ -6,7 +6,7 @@ import styles from './ShowDirections.module.css';
 
 const ShowDirections = ({ setShowEdit }) => {
     const dispatch = useDispatch();
-    const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
+    const recipeId = 4; //! REMOVE LATER: with useParams to get from the url
 
     const recipe_directions = useSelector(state => state.recipe[recipeId]?.recipe_directions);
 
