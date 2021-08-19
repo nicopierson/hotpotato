@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import ProfileCard from './ProfileCard';
+
 const Profile = () => {
     const { userId } = useParams();
     const user = useSelector(state => state.session.user);
@@ -17,6 +19,9 @@ const Profile = () => {
             {isOwner &&
                 <h3>I am the owner of this page</h3>
             }
+            <ProfileCard 
+                userId={userId}
+            />
         </div>
     )
 };
