@@ -14,7 +14,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
 
- 
+
 
   const demoLogin = async () => {
     const data = await dispatch(login('demo@aa.io', 'password'));
@@ -33,9 +33,13 @@ const NavBar = () => {
               HOTPOTATO
             </NavLink>
           </li>
-          {user && 
+          {user &&
           <>
-            <li>Explore</li>
+            <li>
+              <NavLink to='/view/recipe/1' exact={true} activeClassName='active'
+              className="">
+                Explore
+              </NavLink></li>
             <li>Your Feed</li>
           </>
           }
@@ -55,7 +59,7 @@ const NavBar = () => {
 
         </div>
         <div className="navbar-li navbar-create-and-auth">
-          
+
           {!user &&
           <>
             <li>
@@ -70,13 +74,13 @@ const NavBar = () => {
             </li>
           </>
           }
-          {!user && 
+          {!user &&
           <button
             id="demo-login-btn"
             onClick={demoLogin}
           >Demo Login</button>
           }
-          {user && 
+          {user &&
           <>
             <li className="button-fix navbar-li">
               <CreateRecipeButton />
