@@ -87,7 +87,7 @@ const RecipePhoto = ({loaded}) => {
                         >
                         </input>
                         <input
-                            placeholder='Enter video url'
+                            placeholder='Enter video url [optional]'
                             value={videoUrl}
                             onChange={(e) => setVideoUrl(e.target.value)}
                             name='videoUrl'
