@@ -37,7 +37,10 @@ const Directions = () => {
                 />
             }
             {isOwner &&
-                <AddDirection />
+                <AddDirection 
+                    recipeDirections={recipeDirections}
+                    recipeId={recipeId}
+                />
             }
         </div>
     );

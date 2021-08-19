@@ -83,9 +83,6 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
                     Cancel
                 </button>
             </div>
-            {isOwner &&
-                <AddDirection />
-            }
         </div>
     )
 };

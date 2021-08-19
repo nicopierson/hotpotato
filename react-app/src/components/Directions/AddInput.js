@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { createDirection } from '../../store/recipe';
 
-const AddInput = ({ setShowAdd }) => {
+const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
     const [addDirection, setAddDirection] = useState('');
-    const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
+    //! REMOVE recipeId from params LATER: with useParams to get from the url
 
-    const steps = useSelector(state => state.recipe[recipeId]?.recipe_directions);
+    const steps = recipeDirections;
     const numberSteps = steps[steps.length - 1].steps + 1;
 
     const handleAdd = (e) => {

@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getRecipe, deleteDirection } from '../../store/recipe';
-
-import AddDirection from './AddDirection';
 
 import styles from './ShowDirections.module.css';
 
