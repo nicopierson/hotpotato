@@ -20,15 +20,22 @@ const NavBar = () => {
           <li>Your Feed</li>
         </div>
         <div className="navbar-li navbar-search">
-          <input
-            className="navbar-search-input"
-            key="search-bar"
-            placeholder={"search for a creation here"}
-          />
+          <div className="navbar-search__input-wrapper">
+            <input
+              className="navbar-search-input"
+              key="search-bar"
+              placeholder={"search for a creation here"}
+            />
+            <div className="navbar-icon-search">
+              <i className="fas fa-search navbar-icon-search--icon"></i>
+            </div>
+          </div>
+
+
         </div>
         <div className="navbar-li navbar-create-and-auth">
-          <li>
-            <button>Create</button>
+          <li navbar-button-create >
+              <CreateRecipeButton />
           </li>
           <li>
             <NavLink to='/login' exact={true} activeClassName='active'>
@@ -45,9 +52,6 @@ const NavBar = () => {
               Users
             </NavLink>
           </li> */}
-          <li className="button-fix">
-            <CreateRecipeButton />
-          </li>
           <li className="navbar-li">
             <LogoutButton />
           </li>
