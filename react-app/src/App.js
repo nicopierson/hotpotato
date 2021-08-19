@@ -11,10 +11,6 @@ import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
 
 import Footer from './components/Footer/Footer';
-// import Recipe from './components/testRedux/Recipe';
-// import Comment from './components/testRedux/Comment';
-// import Follow from './components/testRedux/Follow';
-// import Like from './components/testRedux/Like';
 import RecipePhoto from './components/Recipe/RecipePhoto';
 
 

@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 import { getRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Directions from '../Directions';
+
 
 const ViewEditRecipePage = () => {
 
@@ -36,7 +38,9 @@ const ViewEditRecipePage = () => {
         </div>
         <div className="recipe-photos-container">recipe photos</div>
         <div className="recipe-ingredients-container">ingredients</div>
-        <div className="recipe-directions-container">directions</div>
+        <div className="recipe-directions-container">
+          <Directions />
+        </div>
         <div className="recipe-comments-container">comments</div>
       </div>
 
