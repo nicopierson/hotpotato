@@ -76,7 +76,6 @@ export const updateComment = (payload) => async(dispatch) => {
 
     if (response.ok) {
         const comment = await response.json();
-        console.log(comment)
         await dispatch(editComment(comment));
         return comment;
     } else {

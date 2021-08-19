@@ -11,21 +11,21 @@ const EditDirections = ({ setShowEdit }) => {
     const [directionsId, setDirectionsId] = useState([]);
     const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
 
-    const recipe_directions = useSelector(state => state.recipe[recipeId]?.recipe_directions);
+    const recipeDirections = useSelector(state => state.recipe[recipeId]?.recipe_directions);
+    const directionNumber = recipeDirections.length;
 
     useEffect(() => {
         dispatch(getRecipe(recipeId));
-        if (recipe_directions && directions.length === 0) {
-            const addDirections = [];
-            const directionsId = [];
-            recipe_directions.forEach(direction => {
-                addDirections.push(direction.directions);
-                directionsId.push(direction.id);
-            });
-            setDirections(addDirections);
-            setDirectionsId(directionsId);
-        }
-    }, [dispatch]);
+        // if (recipe_directions && directions.length === 0) {
+        const addDirections = [];
+        const directionsId = [];
+        recipeDirections.forEach(direction => {
+            addDirections.push(direction.directions);
+            directionsId.push(direction.id);
+        });
+        setDirections(addDirections);
+        setDirectionsId(directionsId);
+    }, [dispatch, directionNumber]);
 
     const handleEdit = (e) => {
         e.preventDefault();
@@ -56,15 +56,15 @@ const EditDirections = ({ setShowEdit }) => {
                     <h2>Edit Directions</h2>
                 </div>
                 <form onSubmit={handleEdit}>
-                    { directions.length > 0 &&
-                        directions.map((direction, step) => (
-                            <div key={ step + 1 } className={styles.directions_item}>
-                                <label>{ step + 1 }. </label>
+                    { recipeDirections.length > 0 &&
+                        recipeDirections.map((direction, idx) => (
+                            <div key={ directions.steps } className={styles.directions_item}>
+                                <label>{ idx + 1 }. </label>
                                 <input
                                     type='text'
-                                    name={`step-${step + 1}`}
-                                    onChange={(e) => handleDirections(e, step)}
-                                    value={direction}
+                                    name={`step-${idx + 1}`}
+                                    onChange={(e) => handleDirections(e, idx)}
+                                    value={directions[idx]}
                                 > 
                                 </input>
                             </div>

@@ -9,10 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Directions from './components/Directions';
-// import Recipe from './components/testRedux/Recipe';
-// import Comment from './components/testRedux/Comment';
-// import Follow from './components/testRedux/Follow';
-// import Like from './components/testRedux/Like';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,10 +28,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      {/* <Like />
-      <Follow />
-      <Comment /> 
-      <Recipe /> */}
       <Directions />
       <Switch>
         <Route path='/login' exact={true}>

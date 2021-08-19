@@ -127,7 +127,23 @@ export const deleteDirection = (id, recipe_id) => async(dispatch) => {
         await dispatch(getRecipe(recipe_id));
         return direction;
     } else {
-        return ['An errror occurred. Please try again.'];
+        return ['An error occurred. Please try again.'];
+    }
+};
+
+export const createDirection = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/${payload.recipe_id}/directions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+        const direction = await response.json();
+        await dispatch(getRecipe(payload.recipe_id));
+        return direction;
+    } else {
+        return ['An error occurred. Please try again.']
     }
 };
 

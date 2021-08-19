@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import EditDirections from './EditDirections';
 import ShowDirections from './ShowDirections';
+import AddDirection from './AddDirection';
 
 import styles from './Directions.module.css';
 
@@ -15,6 +16,7 @@ const Directions = () => {
             {showEdit && 
                 <EditDirections setShowEdit={setShowEdit} />
             }
+            <AddDirection />
         </div>
     );
 };

@@ -8,7 +8,7 @@ const ShowDirections = ({ setShowEdit }) => {
     const dispatch = useDispatch();
     const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
 
-    const recipe_directions = useSelector(state => state.recipe[recipeId]?.recipe_directions);
+    const recipeDirections = useSelector(state => state.recipe[recipeId]?.recipe_directions);
 
     useEffect(() => {
         dispatch(getRecipe(recipeId))
@@ -16,7 +16,6 @@ const ShowDirections = ({ setShowEdit }) => {
 
     const handleDelete = (e, id) => {
         e.preventDefault();
-        // console.log(step);
         dispatch(deleteDirection(id, recipeId));
     };
 
@@ -30,8 +29,8 @@ const ShowDirections = ({ setShowEdit }) => {
                 >
                 </i>
             </div>
-            { recipe_directions &&
-                recipe_directions.map((direction, idx) => (
+            { recipeDirections &&
+                recipeDirections.map((direction, idx) => (
                     <div key={ direction.id } className={styles.directions_item}>
                         <p>
                             <span>{ idx + 1 }.</span> 
