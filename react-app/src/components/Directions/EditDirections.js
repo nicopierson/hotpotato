@@ -2,31 +2,31 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getRecipe, updateDirection } from '../../store/recipe';
+import AddDirection from './AddDirection';
 
 import styles from './EditDirections.module.css';
 
-const EditDirections = ({ setShowEdit }) => {
+const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
     const [directions, setDirections] = useState([]);
     const [directionsId, setDirectionsId] = useState([]);
-    const recipeId = 1; //! REMOVE LATER: with useParams to get from the url
+    //! REMOVE recipeId from params LATER: with useParams to get from the url
 
-    const recipeDirections = useSelector(state => state.recipe[recipeId]?.recipe_directions);
     const directionNumber = recipeDirections.length;
-
+    
     useEffect(() => {
         dispatch(getRecipe(recipeId));
         // if (recipe_directions && directions.length === 0) {
-        const addDirections = [];
-        const directionsId = [];
-        recipeDirections.forEach(direction => {
-            addDirections.push(direction.directions);
-            directionsId.push(direction.id);
-        });
-        setDirections(addDirections);
-        setDirectionsId(directionsId);
-    }, [dispatch, directionNumber]);
-
+            const addDirections = [];
+            const directionsId = [];
+            recipeDirections.forEach(direction => {
+                addDirections.push(direction.directions);
+                directionsId.push(direction.id);
+            });
+            setDirections(addDirections);
+            setDirectionsId(directionsId);
+        }, [dispatch, directionNumber]);
+         
     const handleEdit = (e) => {
         e.preventDefault();
         // make a dispatch for each direction
@@ -48,6 +48,9 @@ const EditDirections = ({ setShowEdit }) => {
         directionsCopy[idx] = e.target.value;
         setDirections(directionsCopy);
     };
+
+    /* Unauthorized User */
+    if (!isOwner) return <h2>403 Forbidden</h2>;
         
     return (
         <div>
@@ -80,6 +83,9 @@ const EditDirections = ({ setShowEdit }) => {
                     Cancel
                 </button>
             </div>
+            {isOwner &&
+                <AddDirection />
+            }
         </div>
     )
 };

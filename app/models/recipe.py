@@ -40,4 +40,5 @@ class Recipe(db.Model):
             # example of sorting a diction by the key of age ---> sorted(lis, key = lambda i: i['age'])
             'recipe_directions': sorted([direction.to_dict() for direction in self.recipe_direction_relation], key = lambda i: i['steps']),
             'likes': len(self.like_relation),
+            'user_id': self.user_id,
         }
