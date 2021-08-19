@@ -64,8 +64,8 @@ const RecipePhoto = ({loaded}) => {
                         ></button>
                     }
                     <Carousel className='recipe-carousel'>
-                        {getPhotos()?.map(recipe => (
-                            <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>
+                        {getPhotos()?.map(recipe => (                            
+                            <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>  
                         ))}
                     </Carousel>
                 </div>
