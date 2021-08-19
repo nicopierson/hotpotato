@@ -10,7 +10,6 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
     const dispatch = useDispatch();
     const [directions, setDirections] = useState([]);
     const [directionsId, setDirectionsId] = useState([]);
-    //! REMOVE recipeId from params LATER: with useParams to get from the url
 
     const directionNumber = recipeDirections.length;
     

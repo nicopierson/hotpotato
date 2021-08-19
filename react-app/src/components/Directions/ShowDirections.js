@@ -6,11 +6,10 @@ import styles from './ShowDirections.module.css';
 
 const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
-    //! REMOVE recipeId from params LATER: with useParams to get from the url
 
-    useEffect(() => {
-        dispatch(getRecipe(recipeId))
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getRecipe(recipeId))
+    // }, [dispatch]);
 
     const handleDelete = (e, id) => {
         e.preventDefault();

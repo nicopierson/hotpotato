@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import EditDirections from './EditDirections';
 import ShowDirections from './ShowDirections';
@@ -8,8 +9,9 @@ import AddDirection from './AddDirection';
 import styles from './Directions.module.css';
 
 const Directions = () => {
+    const { recipeId } = useParams();
+
     /* isOwner Boolean to check if recipe is owned by current user */
-    const recipeId = 4;
     const userId = useSelector(state => state.session.user.id);
     const recipeOwnerId = useSelector(state => state.recipe[recipeId]?.user_id);
     const isOwner = userId === recipeOwnerId; 
