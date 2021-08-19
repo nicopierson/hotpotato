@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import './ViewEditRecipePage.css'
-import RecipeBaseDetails from '../Recipe/RecipeBaseDetails';
+import RecipeBaseDetails from '../RecipeBaseDetails/RecipeBaseDetails';
 import { useParams } from 'react-router';
 import { getRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
-import RecipePhoto from '../Recipe/RecipePhoto';
+import RecipePhoto from '../RecipePhotos/RecipePhoto';
 
 import Directions from '../Directions';
 
