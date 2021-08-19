@@ -1,26 +1,34 @@
 .ver-page-container{
   background-color: rgb(243, 245, 246);
   width: 100%;
-  height: 100vh;
-  margin-top: 50px;
+  height: 110vh;
+  margin-top: 35px;
   color: rgb(0, 0, 0);
+
 }
 
 .content-container{
-  background-color: rgb(228, 217, 188);
+  /* grid container */
   min-height: 100vh;
   width: 80%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 14px;
   /* grid auto rows define the min height and max height of each grid item */
   grid-auto-rows: minmax(100px, auto);
+  padding-top: 40px;
 }
-
-
 
 .recipe-comments-container{
   grid-column: 1 / 3;
   /* grid-row: 2 / 5; */
+  background-color: white;
+}
+
+.recipe-base-container, .recipe-base-container, .recipe-photos-container, .recipe-ingredients-container, .recipe-directions-container, .recipe-comments-container{
+  /* children containers */
+  background-color: white;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(201, 201, 201);
 }
