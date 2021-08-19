@@ -47,8 +47,15 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
+
           <h1>My Home Page</h1>
         </ProtectedRoute>      
+
+        </ProtectedRoute>
+        <ProtectedRoute path='/recipes' exact={true}>
+            <RecipePhoto loaded={loaded}/>
+        </ProtectedRoute>
+
       </Switch>
       {/* <Footer /> */}
     </BrowserRouter>
