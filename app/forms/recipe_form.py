@@ -14,13 +14,13 @@ class RecipeDirectionsCreateForm(FlaskForm):
     directions = StringField(validators=[DataRequired()])
     steps = IntegerField(validators=[DataRequired()])
     recipe_id = IntegerField(validators=[DataRequired()])
-    user_id = IntegerField(validators=[DataRequired()])
 
 
 class RecipeDirectionsUpdateForm(FlaskForm):
+    id = IntegerField(validators=[DataRequired()])
     directions = StringField(validators=[DataRequired()])
     recipe_id = IntegerField(validators=[DataRequired()])
-    # user_id = IntegerField(validators=[DataRequired()])
+    steps = IntegerField(validators=[DataRequired()])
 
 
 class RecipeIngredientsCreateForm(FlaskForm):
