@@ -11,8 +11,6 @@ import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
 
 import Footer from './components/Footer/Footer';
-import RecipePhoto from './components/Recipe/RecipePhoto';
-
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,10 +47,15 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
+
+          <h1>My Home Page</h1>
+        </ProtectedRoute>      
+
         </ProtectedRoute>
         <ProtectedRoute path='/recipes' exact={true}>
             <RecipePhoto loaded={loaded}/>
         </ProtectedRoute>
+
       </Switch>
       {/* <Footer /> */}
     </BrowserRouter>
