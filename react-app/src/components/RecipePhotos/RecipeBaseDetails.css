@@ -1,0 +1,15 @@
+
+
+.recipe-base__name, .recipe-base__likes, .recipe-base__id{
+  color: white;
+  font-weight: bold;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.recipe-base__likes{
+
+}
+
+.recipe-base__id{
+
+}
