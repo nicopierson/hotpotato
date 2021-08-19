@@ -8,32 +8,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ViewEditRecipePage = () => {
 
-  //the /:id from url, use the 'useParams' from react-router to get the correct id
-
+  //the /:id from url
   let {recipeId} = useParams();
   const dispatch = useDispatch()
 
-  const sessionUser = useSelector((state) => state.session.user);
-  const recipeDetails= useSelector((state) => state.recipe.single_recipe);
-  console.log(sessionUser.id)
-  console.log(recipeDetails)
-
-  // get the state to be passed to child
-  const [name, setName] = useState('');
-  const [thumbnail_url, setThumbnail_url] = useState('');
-  const [likes, setLikes] = useState(null);
+  const recipeDetails= useSelector((state) => state.recipe[recipeId]);
+  // console.log(recipeDetails)
 
 
   if (recipeDetails) {
-    console.log('recipe details comments', recipeDetails.comments);
-    // for (const [key,value] of Object.entries(recipeBaseDetails)){
-    //   console.log(key, value)
-    // }
+    // console.log('recipe details comments', recipeDetails.name);
+    for (const [key,value] of Object.entries(recipeDetails)){
+      console.log(key, value)
+    }
 
-    // setName(recipeBaseDetails['name'])
-    // setThumbnail_url(recipeBaseDetails['thumbnail_url'])
-    // setLikes(recipeBaseDetails.likes)
-    // setRecipeId(recipeBaseDetails.id)
   }
 
   // getting the recipe based on ID and adding it to the store.

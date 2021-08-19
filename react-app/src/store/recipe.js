@@ -101,28 +101,30 @@ export const updateRecipe = (payload) => async(dispatch) => {
     }
 }
 
-const initialState = {
-    single_recipe:null,
-    all_recipes:null,
-};
-export default function reducer(state = initialState, action) {
-    let newState = {...state}
+export default function reducer(state = {}, action) {
+    let newState = {}
     switch (action.type) {
         case SET_RECIPE:
-            newState.single_recipe = action.recipe;
+            newState = { ...state };
+            newState[action.recipe.id] = action.recipe;
             return newState;
         case SET_ALL_RECIPES:
-            newState.all_recipes = action.recipes
-            return newState;
+            action.recipes.recipes.forEach(recipe => {
+                newState[recipe.id] = recipe;
+            });
+            return { ...state, ...newState };
         case ADD_RECIPE:
+            newState = { ...state };
             if (!state[action.recipe.id]) {
                 newState = { ...state, [action.recipe.id]: action.recipe };
             }
             return newState;
         case EDIT_RECIPE:
+            newState = { ...state };
             newState[action.recipe.id] = action.recipe;
             return newState;
         case DELETE_RECIPE:
+            newState = { ...state };
             delete newState[action.recipeId];
             return newState;
         default:
