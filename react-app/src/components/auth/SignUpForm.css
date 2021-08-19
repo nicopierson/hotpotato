@@ -1,0 +1,80 @@
+/* body, html {
+  height: 100%;
+  background-image: url("https://hotpotatorecipes.s3.us-west-1.amazonaws.com/monika-grabkowska-ECxiHN817xE-unsplash+(1).jpg");
+  
+  
+  height: 100%;
+  
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} 
+*/
+
+#signup-form.form-container {
+    float: right;
+    background-color: white;
+    display: flex;
+    height: 500px;
+    min-width: 400px;
+    justify-content: center;
+    padding: 1.5em;
+    border-radius: 7px;
+    margin-right: 8em;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+
+.signup-form {
+    min-width: 100%;
+}
+
+input.form-input-field {
+    width: 90%;
+    border: 0px solid lightgray;
+    border-bottom-width: .125px;
+    background-color: transparent;
+    padding: 1em;
+}
+
+.form-input {
+    padding: 1em;
+}
+
+#signup-btn {
+    float: right;
+    background-color: #1473E6;
+    border-color: #1473E6;
+    border-radius: 7px;
+    color: white;
+    padding: .75em;
+    margin-right: 1.6em;
+}
+
+.form-title {
+    font-size: 35px;
+    font-weight: bolder;
+    margin-bottom: .25em;
+}
+
+.already-signed-up {
+    margin-bottom: 1.5em;
+}
+
+.already-signed-up-btn {
+    font-weight: bolder;
+    color: #1473E6;
+    float: right;
+    margin-right: 6em;
+}
+
+.signup-page-container {
+    margin-left: 0;
+    height: 100vh;
+    background-image: url("https://hotpotatorecipes.s3.us-west-1.amazonaws.com/monika-grabkowska-ECxiHN817xE-unsplash+(1).jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
