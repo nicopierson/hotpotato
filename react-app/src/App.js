@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
 
 import Footer from './components/Footer/Footer';
+import TestFeed from './components/testRedux/TestFeed';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,8 +47,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-        </ProtectedRoute>
+        <Route path='/' exact={true} >
+          <TestFeed />
+        </Route>
 
       </Switch>
       {/* <Footer /> */}
