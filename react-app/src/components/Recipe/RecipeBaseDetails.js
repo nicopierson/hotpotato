@@ -7,28 +7,27 @@ import { useSelector } from 'react-redux';
 const RecipeBaseDetails = () => {
   let {id} = useParams();
   // const dispatch = useDispatch()
-  const sessionUser = useSelector((state) => state.session.user);
-  const recipeDetails= useSelector((state) => state.recipe);
-
+  // const sessionUser = useSelector((state) => state.session.user);
+  // const recipeDetails= useSelector((state) => state.recipe);
 
   const [name, setName] = useState('');
   const [thumbnail_url, setThumbnail_url] = useState('');
   const [likes, setLikes] = useState(null);
   const [recipeId, setRecipeId] = useState(null);
 
-  if (recipeDetails !== undefined) {
-    const recipeBaseDetails = recipeDetails['`${id}`']
-    console.log('recipe details', recipeBaseDetails);
-    // for (const [key,value] of Object.entries(recipeBaseDetails)){
-    //   console.log(key, value)
-    // }
+  // if (recipeDetails !== undefined) {
+  //   const recipeBaseDetails = recipeDetails['`${id}`']
+  //   console.log('recipe details', recipeBaseDetails);
+  //   // for (const [key,value] of Object.entries(recipeBaseDetails)){
+  //   //   console.log(key, value)
+  //   // }
 
-    // setName(recipeBaseDetails['name'])
-    // setThumbnail_url(recipeBaseDetails['thumbnail_url'])
-    // setLikes(recipeBaseDetails.likes)
-    // setRecipeId(recipeBaseDetails.id)
-  }
-  if(recipeDetails !== undefined && recipeDetails !== null ) console.log('yes', recipeDetails['1'])
+  //   setName(recipeBaseDetails['name'])
+  //   setThumbnail_url(recipeBaseDetails['thumbnail_url'])
+  //   setLikes(recipeBaseDetails.likes)
+  //   setRecipeId(recipeBaseDetails.id)
+  // }
+  // if(recipeDetails !== undefined && recipeDetails !== null ) console.log('yes', recipeDetails['1'])
 
 
   // useEffect(()=>{
@@ -43,7 +42,7 @@ const RecipeBaseDetails = () => {
         name: {name}
       </div>
       <div>
-        thumbnail_url: {thumbnail_url}
+        thumbnail: {thumbnail_url}
       </div>
       <div>
         likes: {likes}

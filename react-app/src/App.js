@@ -43,7 +43,7 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/view/recipe/:id' exact={true}>
+        <Route path='/view/recipe/:recipeId' exact={true}>
           <ViewEditRecipePage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
