@@ -5,29 +5,22 @@ import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 
 const RecipeBaseDetails = () => {
-  let {id} = useParams();
+  let {recipeId} = useParams();
   // const dispatch = useDispatch()
   // const sessionUser = useSelector((state) => state.session.user);
-  // const recipeDetails= useSelector((state) => state.recipe);
+  const recipeDetails= useSelector((state) => state.recipe[recipeId]);
 
-  const [name, setName] = useState('');
-  const [thumbnail_url, setThumbnail_url] = useState('');
-  const [likes, setLikes] = useState(null);
-  const [recipeId, setRecipeId] = useState(null);
+  // const [name, setName] = useState('');
+  // const [thumbnail_url, setThumbnail_url] = useState('');
+  // const [likes, setLikes] = useState(null);
+  // const [recipeId, setRecipeId] = useState(null);
 
-  // if (recipeDetails !== undefined) {
-  //   const recipeBaseDetails = recipeDetails['`${id}`']
-  //   console.log('recipe details', recipeBaseDetails);
-  //   // for (const [key,value] of Object.entries(recipeBaseDetails)){
-  //   //   console.log(key, value)
-  //   // }
-
-  //   setName(recipeBaseDetails['name'])
-  //   setThumbnail_url(recipeBaseDetails['thumbnail_url'])
-  //   setLikes(recipeBaseDetails.likes)
-  //   setRecipeId(recipeBaseDetails.id)
-  // }
-  // if(recipeDetails !== undefined && recipeDetails !== null ) console.log('yes', recipeDetails['1'])
+  if (recipeDetails) {
+    // console.log('recipe details comments', recipeDetails.name);
+    for (const [key,value] of Object.entries(recipeDetails)){
+      console.log(key, value)
+    }
+  }
 
 
   // useEffect(()=>{
@@ -39,13 +32,13 @@ const RecipeBaseDetails = () => {
   return (
     <div>
       <div>
-        name: {name}
+        name: {recipeDetails.name}
       </div>
       <div>
-        thumbnail: {thumbnail_url}
+        thumbnail: {recipeDetails.thumbnail_url}
       </div>
       <div>
-        likes: {likes}
+        likes: {recipeDetails.likes}
       </div>
       <div>
         recipeId: {recipeId}
