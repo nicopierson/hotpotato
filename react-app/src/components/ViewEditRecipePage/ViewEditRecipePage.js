@@ -4,6 +4,7 @@ import RecipeBaseDetails from '../Recipe/RecipeBaseDetails';
 import { useParams } from 'react-router';
 import { getRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
+import RecipePhoto from '../Recipe/RecipePhoto';
 
 import Directions from '../Directions';
 
@@ -37,7 +38,9 @@ const ViewEditRecipePage = () => {
         <div className="recipe-base-container">
           <RecipeBaseDetails />
         </div>
-        <div className="recipe-photos-container">recipe photos</div>
+        <div className="recipe-photos-container">
+          <RecipePhoto/>
+        </div>
         <div className="recipe-ingredients-container">ingredients</div>
         <div className="recipe-directions-container">
           <Directions />
