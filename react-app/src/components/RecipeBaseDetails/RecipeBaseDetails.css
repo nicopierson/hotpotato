@@ -1,3 +1,4 @@
+/* Recipe base css */
 .recipe-base{
   position: relative;
 }
@@ -7,29 +8,7 @@
   /* font-weight: bold; */
 }
 
-.recipe-base--appear-on-hover{
-  position: relative;
-  height: 200px;
-  width: 257px;
-}
 
-.recipe-base-header, .recipe-base__description{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(29, 106, 154, 0.72);
-  color: #fff;
-  visibility: hidden;
-  opacity: 0;
-
-  transition: opacity .2s, visibility .2s;
-}
-.recipe-base-header:hover, .recipe-base__description:hover{
-  visibility: visible;
-  opacity: 1;
-}
 
 /* style for header name / icon */
 .recipe-base-header{
@@ -77,4 +56,14 @@
 
 .recipe-base__likes{
   margin-left: 12px;
+}
+
+/* wrapper for hover */
+.recipe-base--appear-on-hover{
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+  height: 100%;
+}
+.recipe-base--appear-on-hover:hover{
+  opacity: 1;
 }
