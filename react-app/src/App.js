@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import ViewEditRecipePage from './components/ViewEditRecipePage';
 
 import Footer from './components/Footer/Footer';
 // import Recipe from './components/testRedux/Recipe';
@@ -42,6 +43,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/view/recipe/:recipeId' exact={true}>
+          <ViewEditRecipePage />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -55,7 +59,7 @@ function App() {
             <RecipePhoto loaded={loaded}/>
         </ProtectedRoute>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

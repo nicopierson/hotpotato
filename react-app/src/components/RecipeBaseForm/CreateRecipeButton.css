@@ -1,26 +1,30 @@
 .add-recipe-base-button{
-  padding: 10px;
-  background-color: rgb(240, 192, 88);
+  padding: 7px 10px 7px 10px;
+  background-color: rgb(255, 255, 255);
   border-style: none;
-  border-radius: 2px;
+  border-radius: 4px;
   margin-top: 15px;
   margin-right: auto;
   margin-left: auto;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 12px;
   font-weight: bold;
   min-width: 50px;
   text-align: center;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  border: 1px solid rgb(212, 212, 212);
 }
 
 .add-recipe-base-button:hover{
-  box-shadow: 0 4px 8px rgba(0,0,0,0.22);
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.22); */
   cursor: pointer;
-  background-color: rgb(241, 209, 139);
+  background-color: rgb(243, 243, 243);
+  border: 1px solid rgb(243, 243, 243);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .create-recipe-base-wrapper{
-  padding: 8px;
+  /* padding: 1px; */
+  padding-bottom: 15px;
 }
