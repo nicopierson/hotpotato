@@ -147,6 +147,23 @@ export const createDirection = (payload) => async (dispatch) => {
     }
 };
 
+export const createRecipePhoto = (payload) => async (dispatch) => {
+    console.log(payload, 'Payload_____PayloDD')
+    const response = await fetch(`/api/recipes/${payload.recipe_id}/photos`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+        const photo = await response.json();
+        await dispatch(getRecipe(payload.recipe_id));
+        return photo;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+};
+
 export default function reducer(state = {}, action) {
     let newState = {}
     switch (action.type) {
