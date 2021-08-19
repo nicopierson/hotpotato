@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
+import { useParams } from 'react-router';
 
 import * as recipeActions from '../../store/recipe';
 
@@ -11,12 +12,15 @@ const RecipePhoto = ({loaded}) => {
     const recipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
     const [recipeData] = Object.values(recipe);
-    console.log(recipeData, 'recipeData_____DATA')
+    const {recipeId }  = useParams()
+    // console.log(recipeData, 'recipeData_____DATA')
+
+    const [editPhoto, setEditPhoto] = useState(false);
 
     const getPhotos = () => {
         let recipePhotos
         if(recipeData){
-            console.log(recipeData.photos, 'photos______Phots')
+            // console.log(recipeData.photos, 'photos______Phots')
             recipePhotos = recipeData.photos
         }
         return recipePhotos
@@ -25,11 +29,11 @@ const RecipePhoto = ({loaded}) => {
    
 
     useEffect(() => {
-        dispatch(recipeActions.getRecipe(2))
+        dispatch(recipeActions.getRecipe(recipeId))
     },[dispatch])
    
     return (
-        <div className='recipe-carousel'>            
+        <>            
             {user && 
                 <Carousel className='recipe-carousel-images'>
                     {getPhotos()?.map(recipe => (
@@ -37,7 +41,7 @@ const RecipePhoto = ({loaded}) => {
                     ))}
                 </Carousel>
             }
-        </div>
+        </>
     )
 }
 
