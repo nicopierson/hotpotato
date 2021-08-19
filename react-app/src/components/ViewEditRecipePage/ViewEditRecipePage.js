@@ -13,7 +13,6 @@ const ViewEditRecipePage = () => {
   const dispatch = useDispatch()
 
   const recipeDetails= useSelector((state) => state.recipe[recipeId]);
-  // console.log(recipeDetails)
 
   // FOR TESTING, REMOVE LATER
   if (recipeDetails) {
