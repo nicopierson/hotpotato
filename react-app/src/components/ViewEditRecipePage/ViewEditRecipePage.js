@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import './ViewEditRecipePage.css'
 import RecipeBaseDetails from '../Recipe/RecipeBaseDetails';
 import { useParams } from 'react-router';
@@ -15,16 +15,15 @@ const ViewEditRecipePage = () => {
   const recipeDetails= useSelector((state) => state.recipe[recipeId]);
   // console.log(recipeDetails)
 
-
+  // FOR TESTING, REMOVE LATER
   if (recipeDetails) {
     // console.log('recipe details comments', recipeDetails.name);
     for (const [key,value] of Object.entries(recipeDetails)){
       console.log(key, value)
     }
-
   }
 
-  // getting the recipe based on ID and adding it to the store.
+  // fetching the recipe based on ID and adding it to the store.
   useEffect(()=>{
     dispatch(getRecipe(recipeId))
   }, [dispatch], recipeId)

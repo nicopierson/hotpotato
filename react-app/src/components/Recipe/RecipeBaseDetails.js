@@ -31,18 +31,21 @@ const RecipeBaseDetails = () => {
 
   return (
     <div>
-      <div>
-        name: {recipeDetails.name}
-      </div>
-      <div>
-        thumbnail: {recipeDetails.thumbnail_url}
-      </div>
-      <div>
-        likes: {recipeDetails.likes}
-      </div>
-      <div>
-        recipeId: {recipeId}
-      </div>
+      {recipeDetails &&
+      <>
+        <div>
+          name: {recipeDetails.name}
+        </div>
+        <div>
+          thumbnail: {recipeDetails.thumbnail_url}
+        </div>
+        <div>
+          likes: {recipeDetails.likes}
+        </div>
+        <div>
+          recipeId: {recipeId}
+        </div>
+      </>}
     </div>
   )
 }
