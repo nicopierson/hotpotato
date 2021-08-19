@@ -1,0 +1,26 @@
+.ver-page-container{
+  background-color: rgb(243, 245, 246);
+  width: 100%;
+  height: 100vh;
+  margin-top: 50px;
+  color: rgb(0, 0, 0);
+}
+
+.content-container{
+  background-color: rgb(228, 217, 188);
+  min-height: 100vh;
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  /* grid auto rows define the min height and max height of each grid item */
+  grid-auto-rows: minmax(100px, auto);
+}
+
+
+
+.recipe-comments-container{
+  grid-column: 1 / 3;
+  /* grid-row: 2 / 5; */
+}
