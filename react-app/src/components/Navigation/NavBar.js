@@ -41,11 +41,18 @@ const NavBar = () => {
           }
         </div>
         <div className="navbar-li navbar-search">
-          <input
-            className="navbar-search-input"
-            key="search-bar"
-            placeholder={"search for a creation here"}
-          />
+          <div className="navbar-search__input-wrapper">
+            <input
+              className="navbar-search-input"
+              key="search-bar"
+              placeholder={"search for a creation here"}
+            />
+            <div className="navbar-icon-search">
+              <i className="fas fa-search navbar-icon-search--icon"></i>
+            </div>
+          </div>
+
+
         </div>
         <div className="navbar-li navbar-create-and-auth">
           
@@ -79,6 +86,11 @@ const NavBar = () => {
             </li>
           </>
           }
+          {/* <li>
+            <NavLink to='/users' exact={true} activeClassName='active'>
+              Users
+            </NavLink>
+          </li> */}
         </div>
       </ul>
     </nav>
