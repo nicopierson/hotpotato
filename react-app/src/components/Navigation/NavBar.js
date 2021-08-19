@@ -33,8 +33,12 @@ const NavBar = () => {
               HOTPOTATO
             </NavLink>
           </li>
-          <li>Explore</li>
-          <li>Your Feed</li>
+          {user && 
+          <>
+            <li>Explore</li>
+            <li>Your Feed</li>
+          </>
+          }
         </div>
         <div className="navbar-li navbar-search">
           <input
@@ -67,10 +71,10 @@ const NavBar = () => {
           }
           {user && 
           <>
-            <li className="button-fix">
+            <li className="button-fix navbar-li">
               <CreateRecipeButton />
             </li>
-            <li className="navbar-li">
+            <li className="logout-btn navbar-li">
               <LogoutButton />
             </li>
           </>
