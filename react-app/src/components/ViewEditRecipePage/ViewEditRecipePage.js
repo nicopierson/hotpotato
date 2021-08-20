@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RecipePhoto from '../Recipe/RecipePhoto';
 
 import Directions from '../Directions';
+import Ingredients from '../Ingredients';
 
 
 const ViewEditRecipePage = () => {
@@ -41,7 +42,9 @@ const ViewEditRecipePage = () => {
         <div className="recipe-photos-container">
           <RecipePhoto/>
         </div>
-        <div className="recipe-ingredients-container">ingredients</div>
+        <div className="recipe-ingredients-container">
+          <Ingredients />
+        </div>
         <div className="recipe-directions-container">
           <Directions />
         </div>
