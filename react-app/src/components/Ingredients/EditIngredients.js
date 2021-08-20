@@ -9,6 +9,7 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
     const dispatch = useDispatch();
     const [ingredients, setIngredients] = useState([]);
     const [ingredientsId, setIngredientsId] = useState([]);
+    const [measurements, setMeasurements] = useState([]);
 
     const ingredientNumber = recipeIngredients.length;
     
@@ -16,12 +17,15 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
         dispatch(getRecipe(recipeId));
             const addIngredients = [];
             const ingredientsId = [];
+            const addMeasurements = [];
             recipeIngredients.forEach(ingredient => {
-                addIngredients.push(ingredient.ingredients);
+                addIngredients.push(ingredient.ingredient);
                 ingredientsId.push(ingredient.id);
+                addMeasurements.push(ingredient.measurement);
             });
             setIngredients(addIngredients);
             setIngredientsId(ingredientsId);
+            setMeasurements(addMeasurements);
         }, [dispatch, ingredientNumber]);
          
     const handleEdit = (e) => {
@@ -30,8 +34,8 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
         ingredients.forEach((ingredient, idx) => {
             const payload = {
                 id: ingredientsId[idx],
-                steps: idx + 1,
-                ingredients: ingredient,
+                measurement: measurements[idx],
+                ingredient,
                 recipe_id: recipeId,
             }
             dispatch(updateIngredient(payload));
@@ -46,6 +50,13 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
         setIngredients(ingredientsCopy);
     };
 
+    const handleMeasurements = (e, idx) => {
+        e.preventDefault();
+        let measurementsCopy =[ ...measurements ];
+        measurementsCopy[idx] = e.target.value;
+        setMeasurements(measurementsCopy);
+    };
+
     /* Unauthorized User */
     if (!isOwner) return <h2>403 Forbidden</h2>;
         
@@ -58,11 +69,18 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                 <form onSubmit={handleEdit}>
                     { recipeIngredients.length > 0 &&
                         recipeIngredients.map((ingredient, idx) => (
-                            <div key={ ingredients.steps } className={styles.ingredients_item}>
+                            <div key={`ingredient-input-${idx}`} className={styles.ingredients_item}>
                                 <label>{ idx + 1 }. </label>
+                                <input                                     
+                                    type='text'
+                                    name={`measurement-${idx + 1}`}
+                                    onChange={(e) => handleMeasurements(e, idx)}
+                                    value={measurements[idx]}
+                                >
+                                </input>
                                 <input
                                     type='text'
-                                    name={`step-${idx + 1}`}
+                                    name={`ingredient-${idx + 1}`}
                                     onChange={(e) => handleIngredients(e, idx)}
                                     value={ingredients[idx]}
                                 > 

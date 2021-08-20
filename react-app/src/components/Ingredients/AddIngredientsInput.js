@@ -6,15 +6,13 @@ import { createIngredient } from '../../store/recipe';
 const AddIngredientsInput = ({ setShowAdd, recipeIngredients, recipeId }) => {
     const dispatch = useDispatch();
     const [addIngredient, setAddIngredient] = useState('');
-
-    const steps = recipeIngredients;
-    const numberSteps = steps[steps.length - 1].steps + 1;
+    const [addMeasurement, setAddMeasurement] = useState('');
 
     const handleAdd = (e) => {
         e.preventDefault();
         const payload = {
-            steps: numberSteps,
-            ingredients: addIngredient,
+            ingredient: addIngredient,
+            measurement: addMeasurement,
             recipe_id: recipeId,
         };
         dispatch(createIngredient(payload));
@@ -26,6 +24,14 @@ const AddIngredientsInput = ({ setShowAdd, recipeIngredients, recipeId }) => {
             <label>
                 Ingredient
             </label>
+            <input
+                type='text'
+                name='Measurement'
+                onChange={(e) => setAddMeasurement(e.target.value)}
+                value={addMeasurement}
+                placeholder='e.g. 1/4'
+            >
+            </input>
             <input
                 type='text'
                 name='Ingredient'

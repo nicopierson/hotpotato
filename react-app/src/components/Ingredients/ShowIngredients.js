@@ -27,8 +27,14 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                 recipeIngredients.map((ingredient, idx) => (
                     <div key={ ingredient.id } className={styles.ingredients_item}>
                         <p>
-                            <span>{ idx + 1 }.</span> 
-                            { ingredient.ingredients }
+                            <span> - </span> 
+                            {ingredient.measurement &&
+                                <span>
+                                    { ingredient.measurement }
+                                    <span> of </span>
+                                </span>
+                            }
+                            { ingredient.ingredient }
                             {isOwner &&
                                 <i 
                                     className='fas fa-minus-circle'
