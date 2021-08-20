@@ -29,6 +29,16 @@ class Recipe(db.Model):
             'likes': len(self.like_relation),
         }
 
+    def get_users_recipes(self):
+        return {
+            'id': self.id,
+            'thumbnail_url': self.thumbnail_url,
+            'name': self.name,
+            'user_id': self.user_id,
+            'likes': len(self.like_relation),
+            'username': self.userRelation.username
+        }
+
     def get_recipes_with_all_relationship(self):
         return {
             'id': self.id,
@@ -36,9 +46,9 @@ class Recipe(db.Model):
             'name': self.name,
             'comments': [{'id': comment.id, 'comment': comment.comment, 'user_id': comment.user_id, 'recipe_id': comment.recipe_id, 'username': comment.user_relation.username} for comment in self.comment_relation],
             'photos': [{'id': photo.id, 'video_url': photo.video_url, 'img_url': photo.img_url, 'recipe_id': photo.recipe_id} for photo in self.photo_relation],
-            'recipe_ingredients': sorted([ingredient.to_dict() for ingredient in self.recipe_ingredient_relation], key = lambda i: i['id']),
+            'recipe_ingredients': sorted([ingredient.to_dict() for ingredient in self.recipe_ingredient_relation], key=lambda i: i['id']),
             # example of sorting a diction by the key of age ---> sorted(lis, key = lambda i: i['age'])
-            'recipe_directions': sorted([direction.to_dict() for direction in self.recipe_direction_relation], key = lambda i: i['steps']),
+            'recipe_directions': sorted([direction.to_dict() for direction in self.recipe_direction_relation], key=lambda i: i['steps']),
             'likes': len(self.like_relation),
             'user_id': self.user_id,
         }

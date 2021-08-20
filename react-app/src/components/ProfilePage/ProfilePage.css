@@ -28,11 +28,12 @@
 
 
 .users-recipes-cards{
-  flex: 50%;
+  /* flex: 50%; */
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
-  margin: auto;
+  margin-left: 20px;
   justify-content: flex-start;
+  /* min-width: 100%; */
 
 }

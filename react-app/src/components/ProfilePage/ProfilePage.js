@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
 import  RecipeCardComponent  from '../RecipeCardComponent/';
 
+
 export const ProfilePage = () => {
   const dispatch = useDispatch()
   const {userId} = useParams();
+
   // state recipesToDisplay
   // if recipesToDisplay === users, show users
   // if recipesToDisplay === likes, show recipe users liked
@@ -19,6 +21,7 @@ export const ProfilePage = () => {
   }, [dispatch])
 
   if(recipeDetails) recipeDetails.forEach(recipe => console.log(recipe))
+
 
   return (
     <div className="page-cover-container">
@@ -36,8 +39,8 @@ export const ProfilePage = () => {
         {/* render users recipes */}
         <div className="users-recipes-container">
           {recipeDetails &&
-            <div className="users-recipes-cards">
-              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes}/>))}
+            <div className="users-recipes-cards" >
+              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
             </div>}
         </div>
 

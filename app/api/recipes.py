@@ -72,7 +72,7 @@ def get_all_recipes():
 # gets all recipes for a given user ID
 def get_all_recipes_for_a_user(id):
     all_recipes_for_user = Recipe.query.filter_by(user_id=id).all()
-    return {'recipes': [recipe.to_dict() for recipe in all_recipes_for_user]}
+    return {'recipes': [recipe.get_users_recipes() for recipe in all_recipes_for_user]}
 
 
 @recipe_routes.route('/page/<int:page>', methods=['GET'])

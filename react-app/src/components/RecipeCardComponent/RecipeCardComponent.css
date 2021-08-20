@@ -7,7 +7,9 @@
   /* width: 100%; */
   /* margin: auto; */
   /* flex: 0 0 0; */
-  padding: 30px;
+  padding-top: 30px;
+  padding-left:20px;
+  padding-right: 30px;
 }
 
 .recipe-card{
@@ -49,7 +51,7 @@
 .profile-container{
   display: flex;
   align-items: center;
-
+  cursor: pointer;
 }
 .pc__image-container{
   padding: 5px;
@@ -67,6 +69,11 @@
   /* padding-top: 10px; */
   padding: 5px;
   font-weight: bold;
+}
+
+.pc__username:hover{
+  text-decoration: underline;
+
 }
 
 .rc-mc-likes-container{
@@ -90,3 +97,15 @@
 .rc-ic--appear-on-hover:hover{
   opacity: 1;
 }
+
+/* like button */
+.rc-mc__likes-icon{
+  padding-left: 3px;
+  padding-top: 0.5px;
+}
+/* .like-hover{
+  visibility:hidden;
+} */
+/* .like-hover:hover{
+ visibility:visible;
+} */
