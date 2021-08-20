@@ -1,4 +1,7 @@
-.add_button
+/* Recipe utilities for styling of buttons and containers */
+
+/* Button Styling */
+.button_style
 {
     display: inline-block;
     border-style: none;
@@ -6,14 +9,26 @@
     padding: 10px;
     margin: 0;
     text-decoration: none;
-    background: black;
-    color: white;
     font-size: 16px;
-    font-weight: 900;
+    font-weight: 600;
     min-width: 75px;
     cursor: pointer;
     text-align: center;
     -webkit-appearance: none;
+}
+
+.add_button_container
+{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.add_button
+{
+    background: black;
+    color: white;
     border: solid 1px #000;
 }
 
@@ -24,11 +39,44 @@
   color: #000;
 }
 
-.add_button_container
+.cancel_button
+{
+    background-color: rgb(244, 244, 244);
+    border: rgb(172, 172, 172) solid 1px;
+}
+
+.cancel_button:hover
+{
+    background-color: rgb(224, 224, 224);
+    border: #000 solid 1px;
+}
+
+.save_button
+{
+    background-color: #81EAAB;
+    color: #fff;
+}
+
+.save_button:hover
+{
+    background-color: #3ae67f;
+}
+
+.edit_items_buttons
 {
     display: flex;
     justify-content: flex-end;
-    padding: 10px;
+    width: 100%;
+}
+
+.edit_items_buttons button
+{
+    margin: 10px 10px 0px 0px;
+}
+
+.edit_items_buttons i
+{
+    margin-right: 5px;
 }
 
 .delete_item 
@@ -43,6 +91,7 @@
     color: rgb(255, 0, 0);
 }
 
+/* Container Styling */
 .card_container 
 {
     padding: 40px;
@@ -54,6 +103,7 @@
     justify-content: space-between;
     padding: 4px;
     font-weight: 600;
+    font-size: 18px;
 }
 
 .item_container:hover
@@ -61,6 +111,17 @@
     background-color: #f5f5f5;
 }
 
+.card_inner_container
+{
+    width: 100%;
+}
+
+.card_form
+{
+    display: flex;
+}
+
+/* Header Styling */
 .card_header
 {
     display: flex;
@@ -69,7 +130,6 @@
     font-size: 20px;
     padding-bottom: 5px;
     margin-bottom: 25px;
-    border-bottom: solid 1px #a5a5a5;
 }
 
 .card_header i
@@ -81,4 +141,25 @@
 .card_header i:hover
 {
     color: rgb(0, 0, 0);
+}
+
+/* Input elements */
+.card_form input
+{
+    font-size: 16px;
+    width: 90%;
+    box-sizing: border-box;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(135, 135, 135);
+    padding: 5px;
+    color: rgb(135, 135, 135);
+}
+
+.card_form input:focus
+{
+    color: #000;
+    border-bottom: 1px solid #000;
+    transition: 0.3s;
 }

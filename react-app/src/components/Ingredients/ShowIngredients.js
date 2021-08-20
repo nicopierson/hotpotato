@@ -27,24 +27,24 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
             <div className={styles.ingredients_container}>
                 { recipeIngredients &&
                     recipeIngredients.map((ingredient, idx) => (
-                        <div key={ ingredient.id } className={styles.ingredients_container}>
-                            <p className={styleUtils.item_container}>
-                                <span>
-                                    {ingredient.measurement &&
-                                        <>
-                                            { ingredient.measurement }
-                                            <span> of </span>
-                                        </>
-                                    }
-                                    { ingredient.ingredient }
-                                </span>
-                                {isOwner &&
-                                    <i 
-                                        className={`fas fa-minus-circle ${styleUtils.delete_item}`}
-                                        onClick={(e) => handleDelete(e, ingredient.id)}
-                                    ></i>
-                                }
-                            </p>
+                        <div key={ ingredient.id } className={styleUtils.item_container}>
+                            <div className={styles.measurements_container}>
+                                {ingredient.measurement &&
+                                <>
+                                    { ingredient.measurement }
+                                    <span> of </span>
+                                </>
+                                }    
+                            </div>   
+                            <div className={styles.ingredients_container}>
+                                { ingredient.ingredient }
+                            </div>
+                            {isOwner &&
+                                <i 
+                                className={`fas fa-minus-circle ${styleUtils.delete_item}`}
+                                onClick={(e) => handleDelete(e, ingredient.id)}
+                                ></i>
+                            }
                         </div>
                     ))
                 }

@@ -1,0 +1,21 @@
+.measurements_container
+{
+    width: 40%;
+    padding: 0 20px 0 20px;
+}
+
+.ingredients_container
+{
+    width: 90%;
+    padding: 0 0px 0 20px;
+}
+
+.card_form h3
+{
+    margin-bottom: 10px;
+}
+
+.ingredients_item, .measurements_item
+{
+    margin-bottom: 5px;
+}

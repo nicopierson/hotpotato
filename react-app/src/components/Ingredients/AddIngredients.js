@@ -18,7 +18,7 @@ const AddIngredients = ({ recipeIngredients, recipeId }) => {
             {!showAdd &&
                 <div className={styleUtils.add_button_container}>
                     <button
-                        className={styleUtils.add_button}
+                        className={`${styleUtils.button_style} ${styleUtils.add_button}`}
                         onClick={() => setShowAdd(true)}
                     >
                         Add New Ingredient
