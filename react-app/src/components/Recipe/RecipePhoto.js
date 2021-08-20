@@ -2,6 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import { useParams } from 'react-router';
+import { Player } from 'video-react';
+import ReactPlayer from 'react-player'
+// import "node_modules/video-react/dist/video-react.css";
+import '../../../node_modules/video-react/dist/video-react.css'
 
 import * as recipeActions from '../../store/recipe';
 
@@ -16,12 +20,13 @@ const RecipePhoto = ({loaded}) => {
 
     /* isOwner Boolean to check if recipe is owned by current user */    
     const recipeOwnerId = useSelector(state => state.recipe[recipeId]?.user_id);
-    const isOwner = user.id === recipeOwnerId;
+    const isOwner = user?.id === recipeOwnerId;
     // console.log(recipeData, 'recipeData_____DATA')
 
     const [editPhoto, setEditPhoto] = useState(false);
     const [imageUrl, setImageUrl] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
+    const [addVideo, setAddVideo] = useState(false);
 
     const getPhotos = () => {
         let recipePhotos
@@ -45,11 +50,21 @@ const RecipePhoto = ({loaded}) => {
         setEditPhoto(false)
     }
 
+    // if(videoUrl){
+    //     setAddVideo(true)
+    // }
+
    
 
     useEffect(() => {
-        dispatch(recipeActions.getRecipe(recipeId))
+        dispatch(recipeActions.getRecipe(recipeId))       
     },[dispatch])
+
+    useEffect(() => {
+        if(videoUrl){
+        setAddVideo(true)
+    }
+    },[videoUrl])
    
     return (
         <>            
@@ -66,7 +81,12 @@ const RecipePhoto = ({loaded}) => {
                     <Carousel className='recipe-carousel'>
                         {getPhotos()?.map(recipe => (                            
                             <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>  
-                        ))}
+                        ))}                        
+                       
+                        {addVideo &&
+                            <ReactPlayer url={videoUrl}></ReactPlayer>
+                        }
+                       
                     </Carousel>
                 </div>
             }
