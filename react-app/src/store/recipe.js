@@ -113,7 +113,7 @@ export const updateDirection = (payload) => async(dispatch) => {
         await dispatch(getRecipe(payload.recipe_id));
         return direction;
     } else {
-        return ['An errror occurred. Please try again.'];
+        return ['An error occurred. Please try again.'];
     }
 };
 
@@ -142,6 +142,52 @@ export const createDirection = (payload) => async (dispatch) => {
         const direction = await response.json();
         await dispatch(getRecipe(payload.recipe_id));
         return direction;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+};
+
+export const updateIngredient = (payload) => async(dispatch) => {
+    const response = await fetch(`/api/recipes/${payload.recipe_id}/ingredients/${payload.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+        const ingredient = await response.json();
+        await dispatch(getRecipe(payload.recipe_id));
+        return ingredient;
+    } else {
+        return ['An error occurred. Please try again.'];
+    }
+};
+
+export const deleteIngredient = (id, recipe_id) => async(dispatch) => {
+    const response = await fetch(`/api/recipes/${recipe_id}/ingredients/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        const ingredient = await response.json();
+        await dispatch(getRecipe(recipe_id));
+        return ingredient;
+    } else {
+        return ['An error occurred. Please try again.'];
+    }
+};
+
+export const createIngredient = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/${payload.recipe_id}/ingredients`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+        const ingredient = await response.json();
+        await dispatch(getRecipe(payload.recipe_id));
+        return ingredient;
     } else {
         return ['An error occurred. Please try again.']
     }
