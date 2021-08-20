@@ -1,8 +1,17 @@
-.recipe-card-wrapper{
+/* .recipe-card-wrapper{
   flex: 26%;
+  margin: auto;
+} */
+
+.recipe-elements-container{
+  /* width: 100%; */
+  /* margin: auto; */
+  /* flex: 0 0 0; */
+  padding: 30px;
 }
 
 .recipe-card{
+  margin: auto;
   position: relative;
   min-height: 220px;
   max-height: 220px;
@@ -27,6 +36,7 @@
   height: 100%;
 }
 .recipe-card__metadata-container{
+  margin: auto;
   max-width: 300px;
   display: flex;
   justify-content: space-between;
@@ -64,7 +74,7 @@
 }
 
 .rc-mc__likes{
-  margin-right: 5px;
+  /* margin-right: 5px; */
   font-size: 0.9rem;
   color: rgb(136, 136, 136);
 }

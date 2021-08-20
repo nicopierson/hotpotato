@@ -21,15 +21,26 @@ export const ProfilePage = () => {
   if(recipeDetails) recipeDetails.forEach(recipe => console.log(recipe))
 
   return (
-    <div>
-      <div style={{"margin-top":"50px"}}> hello from profile</div>
-      {/*  */}
+    <div className="page-cover-container">
+      {/* cover photo */}
+      {/* left sidebar */}
 
-      {/* render users recipes */}
-      {recipeDetails &&
-        <div className="users-recipes-cards">
-          {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes}/>))}
-        </div>}
+      <div className="sidebar-and-recipes-container">
+        <div className="user-side-bar-container"> left side bar</div>
+
+
+        {/* redner recipes that user liked */}
+
+        {/* render users recipes */}
+        <div className="users-recipes-container">
+          {recipeDetails &&
+            <div className="users-recipes-cards">
+              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes}/>))}
+            </div>}
+        </div>
+
+      </div>
+
 
     </div>
   )

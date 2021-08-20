@@ -7,16 +7,17 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id}) =
   let profile_image;
 
   return (
-    <div className="recipe-card-wrapper">
-      <div style={{"margin-top":"50px"}}> </div>
-      <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-card">
-        <div className="recipe-card__image-container">
-          <div className="rc-ic--appear-on-hover">
-            <div className="rc-ic__title"> {`${name}`}</div>
+    // <div className="recipe-card-wrapper">
+      <div className="recipe-elements-container">
+        {/* <div style={{"margin-top":"50px"}}> </div> */}
+        <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-card">
+          <div className="recipe-card__image-container">
+            <div className="rc-ic--appear-on-hover">
+              <div className="rc-ic__title"> {`${name}`}</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="recipe-card__metadata-container">
+        <div className="recipe-card__metadata-container">
           <div className="profile-container">
             <div className="pc__image-container">
               <img className="pc-ic__image" src={`${profile_image? profile_image: default_profile_url}`} alt="" />
@@ -30,8 +31,9 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id}) =
             {/* <i className="fas fa-heart rc-mc__likes-icon"> </i> {likes} */}
             <i className="far fa-heart rc-mc__likes-icon"></i>
           </div>
-
         </div>
-    </div>
+      </div>
+
+    // </div>
   )
 }
