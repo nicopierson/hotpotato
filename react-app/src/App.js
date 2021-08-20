@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
+import Profile from './components/Profile';
 
 import Footer from './components/Footer/Footer';
 
@@ -47,8 +48,10 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-
+        <ProtectedRoute path='/' exact={true} >
+        </ProtectedRoute>
+        <Route path='/profile/:userId' exact={true}>
+          <Profile />
         </Route>
 
       </Switch>

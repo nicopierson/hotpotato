@@ -271,8 +271,9 @@ def get_all_recipes_photos_for_a_recipe(id):
 def add_photo_video(recipeId):
     form = RecipePhotosCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    user_id = Recipe.query.get(form.recipe_id.data).user_id
     if form.validate_on_submit():
-        if current_user_matches_client_user(form.user_id.data) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
+        if current_user_matches_client_user(user_id) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
             add_photo_and_video = RecipePhoto()
             form.populate_obj(add_photo_and_video)
             db.session.add(add_photo_and_video)

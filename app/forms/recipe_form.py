@@ -34,4 +34,4 @@ class RecipePhotosCreateForm(FlaskForm):
     video_url = StringField()
     img_url = StringField(validators=[DataRequired()])
     recipe_id = IntegerField(validators=[DataRequired()])
-    user_id = IntegerField(validators=[DataRequired()])
+  

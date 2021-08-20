@@ -12,7 +12,7 @@ const Directions = () => {
     const { recipeId } = useParams();
 
     /* isOwner Boolean to check if recipe is owned by current user */
-    const userId = useSelector(state => state.session.user.id);
+    const userId = useSelector(state => state.session.user?.id);
     const recipeOwnerId = useSelector(state => state.recipe[recipeId]?.user_id);
     const isOwner = userId === recipeOwnerId; 
 
