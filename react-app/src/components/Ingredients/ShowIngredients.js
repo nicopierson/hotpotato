@@ -1,20 +1,20 @@
 import { useDispatch } from 'react-redux';
-import { deleteDirection } from '../../store/recipe';
+import { deleteIngredient } from '../../store/recipe';
 
-import styles from './ShowDirections.module.css';
+import styles from './ShowIngredients.module.css';
 
-const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
+const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) => {
     const dispatch = useDispatch();
 
     const handleDelete = (e, id) => {
         e.preventDefault();
-        dispatch(deleteDirection(id, recipeId));
+        dispatch(deleteIngredient(id, recipeId));
     };
 
     return (
-        <div className={styles.directions_inner_container}>
+        <div className={styles.ingredients_inner_container}>
             <div>
-                <h2>Show Directions</h2>
+                <h2>Show Ingredients</h2>
                 {isOwner &&
                     <i 
                         onClick={() => setShowEdit(true)}
@@ -23,16 +23,16 @@ const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
                     </i>
                 }
             </div>
-            { recipeDirections &&
-                recipeDirections.map((direction, idx) => (
-                    <div key={ direction.id } className={styles.directions_item}>
+            { recipeIngredients &&
+                recipeIngredients.map((ingredient, idx) => (
+                    <div key={ ingredient.id } className={styles.ingredients_item}>
                         <p>
                             <span>{ idx + 1 }.</span> 
-                            { direction.directions }
+                            { ingredient.ingredients }
                             {isOwner &&
                                 <i 
                                     className='fas fa-minus-circle'
-                                    onClick={(e) => handleDelete(e, direction.id)}
+                                    onClick={(e) => handleDelete(e, ingredient.id)}
                                 ></i>
                             }
                         </p>
@@ -43,4 +43,4 @@ const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
     )
 };
 
-export default ShowDirections;
+export default ShowIngredients;

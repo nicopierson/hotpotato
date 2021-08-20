@@ -1,37 +1,37 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createDirection } from '../../store/recipe';
+import { createIngredient } from '../../store/recipe';
 
-const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
+const AddIngredientsInput = ({ setShowAdd, recipeIngredients, recipeId }) => {
     const dispatch = useDispatch();
-    const [addDirection, setAddDirection] = useState('');
+    const [addIngredient, setAddIngredient] = useState('');
 
-    const steps = recipeDirections;
+    const steps = recipeIngredients;
     const numberSteps = steps[steps.length - 1].steps + 1;
 
     const handleAdd = (e) => {
         e.preventDefault();
         const payload = {
             steps: numberSteps,
-            directions: addDirection,
+            ingredients: addIngredient,
             recipe_id: recipeId,
         };
-        dispatch(createDirection(payload));
+        dispatch(createIngredient(payload));
         setShowAdd(false);
     };
 
     return (
         <div>
             <label>
-                Direction
+                Ingredient
             </label>
             <input
                 type='text'
-                name='Direction'
-                onChange={(e) => setAddDirection(e.target.value)}
-                value={addDirection}
-                placeholder='Add a new direction...'
+                name='Ingredient'
+                onChange={(e) => setAddIngredient(e.target.value)}
+                value={addIngredient}
+                placeholder='Add a new ingredient...'
             >
             </input>
             <button
@@ -48,4 +48,4 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     );
 };
 
-export default AddInput;
+export default AddIngredientsInput;
