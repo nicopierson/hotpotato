@@ -37,7 +37,7 @@ const RecipeBaseDetails = () => {
 
   return (
     <>
-      {!showEdit &&
+      {!showEdit && recipeDetails &&
           <ShowRecipeBase
               setShowEdit={setShowEdit}
               isOwner={isOwner}
