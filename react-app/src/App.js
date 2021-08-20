@@ -10,8 +10,9 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
 import Profile from './components/Profile';
-
 import Footer from './components/Footer/Footer';
+import RecipeCardComponent  from './components/RecipeCardComponent';
+import ProfilePage  from './components/ProfilePage';
 
 
 function App() {
@@ -42,11 +43,17 @@ function App() {
         <Route path='/view/recipe/:recipeId' exact={true}>
           <ViewEditRecipePage />
         </Route>
+        <Route path='/card' exact={true}>
+          <RecipeCardComponent />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/:userId' exact={true} >
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute>

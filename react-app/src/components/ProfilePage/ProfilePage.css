@@ -1,0 +1,39 @@
+.page-cover-container{
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.sidebar-and-recipes-container{
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: flex-end;
+}
+
+.user-side-bar-wrapper{
+  /* flex:120%; */
+  min-width: 610px;
+  min-height: 100vh;
+}
+
+.user-side-bar-container{
+  min-height: 800px;
+  width: 80%;
+  margin:auto;
+  background-color: white;
+  margin-top: 40px;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(201, 201, 201);
+}
+
+
+.users-recipes-cards{
+  /* flex: 50%; */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin-left: 20px;
+  justify-content: flex-start;
+  /* min-width: 100%; */
+
+}
