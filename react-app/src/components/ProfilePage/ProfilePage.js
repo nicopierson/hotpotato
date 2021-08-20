@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
 import  RecipeCardComponent  from '../RecipeCardComponent/';
+import Profile from '../Profile'
 
 
 export const ProfilePage = () => {
@@ -30,7 +31,7 @@ export const ProfilePage = () => {
 
       <div className="sidebar-and-recipes-container">
         <div className="user-side-bar-wrapper">
-          <div className="user-side-bar-container" > PROFILE COMPONENT GOES HERE</div>
+          <div className="user-side-bar-container" > <Profile/></div>
         </div>
 
 
