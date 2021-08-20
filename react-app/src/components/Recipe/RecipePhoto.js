@@ -12,10 +12,16 @@ const RecipePhoto = ({loaded}) => {
     const recipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
     const [recipeData] = Object.values(recipe);
-    const {recipeId }  = useParams()
+    const {recipeId }  = useParams() 
+
+    /* isOwner Boolean to check if recipe is owned by current user */    
+    const recipeOwnerId = useSelector(state => state.recipe[recipeId]?.user_id);
+    const isOwner = user.id === recipeOwnerId;
     // console.log(recipeData, 'recipeData_____DATA')
 
     const [editPhoto, setEditPhoto] = useState(false);
+    const [imageUrl, setImageUrl] = useState('');
+    const [videoUrl, setVideoUrl] = useState('');
 
     const getPhotos = () => {
         let recipePhotos
@@ -26,6 +32,19 @@ const RecipePhoto = ({loaded}) => {
         return recipePhotos
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const payload = {
+            img_url: imageUrl,
+            recipe_id: +recipeId,
+            video_url: videoUrl
+        }
+
+        dispatch(recipeActions.createRecipePhoto(payload))
+
+        setEditPhoto(false)
+    }
+
    
 
     useEffect(() => {
@@ -34,12 +53,52 @@ const RecipePhoto = ({loaded}) => {
    
     return (
         <>            
-            {user && 
-                <Carousel className='recipe-carousel-images'>
-                    {getPhotos()?.map(recipe => (
-                        <img src={recipe.img_url} alt={recipe} key={recipe.id} />
-                    ))}
-                </Carousel>
+            {!editPhoto &&
+                < div className='recipe-carousel-with-edit'> 
+
+                    {isOwner &&
+                        <button 
+                            onClick={() => setEditPhoto(true)}
+                    className='fas fa-edit recipe-carousel-edit'
+                        
+                        ></button>
+                    }
+                    <Carousel className='recipe-carousel'>
+                        {getPhotos()?.map(recipe => (                            
+                            <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>  
+                        ))}
+                    </Carousel>
+                </div>
+            }
+            {editPhoto && 
+                <div className='recipe-carousel-images-edit'>
+                    <button 
+                        onClick={() => setEditPhoto(false)}
+                    className='fas fa-window-close recipe-carousel-cancel'
+                        ></button>
+                    <form onSubmit={onSubmit} className='recipe-carousel-edit-form'>
+                        <input 
+                            placeholder='Enter image url'
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
+                            type='text'
+                            name='imageUrl'
+                            className='recipe-carousel-edit-form-input'
+                        >
+                        </input>
+                        <input
+                            placeholder='Enter video url [optional]'
+                            value={videoUrl}
+                            onChange={(e) => setVideoUrl(e.target.value)}
+                            name='videoUrl'
+                            className='recipe-carousel-edit-form-input'
+                        ></input>                       
+                        <button 
+                            type='submit'
+                        className='recipe-carousel-save-form-button fas fa-check-circle'
+                    > Save</button>
+                    </form>
+                </div>
             }
         </>
     )
