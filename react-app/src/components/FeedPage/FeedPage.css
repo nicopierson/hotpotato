@@ -1,0 +1,17 @@
+.fpw-feed-container{
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: flex-end;
+}
+
+.users-recipes-cards{
+  /* flex: 50%; */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin-left: 20px;
+  justify-content: flex-start;
+  /* min-width: 100%; */
+
+}
