@@ -11,9 +11,11 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
   const history = useHistory();
 
   return (
-    // <div className="recipe-card-wrapper">
+    <div className="recipe-card-wrapper">
       <div className="recipe-elements-container">
-        {/* <div style={{"margin-top":"50px"}}> </div> */}
+
+
+        {/* image */}
         <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-card">
           <div className="recipe-card__image-container" onClick={()=>{history.push(`/view/recipe/${id}`)}}>
             <div className="rc-ic--appear-on-hover">
@@ -21,6 +23,8 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
             </div>
           </div>
         </div>
+
+        {/* profile img, name, likes */}
         <div className="recipe-card__metadata-container" >
           <div className="profile-container" onClick={()=>{history.push(`/profile/${user_id}`)}} >
             <div className="pc__image-container" >
@@ -38,6 +42,6 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
         </div>
       </div>
 
-    // </div>
+    </div>
   )
 }

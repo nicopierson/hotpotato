@@ -10,7 +10,7 @@ export const FeedPage = () => {
   const dispatch = useDispatch()
   // const {userId} = useParams();
 
-  const user_id = useSelector(state => state.session.user);
+  const user_id = useSelector(state => state.session.user?.id);
 
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
 
@@ -23,17 +23,17 @@ export const FeedPage = () => {
     <div className="feed-page-wrapper">
       {/* banner (optional) */}
       {/* header and filter bar */}
+      <div>
+        This is the title
+      </div>
 
 
       {/* render users recipes based on who they follow */}
       <div className="fpw-feed-container">
-        <div className="users-recipes-container">
           {recipeDetails &&
-            <div className="users-recipes-cards" >
+            <div className="fpw-feed-container__recipe-cards" >
               {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
             </div>}
-        </div>
-
       </div>
 
 
