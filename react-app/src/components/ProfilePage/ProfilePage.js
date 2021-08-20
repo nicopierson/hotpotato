@@ -26,7 +26,9 @@ export const ProfilePage = () => {
       {/* left sidebar */}
 
       <div className="sidebar-and-recipes-container">
-        <div className="user-side-bar-container"> left side bar</div>
+        <div className="user-side-bar-wrapper">
+          <div className="user-side-bar-container" > PROFILE COMPONENT GOES HERE</div>
+        </div>
 
 
         {/* redner recipes that user liked */}
