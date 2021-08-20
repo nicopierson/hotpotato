@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
 import Footer from './components/Footer/Footer';
 import RecipeCardComponent  from './components/RecipeCardComponent';
+import ProfilePage  from './components/ProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +49,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/:userId' exact={true} >
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute>

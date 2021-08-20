@@ -1,7 +1,7 @@
 import React from 'react'
 import './RecipeCardComponent.css'
 
-export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, recipeId}) => {
+export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id}) => {
   const default_image_url = 'https://i1.wp.com/seonkyounglongest.com/wp-content/uploads/2020/06/silken-tofu-soup-1-mini.jpg?fit=1000%2C667&ssl=1'
   const default_profile_url = 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg'
   let profile_image;
@@ -12,7 +12,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, recipe
       <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-card">
         <div className="recipe-card__image-container">
           <div className="rc-ic--appear-on-hover">
-            <div className="rc-ic__title"> Tofu Soup With Egg</div>
+            <div className="rc-ic__title"> {`${name}`}</div>
           </div>
         </div>
       </div>

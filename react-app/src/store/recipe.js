@@ -3,6 +3,7 @@ const SET_ALL_RECIPES = 'recipes/setAllRecipes';
 const DELETE_RECIPE = 'recipes/deleteRecipe';
 const ADD_RECIPE = 'recipes/addRecipe';
 const EDIT_RECIPE = 'recipes/editRecipe';
+const SET_ALL_RECIPES_BELONG_TO_USER = 'recipes/setUsersRecipes'
 
 const setRecipe = (recipe) => ({
     type: SET_RECIPE,
@@ -27,6 +28,11 @@ const addRecipe = (recipe) => ({
 const editRecipe = (recipe) => ({
     type: EDIT_RECIPE,
     recipe,
+});
+
+const setAllRecipesForUser = (recipes) => ({
+    type: SET_ALL_RECIPES_BELONG_TO_USER,
+    recipes,
 });
 
 export const getRecipe = (id) => async (dispatch) => {
@@ -101,6 +107,18 @@ export const updateRecipe = (payload) => async(dispatch) => {
     }
 }
 
+export const getAllRecipesForGivenUser = (id) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/users/${id}`)
+    const data = await response.json();
+
+    if (response.ok) {
+        await dispatch(setAllRecipesForUser(data));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 export const updateDirection = (payload) => async(dispatch) => {
     const response = await fetch(`/api/recipes/${payload.recipe_id}/directions/${payload.id}`, {
         method: 'PUT',
@@ -148,7 +166,9 @@ export const createDirection = (payload) => async (dispatch) => {
 };
 
 export default function reducer(state = {}, action) {
-    let newState = {}
+    let newState = {
+        users_recipes:null,
+    }
     switch (action.type) {
         case SET_RECIPE:
             newState = { ...state };
@@ -158,6 +178,9 @@ export default function reducer(state = {}, action) {
             action.recipes.recipes.forEach(recipe => {
                 newState[recipe.id] = recipe;
             });
+            return { ...state, ...newState };
+        case SET_ALL_RECIPES_BELONG_TO_USER:
+            newState.users_recipes = action.recipes.recipes;
             return { ...state, ...newState };
         case ADD_RECIPE:
             newState = { ...state };
