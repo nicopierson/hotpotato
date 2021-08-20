@@ -1,10 +1,11 @@
 import React from 'react'
 import './RecipeCardComponent.css'
 import { useHistory } from 'react-router';
+import chef from '../../images/chef.png'
 
 export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, username}) => {
   const default_image_url = 'https://i1.wp.com/seonkyounglongest.com/wp-content/uploads/2020/06/silken-tofu-soup-1-mini.jpg?fit=1000%2C667&ssl=1'
-  const default_profile_url = 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg'
+  const default_profile_url = chef;
   let profile_image;
 
   const history = useHistory();
