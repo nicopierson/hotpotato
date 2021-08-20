@@ -1,8 +1,10 @@
 import { SET_RECIPE } from "./recipe";
-const SET_LIKES = 'likes/SET_LIKE';
+const SET_LIKES = 'likes/SET_LIKES';
+const ADD_LIKE = 'likes/ADD_LIKE';
+const DELETE_LIKE = 'likes/DELETE_LIKE';
 
 // Set recipe and update full recipe details to store when deleting or adding like
-const addLike = (recipe) => ({
+const addRecipe = (recipe) => ({
     type: SET_RECIPE,
     recipe,
 });
@@ -10,6 +12,16 @@ const addLike = (recipe) => ({
 const setLikes = (likes) => ({
     type: SET_LIKES,
     likes,
+});
+
+const addLike = (like) => ({
+    type: ADD_LIKE,
+    like,
+});
+
+const deleteLike = (id) => ({
+    type: DELETE_LIKE,
+    recipe_id: id,
 });
 
 export const loadLikes = (userId) => async (dispatch) => {
@@ -53,9 +65,11 @@ export const removeLike = (id) => async (dispatch) => {
 
     if (response.ok) {
         const { like } = await response.json();
+
+        await dispatch(deleteLike(like.recipe_id))
         const recipeResponse = await fetch(`/api/recipes/${like.recipe_id}`);
         const recipe = await recipeResponse.json();
-        await dispatch(addLike(recipe));
+        await dispatch(addRecipe(recipe));
         return like;
     } else {
         return ['An error occurred. Please try again.']
@@ -68,10 +82,13 @@ export const createLike = (payload) => async (dispatch) => {
     });
 
     if (response.ok) {
-        const like = await response.json();
+        const { like } = await response.json();
+
         const recipeResponse = await fetch(`/api/recipes/${payload.recipe_id}`);
         const recipe = await recipeResponse.json();
-        await dispatch(addLike(recipe));
+        await dispatch(addRecipe(recipe));
+        // load all likes after updating recipe
+        await dispatch(loadLikes(payload.user_id))
         return like;
     } else {
         return ['An error occurred. Please try again.']
@@ -87,6 +104,12 @@ export default function reducer(state = {}, action) {
             action.likes.forEach(like => {
                 newState[like.recipe_id] = like;
             });
+            return newState;
+        case ADD_LIKE:
+            newState[action.recipe_id] = action.like;
+            return newState;
+        case DELETE_LIKE:
+            delete newState[action.recipe_id];
             return newState;
         default:
             return newState;
