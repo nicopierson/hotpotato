@@ -37,6 +37,23 @@ const RecipePhoto = ({loaded}) => {
         return recipePhotos
     }
 
+    const getVideos = () => {
+        let recipeVideo
+
+        if(recipeData){
+            // console.log(recipeData.photos, 'Photos___________')
+            let data = recipeData.photos.map(item => {
+                return item.video_url
+            })
+
+            recipeVideo = data
+        }
+        // console.log(recipeVideo, 'videossss')
+
+        return recipeVideo
+    }
+    getVideos()
+
     const onSubmit = (e) => {
         e.preventDefault()
         const payload = {
@@ -83,7 +100,15 @@ const RecipePhoto = ({loaded}) => {
                             <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>  
                         ))}                        
                        
-                        {addVideo &&
+                        {
+                        
+                            // <ReactPlayer url={videoUrl}></ReactPlayer>
+                            getVideos()?.map(video => (
+                                <ReactPlayer url={video}></ReactPlayer>
+                            ))
+                        }
+
+                        {addVideo && 
                             <ReactPlayer url={videoUrl}></ReactPlayer>
                         }
                        
