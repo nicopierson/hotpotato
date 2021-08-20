@@ -15,6 +15,7 @@ import RecipeCardComponent  from './components/RecipeCardComponent';
 import ProfilePage  from './components/ProfilePage';
 
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
