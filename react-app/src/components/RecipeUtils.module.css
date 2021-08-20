@@ -1,0 +1,48 @@
+.add_button
+{
+    display: inline-block;
+    border-style: none;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 0;
+    text-decoration: none;
+    background: black;
+    color: white;
+    font-size: 12px;
+    font-weight: 900;
+    min-width: 75px;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    border: solid 1px #000;
+}
+
+
+.add_button:hover
+{
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  color: #000;
+}
+
+.delete_item 
+{
+    cursor: pointer;
+    color: rgb(255, 0, 0, 0.6);
+}
+
+.delete_item:hover
+{
+    color: rgb(255, 0, 0);
+}
+
+.card_container 
+{
+    padding: 30px;
+}
+
+.item_container
+{
+    display: flex;
+    justify-content: space-between;
+}

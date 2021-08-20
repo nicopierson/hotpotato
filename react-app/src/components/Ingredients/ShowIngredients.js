@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { deleteIngredient } from '../../store/recipe';
 
 import styles from './ShowIngredients.module.css';
+import styleUtils from '../RecipeUtils.module.css';
 
 const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) => {
     const dispatch = useDispatch();
@@ -13,8 +14,8 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
 
     return (
         <div className={styles.ingredients_inner_container}>
-            <div>
-                <h2>Show Ingredients</h2>
+            <div className={styleUtils.card_header}>
+                <h2>Ingredients</h2>
                 {isOwner &&
                     <i 
                         onClick={() => setShowEdit(true)}
@@ -23,28 +24,31 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                     </i>
                 }
             </div>
-            { recipeIngredients &&
-                recipeIngredients.map((ingredient, idx) => (
-                    <div key={ ingredient.id } className={styles.ingredients_item}>
-                        <p>
-                            <span> - </span> 
-                            {ingredient.measurement &&
+            <div className={styles.ingredients_container}>
+                { recipeIngredients &&
+                    recipeIngredients.map((ingredient, idx) => (
+                        <div key={ ingredient.id } className={styles.ingredients_container}>
+                            <p className={styleUtils.item_container}>
                                 <span>
-                                    { ingredient.measurement }
-                                    <span> of </span>
+                                    {ingredient.measurement &&
+                                        <>
+                                            { ingredient.measurement }
+                                            <span> of </span>
+                                        </>
+                                    }
+                                    { ingredient.ingredient }
                                 </span>
-                            }
-                            { ingredient.ingredient }
-                            {isOwner &&
-                                <i 
-                                    className='fas fa-minus-circle'
-                                    onClick={(e) => handleDelete(e, ingredient.id)}
-                                ></i>
-                            }
-                        </p>
-                    </div>
-                ))
-            }
+                                {isOwner &&
+                                    <i 
+                                        className={`fas fa-minus-circle ${styleUtils.delete_item}`}
+                                        onClick={(e) => handleDelete(e, ingredient.id)}
+                                    ></i>
+                                }
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 };

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import AddIngredientsInput from './AddIngredientsInput';
 
+import stylesUtil from '../RecipeUtils.module.css';
+
 const AddIngredients = ({ recipeIngredients, recipeId }) => {
     const [showAdd, setShowAdd] = useState(false);
     
@@ -15,6 +17,7 @@ const AddIngredients = ({ recipeIngredients, recipeId }) => {
             }
             {!showAdd &&
                 <button
+                    className={stylesUtil.add_button}
                     onClick={() => setShowAdd(true)}
                 >
                     Add New Ingredient
