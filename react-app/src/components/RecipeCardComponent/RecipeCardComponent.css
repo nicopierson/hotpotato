@@ -1,0 +1,78 @@
+.recipe-card{
+  position: relative;
+  min-height: 220px;
+  max-height: 220px;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(201, 201, 201);
+  width: 300px;
+}
+
+.rc-ic__title{
+  font-family: 'Varela Round', sans-serif;
+  font-size: 1rem;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 8px;
+}
+
+
+.recipe-card__image-container{
+  height: 100%;
+}
+.recipe-card__metadata-container{
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+/* profile container */
+
+.profile-container{
+  display: flex;
+  align-items: center;
+
+}
+.pc__image-container{
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+}
+.pc-ic__image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pc__username{
+  /* padding-top: 10px; */
+  padding: 5px;
+  font-weight: bold;
+}
+
+.rc-mc-likes-container{
+  display: flex;
+}
+
+.rc-mc__likes{
+  margin-right: 5px;
+  font-size: 0.9rem;
+  color: rgb(136, 136, 136);
+}
+
+
+/* wrapper for hover effect*/
+.rc-ic--appear-on-hover{
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+  min-height: 220px;
+  cursor: pointer;
+}
+.rc-ic--appear-on-hover:hover{
+  opacity: 1;
+}

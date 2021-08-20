@@ -9,8 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
-
 import Footer from './components/Footer/Footer';
+import RecipeCardComponent  from './components/RecipeCardComponent';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +39,9 @@ function App() {
         </Route>
         <Route path='/view/recipe/:recipeId' exact={true}>
           <ViewEditRecipePage />
+        </Route>
+        <Route path='/card' exact={true}>
+          <RecipeCardComponent />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

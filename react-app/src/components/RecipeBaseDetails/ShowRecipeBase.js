@@ -20,7 +20,7 @@ const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes, recip
             </div>
 
             <div className="recipe-base__likes">
-              <i class="fas fa-heart"> </i> {likes}
+              <i className="fas fa-heart"> </i> {likes}
             </div>
           </div>
 

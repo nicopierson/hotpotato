@@ -1,14 +1,14 @@
 /* Recipe base css */
 .recipe-base{
   position: relative;
+  min-height: 80vh;
+  max-height: 80vh;
 }
 
 .recipe-base-header__name, .recipe-base__likes, .recipe-base__id, .recipe-base__description{
   color: white;
   /* font-weight: bold; */
 }
-
-
 
 /* style for header name / icon */
 .recipe-base-header{
@@ -37,6 +37,7 @@
   color: white;
   font-size: 28px;
   margin: 10px;
+
 }
 
 /* header for descriptions */
@@ -44,7 +45,6 @@
   position: absolute;
   bottom: 0;
   padding: 10px;
-  /* padding-right: 20px; */
   max-width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -56,9 +56,10 @@
 
 .recipe-base__likes{
   margin-left: 12px;
+  flex: 20%;
 }
 
-/* wrapper for hover */
+/* wrapper for hover effect*/
 .recipe-base--appear-on-hover{
   opacity: 0;
   transition: opacity .2s, visibility .2s;
