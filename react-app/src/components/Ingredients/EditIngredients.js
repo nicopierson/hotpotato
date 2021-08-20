@@ -14,7 +14,6 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
     
     useEffect(() => {
         dispatch(getRecipe(recipeId));
-        // if (recipe_ingredients && ingredients.length === 0) {
             const addIngredients = [];
             const ingredientsId = [];
             recipeIngredients.forEach(ingredient => {
