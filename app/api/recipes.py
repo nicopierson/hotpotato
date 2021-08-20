@@ -1,7 +1,10 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Recipe, db, RecipeDirection, RecipeIngredient, RecipePhoto
-from app.forms import RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm, RecipePhotosCreateForm, RecipeDirectionsUpdateForm
+from app.forms import (
+    RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm, 
+    RecipePhotosCreateForm, RecipeDirectionsUpdateForm, RecipeIngredientsUpdateForm
+)
 
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -218,9 +221,10 @@ def get_all_recipes_ingredients_for_a_recipe(id):
 # add a single ingredient with the given recipe id
 def add_single_ingredients(recipeId):
     form = RecipeIngredientsCreateForm()
+    user_id = Recipe.query.get(form.recipe_id.data).user_id
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        if current_user_matches_client_user(form.user_id.data) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
+        if current_user_matches_client_user(user_id) and current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id):
             add_an_ingredient = RecipeIngredient()
             form.populate_obj(add_an_ingredient)
             db.session.add(add_an_ingredient)
@@ -230,11 +234,11 @@ def add_single_ingredients(recipeId):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@recipe_routes.route('/<int:recipeid>/ingredients/<int:ingredientId>', methods=['PUT', 'DELETE'])
+@recipe_routes.route('/<int:recipeId>/ingredients/<int:ingredientId>', methods=['PUT', 'DELETE'])
 @login_required
-def update_delete_ingredient(recipeid, ingredientId):
+def update_delete_ingredient(recipeId, ingredientId):
     if request.method == 'PUT':
-        form = RecipeIngredientsCreateForm()
+        form = RecipeIngredientsUpdateForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             if current_recipe_id_belongs_to_user(form.recipe_id.data, current_user.id) and item_belongs_to_user_recipe(ingredientId, form.recipe_id.data, RecipeIngredient):

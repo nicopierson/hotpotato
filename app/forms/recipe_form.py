@@ -27,7 +27,13 @@ class RecipeIngredientsCreateForm(FlaskForm):
     ingredient = StringField(validators=[DataRequired()])
     measurement = StringField()
     recipe_id = IntegerField(validators=[DataRequired()])
-    user_id = IntegerField(validators=[DataRequired()])
+
+    
+class RecipeIngredientsUpdateForm(FlaskForm):
+    id = IntegerField(validators=[DataRequired()])
+    ingredient = StringField(validators=[DataRequired()])
+    measurement = StringField()
+    recipe_id = IntegerField(validators=[DataRequired()])
 
 
 class RecipePhotosCreateForm(FlaskForm):
