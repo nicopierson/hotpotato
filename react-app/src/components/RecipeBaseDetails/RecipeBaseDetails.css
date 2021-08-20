@@ -1,7 +1,7 @@
 /* Recipe base css */
 .recipe-base{
   position: relative;
-  min-height: 80vh;
+  min-height: 90vh;
   max-height: 80vh;
 }
 

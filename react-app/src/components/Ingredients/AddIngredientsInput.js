@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 
 import { createIngredient } from '../../store/recipe';
 
-const AddIngredientsInput = ({ setShowAdd, recipeIngredients, recipeId }) => {
+import styles from './AddIngredientsInput.module.css';
+import styleUtils from '../RecipeUtils.module.css';
+
+const AddIngredientsInput = ({ setShowAdd, recipeId }) => {
     const dispatch = useDispatch();
     const [addIngredient, setAddIngredient] = useState('');
     const [addMeasurement, setAddMeasurement] = useState('');
@@ -20,36 +23,44 @@ const AddIngredientsInput = ({ setShowAdd, recipeIngredients, recipeId }) => {
     };
 
     return (
-        <div>
-            <label>
-                Ingredient
-            </label>
-            <input
-                type='text'
-                name='Measurement'
-                onChange={(e) => setAddMeasurement(e.target.value)}
-                value={addMeasurement}
-                placeholder='e.g. 1/4'
-            >
-            </input>
-            <input
-                type='text'
-                name='Ingredient'
-                onChange={(e) => setAddIngredient(e.target.value)}
-                value={addIngredient}
-                placeholder='Add a new ingredient...'
-            >
-            </input>
-            <button
-                onClick={handleAdd}
-            >
-                Add
-            </button>
-            <button
-                onClick={() => setShowAdd(false)}
-            >
-                Cancel
-            </button>
+        <div className={styles.add_container}>
+            <div className={styleUtils.card_form}>
+                <div className={styles.measurements_container}>
+                    <input
+                        type='text'
+                        name='Measurement'
+                        onChange={(e) => setAddMeasurement(e.target.value)}
+                        value={addMeasurement}
+                        placeholder='e.g. 1/4'
+                    >
+                    </input>
+                </div>
+                <div className={styles.ingredients_container}>
+                    <input
+                        type='text'
+                        name='Ingredient'
+                        onChange={(e) => setAddIngredient(e.target.value)}
+                        value={addIngredient}
+                        placeholder='Add a new ingredient...'
+                    >
+                    </input>
+                </div>
+            </div>
+             <div className={styleUtils.edit_items_buttons}>
+                <button
+                    className={`${styleUtils.button_style} ${styleUtils.cancel_button}`}
+                    onClick={() => setShowAdd(false)}
+                >
+                    Cancel
+                </button>
+                <button
+                    className={`${styleUtils.button_style} ${styleUtils.save_button}`}
+                    onClick={handleAdd}
+                >
+                    <i className='fas fa-check-circle'></i>
+                    <span>Add</span>
+                </button>
+            </div>
         </div>
     );
 };
