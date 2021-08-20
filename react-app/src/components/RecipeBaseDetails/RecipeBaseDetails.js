@@ -7,8 +7,9 @@ import ShowRecipeBase from './ShowRecipeBase';
 
 const RecipeBaseDetails = () => {
   let {recipeId} = useParams();
+  // console.log(recipeId, 'RECIPEBASEDETAILS*******')
   // const dispatch = useDispatch()
-  const userId = useSelector(state => state.session.user.id);
+  const userId = useSelector(state => state.session.user?.id);
   const recipeDetails= useSelector((state) => state.recipe[recipeId]);
 
   // const [name, setName] = useState('');
@@ -37,7 +38,7 @@ const RecipeBaseDetails = () => {
 
   return (
     <>
-      {!showEdit &&
+      {!showEdit && recipeDetails &&
           <ShowRecipeBase
               setShowEdit={setShowEdit}
               isOwner={isOwner}

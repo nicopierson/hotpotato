@@ -1,6 +1,6 @@
 
 
-const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes, recipeId}) => {
+const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes}) => {
   return (
     <>
       <div style={{backgroundImage: `url(${thumbnail_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-base">

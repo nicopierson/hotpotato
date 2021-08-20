@@ -14,20 +14,12 @@ import Ingredients from '../Ingredients';
 
 
 const ViewEditRecipePage = () => {
-
+  
   //the /:id from url
   let {recipeId} = useParams();
+  console.log(recipeId, '************RECIPEID***********')
   const dispatch = useDispatch()
 
-  const recipeDetails= useSelector((state) => state.recipe[recipeId]);
-
-  // FOR TESTING, REMOVE LATER
-  if (recipeDetails) {
-    // console.log('recipe details comments', recipeDetails.name);
-    for (const [key,value] of Object.entries(recipeDetails)){
-      console.log(key, value)
-    }
-  }
 
   // fetching the recipe based on ID and adding it to the store.
   useEffect(()=>{
