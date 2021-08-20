@@ -85,36 +85,45 @@ const ShowComments = ({ comments, recipeId }) => {
             </div>
             {comments &&
                 comments.map((comment) => (
-                    <div
-                        key={comment.id}
+                    <div className="single-comment">
+                        <img src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef" className="new-comment-avatar"></img>
+                        <div
+                            key={comment.id}
+                            className="single-comment-container"
 
-                    >
-                        <form id={`edit-comment-${comment.id}`}
-                            hidden={true}
-                            onSubmit={(e) => handleSubmitEdit(e, comment)}>
-                            <input
-                                placeholder={comment.comment}
-                                onChange={(e) => setEditComment(e.target.value)}
-                            ></input>
-                            <button
-                                type="submit"
-                            >Submit</button>
-                        </form>
-                        <div id={`comment-${comment.id}`}>
-                            {comment.comment}
-                            {comment.user_id === userId &&
-                                <>
-                                    <i
-                                        className='fas fa-minus-circle'
-                                        onClick={(e) => handleDelete(e, comment.id)}
-                                    ></i>
-                                    <i
-                                        onClick={(e) => handleEdit(e, comment)}
-                                        className='fas fa-edit'
-                                    >
-                                    </i>
-                                </>
-                            }
+                        >
+                            <form id={`edit-comment-${comment.id}`}
+                                hidden={true}
+                                onSubmit={(e) => handleSubmitEdit(e, comment)}>
+                                <input
+                                    placeholder={comment.comment}
+                                    onChange={(e) => setEditComment(e.target.value)}
+                                ></input>
+                                <button
+                                    type="submit"
+                                >Submit</button>
+                            </form>
+                            <div>
+                                <div className="comment-user">
+                                    {comment.username}
+                                    {comment.user_id === userId &&
+                                        <>
+                                            <i
+                                                className='fas fa-minus-circle comment-utilities'
+                                                onClick={(e) => handleDelete(e, comment.id)}
+                                            ></i>
+                                            <i
+                                                onClick={(e) => handleEdit(e, comment)}
+                                                className='fas fa-edit comment-utilities'
+                                            >
+                                            </i>
+                                        </>
+                                    }
+                                </div>
+                                <div id={`comment-${comment.id}`}>
+                                    {comment.comment}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))
