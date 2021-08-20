@@ -9,12 +9,15 @@
   /* flex: 50%; */
   display: flex;
   padding: 10px;
-  margin-left: 20px;
+
   justify-content: flex-start;
   flex-wrap: wrap;
-  /* min-width: 100%; */
+  width: 90%;
+  margin: auto;
+  align-items: flex-start;
 }
 
-.users-recipes-cards{
-
+.fpw-feed-container__recipe-cards::after{
+  content: "  ";
+  flex: 500;
 }
