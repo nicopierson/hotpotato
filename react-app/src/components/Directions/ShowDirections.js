@@ -1,15 +1,10 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecipe, deleteDirection } from '../../store/recipe';
+import { deleteDirection } from '../../store/recipe';
 
 import styles from './ShowDirections.module.css';
 
 const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(getRecipe(recipeId))
-    // }, [dispatch]);
 
     const handleDelete = (e, id) => {
         e.preventDefault();

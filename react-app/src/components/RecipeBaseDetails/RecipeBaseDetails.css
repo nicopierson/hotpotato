@@ -1,0 +1,70 @@
+/* Recipe base css */
+.recipe-base{
+  position: relative;
+  min-height: 80vh;
+  max-height: 80vh;
+}
+
+.recipe-base-header__name, .recipe-base__likes, .recipe-base__id, .recipe-base__description{
+  color: white;
+  /* font-weight: bold; */
+}
+
+/* style for header name / icon */
+.recipe-base-header{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 8px;
+}
+
+.recipe-base-header__name{
+  font-family: 'Varela Round', sans-serif;
+  font-size: 1.5rem;
+  padding-left: 10px;
+  padding-top: 10px;
+  flex: 70%;
+}
+
+.recipe-base-header__icon-container{
+  flex: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.recipe-base-header__edit-icon{
+  color: white;
+  font-size: 28px;
+  margin: 10px;
+
+}
+
+/* header for descriptions */
+.recipe-base__description{
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.recipe-base__description-text{
+  width: 78%;
+  padding-bottom: 10px;
+}
+
+.recipe-base__likes{
+  margin-left: 12px;
+  flex: 20%;
+}
+
+/* wrapper for hover effect*/
+.recipe-base--appear-on-hover{
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+  height: 100%;
+}
+.recipe-base--appear-on-hover:hover{
+  opacity: 1;
+}

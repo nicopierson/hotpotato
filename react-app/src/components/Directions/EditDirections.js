@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { getRecipe, updateDirection } from '../../store/recipe';
-import AddDirection from './AddDirection';
 
 import styles from './EditDirections.module.css';
 

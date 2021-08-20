@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import EditDirections from './EditDirections';
-import ShowDirections from './ShowDirections';
-import AddDirection from './AddDirection';
+import EditIngredients from './EditIngredients';
+import ShowIngredients from './ShowIngredients';
+import AddIngredients from './AddIngredients';
 
-import styles from './Directions.module.css';
+import styles from './Ingredients.module.css';
 
-const Directions = () => {
+const Ingredients = () => {
     const { recipeId } = useParams();
 
     /* isOwner Boolean to check if recipe is owned by current user */
@@ -18,29 +18,29 @@ const Directions = () => {
 
     const [showEdit, setShowEdit] = useState(false);
 
-    const recipeDirections = useSelector(state => state.recipe[recipeId]?.recipe_directions);
+    const recipeIngredients = useSelector(state => state.recipe[recipeId]?.recipe_ingredients);
 
     return (
-        <div className={styles.directions_container}>
+        <div className={styles.ingredients_container}>
             {!showEdit && 
-                <ShowDirections 
+                <ShowIngredients 
                     setShowEdit={setShowEdit} 
                     isOwner={isOwner}
-                    recipeDirections={recipeDirections}
+                    recipeIngredients={recipeIngredients}
                     recipeId={recipeId}
                 />
             }
             {showEdit && isOwner &&
-                <EditDirections 
+                <EditIngredients 
                     setShowEdit={setShowEdit} 
                     isOwner={isOwner}
-                    recipeDirections={recipeDirections}
+                    recipeIngredients={recipeIngredients}
                     recipeId={recipeId}
                 />
             }
             {isOwner &&
-                <AddDirection 
-                    recipeDirections={recipeDirections}
+                <AddIngredients
+                    recipeIngredients={recipeIngredients}
                     recipeId={recipeId}
                 />
             }
@@ -48,4 +48,4 @@ const Directions = () => {
     );
 };
 
-export default Directions;
+export default Ingredients;
