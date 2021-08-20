@@ -33,16 +33,13 @@ export const RecipeForm = () => {
         thumbnail_url: imageUrl,
         user_id: userId
       }
-      console.log('our payload', payload)
-      console.log('our payload', payload)
-      console.log('our payload', payload)
       setErrors([]);
-      return dispatch(createRecipe(payload)).then((data)=>{
-        //add push to view-recipe/id later
-        history.push(`/`);
+      return dispatch(createRecipe(payload)).then( (data)=>{
+        setTimeout(()=>console.log("loading"), 1000)
+        history.push(`/view/recipe/${data.id}`);
         window.location.reload();
       }).catch(async (res) =>{
-        const data = await res.json();
+        const data = res
         if(data && data.errors) setErrors(data.errors);
       })
     // }
