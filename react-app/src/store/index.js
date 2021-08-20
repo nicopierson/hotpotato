@@ -5,6 +5,7 @@ import recipe from './recipe';
 import comment from './comments';
 import follow from './follow';
 import profile from './profile';
+import like from './like';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   comment,
   follow,
   profile,
+  like,
 });
 
 

@@ -43,10 +43,10 @@ export const getRecipe = (id) => async (dispatch) => {
 
 export const getAllRecipes = () => async (dispatch) => {
     const response = await fetch('/api/recipes')
-    const data = await response.json();
+    const { recipes } = await response.json();
 
     if (response.ok) {
-        await dispatch(setAllRecipes(data));
+        await dispatch(setAllRecipes(recipes));
         return response;
     } else {
         return ['An error occurred. Please try again.']
@@ -165,29 +165,25 @@ export const createRecipePhoto = (payload) => async (dispatch) => {
 };
 
 export default function reducer(state = {}, action) {
-    let newState = {}
+    let newState = { ...state }
     switch (action.type) {
         case SET_RECIPE:
-            newState = { ...state };
             newState[action.recipe.id] = action.recipe;
             return newState;
         case SET_ALL_RECIPES:
-            action.recipes.recipes.forEach(recipe => {
+            action.recipes.forEach(recipe => {
                 newState[recipe.id] = recipe;
             });
-            return { ...state, ...newState };
+            return newState;
         case ADD_RECIPE:
-            newState = { ...state };
             if (!state[action.recipe.id]) {
                 newState = { ...state, [action.recipe.id]: action.recipe };
             }
             return newState;
         case EDIT_RECIPE:
-            newState = { ...state };
             newState[action.recipe.id] = action.recipe;
             return newState;
         case DELETE_RECIPE:
-            newState = { ...state };
             delete newState[action.recipeId];
             return newState;
         default:

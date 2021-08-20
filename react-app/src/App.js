@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 
 import Footer from './components/Footer/Footer';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
