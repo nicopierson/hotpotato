@@ -2,7 +2,7 @@
 {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 27%;
     padding: 0 20px 0 20px;
 }
 
@@ -10,16 +10,17 @@
 {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     padding: 0 0px 0 20px;
-}
-
-.card_form h3
-{
-    margin-bottom: 10px;
 }
 
 .ingredients_item, .measurements_item
 {
     margin-bottom: 5px;
+}
+
+.add_container
+{
+    display: flex;
+    flex-direction: column;
 }
