@@ -1,3 +1,5 @@
+import { getRecipe } from "./recipe";
+
 const SET_COMMENT = 'comments/setComment';
 const SET_ALL_COMMENTS = 'comments/setAllComments';
 const DELETE_COMMENT = 'comments/deleteComment';
@@ -54,13 +56,14 @@ export const getAllComments = () => async (dispatch) => {
 }
 
 // TODO Test State
-export const deleteComment = (id) => async (dispatch) => {
+export const deleteComment = (id, recipe_id) => async (dispatch) => {
     const response = await fetch(`/api/comments/${id}`, {
         method: 'DELETE',
     });
 
     if (response.ok) {
         await dispatch(deleteAComment(id));
+        await dispatch(getRecipe(recipe_id))
         return response;
     } else {
         return ['An error occurred. Please try again.']
@@ -77,6 +80,7 @@ export const updateComment = (payload) => async(dispatch) => {
     if (response.ok) {
         const comment = await response.json();
         await dispatch(editComment(comment));
+        await dispatch(getRecipe(payload.recipe_id))
         return comment;
     } else {
         return ['An error occurred. Please try again.']
@@ -94,6 +98,7 @@ export const createComment = (payload) => async (dispatch) => {
     if (response.ok) {
         const comment = await response.json();
         await dispatch(addComment(comment));
+        await dispatch(getRecipe(payload.recipe_id))
         return comment;
     } else {
         return ['An error occurred. Please try again.']
