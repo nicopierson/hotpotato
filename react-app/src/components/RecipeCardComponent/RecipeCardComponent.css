@@ -1,3 +1,7 @@
+.recipe-card-wrapper{
+  flex: 26%;
+}
+
 .recipe-card{
   position: relative;
   min-height: 220px;

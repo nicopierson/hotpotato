@@ -7,7 +7,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id}) =
   let profile_image;
 
   return (
-    <>
+    <div className="recipe-card-wrapper">
       <div style={{"margin-top":"50px"}}> </div>
       <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-card">
         <div className="recipe-card__image-container">
@@ -25,13 +25,13 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id}) =
           </div>
           <div className="rc-mc-likes-container">
             <div className="rc-mc__likes">
-              {`${likes? likes: 353}`}
+              {`${likes? likes: 23421}`}
             </div>
             {/* <i className="fas fa-heart rc-mc__likes-icon"> </i> {likes} */}
             <i className="far fa-heart rc-mc__likes-icon"></i>
           </div>
 
         </div>
-    </>
+    </div>
   )
 }

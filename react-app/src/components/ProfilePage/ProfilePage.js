@@ -8,6 +8,9 @@ import  RecipeCardComponent  from '../RecipeCardComponent/';
 export const ProfilePage = () => {
   const dispatch = useDispatch()
   const {userId} = useParams();
+  // state recipesToDisplay
+  // if recipesToDisplay === users, show users
+  // if recipesToDisplay === likes, show recipe users liked
 
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
 
@@ -20,8 +23,11 @@ export const ProfilePage = () => {
   return (
     <div>
       <div style={{"margin-top":"50px"}}> hello from profile</div>
+      {/*  */}
+
+      {/* render users recipes */}
       {recipeDetails &&
-        <div>
+        <div className="users-recipes-cards">
           {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes}/>))}
         </div>}
 
