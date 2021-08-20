@@ -68,7 +68,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'appreciations': len(self.like_relation),
+            'followings': len(self.follows.all()), 
+            'followers': len(self.followers.all()),
         }
         
     # not useful to get all followers as there will be many repeats

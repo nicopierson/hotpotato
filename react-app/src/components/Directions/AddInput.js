@@ -6,7 +6,6 @@ import { createDirection } from '../../store/recipe';
 const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
     const [addDirection, setAddDirection] = useState('');
-    //! REMOVE recipeId from params LATER: with useParams to get from the url
 
     const steps = recipeDirections;
     const numberSteps = steps[steps.length - 1].steps + 1;

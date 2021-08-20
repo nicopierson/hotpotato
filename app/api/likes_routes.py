@@ -37,9 +37,10 @@ def recipe_id_post(id):
     return {"like": {"recipe_id": id, "user_id": current_user.id}}
 
 
+
 @like_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def recipe_id_delete(id):
+def like_id_delete(id):
     like = Like.query.get_or_404(id)
 
     db.session.delete(like)
