@@ -7,11 +7,10 @@ const AddIngredients = ({ recipeIngredients, recipeId }) => {
     const [showAdd, setShowAdd] = useState(false);
     
     return (
-        <div>
+        <>
             {showAdd &&
                 <AddIngredientsInput 
                     setShowAdd={setShowAdd}
-                    recipeIngredients={recipeIngredients}
                     recipeId={recipeId} 
                 />
             }
@@ -25,7 +24,7 @@ const AddIngredients = ({ recipeIngredients, recipeId }) => {
                     </button>
                 </div>
             }
-        </div>
+        </>
     )
 };
 

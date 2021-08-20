@@ -119,6 +119,7 @@
 .card_form
 {
     display: flex;
+    width: 100%;
 }
 
 /* Header Styling */
