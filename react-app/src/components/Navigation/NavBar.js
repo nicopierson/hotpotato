@@ -40,7 +40,11 @@ const NavBar = () => {
               className="">
                 Explore
               </NavLink></li>
-            <li>Your Feed</li>
+            <li><NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'
+              className="">
+                Your Feed
+              </NavLink>
+            </li>
           </>
           }
         </div>
