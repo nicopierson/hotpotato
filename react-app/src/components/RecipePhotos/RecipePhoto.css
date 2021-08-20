@@ -9,14 +9,7 @@
     
 }
 
-.recipe-carousel-images{
-    width: 100%;
-    min-height: 100%;
-    display: block;
-    box-sizing: border-box;
-   
-    
-}
+
 
 .recipe-carousel{
     width: 100%;
@@ -34,10 +27,7 @@
     
 }
 
-.recipe-carousel-with-edit{
-    display: flex;
-    flex-direction: column;
-}
+
 
 .recipe-carousel-edit-form{
     display: flex;
@@ -72,20 +62,11 @@
     color: white;
 }
 
-.recipe-carousel-edit{  
-    border-style: none;
-    right: 10px;
-    cursor: pointer;
-    height: 15px;
-    background-color: rgb(146, 228, 139);
-    color: white;
-    width: 30px;
-    border-radius: 2px;
-    text-align: center;
-    height: 30px;
-    margin-bottom: 25px;
-  
-}
+
+
+
+
+
 
 .recipe-carousel-cancel{
     border-style: none;
@@ -99,3 +80,102 @@
     text-align: center;
     height: 30px;
 }
+
+.rec-carousel-item {
+    max-height: 350px;
+    object-fit: cover;
+    width: 100%;
+}
+.right-arrow{   
+     cursor: pointer;        
+     font-size: large; 
+     position: absolute;
+     right: 15px;  
+     color: white;  
+}
+.left-arrow{     
+     cursor: pointer;
+     font-size: large; 
+     position: absolute;   
+     left: 15px;   
+     z-index: 2; 
+     color: white;
+}
+
+.carousel-button{
+    background: none;
+    border: none;    
+}
+
+.rec-pagination {
+    position: absolute;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center; 
+    
+}
+
+/* .rec-pagination:hover{
+
+} */
+
+.recipe-carousel-images{   
+    min-height: 100%;
+    display: block;
+    background-color: black;
+    object-fit: cover;
+   
+}
+
+.rec-carousel-wrapper{
+    padding: 0px;
+    margin: 0px;
+    position:relative;   
+    /* background-color: black; */
+}
+
+.rec-carousel{
+    min-height: 100%;
+    position: relative;    
+}
+
+.recipe-carousel-edit{  
+    border-style: none; 
+    cursor: pointer;
+    height: 15px;
+    background-color: rgb(146, 228, 139);
+    color: white;
+    width: 30px;
+    border-radius: 2px;
+    text-align: center;
+    height: 30px;  
+    position: relative;
+    z-index: 2;
+    left: 15px;
+    top: 10px;
+ 
+  
+}
+
+.rec .rec-dot{
+    height: 2px;    
+    border-radius: 0px;
+    background-color: white;
+    color: white;
+    border: none;
+    border-style: none;
+    box-shadow: none;
+}
+
+.recipe-carousel-with-edit {
+    padding: 0px;
+    margin: 0px;
+}
+
+    /* opacity: 0;
+    transition: opacity .2s, visibility .2s;
+    height: 100%; */
