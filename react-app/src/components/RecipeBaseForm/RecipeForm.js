@@ -34,10 +34,13 @@ export const RecipeForm = () => {
         user_id: userId
       }
       setErrors([]);
-      return dispatch(createRecipe(payload)).then( (data)=>{
-        setTimeout(()=>console.log("loading"), 1000)
-        history.push(`/view/recipe/${data.id}`);
-        window.location.reload();
+      dispatch(createRecipe(payload)).then( (data)=>{
+        // setTimeout(()=>console.log("loading"), 3000)
+        if(data){
+          history.push(`/view/recipe/${data.id}`);
+          window.location.reload();
+        }
+
       }).catch(async (res) =>{
         const data = res
         if(data && data.errors) setErrors(data.errors);

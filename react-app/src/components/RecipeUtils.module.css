@@ -10,7 +10,7 @@
     margin: 0;
     text-decoration: none;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     min-width: 75px;
     cursor: pointer;
     text-align: center;
@@ -79,7 +79,7 @@
     margin-right: 5px;
 }
 
-.delete_item 
+.delete_item
 {
     cursor: pointer;
     color: rgb(255, 0, 0, 0.6);
@@ -92,7 +92,7 @@
 }
 
 /* Container Styling */
-.card_container 
+.card_container
 {
     padding: 40px;
 }

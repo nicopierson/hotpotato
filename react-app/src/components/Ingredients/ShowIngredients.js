@@ -17,7 +17,7 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
             <div className={styleUtils.card_header}>
                 <h2>Ingredients</h2>
                 {isOwner &&
-                    <i 
+                    <i
                         onClick={() => setShowEdit(true)}
                         className='fas fa-edit'
                     >
@@ -32,15 +32,15 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                                 {ingredient.measurement &&
                                 <>
                                     { ingredient.measurement }
-                                    <span> of </span>
+
                                 </>
-                                }    
-                            </div>   
+                                }
+                            </div>
                             <div className={styles.ingredients_container}>
                                 { ingredient.ingredient }
                             </div>
                             {isOwner &&
-                                <i 
+                                <i
                                 className={`fas fa-minus-circle ${styleUtils.delete_item}`}
                                 onClick={(e) => handleDelete(e, ingredient.id)}
                                 ></i>
