@@ -8,6 +8,8 @@ import profile from './profile';
 import like from './like';
 
 
+
+
 const rootReducer = combineReducers({
   session,
   recipe,
@@ -15,6 +17,7 @@ const rootReducer = combineReducers({
   follow,
   profile,
   like,
+
 });
 
 
