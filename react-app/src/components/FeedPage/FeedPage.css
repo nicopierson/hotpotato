@@ -1,21 +1,39 @@
-.fpw-feed-container{
-  /* display: flex; */
-  /* width: 90%; */
-  /* margin: auto; */
-
+/* header and filter bar */
+.header-sort-container{
+  padding-top: 50px;
+  width:88%;
+  margin: auto;
+  border-bottom: 1px solid rgb(139, 139, 139);
+  display: flex;
+  justify-content: space-between;
 }
+
+.hsc__sort-container{
+  padding-right: 30px;
+  /* margin-bottom: 5px; */
+}
+
+.hsc__title{
+ padding-top: 12px;
+ font-size: 25px;
+}
+
+
+/* render users recipes based on who they follow */
 
 .fpw-feed-container__recipe-cards{
   /* flex: 50%; */
   display: flex;
   padding: 10px;
-
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 90%;
   margin: auto;
   align-items: flex-start;
+
 }
+
+
 
 .fpw-feed-container__recipe-cards::after{
   content: "  ";

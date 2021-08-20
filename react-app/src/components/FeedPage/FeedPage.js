@@ -22,16 +22,21 @@ export const FeedPage = () => {
   return (
     <div className="feed-page-wrapper">
       {/* banner (optional) */}
-      {/* header and filter bar */}
-      <div>
-        This is the title
-      </div>
 
 
-      {/* render users recipes based on who they follow */}
       <div className="fpw-feed-container">
+          {/* header and filter bar */}
+          <div className="header-sort-container">
+            <div className="hsc__title">View your follows & interests </div>
+            <div className="hsc__sort-container">
+              <div className = "hsc-sc__sort-label"> sort</div>
+              <div className = "hsc-sc__drop-down"> Most Recent </div>
+            </div>
+          </div>
+
           {recipeDetails &&
             <div className="fpw-feed-container__recipe-cards" >
+              {/* render users recipes based on who they follow */}
               {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
             </div>}
       </div>
