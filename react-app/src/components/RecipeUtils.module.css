@@ -8,7 +8,7 @@
     text-decoration: none;
     background: black;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 900;
     min-width: 75px;
     cursor: pointer;
@@ -17,7 +17,6 @@
     border: solid 1px #000;
 }
 
-
 .add_button:hover
 {
   background-color: rgb(255, 255, 255);
@@ -25,10 +24,18 @@
   color: #000;
 }
 
+.add_button_container
+{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
 .delete_item 
 {
     cursor: pointer;
     color: rgb(255, 0, 0, 0.6);
+    padding: 3px;
 }
 
 .delete_item:hover
@@ -38,11 +45,40 @@
 
 .card_container 
 {
-    padding: 30px;
+    padding: 40px;
 }
 
 .item_container
 {
     display: flex;
     justify-content: space-between;
+    padding: 4px;
+    font-weight: 600;
+}
+
+.item_container:hover
+{
+    background-color: #f5f5f5;
+}
+
+.card_header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    border-bottom: solid 1px #a5a5a5;
+}
+
+.card_header i
+{
+    cursor: pointer;
+    color: rgb(121, 121, 121);
+}
+
+.card_header i:hover
+{
+    color: rgb(0, 0, 0);
 }
