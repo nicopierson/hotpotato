@@ -8,6 +8,7 @@ const ShowComments = ({ comments, recipeId }) => {
     const dispatch = useDispatch();
 
     const userId = useSelector(state => state.session.user?.id);
+    const currentUserName = useSelector(state => state.session.user?.username)
 
     const [comment, setComment] = useState('');
     const [editComment, setEditComment] = useState(comment)
@@ -65,6 +66,7 @@ const ShowComments = ({ comments, recipeId }) => {
             <div className="new-comment-container">
                 <div>
                     <img className="new-comment-avatar" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt='chef'/>
+                    <div className="current-user-username">{currentUserName}</div>
                 </div>
                 <div className="new-comment-form-container">
                     <form

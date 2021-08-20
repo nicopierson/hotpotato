@@ -59,7 +59,7 @@
 }
 
 .comment-user {
-    font-weight: 900;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
@@ -67,4 +67,9 @@
     position: block;
     float: right;
     top: 0;
+}
+
+.current-user-username {
+    text-align: center;
+    font-weight: 700;
 }
