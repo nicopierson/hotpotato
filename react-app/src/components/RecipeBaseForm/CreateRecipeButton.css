@@ -1,5 +1,5 @@
 .add-recipe-base-button{
-  padding: 7px 10px 7px 10px;
+  padding: 8px 12px 8px 12px;
   background-color: rgb(255, 255, 255);
   border-style: none;
   border-radius: 2px;
@@ -10,11 +10,19 @@
   color: rgb(0, 0, 0);
   font-size: 12px;
   font-weight: bold;
-  min-width: 75px;
+  min-width: 10px;
   text-align: center;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   border: 1px solid rgb(212, 212, 212);
+  display: flex;
+  justify-content: center;
+}
+
+.add-recipe-base-icon{
+  padding-top: 1.5px;
+  margin-right: 5px;
+
 }
 
 .add-recipe-base-button:hover{

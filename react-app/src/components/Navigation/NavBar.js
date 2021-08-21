@@ -58,9 +58,9 @@ const NavBar = () => {
               key="search-bar"
               placeholder={"search for a creation here"}
             />
-            <div className="navbar-icon-search">
-              <i className="fas fa-search navbar-icon-search--icon"></i>
-            </div>
+
+            <i className="fas fa-search navbar-icon-search--icon navbar-icon-search"></i>
+
           </div>
 
 
