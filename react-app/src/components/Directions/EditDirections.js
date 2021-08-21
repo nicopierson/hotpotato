@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getRecipe, updateDirection } from '../../store/recipe';
+import { getRecipe, updateDirection, deleteDirection } from '../../store/recipe';
 
 import styles from './EditDirections.module.css';
 import styleUtils from '../RecipeUtils.module.css';
@@ -48,11 +48,6 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
         setShowEdit(false);
     };
 
-    const getNumberOfRows = (e) => {
-        console.log(e.target.scrollHeight);
-        return e.target.innerHTML.split('\n').length;
-    };
-
     const handleDirections = (e, idx) => {
         e.preventDefault();
 
@@ -62,6 +57,11 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
         setDirections(directionsCopy);
     };
 
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        dispatch(deleteDirection(id, recipeId));
+    };
+
     /* Unauthorized User */
     if (!isOwner) return <h2>403 Forbidden</h2>;
         
@@ -69,7 +69,7 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
         <div>
             <div className={styleUtils.card_inner_container}>
                 <div className={styleUtils.card_header}>
-                    <h2>Edit Directions</h2>
+                    <h2>Edit Preparations</h2>
                 </div>
                 <form 
                     className={`${styleUtils.card_form} ${styles.card_form}`}
@@ -79,7 +79,15 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
                         { recipeDirections.length > 0 &&
                             recipeDirections.map((direction, idx) => (
                                 <div key={ directions.steps } className={styles.directions_item}>
-                                    <label htmlFor={`step-${idx + 1}`}>Step { idx + 1 } </label>
+                                    <div>
+                                        <label htmlFor={`step-${idx + 1}`}>Step { idx + 1 }</label>
+                                        {isOwner &&
+                                            <i 
+                                                className={`fas fa-minus-circle ${styleUtils.delete_item}`}
+                                                onClick={(e) => handleDelete(e, direction.id)}
+                                            ></i>
+                                        }
+                                    </div>
                                     <textarea
                                         type='text'
                                         name={`step-${idx + 1}`}

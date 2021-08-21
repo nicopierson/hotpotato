@@ -1,16 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { deleteDirection } from '../../store/recipe';
-
 import styles from './ShowDirections.module.css';
 import styleUtils from '../RecipeUtils.module.css';
 
 const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
-    const dispatch = useDispatch();
-
-    const handleDelete = (e, id) => {
-        e.preventDefault();
-        dispatch(deleteDirection(id, recipeId));
-    };
 
     return (
         <div className={styles.directions_inner_container}>
@@ -29,17 +20,12 @@ const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
                     recipeDirections.map((direction, idx) => (
                         <div key={ direction.id } className={styles.directions_item}>
                             <div className={styles.directions_step}>
-                                <h4>Step { idx + 1 }</h4>
+                                <h3>Step { idx + 1 }</h3>
                                 <div>
                                     { direction.directions }
                                 </div> 
                             </div>
-                            {isOwner &&
-                                <i 
-                                    className={`fas fa-minus-circle ${styleUtils.delete_item}`}
-                                    onClick={(e) => handleDelete(e, direction.id)}
-                                ></i>
-                            }
+
                         </div>
                     ))
                 }

@@ -20,3 +20,9 @@
     font-weight: 600;
     padding: 5px;
 }
+
+.directions_item div
+{
+    display: flex;
+    justify-content: space-between;
+}
