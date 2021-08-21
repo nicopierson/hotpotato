@@ -29,19 +29,22 @@ const NavBar = () => {
         <div className="navbar-li navbar-title-and-feed">
           <li>
             <NavLink to='/' exact={true} activeClassName='active'
-            className="navbar-title">
+              className="navbar-title navbar-btn-container"
+            >
               HOTPOTATO
             </NavLink>
           </li>
           {user &&
           <>
-            <li>
-              <NavLink to='/view/recipe/1' exact={true} activeClassName='active'
-              className="">
+            <li className="navbar-btn-container">
+              <NavLink to='/view/recipe/1' exact={true}
+              activeClassName='active'
+                className="navbar-btn">
                 Explore
               </NavLink></li>
-            <li><NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'
-              className="">
+            <li className="navbar-btn-container">
+            <NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'
+              className="navbar-btn">
                 Your Feed
               </NavLink>
             </li>
@@ -55,9 +58,9 @@ const NavBar = () => {
               key="search-bar"
               placeholder={"search for a creation here"}
             />
-            <div className="navbar-icon-search">
-              <i className="fas fa-search navbar-icon-search--icon"></i>
-            </div>
+
+            <i className="fas fa-search navbar-icon-search--icon navbar-icon-search"></i>
+
           </div>
 
 
@@ -67,38 +70,62 @@ const NavBar = () => {
           {!user &&
           <>
             <li>
-              <NavLink to='/login' exact={true} activeClassName='active'>
+              <NavLink to='/login' exact={true}
+              activeClassName='active'
+              className="navbar-btn navbar-btn-signed-out"
+              id="navbar-login-btn"
+              >
                 Login
               </NavLink>
             </li>
             <li>
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+              <NavLink to='/sign-up' exact={true}
+              activeClassName='active'
+                className="navbar-btn navbar-btn-signed-out"
+              >
                 Sign Up
               </NavLink>
             </li>
           </>
           }
           {!user &&
-          <button
-            id="demo-login-btn"
-            onClick={demoLogin}
-          >Demo Login</button>
-          }
+          <>
+            <button
+              id="demo-login-btn"
+              onClick={demoLogin}
+            >Demo Login</button>
+
+          </>}
           {user &&
           <>
             <li className="button-fix navbar-li">
               <CreateRecipeButton />
             </li>
-            <li className="logout-btn navbar-li">
-              <LogoutButton />
+
+            <li className="profile-avatar">
+              <img className="profile-avatar__image" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef.png" />
+              {/* <div className="profile-background"></div> */}
+              <div className="profile-avatar__content">
+                <div>profile</div>
+                <div>more</div>
+                <div>more</div>
+                <div>
+                  <LogoutButton />
+                </div>
+
+
+              </div>
+
+
             </li>
+            {/* <li className="logout-btn navbar-li">
+              <LogoutButton />
+            </li> */}
+
+
+
           </>
           }
-          {/* <li>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li> */}
         </div>
       </ul>
     </nav>
