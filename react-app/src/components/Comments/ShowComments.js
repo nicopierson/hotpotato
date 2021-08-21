@@ -140,12 +140,12 @@ const ShowComments = ({ comments, recipeId }) => {
                                     {comment.user_id === userId &&
                                         <>
                                             <i
-                                                className='fas fa-minus-circle comment-utilities'
+                                                id="delete-comment-btn" className='fas fa-minus-circle comment-utilities'
                                                 onClick={(e) => handleDelete(e, comment.id)}
                                             ></i>
                                             <i
                                                 onClick={(e) => handleEdit(e, comment)}
-                                                className='fas fa-edit comment-utilities'
+                                                id="edit-comment-btn" className='fas fa-edit comment-utilities'
                                             >
                                             </i>
                                         </>
