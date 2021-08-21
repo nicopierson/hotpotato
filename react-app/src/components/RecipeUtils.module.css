@@ -106,11 +106,6 @@
     font-size: 18px;
 }
 
-.item_container:hover
-{
-    background-color: #f5f5f5;
-}
-
 .card_inner_container
 {
     width: 100%;

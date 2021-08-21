@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getRecipe, updateIngredient } from '../../store/recipe';
+import { getRecipe, updateIngredient, deleteIngredient } from '../../store/recipe';
 
 import styles from './EditIngredients.module.css';
 import styleUtils from '../RecipeUtils.module.css';
@@ -42,6 +42,11 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
             dispatch(updateIngredient(payload));
         });
         setShowEdit(false);
+    };
+
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        dispatch(deleteIngredient(id, recipeId));
     };
 
     const handleIngredients = (e, idx) => {
@@ -98,6 +103,12 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                                     value={ingredients[idx]}
                                 > 
                                 </input>
+                                {isOwner &&
+                                    <i
+                                    className={`fas fa-minus-circle ${styleUtils.delete_item}`}
+                                    onClick={(e) => handleDelete(e, ingredient.id)}
+                                    ></i>
+                                }
                             </div>
                         ))
                     }
