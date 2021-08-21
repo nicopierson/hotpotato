@@ -2,8 +2,8 @@
 {
     display: flex;
     flex-direction: column;
-    width: 27%;
-    padding: 0 20px 0 20px;
+    width: 47%;
+    padding: 0 10px 0 20px;
 }
 
 .ingredients_container
@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0 0px 0 20px;
+    padding: 0 0px 0 10px;
 }
 
 .ingredients_item, .measurements_item
