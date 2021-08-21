@@ -10,9 +10,9 @@
 
 .directions_item textarea
 {
-    width: 100%;
+    width: 95%;
     resize: none;
-    padding: 5px;
+    padding: 10px;
 }
 
 .directions_item label

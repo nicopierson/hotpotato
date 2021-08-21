@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { createDirection } from '../../store/recipe';
 
 import styleUtils from '../RecipeUtils.module.css';
+import styles from './AddInput.module.css';
 
 const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
@@ -11,6 +12,8 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
 
     const steps = recipeDirections;
     const numberSteps = steps[steps.length - 1].steps + 1;
+
+    const ROW_HEIGHT = 4;
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -24,16 +27,17 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     };
 
     return (
-        <div>
-            <div className={styleUtils.card_form}>
-                <input
+        <div className={styles.direction_add_container}>
+            <div className={styles.direction_textarea}>
+                <textarea
                     type='text'
                     name='Direction'
                     onChange={(e) => setAddDirection(e.target.value)}
                     value={addDirection}
                     placeholder='Add a new direction...'
+                    rows={ROW_HEIGHT}
                 >
-                </input>
+                </textarea>
             </div>
              <div className={styleUtils.edit_items_buttons}>
                 <button
