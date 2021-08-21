@@ -212,8 +212,8 @@ button#demo-login-btn:hover {
     -moz-appearance: none;
     /* display: none; */
     z-index: 1;
-    position: absolute;
-    margin-right: 0px;
+    /* position: absolute; */
+    margin-right: 12px;
 }
 
 .logout-style-button:hover {

@@ -99,9 +99,10 @@ const NavBar = () => {
           {user &&
           <>
           {/* temporary logout, delete later */}
-            <div>
+            <li>
               <LogoutButton />
-            </div>
+            </li>
+
             <li className="button-fix navbar-li">
               <CreateRecipeButton />
             </li>
