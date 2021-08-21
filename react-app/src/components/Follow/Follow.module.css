@@ -1,0 +1,62 @@
+.follow_container
+{
+    width: 95%;
+}
+
+.follow_container button
+{
+    font-size: 15px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 5px;
+    transition: .3s;
+}
+
+.follow_container .button_follow
+{
+    background-color: rgb(65, 65, 65);
+    color: #fff;
+}
+
+.follow_container .button_followed
+{
+    background-color: #d5d5d5;
+    color: #000;
+}
+
+.follow_container button.button_follow:hover
+{
+    cursor: pointer;
+    background-color: #000;
+}
+
+.follow_container button.button_followed:hover
+{
+    cursor: pointer;
+    background-color: rgb(252, 74, 74);
+    color: #000;
+}
+
+/* can not use transitions on display: none/content, but can use for visibility */
+.follow_container button.button_followed:hover > span.text_unfollow
+{
+    display: contents;
+}
+
+.follow_container button.button_followed:hover > span.text_following,
+.follow_container button.button_followed > span.text_unfollow
+{
+    display: none;
+}
+
+.follow_container i
+{
+    margin-right: 10px;
+}
+
+

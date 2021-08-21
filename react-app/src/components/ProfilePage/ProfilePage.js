@@ -3,6 +3,7 @@ import './ProfilePage.css'
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
+
 import  RecipeCardComponent  from '../RecipeCardComponent/';
 import Profile from '../Profile'
 
