@@ -1,4 +1,5 @@
-import styles from './ProfileCard.module.css';
+import Follow from '../Follow';
+
 import profileImg from '../../assets/images/demo_profile.png';
 
 import './ProfileCard.css'
@@ -20,8 +21,7 @@ const ProfileCard = ({ profile }) => {
                 <i className='far fa-envelope'></i>
                 { profile.email }
             </div>
-           
-            
+           <Follow />
             <div className='profile-list-item '>
                 <div >
                     Appreciations
