@@ -6,6 +6,8 @@ import { getProfile } from '../../store/profile';
 
 import ProfileCard from './ProfileCard';
 
+import './ProfileCard.css'
+
 const Profile = () => {
     const { userId } = useParams();
 
@@ -21,10 +23,8 @@ const Profile = () => {
     }, [dispatch, userId]);
 
     return (
-        <div>
-            <br/>
-            <br/>
-            <br/>
+        <div className='outer-div'>
+            
             {profile &&
                 <ProfileCard 
                     profile={profile}
