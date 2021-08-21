@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -43,7 +44,12 @@ const LoginForm = () => {
             <div className="form-input">
               <div className="form-title">Sign In</div>
               <div className="already-signed-up">New User?
-                <div className="already-signed-up-btn">Create an Account</div>
+              <NavLink to='/sign-up' exact={true}
+                activeClassName='active'
+                className="navbar-btn navbar-btn-signed-out"
+              >
+                Create an Account
+              </NavLink>
               </div>
               <div className="form-input-label">
                 <label htmlFor="email">Email</label>
