@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment, deleteComment, getAllComments, updateComment } from '../../store/comments';
+import { NavLink } from 'react-router-dom';
+
 import './Comments.css'
 
 
 const ShowComments = ({ comments, recipeId }) => {
     const dispatch = useDispatch();
 
+    const user = useSelector(state => state.session.user);
     const userId = useSelector(state => state.session.user?.id);
     const currentUserName = useSelector(state => state.session.user?.username)
 
@@ -63,6 +66,7 @@ const ShowComments = ({ comments, recipeId }) => {
 
     return (
         <div className="comment-container">
+            {user && 
             <div className="new-comment-container">
                 <div>
                     <img className="new-comment-avatar" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt='chef'/>
@@ -85,6 +89,31 @@ const ShowComments = ({ comments, recipeId }) => {
                     </form>
                 </div>
             </div>
+            }
+            {!user &&
+            <div className="join-the-conversation-container">
+                <div className="join-the-conversation">
+                    <span> 
+                        <NavLink to='/sign-up' exact={true} 
+                        activeClassName='active' 
+                        id="join-the-conversation-signup">
+                            Sign Up
+                        </NavLink>
+                    </span>
+                    <span>or</span>
+                    <span> 
+                        <NavLink to='/login' exact={true} 
+                        activeClassName='active' 
+                        id="join-the-conversation-login">
+                            Login
+                        </NavLink>
+                    </span>
+                    <span>to join the conversation</span>
+                </div>
+                <div className="join-the-conversation-links">
+                </div>
+            </div>
+            }
             {comments &&
                 comments.map((comment) => (
                     <div className="single-comment">

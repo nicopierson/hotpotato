@@ -17,8 +17,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
 }
 
 .navbar-search {
@@ -59,21 +59,29 @@
 }
 
 .navbar-title-and-feed {
-    width: 300px;
+    width: auto;
     display: flex;
     justify-content: space-between;
 }
 
 .navbar-create-and-auth {
-    width: 350px;
+    width: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .navbar-title {
+    font-size: 25px;
     font-weight: 900;
+    color: black;
+    margin: 20px;
 }
+
+.navbar-title:hover {
+    border-bottom: 1px solid black;
+}
+
 
 .create-recipe-base-wrapper {
     display: flex;
@@ -101,7 +109,7 @@ button.logout-style-button {
     border-style: none;
     border-radius: 2px;
     padding: 10px;
-    margin: 0;
+    margin-left: 20px;
     text-decoration: none;
     background: black;
     color: white;
@@ -114,12 +122,18 @@ button.logout-style-button {
     -moz-appearance: none;
 }
 
+button.logout-style-button:hover {
+    background: white;
+    color: black;
+}
+
 button#demo-login-btn {
     display: inline-block;
     border-style: none;
     border-radius: 2px;
     padding: 10px;
     margin: 0;
+    margin-right: 20px;
     text-decoration: none;
     background: black;
     color: white;
@@ -130,4 +144,50 @@ button#demo-login-btn {
     text-align: center;
     -webkit-appearance: none;
     -moz-appearance: none;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
 }
+
+button#demo-login-btn:hover {
+    background: white;
+    color: black;
+}
+
+.navbar-btn {
+    font-weight: 900;
+    color: black;
+    margin: 20px;
+}
+
+.navbar-btn:hover {
+    border-bottom: 1px solid black;
+}
+
+.navbar-btn-container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-btn-signed-out {
+    margin: 20px;
+}
+
+#profile-avatar {
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+#navbar-login-btn {
+    margin-right: 0;
+}
+
+/* #profile-avatar:hover button.logout-style-button {
+    display: inline-block;
+}
+
+#profile-avatar:hover {
+    background-color: palegoldenrod;
+} */

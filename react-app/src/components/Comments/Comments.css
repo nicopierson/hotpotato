@@ -73,3 +73,37 @@
     text-align: center;
     font-weight: 700;
 }
+
+.join-the-conversation {
+    padding: 20px;
+    font-size: 30px;
+}
+
+.join-the-conversation-links {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.join-the-conversation-container {
+    padding: 20px;
+}
+
+#join-the-conversation-login {
+    padding: 10px;
+    font-weight: 700;
+    color: black;
+}
+
+#join-the-conversation-login:hover {
+    border-bottom: 1px solid black;
+}
+
+#join-the-conversation-signup {
+    padding: 10px;
+    font-weight: 700;
+    color: black;
+}
+
+#join-the-conversation-signup:hover {
+    border-bottom: 1px solid black;
+}
