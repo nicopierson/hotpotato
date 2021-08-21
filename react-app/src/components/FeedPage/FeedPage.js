@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import './FeedPage.css'
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllRecipesUserFollowsByNew } from '../../store/recipe';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
 import  RecipeCardComponent  from '../RecipeCardComponent/';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
@@ -13,10 +14,12 @@ export const FeedPage = () => {
 
   const user_id = useSelector(state => state.session.user?.id);
 
+  // if sort is new use recipeDetails = ....
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
 
   useEffect(() => {
     dispatch(getAllRecipesForGivenUser(user_id))
+    // dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch])
 
 
@@ -28,15 +31,12 @@ export const FeedPage = () => {
       <div className="fpw-feed-container">
           {/* header and filter bar */}
           <div className="header-sort-container">
-            <div className="hsc__title">View your follows & interests </div>
+            <div className="hsc__title"> <span>View your follows </span>  <span>& interests </span>  </div>
             <div className="hsc__sort-container">
-              <div className = "hsc-sc__sort-label"> sort</div>
-              <div className = "hsc-sc__drop-down">
-                {/* <div className= "hsc-sc-dd__select-sort"> Most Recent</div> */}
-                {/* <i class="fas fa-caret-down hhsc-sc-dd__sort-icon"></i> */}
-              </div>
-              <div>
-                {/* <DropDownMenu></DropDownMenu> */}
+              <div className ="hsc-sc__sort-label"> sort</div>
+
+              <div className="hsc-sc__drop-down">
+                <DropDownMenu></DropDownMenu>
               </div>
             </div>
           </div>

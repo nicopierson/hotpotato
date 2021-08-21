@@ -39,6 +39,10 @@ class Recipe(db.Model):
             'username': self.userRelation.username
         }
 
+    # def get_recipes_that_user_follows(self):
+    #     return {
+    #     }
+
     def get_recipes_with_all_relationship(self):
         return {
             'id': self.id,

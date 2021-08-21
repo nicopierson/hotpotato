@@ -1,4 +1,4 @@
-.navbar-container {
+.navbar-container-hotpotato {
     position: fixed;
     background-color: white;
     margin: 0;
@@ -9,6 +9,7 @@
     z-index: 1;
     display: flex;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    padding-top: 10px;
 }
 
 .navbar-ul {
@@ -82,6 +83,7 @@
 
 .navbar-title:hover {
     border-bottom: 1px solid black;
+    color: black;
 }
 
 
@@ -140,6 +142,7 @@ button#demo-login-btn:hover {
 
 .navbar-btn:hover {
     border-bottom: 1px solid black;
+    color: black;
 }
 
 .navbar-btn-container {
@@ -209,9 +212,8 @@ button#demo-login-btn:hover {
     -moz-appearance: none;
     /* display: none; */
     z-index: 1;
-    position: absolute;
-    top: 0;
-    /* margin-right: 0px; */
+    /* position: absolute; */
+    margin-right: 12px;
 }
 
 .logout-style-button:hover {
