@@ -1,7 +1,7 @@
 .recipe-card-wrapper{
   display: flex;
   flex: 20%;
-  /* align-self: flex-start; */
+  /* align-content: flex-start; */
 
 }
 
@@ -14,7 +14,7 @@
   padding-left:15px;
   padding-right: 15px;
 
-  width: 300px;
+  min-width: 300px;
 }
 
 /* recipe image  */

@@ -12,6 +12,8 @@
 .hsc__sort-container{
   /* padding-right: 30px; */
   /* margin-bottom: 5px; */
+  /* margin-top: 5px;*/
+  /* height: 20px; */
 }
 
 .hsc__title{
@@ -19,10 +21,9 @@
  font-size: 25px;
 }
 
-.hsc-sc__drop-down{
-  display: flex;
-  width: 100%;
-}
+
+
+
 
 .hsc-sc-dd__select-sort{
   margin-right: 5px;
@@ -39,7 +40,7 @@
   /* flex: 50%; */
   display: flex;
   padding: 10px;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   width: 90%;
   margin: auto;
@@ -49,7 +50,32 @@
 
 
 
-.fpw-feed-container__recipe-cards::after{
+/* .fpw-feed-container__recipe-cards::after{
   content: "  ";
   flex: 500;
+} */
+
+@media only screen and (max-width: 700px) {
+  .hsc__title{
+    /* padding-top: 12px; */
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+
+   }
+   .hsc__sort-container{
+     margin:0;
+   }
+
+   .hsc-sc__drop-down{
+    /* padding-top: 7px; */
+    /* height: 20px; */
+    font-size: 15px;
+  }
+
+  .hsc-sc__sort-label{
+    padding-top: 9px;
+    font-size: 15px;
+  }
+
 }
