@@ -3,7 +3,7 @@ import AddIngredientsInput from './AddIngredientsInput';
 
 import styleUtils from '../RecipeUtils.module.css';
 
-const AddIngredients = ({ recipeIngredients, recipeId }) => {
+const AddIngredients = ({ recipeId }) => {
     const [showAdd, setShowAdd] = useState(false);
     
     return (

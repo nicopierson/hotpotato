@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { createDirection } from '../../store/recipe';
 
+import styleUtils from '../RecipeUtils.module.css';
+
 const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
     const [addDirection, setAddDirection] = useState('');
@@ -23,27 +25,31 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
 
     return (
         <div>
-            <label>
-                Direction
-            </label>
-            <input
-                type='text'
-                name='Direction'
-                onChange={(e) => setAddDirection(e.target.value)}
-                value={addDirection}
-                placeholder='Add a new direction...'
-            >
-            </input>
-            <button
-                onClick={handleAdd}
-            >
-                Add
-            </button>
-            <button
-                onClick={() => setShowAdd(false)}
-            >
-                Cancel
-            </button>
+            <div className={styleUtils.card_form}>
+                <input
+                    type='text'
+                    name='Direction'
+                    onChange={(e) => setAddDirection(e.target.value)}
+                    value={addDirection}
+                    placeholder='Add a new direction...'
+                >
+                </input>
+            </div>
+             <div className={styleUtils.edit_items_buttons}>
+                <button
+                    className={`${styleUtils.button_style} ${styleUtils.cancel_button}`}
+                    onClick={() => setShowAdd(false)}
+                >
+                    Cancel
+                </button>
+                <button
+                    className={`${styleUtils.button_style} ${styleUtils.save_button}`}
+                    onClick={handleAdd}
+                >
+                    <i className='fas fa-check-circle'></i>
+                    <span>Add</span>
+                </button>
+            </div>
         </div>
     );
 };

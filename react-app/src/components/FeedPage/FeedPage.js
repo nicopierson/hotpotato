@@ -36,7 +36,7 @@ export const FeedPage = () => {
                 {/* <i class="fas fa-caret-down hhsc-sc-dd__sort-icon"></i> */}
               </div>
               <div>
-                <DropDownMenu></DropDownMenu>
+                {/* <DropDownMenu></DropDownMenu> */}
               </div>
             </div>
           </div>
