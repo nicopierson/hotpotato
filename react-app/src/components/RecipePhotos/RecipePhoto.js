@@ -16,11 +16,11 @@ const RecipePhoto = ({loaded}) => {
     const user = useSelector(state => state.session.user);
     const [recipeData] = Object.values(recipe);
     const {recipeId }  = useParams() 
-
+    
+    
     /* isOwner Boolean to check if recipe is owned by current user */    
     const recipeOwnerId = useSelector(state => state.recipe[recipeId]?.user_id);
     const isOwner = user?.id === recipeOwnerId;
-    // console.log(recipeData, 'recipeData_____DATA')
 
     const [editPhoto, setEditPhoto] = useState(false);
     const [imageUrl, setImageUrl] = useState('');
