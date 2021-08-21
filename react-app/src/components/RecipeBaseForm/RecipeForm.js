@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './CreateRecipeForm.css';
 import { createRecipe } from '../../store/recipe';
 import { useHistory } from 'react-router';
+import './CreateRecipeForm.css'
 
 export const RecipeForm = () => {
 
@@ -51,45 +52,56 @@ export const RecipeForm = () => {
 
   return (
     <div>
-      Hello from recipe form
       <form onSubmit={onFormSubmitCreateRecipeBase}>
 
-        <div className=""> Start Your Creation</div>
+        <div className="create-recipe-base-title"> Start Your Creation</div>
           <ul className="error-group">
               {errors.map((error, idx) => <li key={idx}>*{error}</li>)}
           </ul>
 
           {/* FORM INPUTS */}
-          <div className="">
-            <label className="">
-              Title:
-            </label>
-            <input className=""
-                placeholder="title your awesome creation here"
-                required
-                value={title}
-                onChange={setTitleE}
-                type="text" />
-          </div>
-
-          <div className="input-wrapper">
-            <label className="form-label-spacing">
-              iage url (optional)
-            </label>
-
-            <input className="input-box-style"
-                placeholder="www.mybestrecipeimage.com"
-                required
-                value={imageUrl}
-                onChange={setImageUrlE}
-                type="text" />
-            <div className="cover-photo-preview">
-              <img src={imageUrl} alt="Can't Find" />
+          <div className="create-recipe-base-card">
+            <div>
+              <label className="create-recipe-base-label">
+                Title
+              </label>
+            </div>
+            <div>
+              <input className="create-recipe-base-input"
+                  placeholder="example: 'tofu scramble'"
+                  required
+                  value={title}
+                  onChange={setTitleE}
+                  type="text" />
             </div>
           </div>
 
+        <div className="create-recipe-base-card">
+            <div>
+            <label className="create-recipe-base-label">
+                Image url (optional)
+              </label>
+            </div>
+            <div>
+            <input className="create-recipe-base-input"
+                  placeholder="www.tofuscrambleimage.com"
+                  required
+                  value={imageUrl}
+                  onChange={setImageUrlE}
+                  type="text" />
+            </div>
+          {imageUrl && 
+          <div id="create-recipe-base-image-preview"
+          className="create-recipe-base-card">
+              <img src={imageUrl} alt="Can't Find"
+              id="create-recipe-preview-image" />
+            </div>
+          }
+          </div>
+
           <div className="input-wrapper">
-            <button className="submit-list-button" type="submit">Start Creation</button>
+            <button className="submit-list-button"
+            id="start-creation-btn" type="submit">Start Creation</button>
           </div>
 
 
