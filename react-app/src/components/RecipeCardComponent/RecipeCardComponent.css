@@ -62,8 +62,8 @@
 }
 .pc__image-container{
   padding: 5px;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 .pc-ic__image{
   width: 100%;
@@ -108,7 +108,7 @@ background-color: rgb(216, 233, 248);
 /* like button */
 .rc-mc__likes-icon{
   padding-left: 3px;
-  padding-top: 0.5px;
+  padding-top: 3px;
 }
 /* .like-hover{
   visibility:hidden;
