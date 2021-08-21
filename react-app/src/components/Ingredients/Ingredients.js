@@ -7,6 +7,7 @@ import ShowIngredients from './ShowIngredients';
 import AddIngredients from './AddIngredients';
 
 import styles from './Ingredients.module.css';
+import styleUtils from '../RecipeUtils.module.css';
 
 const Ingredients = () => {
     const { recipeId } = useParams();
@@ -21,7 +22,7 @@ const Ingredients = () => {
     const recipeIngredients = useSelector(state => state.recipe[recipeId]?.recipe_ingredients);
 
     return (
-        <div className={styles.ingredients_container}>
+        <div className={styleUtils.card_container}>
             {!showEdit && 
                 <ShowIngredients 
                     setShowEdit={setShowEdit} 

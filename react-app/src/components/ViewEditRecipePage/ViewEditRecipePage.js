@@ -21,6 +21,11 @@ const ViewEditRecipePage = () => {
   const dispatch = useDispatch()
 
 
+  // const recipeDetails= useSelector((state) => state.recipe[recipeId]);
+
+ 
+
+
   // fetching the recipe based on ID and adding it to the store.
   useEffect(()=>{
     dispatch(getRecipe(recipeId))

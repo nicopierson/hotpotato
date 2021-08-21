@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import Carousel from 'react-elastic-carousel';
+import Carousel, {consts} from 'react-elastic-carousel';
 import { useParams } from 'react-router';
-import { Player } from 'video-react';
 import ReactPlayer from 'react-player'
-// import "node_modules/video-react/dist/video-react.css";
+
 import '../../../node_modules/video-react/dist/video-react.css'
 
 import * as recipeActions from '../../store/recipe';
@@ -37,6 +36,25 @@ const RecipePhoto = ({loaded}) => {
         return recipePhotos
     }
 
+    const getVideos = () => {
+        let recipeVideo
+
+        if(recipeData){
+            // console.log(recipeData.photos, 'Photos___________')
+            let data = recipeData.photos.map(item => {
+                return item.video_url
+            })
+
+            recipeVideo = data
+        }
+        // console.log(recipeVideo, 'videossss')
+
+        return recipeVideo
+    }
+
+    
+  
+
     const onSubmit = (e) => {
         e.preventDefault()
         const payload = {
@@ -50,11 +68,19 @@ const RecipePhoto = ({loaded}) => {
         setEditPhoto(false)
     }
 
+    const arrows = ({type, onClick, isEdge}) => {
+        const pointer = type === consts.PREV ? <div className='fas fa-chevron-circle-left left-arrow'></div> : <li className='fas fa-chevron-circle-right right-arrow'></li>
+
+        return (
+            <button onClick={onClick} disabled={isEdge} className='carousel-button'>{pointer}</button>
+        )
+
+    }
+
     // if(videoUrl){
     //     setAddVideo(true)
     // }
 
-   
 
     useEffect(() => {
         dispatch(recipeActions.getRecipe(recipeId))       
@@ -78,12 +104,23 @@ const RecipePhoto = ({loaded}) => {
                         
                         ></button>
                     }
-                    <Carousel className='recipe-carousel'>
+                {/* enableAutoPlay */}
+                    <Carousel className='recipe-carousel' renderArrow={arrows} 
+                        
+                    >
                         {getPhotos()?.map(recipe => (                            
                             <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>  
                         ))}                        
                        
-                        {addVideo &&
+                        {
+                        
+                            // <ReactPlayer url={videoUrl}></ReactPlayer>
+                            getVideos()?.map(video => (
+                                <ReactPlayer url={video}></ReactPlayer>
+                            ))
+                        }
+
+                        {addVideo && 
                             <ReactPlayer url={videoUrl}></ReactPlayer>
                         }
                        
