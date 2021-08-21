@@ -5,7 +5,7 @@
 # Hotpotato
 Hotpotato is a recipe portfolio App that assists users to discover and comment new recipes. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, and PostgresSQL. 
 
-* View the <a href='#'>Hotpotato</a> App Live
+* View the <a href='https://hotpotato-app.herokuapp.com/'>Hotpotato</a> App Live
 * It is modeled after the <a href='https://www.behance.net/'>Behance</a> App
 * Contains recipes for Vegetarians, Vegans, and Gluten-Free diets.
 
@@ -45,7 +45,7 @@ Discover and search for new recipes
 
 ### View Recipe
 Single recipe of name, photos, ingredients, directions, and comments
-![Wine Detail]()
+![Recipe Page]()
 
 ### Edit Recipe Ingredients
 Edit a recipe direction(s) in the database
@@ -160,27 +160,28 @@ useEffect(() => {
 
 ### Casey Tuer
 * caseytuer@gmail.com
-* [LinkedIn](https://www.linkedin.com/in/caseytuer/)
+* <a href="https://www.linkedin.com/in/caseytuer/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
 * [AngelList]()
-* [Github](https://www.linkedin.com/in/caseytuer/)
+* <a href="https://www.linkedin.com/in/caseytuer/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
 
 ### Leslie Owiti
 * leslieowiti@yahoo.com
-* [LinkedIn](https://www.linkedin.com/in/leslie-owiti-0b447952/)
+* <a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
 * [AngelList]()
-* [Github](https://github.com/leslieowititech)
+* <a href="https://github.com/leslieowititech"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
 
 ### Nico Pierson
 * nicogpt@gmail.com
-* [LinkedIn](https://www.linkedin.com/in/nico-pierson/)
+* <a href="https://www.linkedin.com/in/nico-pierson/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
 * [AngelList](https://angel.co/u/nico-gerard-pierson)
-* [Github](https://github.com/nicopierson)
+* <a href="https://github.com/nicopierson"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
+
 
 ### Wes Trinh
 * westrinh00@gmail.com
-* [LinkedIn]()
+* <a href="#"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
 * [AngelList]()
-* [Github](https://github.com/WesTrinhKL)
+* <a href="https://github.com/WesTrinhKL"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
 
 ## Special Thanks
 * Any Special Thanks
