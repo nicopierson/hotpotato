@@ -28,7 +28,7 @@ export const FeedPage = () => {
       {/* banner (optional) */}
 
 
-      <div className="fpw-feed-container">
+      {recipeDetails && <div className="fpw-feed-container">
           {/* header and filter bar */}
           <div className="header-sort-container">
             <div className="hsc__title"> <span>View your follows </span>  <span>& interests </span>  </div>
@@ -36,7 +36,7 @@ export const FeedPage = () => {
               <div className ="hsc-sc__sort-label"> sort</div>
 
               <div className="hsc-sc__drop-down">
-                <DropDownMenu></DropDownMenu>
+                {user_id && <DropDownMenu user_id={user_id}></DropDownMenu>}
               </div>
             </div>
           </div>
@@ -46,7 +46,8 @@ export const FeedPage = () => {
               {/* render users recipes based on who they follow */}
               {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
             </div>}
-      </div>
+      </div>}
+
 
 
     </div>
