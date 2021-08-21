@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import AddInput from './AddInput';
 
+import styleUtils from '../RecipeUtils.module.css';
+
 const AddDirection = ({ recipeDirections, recipeId }) => {
     const [showAdd, setShowAdd] = useState(false);
     
@@ -14,11 +16,14 @@ const AddDirection = ({ recipeDirections, recipeId }) => {
                 />
             }
             {!showAdd &&
-                <button
-                    onClick={() => setShowAdd(true)}
-                >
-                    Add New Direction
-                </button>
+                <div className={styleUtils.add_button_container}>
+                    <button
+                        onClick={() => setShowAdd(true)}
+                        className={`${styleUtils.button_style} ${styleUtils.add_button}`}
+                    >
+                        Add New Direction
+                    </button>
+                </div>
             }
         </div>
     )

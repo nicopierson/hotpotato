@@ -41,7 +41,6 @@ const Ingredients = () => {
             }
             {isOwner &&
                 <AddIngredients
-                    recipeIngredients={recipeIngredients}
                     recipeId={recipeId}
                 />
             }

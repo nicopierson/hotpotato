@@ -1,28 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getRecipe, updateDirection } from '../../store/recipe';
+import { getRecipe, updateDirection, deleteDirection } from '../../store/recipe';
 
 import styles from './EditDirections.module.css';
+import styleUtils from '../RecipeUtils.module.css';
 
 const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
     const dispatch = useDispatch();
     const [directions, setDirections] = useState([]);
     const [directionsId, setDirectionsId] = useState([]);
 
+    const ROW_HEIGHT = 4;
+    const [textAreaRows, setTextAreaRows] = useState([]);
+
     const directionNumber = recipeDirections.length;
+
     
     useEffect(() => {
         dispatch(getRecipe(recipeId));
         // if (recipe_directions && directions.length === 0) {
             const addDirections = [];
             const directionsId = [];
+            const textRows = [];
             recipeDirections.forEach(direction => {
                 addDirections.push(direction.directions);
                 directionsId.push(direction.id);
+                textRows.push(ROW_HEIGHT)
             });
             setDirections(addDirections);
             setDirectionsId(directionsId);
+            setTextAreaRows(textRows);
         }, [dispatch, directionNumber]);
          
     const handleEdit = (e) => {
@@ -42,9 +50,16 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
 
     const handleDirections = (e, idx) => {
         e.preventDefault();
+
+        // set direction state
         let directionsCopy =[ ...directions ];
         directionsCopy[idx] = e.target.value;
         setDirections(directionsCopy);
+    };
+
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        dispatch(deleteDirection(id, recipeId));
     };
 
     /* Unauthorized User */
@@ -52,34 +67,58 @@ const EditDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) =>
         
     return (
         <div>
-            <div className={styles.directions_inner_container}>
-                <div>
-                    <h2>Edit Directions</h2>
+            <div className={styleUtils.card_inner_container}>
+                <div className={styleUtils.card_header}>
+                    <h2>Edit Preparations</h2>
                 </div>
-                <form onSubmit={handleEdit}>
-                    { recipeDirections.length > 0 &&
-                        recipeDirections.map((direction, idx) => (
-                            <div key={ directions.steps } className={styles.directions_item}>
-                                <label>{ idx + 1 }. </label>
-                                <input
-                                    type='text'
-                                    name={`step-${idx + 1}`}
-                                    onChange={(e) => handleDirections(e, idx)}
-                                    value={directions[idx]}
-                                > 
-                                </input>
-                            </div>
-                        ))
-                    }
-                    <button type='submit'>Save Changes</button>
+                <form 
+                    className={`${styleUtils.card_form} ${styles.card_form}`}
+                    onSubmit={handleEdit}
+                >
+                    <div className={styles.directions_container}>
+                        { recipeDirections.length > 0 &&
+                            recipeDirections.map((direction, idx) => (
+                                <div key={ directions.steps } className={styles.directions_item}>
+                                    <div>
+                                        <label htmlFor={`step-${idx + 1}`}>Step { idx + 1 }</label>
+                                        {isOwner &&
+                                            <i 
+                                                className={`fas fa-minus-circle ${styleUtils.delete_item}`}
+                                                onClick={(e) => handleDelete(e, direction.id)}
+                                            ></i>
+                                        }
+                                    </div>
+                                    <textarea
+                                        type='text'
+                                        name={`step-${idx + 1}`}
+                                        onChange={(e) => handleDirections(e, idx)}
+                                        value={directions[idx]}
+                                        rows={textAreaRows[idx]}
+                                    > 
+                                    </textarea>
+                                </div>
+                            ))
+                        }
+                        <div className={styleUtils.edit_items_buttons}>
+                            <button
+                                className={`${styleUtils.button_style} ${styleUtils.cancel_button}`}
+                                onClick={() => setShowEdit(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button 
+                                className={`${styleUtils.button_style} ${styleUtils.save_button}`}
+                                type='submit'
+                            >
+                                <i className='fas fa-check-circle'></i>
+                                <span>Save</span>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div>
-                <button
-                    onClick={() => setShowEdit(false)}
-                >
-                    Cancel
-                </button>
+
             </div>
         </div>
     )

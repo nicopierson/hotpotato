@@ -1,0 +1,28 @@
+.directions_container
+{
+    width: 100%;
+}
+
+.directions_item
+{
+    margin-bottom: 6px;
+}
+
+.directions_item textarea
+{
+    width: 95%;
+    resize: none;
+    padding: 10px;
+}
+
+.directions_item label
+{
+    font-weight: 600;
+    padding: 5px;
+}
+
+.directions_item div
+{
+    display: flex;
+    justify-content: space-between;
+}

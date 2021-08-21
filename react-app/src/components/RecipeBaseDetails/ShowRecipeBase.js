@@ -3,7 +3,7 @@
 const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes}) => {
   return (
     <>
-      <div style={{backgroundImage: `url(${thumbnail_url})`, height:'100%', 'background-repeat':'no-repeat', 'background-size':'cover' }} className="recipe-base">
+      <div style={{backgroundImage: `url(${thumbnail_url})`, height:'100%', 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover' }} className="recipe-base">
         <div className="recipe-base--appear-on-hover">
           <div className="recipe-base-header">
             <div className="recipe-base-header__name">

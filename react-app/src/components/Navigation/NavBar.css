@@ -223,11 +223,7 @@ button#demo-login-btn:hover {
 
 
 .profile-avatar:hover .profile-avatar__content {
-    display: block;
-}
-
-.profile-avatar:hover .profile-avatar__image {
-    background-color: palegoldenrod;
+    display: inline-block;
 }
 
 

@@ -6,7 +6,7 @@ import EditDirections from './EditDirections';
 import ShowDirections from './ShowDirections';
 import AddDirection from './AddDirection';
 
-import styles from './Directions.module.css';
+import styleUtils from '../RecipeUtils.module.css';
 
 const Directions = () => {
     const { recipeId } = useParams();
@@ -21,7 +21,7 @@ const Directions = () => {
     const recipeDirections = useSelector(state => state.recipe[recipeId]?.recipe_directions);
 
     return (
-        <div className={styles.directions_container}>
+        <div className={styleUtils.card_container}>
             {!showEdit && 
                 <ShowDirections 
                     setShowEdit={setShowEdit} 
