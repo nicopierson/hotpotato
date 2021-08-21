@@ -15,10 +15,10 @@ const RecipePhoto = ({loaded}) => {
     const recipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
     const [recipeData] = Object.values(recipe);
-    const {recipeId }  = useParams() 
-    
-    
-    /* isOwner Boolean to check if recipe is owned by current user */    
+    const {recipeId }  = useParams()
+
+
+    /* isOwner Boolean to check if recipe is owned by current user */
     const recipeOwnerId = useSelector(state => state.recipe[recipeId]?.user_id);
     const isOwner = user?.id === recipeOwnerId;
 
@@ -41,7 +41,7 @@ const RecipePhoto = ({loaded}) => {
 
         if(recipeData){
             // console.log(recipeData.photos, 'Photos___________')
-            let data = recipeData.photos.map(item => {
+            let data = recipeData.photos?.map(item => {
                 return item.video_url
             })
 
@@ -52,8 +52,8 @@ const RecipePhoto = ({loaded}) => {
         return recipeVideo
     }
 
-    
-  
+
+
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -83,7 +83,7 @@ const RecipePhoto = ({loaded}) => {
 
 
     useEffect(() => {
-        dispatch(recipeActions.getRecipe(recipeId))       
+        dispatch(recipeActions.getRecipe(recipeId))
     },[dispatch])
 
     useEffect(() => {
@@ -91,50 +91,50 @@ const RecipePhoto = ({loaded}) => {
         setAddVideo(true)
     }
     },[videoUrl])
-   
+
     return (
-        <>            
+        <>
             {!editPhoto &&
-                < div className='recipe-carousel-with-edit'> 
+                < div className='recipe-carousel-with-edit'>
 
                     {isOwner &&
-                        <button 
+                        <button
                             onClick={() => setEditPhoto(true)}
                     className='fas fa-edit recipe-carousel-edit'
-                        
+
                         ></button>
                     }
                 {/* enableAutoPlay */}
-                    <Carousel className='recipe-carousel' renderArrow={arrows} 
-                        
+                    <Carousel className='recipe-carousel' renderArrow={arrows}
+
                     >
-                        {getPhotos()?.map(recipe => (                            
-                            <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>  
-                        ))}                        
-                       
+                        {getPhotos()?.map(recipe => (
+                            <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>
+                        ))}
+
                         {
-                        
+
                             // <ReactPlayer url={videoUrl}></ReactPlayer>
                             getVideos()?.map(video => (
                                 <ReactPlayer url={video}></ReactPlayer>
                             ))
                         }
 
-                        {addVideo && 
+                        {addVideo &&
                             <ReactPlayer url={videoUrl}></ReactPlayer>
                         }
-                       
+
                     </Carousel>
                 </div>
             }
-            {editPhoto && 
+            {editPhoto &&
                 <div className='recipe-carousel-images-edit'>
-                    <button 
+                    <button
                         onClick={() => setEditPhoto(false)}
                     className='fas fa-window-close recipe-carousel-cancel'
                         ></button>
                     <form onSubmit={onSubmit} className='recipe-carousel-edit-form'>
-                        <input 
+                        <input
                             placeholder='Enter image url'
                             value={imageUrl}
                             onChange={(e) => setImageUrl(e.target.value)}
@@ -149,8 +149,8 @@ const RecipePhoto = ({loaded}) => {
                             onChange={(e) => setVideoUrl(e.target.value)}
                             name='videoUrl'
                             className='recipe-carousel-edit-form-input'
-                        ></input>                       
-                        <button 
+                        ></input>
+                        <button
                             type='submit'
                         className='recipe-carousel-save-form-button fas fa-check-circle'
                     > Save</button>
