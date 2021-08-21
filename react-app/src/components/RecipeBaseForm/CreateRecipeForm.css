@@ -9,3 +9,24 @@
     margin-bottom: .25em;
 }
 
+.create-recipe-base-card {
+  padding: 1em;
+}
+
+.create-recipe-base-label {
+
+}
+
+.create-recipe-base-input {
+    width: 90%;
+    border: 0px solid lightgray;
+    border-bottom-width: .125px;
+    background-color: transparent;
+    padding: 1em;
+}
+
+#create-recipe-base-image-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
