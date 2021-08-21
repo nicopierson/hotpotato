@@ -105,7 +105,7 @@ const RecipePhoto = ({loaded}) => {
                         ></button>
                     }
                 {/* enableAutoPlay */}
-                    <Carousel className='recipe-carousel' renderArrow={arrows} 
+                    <Carousel className='recipe-carousel' enableAutoPlay renderArrow={arrows} 
                         
                     >
                         {getPhotos()?.map(recipe => (                            

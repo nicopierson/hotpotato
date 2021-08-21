@@ -84,7 +84,7 @@
 
 .rec-carousel-item {
     /* max-height: 100%; */
-    border: 1px solid green;
+    /* border: 1px solid green; */
     object-fit: cover;
     /* width: 100%; */
     /* height: 500px; */
@@ -131,7 +131,7 @@
     display: block;
     background-color: black;
     object-fit: cover;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* position: absolute; */
     height: 100%;
    
@@ -142,11 +142,16 @@
     margin: 0px;
     position:relative;   
     /* background-color: black; */
+    
 }
 
 .rec-carousel{
     min-height: 100%;
-    position: relative;    
+    position: relative;  
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background-color: black;   */
 }
 /* this is the edit button come back and sort out positioning*/
 .recipe-carousel-edit{  
@@ -159,12 +164,17 @@
     border-radius: 2px;
     text-align: center;
     height: 30px;  
-    /* position: absolute; */
+    position: absolute;
     z-index: 2;
-    left: 15px;
-    top: 10px;
+    /* left: 15px; */
+    /* top: 10px; */
  
   
+}
+
+.recipe-photos-container{
+    background-color: black;
+    
 }
 
 .rec .rec-dot{
@@ -182,6 +192,7 @@
     margin: 0px;
     /* border: 1px solid purple; */
     height: 100%;
+   
 }
 
     /* opacity: 0;
