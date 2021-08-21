@@ -1,50 +1,48 @@
 import styles from './ProfileCard.module.css';
 import profileImg from '../../assets/images/demo_profile.png';
 
+import './ProfileCard.css'
+
 const ProfileCard = ({ profile }) => {
 
 
 
     return (
-        <div className={styles.inner_container}>
-            <div className={styles.profile_img}>
-                <img alt='profile' src={profileImg} />
+        <div className='test-container'>
+            <div className='profile-image-div'>
+                <img alt='profile' src={profileImg} className='profile-image'/>
             </div>
-            <div className={styles.profile_username}>
+            <div className='profile-list-item '>
                 <i className='far fa-user'></i>
                 { profile.username }
             </div>
-            <div className={styles.profile_email}>
+            <div className='profile-list-item'>
                 <i className='far fa-envelope'></i>
                 { profile.email }
             </div>
-            <div className={styles.profile_following}>
-                
-            </div>
-            <div className={styles.profile_following_button}>
-                
-            </div>
-            <div className={styles.profile_appreciations}>
-                <div>
+           
+            
+            <div className='profile-list-item '>
+                <div >
                     Appreciations
                 </div>
-                <div>
+                <div >
                     { profile.appreciations }
                 </div>
             </div>
-            <div className={styles.profile_followers}>
-                <div>
+            <div className='profile-list-item'>
+                <div >
                     Followers
                 </div>
-                <div>
+                <div >
                     { profile.followers }
                 </div>
             </div>
-            <div className={styles.profile_following}>
-                <div>
+            <div className='profile-list-item'>
+                <div >
                     Followings
                 </div>
-                <div>
+                <div >
                     { profile.followings }
                 </div>
             </div>

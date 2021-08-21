@@ -37,3 +37,12 @@
   /* min-width: 100%; */
 
 }
+
+.user-side-bar-container{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+}
+
+
+

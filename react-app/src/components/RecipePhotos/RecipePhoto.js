@@ -41,7 +41,7 @@ const RecipePhoto = ({loaded}) => {
 
         if(recipeData){
             // console.log(recipeData.photos, 'Photos___________')
-            let data = recipeData.photos.map(item => {
+            let data = recipeData.photos?.map(item => {
                 return item.video_url
             })
 
