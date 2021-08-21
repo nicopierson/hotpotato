@@ -34,7 +34,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
           </div>
           <div className="rc-mc-likes-container">
             <div className="rc-mc__likes">
-              {`${likes? likes: 23421}`}
+              {`${likes}`}
             </div>
             {/* <i className="fas fa-heart rc-mc__likes-icon like-hover"> </i> */}
             <i className="far fa-heart rc-mc__likes-icon"></i>

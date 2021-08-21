@@ -94,6 +94,12 @@ class User(db.Model, UserMixin):
         # iterate through the people and get their recipes. then combine it.
         return sorted([recipe.get_users_recipes() for user in people_user_follow for recipe in user.recipeRelation], key=lambda i: i['id'], reverse=True)
 
+    @staticmethod
+    # this gets all newest recipes
+    def get_recipes_based_on_follow_order_by_likes(id):
+        people_user_follow = User.query.get_or_404(id).get_followings()
+        return sorted([recipe.get_users_recipes() for user in people_user_follow for recipe in user.recipeRelation], key=lambda i: i['likes'], reverse=True)
+
     @ staticmethod
     # not useful to get all followers as there will be many repeats
     # returns list of list of follow and follower

@@ -54,11 +54,24 @@ def get_peoples_feed_that_user_is_following(id):
 # SORT BY NEW RECIPES FOR FEED
 def get_peoples_feed_that_user_is_following_sort_new(id):
     """
-    Retrieves all the peoples' feed that the user is following from ordered by new
+    Retrieves all the peoples' feed that the user is following from ordered by NEW
     """
     if id == current_user.id:
 
         return jsonify({"feed_order_new": User.get_recipes_based_on_follow_order_by_id(id)})
+    return {'errors': ['Please view your own feed!']}, 409
+
+
+@login_required
+@follow_routes.route('/feed-for/<int:id>/sort/trending')
+# SORT BY NEW RECIPES FOR FEED
+def get_peoples_feed_that_user_is_following_sort_trending(id):
+    """
+    Retrieves all the peoples' feed that the user is following from ordered by TRENDING
+    """
+    if id == current_user.id:
+
+        return jsonify({"feed_order_trending": User.get_recipes_based_on_follow_order_by_likes(id)})
     return {'errors': ['Please view your own feed!']}, 409
 
 
