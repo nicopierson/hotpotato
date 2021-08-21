@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -10,51 +10,55 @@ const Follow = () => {
     const { userId } = useParams();
     const dispatch = useDispatch();
 
-    const followers = useSelector(state => state.follow.followers);
     const followings = useSelector(state => state.follow.followings);
 
     const isFollowing = +userId in followings;
     const [showFollow, setShowFollow] = useState(isFollowing);
 
-    console.log('Followers: ', followers);
-    console.log('Followings: ', followings);
-    console.log(isFollowing);
-    console.log('show follow: ', showFollow);
+    useEffect(() => {
+        setShowFollow(isFollowing);
+    }, [isFollowing]);
 
     const handleAdd = (e) => {
         e.preventDefault();
-        dispatch(createFollowing(userId))
+        dispatch(createFollowing(userId));
+        setShowFollow(true);
     };
 
     const handleRemove = (e) => {
         e.preventDefault();
         dispatch(removeFollowing(userId));
+        setShowFollow(false);
     };
 
     return (
         <div className={styles.follow_container}>
-            <button
-                onClick={handleAdd}
-                className={styles.button_follow}
-            >
-                <i className='fas fa-plus-circle'></i>
-                Follow
-            </button>
-            <button
-                onClick={handleRemove}
-                className={styles.button_followed}
-            >
-                <span
-                    className={styles.text_following}
+            {!showFollow &&
+                <button
+                    onClick={handleAdd}
+                    className={styles.button_follow}
                 >
-                    Following
-                </span>
-                <span
-                    className={styles.text_unfollow}
+                    <i className='fas fa-plus-circle'></i>
+                    Follow
+                </button>
+            }
+            {showFollow &&
+                <button
+                    onClick={handleRemove}
+                    className={styles.button_followed}
                 >
-                    Unfollow
-                </span>
-            </button>
+                    <span
+                        className={styles.text_following}
+                    >
+                        Following
+                    </span>
+                    <span
+                        className={styles.text_unfollow}
+                    >
+                        Unfollow
+                    </span>
+                </button>
+            }
         </div>
     )
 };
