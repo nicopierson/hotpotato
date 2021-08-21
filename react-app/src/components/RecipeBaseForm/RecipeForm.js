@@ -79,7 +79,7 @@ export const RecipeForm = () => {
         <div className="create-recipe-base-card">
             <div>
             <label className="create-recipe-base-label">
-                image url (optional)
+                Image url (optional)
               </label>
             </div>
             <div>
@@ -100,7 +100,8 @@ export const RecipeForm = () => {
           </div>
 
           <div className="input-wrapper">
-            <button className="submit-list-button" type="submit">Start Creation</button>
+            <button className="submit-list-button"
+            id="start-creation-btn" type="submit">Start Creation</button>
           </div>
 
 

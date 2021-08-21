@@ -13,10 +13,6 @@
   padding: 1em;
 }
 
-.create-recipe-base-label {
-
-}
-
 .create-recipe-base-input {
     width: 90%;
     border: 0px solid lightgray;
@@ -29,4 +25,31 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+#start-creation-btn {
+    float: right;
+    border-style: none;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 0;
+    margin-top: 16px;
+    margin-right: 20px;
+    text-decoration: none;
+    background: black;
+    color: white;
+    font-size: 12px;
+    font-weight: 900;
+    min-width: 75px;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+    margin-right: 1.6em;
+}
+
+#start-creation-btn:hover {
+    background: white;
+    color: black;
 }
