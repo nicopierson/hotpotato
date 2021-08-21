@@ -37,12 +37,12 @@ const NavBar = () => {
           {user &&
           <>
             <li className="navbar-btn-container">
-              <NavLink to='/view/recipe/1' exact={true} 
+              <NavLink to='/view/recipe/1' exact={true}
               activeClassName='active'
                 className="navbar-btn">
                 Explore
               </NavLink></li>
-            <li className="navbar-btn-container"> 
+            <li className="navbar-btn-container">
             <NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'
               className="navbar-btn">
                 Your Feed
@@ -58,9 +58,9 @@ const NavBar = () => {
               key="search-bar"
               placeholder={"search for a creation here"}
             />
-            <div className="navbar-icon-search">
-              <i className="fas fa-search navbar-icon-search--icon"></i>
-            </div>
+
+            <i className="fas fa-search navbar-icon-search--icon navbar-icon-search"></i>
+
           </div>
 
 
@@ -70,7 +70,7 @@ const NavBar = () => {
           {!user &&
           <>
             <li>
-              <NavLink to='/login' exact={true} 
+              <NavLink to='/login' exact={true}
               activeClassName='active'
               className="navbar-btn navbar-btn-signed-out"
               id="navbar-login-btn"
@@ -79,7 +79,7 @@ const NavBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/sign-up' exact={true} 
+              <NavLink to='/sign-up' exact={true}
               activeClassName='active'
                 className="navbar-btn navbar-btn-signed-out"
               >
@@ -94,17 +94,36 @@ const NavBar = () => {
               id="demo-login-btn"
               onClick={demoLogin}
             >Demo Login</button>
-            
+
           </>}
           {user &&
           <>
             <li className="button-fix navbar-li">
               <CreateRecipeButton />
             </li>
-            <li className="logout-btn navbar-li">
-              <LogoutButton />
+
+            <li className="profile-avatar">
+              <img className="profile-avatar__image" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef.png" />
+              {/* <div className="profile-background"></div> */}
+              <div className="profile-avatar__content">
+                <div>profile</div>
+                <div>more</div>
+                <div>more</div>
+                <div>
+                  <LogoutButton />
+                </div>
+
+
+              </div>
+
+
             </li>
-            <img src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef" id="profile-avatar"></img>
+            {/* <li className="logout-btn navbar-li">
+              <LogoutButton />
+            </li> */}
+
+
+
           </>
           }
         </div>

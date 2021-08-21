@@ -12,7 +12,7 @@ const RecipeFormModal = () => {
   const [verifyClose, setVerifyClose] = useState(false);
   return (
     <>
-      <button className="add-recipe-base-button" onClick={() => setShowModal(true)}> <i className="editicon fas fa-pen"></i> Add Recipe </button>
+      <button className="add-recipe-base-button" onClick={() => setShowModal(true)}> <i className="editicon fas fa-pen add-recipe-base-icon"></i> <div className=" add-recipe-base-text">Add Recipe</div>  </button>
 
       {verifyClose && (
         <ModalVerify  offVerify={() => setVerifyClose(false)} onClose={() => setShowModal(false)}>

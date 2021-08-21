@@ -9,7 +9,6 @@
     z-index: 1;
     display: flex;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-    z-index: 3;
 }
 
 .navbar-ul {
@@ -23,7 +22,7 @@
 }
 
 .navbar-search {
-    width: 30%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +30,7 @@
 }
 
 .navbar-search__input-wrapper{
-    width: 60%;
+    width: 40%;
     position: relative;
     display: flex;
 
@@ -40,16 +39,18 @@
 .navbar-search-input {
     width: 100%;
     height: 20px;
-    padding: 5px;
+    padding: 12px;
     padding-right: 30px;
 }
 
 
 
 .navbar-icon-search{
-    min-height: 100%;
+    height: 100%;
     position: absolute;
     right: 10px;
+    margin: auto;
+
 }
 
 
@@ -105,29 +106,6 @@
     align-items: center;
 }
 
-button.logout-style-button {
-    display: inline-block;
-    border-style: none;
-    border-radius: 2px;
-    padding: 10px;
-    margin-left: 20px;
-    text-decoration: none;
-    background: black;
-    color: white;
-    font-size: 12px;
-    font-weight: 900;
-    min-width: 75px;
-    cursor: pointer;
-    text-align: center;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-button.logout-style-button:hover {
-    background: white;
-    color: black;
-}
-
 button#demo-login-btn {
     display: inline-block;
     border-style: none;
@@ -146,6 +124,7 @@ button#demo-login-btn {
     -webkit-appearance: none;
     -moz-appearance: none;
     box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+
 }
 
 button#demo-login-btn:hover {
@@ -172,23 +151,116 @@ button#demo-login-btn:hover {
     margin: 20px;
 }
 
-#profile-avatar {
-    width: 50px;
-    height: 50px;
-    margin: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-    z-index: 1;
-}
-
 #navbar-login-btn {
     margin-right: 0;
 }
 
-/* #profile-avatar:hover button.logout-style-button {
-    display: inline-block;
+
+
+/* ---avatar and logout button--- */
+
+.profile-avatar {
+    /* width: 100px; */
+    /* height: 50px;
+    margin: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 5; */
+    /* background-image: url("https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png"); */
+    /* background-color: red; */
+    position: relative;
+    cursor: pointer;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 
-#profile-avatar:hover {
+.profile-avatar__image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-avatar__content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.logout-style-button {
+    /* display: inline-block; */
+    border-style: none;
+    border-radius: 2px;
+    padding: 10px;
+    /* margin-left: 20px; */
+    text-decoration: none;
+    background: black;
+    color: white;
+    font-size: 12px;
+    font-weight: 900;
+    min-width: 75px;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* display: none; */
+    z-index: 1;
+    position: absolute;
+    margin-right: 0px;
+}
+
+.logout-style-button:hover {
+    background: white;
+    color: black;
+}
+
+
+.profile-avatar:hover .profile-avatar__content {
+    display: block;
+}
+
+.profile-avatar:hover .profile-avatar__image {
     background-color: palegoldenrod;
-} */
+}
+
+
+/* responsive queries*/
+@media only screen and (max-width: 1000px) {
+    .navbar-btn{
+        display: none;
+    }
+    .navbar-title{
+        font-size: 15px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-btn{
+        /* display: none; */
+        visibility: hidden;
+    }
+    .navbar-search__input-wrapper{
+        /* display: none; */
+        visibility: hidden;
+    }
+
+    .navbar-search{
+        visibility: hidden;
+    }
+
+    .add-recipe-base-button{
+
+    }
+
+    .add-recipe-base-text{
+        visibility: hidden;
+        display: none;
+    }
+
+
+}
