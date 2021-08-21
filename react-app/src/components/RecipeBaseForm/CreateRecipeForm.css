@@ -2,3 +2,10 @@
 .want-to-close{
   padding: 20px;
 }
+
+.create-recipe-base-title {
+    font-size: 35px;
+    font-weight: bolder;
+    margin-bottom: .25em;
+}
+

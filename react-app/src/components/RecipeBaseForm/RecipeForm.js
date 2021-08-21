@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './CreateRecipeForm.css';
 import { createRecipe } from '../../store/recipe';
 import { useHistory } from 'react-router';
+import './CreateRecipeForm.css'
 
 export const RecipeForm = () => {
 
@@ -51,10 +52,9 @@ export const RecipeForm = () => {
 
   return (
     <div>
-      Hello from recipe form
       <form onSubmit={onFormSubmitCreateRecipeBase}>
 
-        <div className=""> Start Your Creation</div>
+        <div className="create-recipe-base-title"> Start Your Creation</div>
           <ul className="error-group">
               {errors.map((error, idx) => <li key={idx}>*{error}</li>)}
           </ul>
@@ -62,7 +62,7 @@ export const RecipeForm = () => {
           {/* FORM INPUTS */}
           <div className="">
             <label className="">
-              Title:
+              Title
             </label>
             <input className=""
                 placeholder="title your awesome creation here"

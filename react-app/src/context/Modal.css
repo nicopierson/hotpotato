@@ -25,7 +25,10 @@
 #modal-content {
   position: absolute;
   background-color:white;
-  border-radius: 8px;
+  border-radius: 7px;
+  height: 500px;
+  width: 600px;
+  padding: 1.5em;
 }
 
 .modal-verify{

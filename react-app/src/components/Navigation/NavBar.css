@@ -210,7 +210,8 @@ button#demo-login-btn:hover {
     /* display: none; */
     z-index: 1;
     position: absolute;
-    margin-right: 0px;
+    top: 0;
+    /* margin-right: 0px; */
 }
 
 .logout-style-button:hover {
@@ -220,11 +221,7 @@ button#demo-login-btn:hover {
 
 
 .profile-avatar:hover .profile-avatar__content {
-    display: block;
-}
-
-.profile-avatar:hover .profile-avatar__image {
-    background-color: palegoldenrod;
+    display: inline-block;
 }
 
 
