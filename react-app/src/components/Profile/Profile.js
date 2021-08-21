@@ -28,6 +28,7 @@ const Profile = () => {
             {profile &&
                 <ProfileCard 
                     profile={profile}
+                    isOwner={isOwner}
                 />
             }
         </div>

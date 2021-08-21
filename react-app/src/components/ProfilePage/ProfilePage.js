@@ -3,6 +3,7 @@ import './ProfilePage.css'
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
+import { getAllFollowers, getAllFollowings } from '../../store/follow';
 
 import  RecipeCardComponent  from '../RecipeCardComponent/';
 import Profile from '../Profile'
@@ -15,11 +16,15 @@ export const ProfilePage = () => {
   // state recipesToDisplay
   // if recipesToDisplay === users, show users
   // if recipesToDisplay === likes, show recipe users liked
-
+  const user = useSelector(state => state.session.user);
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
 
   useEffect(() => {
-    dispatch(getAllRecipesForGivenUser(userId))
+    dispatch(getAllRecipesForGivenUser(userId));
+    if (user.id) {
+      dispatch(getAllFollowers(user.id));
+      dispatch(getAllFollowings(user.id));
+    }
   }, [dispatch])
 
   if(recipeDetails) recipeDetails.forEach(recipe => console.log(recipe))
