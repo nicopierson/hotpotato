@@ -16,7 +16,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
 
 
         {/* image */}
-        <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', width:'100%', 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover', 'objectSit': 'cover' }} className="recipe-card">
+        <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', width:'100%', 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover', 'objectFit': 'cover' }} className="recipe-card">
           <div className="recipe-card__image-container" onClick={()=>{history.push(`/view/recipe/${id}`)}}>
             <div className="rc-ic--appear-on-hover">
               <div className="rc-ic__title"> {`${name}`}</div>
