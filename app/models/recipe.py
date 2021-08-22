@@ -1,4 +1,5 @@
 from .db import db
+from .category import categories_recipes
 
 
 class Recipe(db.Model):
@@ -19,6 +20,12 @@ class Recipe(db.Model):
         'RecipeDirection', back_populates='recipe_relation', cascade="all, delete-orphan")
     like_relation = db.relationship(
         'Like', back_populates='recipe_relation', cascade="all, delete-orphan")
+
+    categories_relations = db.relationship(
+        "Category",
+        secondary=categories_recipes,
+        back_populates="recipes_relations"
+    )
 
     def to_dict(self):
         return {
