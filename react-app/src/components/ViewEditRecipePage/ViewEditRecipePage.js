@@ -41,7 +41,9 @@ const ViewEditRecipePage = () => {
       dispatch(deleteRecipe(recipeId));
       history.push('/');
     }
-  }, [deleted, recipeId])
+  }, [deleted, recipeId, dispatch])
+
+  if (!recipeId) return <h2>Recipe Not Found</h2>;
 
   return (
     <div className="ver-page-container">

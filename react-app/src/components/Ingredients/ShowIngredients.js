@@ -7,7 +7,7 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients }) => {
         <div className={styles.ingredients_inner_container}>
             <div className={styleUtils.card_header}>
                 <h2>Ingredients</h2>
-                {isOwner && recipeIngredients.length > 0 &&
+                {isOwner && recipeIngredients?.length > 0 &&
                     <i
                         onClick={() => setShowEdit(true)}
                         className='fas fa-edit'
