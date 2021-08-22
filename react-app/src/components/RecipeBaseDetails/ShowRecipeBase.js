@@ -1,4 +1,4 @@
-
+import React from 'react'
 
 const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes}) => {
   return (

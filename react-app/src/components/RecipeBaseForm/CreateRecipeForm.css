@@ -1,6 +1,9 @@
 /* --------form modal-------*/
 .want-to-close{
   padding: 20px;
+  width: 80%;
+  margin: auto;
+  text-align: center;
 }
 
 .create-recipe-base-title {
