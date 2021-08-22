@@ -30,6 +30,12 @@
   justify-content: center;
 }
 
+#create-recipe-preview-image{
+  width: 90%;
+  /* padding-right: 1em; */
+  margin-right: 2em;
+}
+
 #start-creation-btn {
     float: right;
     border-style: none;
