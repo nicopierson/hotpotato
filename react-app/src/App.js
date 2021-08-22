@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 import RecipeCardComponent  from './components/RecipeCardComponent';
 import ProfilePage  from './components/ProfilePage';
 import FeedPage from './components/FeedPage';
-
+import LandingPage from './components/LandingPage/LandingPage';
 
 
 function App() {
@@ -46,6 +46,9 @@ function App() {
         </Route>
         <Route path='/card' exact={true}>
           <RecipeCardComponent />
+        </Route>
+        <Route path='/explore' exact={true}>
+          <LandingPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

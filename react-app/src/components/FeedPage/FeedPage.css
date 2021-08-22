@@ -42,20 +42,20 @@
   /* flex: 50%; */
   display: flex;
   padding: 10px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  width: 90%;
+  width: 80%;
   margin: auto;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 
 }
 
 
 
-/* .fpw-feed-container__recipe-cards::after{
+.fpw-feed-container__recipe-cards::after{
   content: "  ";
   flex: 500;
-} */
+}
 
 @media only screen and (max-width: 700px) {
   .hsc__title{
@@ -78,6 +78,16 @@
   .hsc-sc__sort-label{
     padding-top: 9px;
     font-size: 15px;
+  }
+  .fpw-feed-container__recipe-cards{
+    justify-content: center;
+  }
+
+  .recipe-card-wrapper{
+    display: flex;
+    flex: 0;
+    /* align-content: flex-start; */
+
   }
 
 }

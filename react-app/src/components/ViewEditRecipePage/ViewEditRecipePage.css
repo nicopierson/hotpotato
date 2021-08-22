@@ -17,7 +17,7 @@
   gap: 14px;
   /* grid auto rows define the min height and max height of each grid item */
   grid-auto-rows: minmax(100px, auto);
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 40px;
 }
 
@@ -35,16 +35,18 @@
 }
 
 .recipe-base-container, .recipe-photos-container{
-  min-height: 350px;
+  height: 800px;
 }
 
 .recipe-ingredients-container, .recipe-directions-container{
-  min-height: 300px;
+  min-height: 500px;
 }
 
 .recipe-comments-container{
   min-height: 400px;
   display: flex;
+  justify-content: center;
+  padding: 30px 0 30px 0;
 }
 
 /* .recipe-util-btn{
@@ -56,15 +58,16 @@
   position: absolute;
   height: 25px;
   top: 65px;
-  width: 10%;
+  width: 150px;
   right: 10%;
- 
+  padding-top: 60px;
+
   /* left: 50%; */
   display: flex;
   justify-content:space-around;
   align-items: flex-end;
   border-style: none;
-  
+
 }
 
 .recipe-util-btn{
@@ -77,4 +80,37 @@
   height: 30px;
   box-shadow: 0px, 0px, 0px, rgba(0, 0, 0, 0.466);
   background-color: rgb(241, 236, 236);
+}
+
+.recipe-like, .recipe-util-btn, .recipe-delete{
+  background-color: white;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(201, 201, 201);
+}
+.recipe-delete{
+  color: #FF6B6B;
+}
+.recipe-share{
+  color: #66a1d4;
+}
+
+
+@media only screen and (max-width: 1300px) {
+  .content-container{
+    /* grid container */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 30px;
+  }
+  .recipe-utilities{
+    position: fixed;
+    z-index: 2;
+    /* background-color: white; */
+    top: 50px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+  }
 }
