@@ -21,7 +21,7 @@ const AddDirection = ({ recipeDirections, recipeId }) => {
                         onClick={() => setShowAdd(true)}
                         className={`${styleUtils.button_style} ${styleUtils.add_button}`}
                     >
-                        Add New Direction
+                        Add Step
                     </button>
                 </div>
             }

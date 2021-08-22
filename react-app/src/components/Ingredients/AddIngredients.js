@@ -5,6 +5,7 @@ import styleUtils from '../RecipeUtils.module.css';
 
 const AddIngredients = ({ recipeId }) => {
     const [showAdd, setShowAdd] = useState(false);
+    console.log(recipeId);
     
     return (
         <>
@@ -20,7 +21,7 @@ const AddIngredients = ({ recipeId }) => {
                         className={`${styleUtils.button_style} ${styleUtils.add_button}`}
                         onClick={() => setShowAdd(true)}
                     >
-                        Add New Ingredient
+                        Add Ingredient
                     </button>
                 </div>
             }

@@ -41,7 +41,8 @@ const AddIngredientsInput = ({ setShowAdd, recipeId }) => {
                         name='Ingredient'
                         onChange={(e) => setAddIngredient(e.target.value)}
                         value={addIngredient}
-                        placeholder='Add a new ingredient...'
+                        placeholder='Add a ingredient...'
+                        autoFocus={true}
                     >
                     </input>
                 </div>
@@ -56,6 +57,7 @@ const AddIngredientsInput = ({ setShowAdd, recipeId }) => {
                 <button
                     className={`${styleUtils.button_style} ${styleUtils.save_button}`}
                     onClick={handleAdd}
+                    disabled={!addIngredient}
                 >
                     <i className='fas fa-check-circle'></i>
                     <span>Add</span>

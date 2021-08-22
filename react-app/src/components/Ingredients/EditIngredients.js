@@ -13,20 +13,25 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
     const [measurements, setMeasurements] = useState([]);
 
     const ingredientNumber = recipeIngredients.length;
+    console.log(recipeIngredients, ingredientNumber);
     
     useEffect(() => {
         dispatch(getRecipe(recipeId));
-            const addIngredients = [];
-            const ingredientsId = [];
-            const addMeasurements = [];
-            recipeIngredients.forEach(ingredient => {
-                addIngredients.push(ingredient.ingredient);
-                ingredientsId.push(ingredient.id);
-                addMeasurements.push(ingredient.measurement);
-            });
-            setIngredients(addIngredients);
-            setIngredientsId(ingredientsId);
-            setMeasurements(addMeasurements);
+            if (ingredientNumber > 0) {
+                const addIngredients = [];
+                const ingredientsId = [];
+                const addMeasurements = [];
+                recipeIngredients.forEach(ingredient => {
+                    addIngredients.push(ingredient.ingredient);
+                    ingredientsId.push(ingredient.id);
+                    addMeasurements.push(ingredient.measurement);
+                });
+                setIngredients(addIngredients);
+                setIngredientsId(ingredientsId);
+                setMeasurements(addMeasurements);
+            } else {
+                setShowEdit(false);
+            }
         }, [dispatch, ingredientNumber]);
          
     const handleEdit = (e) => {
@@ -71,9 +76,8 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
             <div className={styleUtils.card_header}>
                 <h2>Edit Ingredients</h2>
             </div>
-            <form 
+            <div 
                 className={`${styleUtils.card_form} ${styles.card_form}`}
-                onSubmit={handleEdit}
             >
                 <div className={styles.measurements_container}>
                     <h3>Measurements</h3>
@@ -121,14 +125,15 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                         </button>
                         <button 
                             className={`${styleUtils.button_style} ${styleUtils.save_button}`}
-                            type='submit'
+                            type='button'
+                            onClick={handleEdit}
                         >
                             <i className='fas fa-check-circle'></i>
                             <span>Save</span>
                         </button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     )
 };

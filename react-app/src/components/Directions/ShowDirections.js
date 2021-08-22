@@ -1,13 +1,13 @@
 import styles from './ShowDirections.module.css';
 import styleUtils from '../RecipeUtils.module.css';
 
-const ShowDirections = ({ setShowEdit, isOwner, recipeDirections, recipeId }) => {
+const ShowDirections = ({ setShowEdit, isOwner, recipeDirections }) => {
 
     return (
         <div className={styles.directions_inner_container}>
             <div className={styleUtils.card_header}>
                 <h2>Preparation</h2>
-                {isOwner &&
+                {isOwner && recipeDirections.length > 0 &&
                     <i 
                         onClick={() => setShowEdit(true)}
                         className='fas fa-edit'
