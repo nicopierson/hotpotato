@@ -6,7 +6,6 @@ import EditIngredients from './EditIngredients';
 import ShowIngredients from './ShowIngredients';
 import AddIngredients from './AddIngredients';
 
-import styles from './Ingredients.module.css';
 import styleUtils from '../RecipeUtils.module.css';
 
 const Ingredients = () => {
@@ -28,7 +27,7 @@ const Ingredients = () => {
                     setShowEdit={setShowEdit} 
                     isOwner={isOwner}
                     recipeIngredients={recipeIngredients}
-                    recipeId={recipeId}
+                    recipeId={+recipeId}
                 />
             }
             {showEdit && isOwner &&
@@ -36,12 +35,12 @@ const Ingredients = () => {
                     setShowEdit={setShowEdit} 
                     isOwner={isOwner}
                     recipeIngredients={recipeIngredients}
-                    recipeId={recipeId}
+                    recipeId={+recipeId}
                 />
             }
             {isOwner &&
                 <AddIngredients
-                    recipeId={recipeId}
+                    recipeId={+recipeId}
                 />
             }
         </div>

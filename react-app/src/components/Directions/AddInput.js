@@ -11,14 +11,14 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
     const [addDirection, setAddDirection] = useState('');
 
     const steps = recipeDirections;
-    const numberSteps = steps[steps.length - 1].steps + 1;
+    const numberSteps = steps.length > 0 ? steps[steps.length - 1].steps + 1 : 1;
 
     const ROW_HEIGHT = 4;
 
     const handleAdd = (e) => {
         e.preventDefault();
         const payload = {
-            steps: numberSteps,
+            steps: numberSteps ? numberSteps : ROW_HEIGHT,
             directions: addDirection,
             recipe_id: recipeId,
         };
@@ -34,8 +34,9 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
                     name='Direction'
                     onChange={(e) => setAddDirection(e.target.value)}
                     value={addDirection}
-                    placeholder='Add a new direction...'
+                    placeholder='Add a step...'
                     rows={ROW_HEIGHT}
+                    autoFocus={true}
                 >
                 </textarea>
             </div>
@@ -49,9 +50,10 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
                 <button
                     className={`${styleUtils.button_style} ${styleUtils.save_button}`}
                     onClick={handleAdd}
+                    disabled={!addDirection}
                 >
                     <i className='fas fa-check-circle'></i>
-                    <span>Add</span>
+                    <span>Add {addDirection}</span>
                 </button>
             </div>
         </div>
