@@ -1,5 +1,4 @@
 from app.models import db, Recipe, Category
-from sqlalchemy import insert
 
 # seed categories and recipes - then add relationship
 
@@ -17,7 +16,7 @@ def seed_categories():
     # db.session.commit()
 
     temporary_description = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-    categories = {
+    categories = [
         ["spicy", "https://penntoday.upenn.edu/sites/default/files/2019-02/spicypeppers.jpg"],
         ["Antartica", "https://www.coolantarctica.com/schools/DSCF3711.jpg"],
         ["dessert", "https://insanelygoodrecipes.com/wp-content/uploads/2021/05/Cherry-Cheesecake-with-Berry-Sauce.png"],
@@ -35,14 +34,14 @@ def seed_categories():
         ["seafood", "https://media.istockphoto.com/photos/seafood-platter-grilled-lobster-shrimps-scallops-langoustines-octopus-picture-id1305699663?k=6&m=1305699663&s=612x612&w=0&h=xoKWmYbAeiv6Vac-5w4Tc5ziln3V3KQkSNlTEhMBxn0="],
         ["South America", "https://www.2knowandvote.com/wp-content/uploads/2016/11/South-America-Food-Tamales.jpg"],
         ["Surprise Me", "https://www.worldatlas.com/r/w768/upload/f7/96/6f/shutterstock-217615369.jpg"],
-    }
+    ]
 
     # add categories
     vegan = Category(
         image_url="https://post.healthline.com/wp-content/uploads/2020/09/vegan-diet-guide-fb-1200x628.jpg", name='vegan', description=temporary_description)
 
-    vegan.category_recipes.append(garlic_basil_french_fries)
-    vegan.category_recipes.append(broccoli_tofu)
+    vegan.recipes_relations.append(garlic_basil_french_fries)
+    vegan.recipes_relations.append(broccoli_tofu)
 
     db.session.add(vegan)
     db.session.commit()

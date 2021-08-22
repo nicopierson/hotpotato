@@ -22,7 +22,7 @@ class Category(db.Model):
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer, primary_key=True)
-    category_name = db.Column(db.String(255), nullable=False, unique=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
     image_url = db.Column(db.Text)
     description = db.Column(db.String(500))
     recipes_relations = db.relationship(
