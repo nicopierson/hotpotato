@@ -1,0 +1,72 @@
+
+.scc__carousel{
+  width: 80%;
+  margin: auto;
+  min-height: 15vh;
+  padding-top: 10px;
+}
+
+/* carousel component wraps over other */
+/* .carousel-wrapper{
+  padding-top: 10px;
+  width: 100%;
+  height: 10vh;
+} */
+
+/* carousel components that wraps */
+.react-multi-carousel-track {
+  top: 0px;
+}
+
+.category-background-container{
+  /* background-image: url(); */
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(201, 201, 201);
+  /* width: 20%; */
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  /* background-color: purple; */
+}
+
+.cbc__cover{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  /* z-index: 2; */
+}
+
+
+/* .react-multi-carousel-item{
+
+} */
+
+.category-item{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  z-index: 2;
+  position: relative;
+  padding-top: 20px;
+
+}
+
+.test{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: 0;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.801);
+  z-index: 1;
+}
