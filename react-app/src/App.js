@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import ViewEditRecipePage from './components/ViewEditRecipePage';
-import Profile from './components/Profile';
 import Footer from './components/Footer/Footer';
 import RecipeCardComponent  from './components/RecipeCardComponent';
 import ProfilePage  from './components/ProfilePage';
@@ -69,7 +68,7 @@ function App() {
         </Route>
 
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
 
     </BrowserRouter>
   );
