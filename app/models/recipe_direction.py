@@ -6,7 +6,7 @@ class RecipeDirection(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     steps = db.Column(db.Integer, nullable=False)
-    directions = db.Column(db.String(500), nullable=False)
+    directions = db.Column(db.String(800), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey(
         'recipes.id'), nullable=False)
     recipe_relation = db.relationship(

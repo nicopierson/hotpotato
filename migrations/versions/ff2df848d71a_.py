@@ -62,7 +62,7 @@ def upgrade():
     op.create_table('recipe_directions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('steps', sa.Integer(), nullable=False),
-    sa.Column('directions', sa.String(length=500), nullable=False),
+    sa.Column('directions', sa.String(length=800), nullable=False),
     sa.Column('recipe_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['recipe_id'], ['recipes.id'], ),
     sa.PrimaryKeyConstraint('id')
