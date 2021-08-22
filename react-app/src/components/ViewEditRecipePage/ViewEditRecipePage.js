@@ -10,13 +10,12 @@ import { useHistory } from 'react-router';
 import RecipePhoto from '../RecipePhotos/RecipePhoto';
 
 import Directions from '../Directions';
-
 import Comments from '../Comments/Comments';
-
 import Ingredients from '../Ingredients';
+import Like from '../Like';
 
 import { deleteRecipe } from '../../store/recipe';
-// import Like from '../Like';
+import { loadLikes } from '../../store/like';
 
 
 
@@ -24,43 +23,38 @@ const ViewEditRecipePage = () => {
   const history = useHistory()
   
   //the /:id from url
-  let {recipeId} = useParams();
+  let { recipeId } = useParams();
+  const user = useSelector(state => state.session.user);
   const like = useSelector(state => state.like);
-  const [isLiked, setIsLiked] = useState(!!like[recipeId]);
+  console.log(like);
   const [deleted, setDeleted] = useState(false);
   const dispatch = useDispatch()
 
 
   // const recipeDetails= useSelector((state) => state.recipe[recipeId]);
 
-  
-
-
   // fetching the recipe based on ID and adding it to the store.
-  useEffect(()=>{
-    dispatch(getRecipe(recipeId))
-  }, [dispatch], recipeId)
-
   useEffect(() => {
-    if(deleted){
-      dispatch(deleteRecipe(recipeId))
-      history.push('/')
-      // Redirect('/')
+    dispatch(getRecipe(recipeId));
+    if (user.id) {
+      dispatch(loadLikes(user.id));
     }
-  },[deleted, recipeId])
+  }, [dispatch, recipeId])
 
   useEffect(() => {
-    setIsLiked(!!like[recipeId]);
-  }, [like, recipeId]);
-
+    if (deleted) {
+      dispatch(deleteRecipe(recipeId));
+      history.push('/');
+    }
+  }, [deleted, recipeId])
 
   return (
     <div className="ver-page-container">
       <div className="content-container">
         <div className='recipe-utilities'>
           <button className='recipe-util-btn fas fa-minus-circle recipe-delete' value={deleted} onClick={(e) => setDeleted(true)}></button>
-          <button className='recipe-util-btn fas fa-heart recipe-like' value={isLiked}></button>
-          {/* <Like recipeId={recipeId}/>  */}
+          {/* <button className='recipe-util-btn fas fa-heart recipe-like' value={isLiked}></button> */}
+          <Like recipeId={+recipeId}/> 
           <button className='recipe-share fas fa-share recipe-util-btn'></button>
         </div>
         <div className="recipe-base-container">

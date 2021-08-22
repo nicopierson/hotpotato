@@ -1,3 +1,4 @@
+
 {
   "name": "react-app",
   "version": "0.1.0",
@@ -25,9 +26,9 @@
     "video-react": "^0.14.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import AddLike from './AddLike';
 import RemoveLike from './RemoveLike';
+import '../ViewEditRecipePage/ViewEditRecipePage.css';
 
 import styles from './Like.module.css';
 
@@ -20,7 +21,7 @@ const Like = ({ recipeId }) => {
 
     
     return (
-        <div className={styles.like_container}>
+        <button className={`recipe-util-btn`}>
             {isLiked &&
                 <AddLike 
                     setIsLiked={setIsLiked}
@@ -34,7 +35,7 @@ const Like = ({ recipeId }) => {
                     userId={userId}
                 />
             }
-        </div>
+        </button>
     )
 };
 
