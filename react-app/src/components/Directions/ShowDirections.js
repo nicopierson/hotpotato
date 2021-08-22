@@ -7,7 +7,7 @@ const ShowDirections = ({ setShowEdit, isOwner, recipeDirections }) => {
         <div className={styles.directions_inner_container}>
             <div className={styleUtils.card_header}>
                 <h2>Preparation</h2>
-                {isOwner && recipeDirections.length > 0 &&
+                {isOwner && recipeDirections?.length > 0 &&
                     <i 
                         onClick={() => setShowEdit(true)}
                         className='fas fa-edit'
