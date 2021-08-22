@@ -1,8 +1,8 @@
 /* Recipe base css */
 .recipe-base{
   position: relative;
-  min-height: 90vh;
-  max-height: 80vh;
+  height: 100%;
+  width: 100%;
 }
 
 .recipe-base-header__name, .recipe-base__likes, .recipe-base__id, .recipe-base__description{
@@ -67,4 +67,9 @@
 }
 .recipe-base--appear-on-hover:hover{
   opacity: 1;
+}
+
+div.rec-item-wrapper > * {
+  width: 100%;
+  height: 100%;
 }

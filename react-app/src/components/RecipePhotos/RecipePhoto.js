@@ -100,8 +100,12 @@ const RecipePhoto = ({loaded}) => {
                     {isOwner &&
                         <button
                             onClick={() => setEditPhoto(true)}
-                            className='fas fa-edit recipe-carousel-edit'
-                        ></button>
+
+                    className='fas fa-pen recipe-carousel-add'
+                        
+                        > 
+                    <div className="add-photo-carousel-text">Add Photo</div></button>
+
                     }
                 {/* enableAutoPlay */}
                     <Carousel className='recipe-carousel' enableAutoPlay renderArrow={arrows} 
@@ -129,8 +133,13 @@ const RecipePhoto = ({loaded}) => {
                 <div className='recipe-carousel-images-edit'>
                     <button
                         onClick={() => setEditPhoto(false)}
-                    className='fas fa-window-close recipe-carousel-cancel'
-                        ></button>
+                        className='fas fa-window-close
+                        recipe-carousel-cancel'>
+                    </button>
+                    {/* <i
+                        id="delete-comment-btn" className='fas fa-minus-circle comment-utilities'
+                        onClick={(e) => handleDelete(e, comment.id)}
+                    ></i> */}
                     <form onSubmit={onSubmit} className='recipe-carousel-edit-form'>
                         <input
                             placeholder='Enter image url'

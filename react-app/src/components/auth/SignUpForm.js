@@ -53,7 +53,7 @@ const SignUpForm = () => {
               ))}
           </div>
           <div className="form-input">
-              <div className="form-title">Create an Account</div>
+              <div classNdame="form-title">Create an Account</div>
               <div className="already-signed-up">Already have an account?
               <NavLink to='/login' exact={true}
                 activeClassName='active'
