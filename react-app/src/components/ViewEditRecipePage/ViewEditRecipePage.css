@@ -45,6 +45,7 @@
 .recipe-comments-container{
   min-height: 400px;
   display: flex;
+  justify-content: center;
 }
 
 /* .recipe-util-btn{
@@ -58,13 +59,13 @@
   top: 65px;
   width: 10%;
   right: 10%;
- 
+
   /* left: 50%; */
   display: flex;
   justify-content:space-around;
   align-items: flex-end;
   border-style: none;
-  
+
 }
 
 .recipe-util-btn{
