@@ -22,7 +22,10 @@ const LandingPage = () => {
 
   const testing_img_url ="https://blogs.biomedcentral.com/on-medicine/wp-content/uploads/sites/6/2019/09/iStock-1131794876.t5d482e40.m800.xtDADj9SvTVFjzuNeGuNUUGY4tm5d6UGU5tkKM0s3iPk-620x342.jpg"
 
-  const [deviceType, setDeviceType] = ('desktop');
+  const [deviceType, setDeviceType] = useState('desktop');
+  const [bannerText, setBannerText] = useState('Your Next hotpotato Starts Here');
+  const [categoryDescription, setCategoryDescription] = useState('search here for your next culinary inspiration or create a Hotpotato of your own!');
+  const [categorySelected, setCategorySelected] = useState(null);
 
   useEffect(() => {
     dispatch(getAllRecipesForGivenUser(user_id))
@@ -52,7 +55,6 @@ const LandingPage = () => {
     <div>
       <div className="select-category-container">
         <div className="scc__carousel">
-
           <Carousel
             swipeable={false}
             draggable={false}
@@ -87,15 +89,18 @@ const LandingPage = () => {
                   <div className="category-item">
                     {category}
                   </div>
-
                 </div>
-
             )}
-
           </Carousel>
+        </div>
+
+        <div className="banner-container">
+          <div className="bc__header"> {bannerText} </div>
+          <div className="bc__description">{categoryDescription} </div>
+
+          {/* search results for... */}
 
         </div>
-        <div className=""> Text Banner Goes Here</div>
       </div>
 
       <div className="feed-page-wrapper">
