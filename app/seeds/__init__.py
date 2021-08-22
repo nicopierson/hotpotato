@@ -7,7 +7,7 @@ from .comments import seed_comments, undo_comments
 from .recipe_photos import seed_recipe_photos, undo_recipe_photos
 from .recipe_ingredients import seed_recipe_ingredients, undo_recipe_ingredients
 from .recipe_directions import seed_recipe_directions, undo_recipe_directions
-
+from .categories_recipes import seed_categories, undo_categories
 
 
 # Creates a seed group to hold our commands
@@ -25,8 +25,7 @@ def seed():
     seed_recipe_ingredients()
     seed_recipe_directions()
     seed_likes()
-
-
+    seed_categories()
 
     # Add other seed functions here
 
@@ -41,7 +40,6 @@ def undo():
     undo_recipe_ingredients()
     undo_recipe_directions()
     undo_likes()
-
-
+    undo_categories()
 
     # Add other undo functions here
