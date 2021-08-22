@@ -37,11 +37,17 @@ const NavBar = () => {
           {user &&
           <>
             <li className="navbar-btn-container">
-              <NavLink to='/view/recipe/1' exact={true}
+              <NavLink to='/explore' exact={true}
               activeClassName='active'
                 className="navbar-btn">
                 Explore
               </NavLink></li>
+            <li className="navbar-btn-container">
+            <NavLink to='/view/recipe/1' exact={true}
+            activeClassName='active'
+              className="navbar-btn">
+                RecipeEx
+            </NavLink></li>
             <li className="navbar-btn-container">
             <NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'
               className="navbar-btn">
