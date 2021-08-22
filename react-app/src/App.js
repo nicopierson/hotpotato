@@ -70,6 +70,7 @@ function App() {
 
       </Switch>
       {/* <Footer /> */}
+
     </BrowserRouter>
   );
 }

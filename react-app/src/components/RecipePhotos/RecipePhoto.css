@@ -157,6 +157,7 @@ div.rec-item-wrapper > * {
     display: block;
     background-color: black;
     object-fit: cover;
+
     /* position: absolute; */
     height: 100%;
    
@@ -167,13 +168,19 @@ div.rec-item-wrapper > * {
     margin: 0px;
     position:relative;   
     /* background-color: black; */
+    
 }
 
 .rec-carousel{
     min-height: 100%;
-    position: relative;    
+    position: relative;  
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background-color: black;   */
 }
 /* this is the edit button come back and sort out positioning*/
+
 .recipe-carousel-add{  
     padding: 8px 12px 8px 12px;
     background-color: rgb(255, 255, 255);
@@ -202,6 +209,12 @@ div.rec-item-wrapper > * {
     background-color: rgb(243, 243, 243);
     border: 1px solid rgb(243, 243, 243);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+}
+
+.recipe-photos-container{
+    background-color: black;
+    
 }
 
 .rec .rec-dot{
@@ -220,7 +233,9 @@ div.rec-item-wrapper > * {
     margin: 0px;
     /* border: 1px solid purple; */
     height: 100%;
+
     background-color: black;
+
 }
 
     /* opacity: 0;

@@ -1,3 +1,5 @@
+import { getProfile } from './profile';
+
 const SET_ALL_FOLLOWERS = 'follows/setAllFollowers';
 const SET_ALL_FOLLOWINGS = 'follows/setAllFollowings';
 const DELETE_FOLLOWING = 'follows/deleteFollowing';
@@ -54,6 +56,7 @@ export const removeFollowing = (id) => async (dispatch) => {
 
     if (response.ok) {
         await dispatch(deleteFollowing(id));
+        await dispatch(getProfile(id));
         return response;
     } else {
         return ['An error occurred. Please try again.']
@@ -68,6 +71,7 @@ export const createFollowing = (id) => async (dispatch) => {
     if (response.ok) {
         const { following } = await response.json();
         await dispatch(addFollowing(following));
+        await dispatch(getProfile(id));
         return following;
     } else {
         return ['An error occurred. Please try again.']

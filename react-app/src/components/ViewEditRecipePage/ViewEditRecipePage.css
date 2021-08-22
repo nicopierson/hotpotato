@@ -44,4 +44,37 @@
 
 .recipe-comments-container{
   min-height: 400px;
+  display: flex;
+}
+
+/* .recipe-util-btn{
+  margin-right: 15px;
+} */
+
+.recipe-utilities{
+  border:1px solid red;
+  position: absolute;
+  height: 25px;
+  top: 65px;
+  width: 10%;
+  right: 10%;
+ 
+  /* left: 50%; */
+  display: flex;
+  justify-content:space-around;
+  align-items: flex-end;
+  border-style: none;
+  
+}
+
+.recipe-util-btn{
+  border-style: none;
+  /* border: 1px solid red; */
+  cursor: pointer;
+  font-size: larger;
+  margin-bottom: 5px;
+  width: 40px;
+  height: 30px;
+  box-shadow: 0px, 0px, 0px, rgba(0, 0, 0, 0.466);
+  background-color: rgb(241, 236, 236);
 }

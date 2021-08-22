@@ -24,7 +24,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="navbar-container">
+    <nav className="navbar-container-hotpotato">
       <ul className="navbar-ul">
         <div className="navbar-li navbar-title-and-feed">
           <li>
@@ -98,6 +98,11 @@ const NavBar = () => {
           </>}
           {user &&
           <>
+          {/* temporary logout, delete later */}
+            <li>
+              <LogoutButton />
+            </li>
+
             <li className="button-fix navbar-li">
               <CreateRecipeButton />
             </li>
@@ -109,7 +114,12 @@ const NavBar = () => {
                 <div>
                   <LogoutButton />
                 </div>
-
+                <div>
+                  item 1
+                </div>
+                <div>
+                  item 2
+                </div>
 
               </div>
 
