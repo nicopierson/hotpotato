@@ -4,6 +4,8 @@ const DELETE_RECIPE = 'recipes/deleteRecipe';
 const ADD_RECIPE = 'recipes/addRecipe';
 const EDIT_RECIPE = 'recipes/editRecipe';
 const SET_ALL_RECIPES_BELONG_TO_USER = 'recipes/setUsersRecipes'
+const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_NEW = 'recipes/setUsersRecipes/following/new'
+const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_TRENDING = 'recipes/setUsersRecipes/following/trending'
 
 const setRecipe = (recipe) => ({
     type: SET_RECIPE,
@@ -32,6 +34,16 @@ const editRecipe = (recipe) => ({
 
 const setAllRecipesForUser = (recipes) => ({
     type: SET_ALL_RECIPES_BELONG_TO_USER,
+    recipes,
+});
+
+const setAllRecipesUserFollowByNew = (recipes) => ({
+    type: SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_NEW,
+    recipes,
+});
+
+const setAllRecipesUserFollowByTrending = (recipes) => ({
+    type: SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_TRENDING,
     recipes,
 });
 
@@ -113,6 +125,30 @@ export const getAllRecipesForGivenUser = (id) => async (dispatch) => {
 
     if (response.ok) {
         await dispatch(setAllRecipesForUser(data));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const getAllRecipesUserFollowsByNew = (id) => async (dispatch) => {
+    const response = await fetch(`api/follows/feed-for/${id}/sort/new`)
+    const data = await response.json();
+
+    if (response.ok) {
+        await dispatch(setAllRecipesUserFollowByNew(data));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const getAllRecipesUserFollowsByTrending = (id) => async (dispatch) => {
+    const response = await fetch(`api/follows/feed-for/${id}/sort/trending`)
+    const data = await response.json();
+
+    if (response.ok) {
+        await dispatch(setAllRecipesUserFollowByTrending(data));
         return response;
     } else {
         return ['An error occurred. Please try again.']
@@ -244,6 +280,12 @@ export default function reducer(state = {}, action) {
             return { ...state, ...newState };
         case SET_ALL_RECIPES_BELONG_TO_USER:
             newState.users_recipes = action.recipes.recipes;
+            return { ...state, ...newState };
+        case SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_NEW:
+            newState.users_recipes = action.recipes['feed_order_new']
+            return { ...state, ...newState };
+        case SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_TRENDING:
+            newState.users_recipes = action.recipes['feed_order_trending']
             return { ...state, ...newState };
         case ADD_RECIPE:
             if (!state[action.recipe.id]) {

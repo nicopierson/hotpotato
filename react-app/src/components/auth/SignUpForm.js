@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './SignUpForm.css'
 
@@ -55,7 +55,13 @@ const SignUpForm = () => {
           <div className="form-input">
               <div className="form-title">Create an Account</div>
               <div className="already-signed-up">Already have an account?
-                <div className="already-signed-up-btn">Sign In</div>
+              <NavLink to='/login' exact={true}
+                activeClassName='active'
+                className="navbar-btn navbar-btn-signed-out"
+                id="navbar-login-btn"
+              >
+                Sign In
+              </NavLink>
               </div>
             <div className="form-input-label">
               <label >User Name</label>

@@ -15,3 +15,7 @@ ul {
 }
 
 body { padding-top: 50px; }
+
+input:focus-visible {
+    outline: 2px solid black;
+}
