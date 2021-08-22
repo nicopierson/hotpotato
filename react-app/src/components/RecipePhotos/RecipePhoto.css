@@ -155,19 +155,23 @@
 }
 /* this is the edit button come back and sort out positioning*/
 .recipe-carousel-edit{  
-    border-style: none; 
-    cursor: pointer;
-    height: 15px;
-    background-color: rgb(146, 228, 139);
-    color: white;
-    width: 30px;
+    display: inline-block;
+    border-style: none;
     border-radius: 2px;
+    padding: 10px;
+    margin: 0;
+    margin-right: 20px;
+    text-decoration: none;
+    background: rgb(169, 221, 162);
+    color: white;
+    font-size: 12px;
+    font-weight: 900;
+    min-width: 75px;
+    cursor: pointer;
     text-align: center;
-    height: 30px;  
-    position: absolute;
-    z-index: 2;
-    /* left: 15px; */
-    /* top: 10px; */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
  
   
 }

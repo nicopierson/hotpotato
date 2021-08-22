@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import { deleteDirection, getRecipe } from '../../store/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 import RecipePhoto from '../RecipePhotos/RecipePhoto';
 
 import Directions from '../Directions';
@@ -20,6 +21,7 @@ import { deleteRecipe } from '../../store/recipe';
 
 
 const ViewEditRecipePage = () => {
+  const history = useHistory()
   
   //the /:id from url
   let {recipeId} = useParams();
@@ -42,9 +44,10 @@ const ViewEditRecipePage = () => {
   useEffect(() => {
     if(deleted){
       dispatch(deleteRecipe(recipeId))
+      history.push('/')
       // Redirect('/')
     }
-  })
+  },[deleted, recipeId])
 
   useEffect(() => {
     setIsLiked(!!like[recipeId]);

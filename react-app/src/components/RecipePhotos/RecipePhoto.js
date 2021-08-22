@@ -102,7 +102,7 @@ const RecipePhoto = ({loaded}) => {
                             onClick={() => setEditPhoto(true)}
                     className='fas fa-edit recipe-carousel-edit'
                         
-                        ></button>
+                        >Add Images</button>
                     }
                 {/* enableAutoPlay */}
                     <Carousel className='recipe-carousel' enableAutoPlay renderArrow={arrows} 
