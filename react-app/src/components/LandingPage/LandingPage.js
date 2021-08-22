@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import RecipeCardComponent from '../RecipeCardComponent';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
-
+import { setAllCategories } from '../../store/category';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 // import MobileDetect from "mobile-detect";
@@ -14,7 +14,7 @@ const LandingPage = () => {
 
   const user_id = useSelector(state => state.session.user?.id);
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
-  // fetch categories
+
 
   // temporary categories
   // https://leafyplace.com/types-of-cuisine/
@@ -29,6 +29,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     dispatch(getAllRecipesForGivenUser(user_id))
+    dispatch(setAllCategories())
     // dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch])
 

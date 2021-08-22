@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesUserFollowsByNew } from '../../store/recipe';
 import { getAllRecipesForGivenUser } from '../../store/recipe';
+
 import  RecipeCardComponent  from '../RecipeCardComponent/';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
@@ -19,7 +20,7 @@ export const FeedPage = () => {
 
   useEffect(() => {
     dispatch(getAllRecipesForGivenUser(user_id))
-    // dispatch(getAllRecipesUserFollowsByNew(user_id))
+    //dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch])
 
 

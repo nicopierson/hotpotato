@@ -31,10 +31,17 @@ class Category(db.Model):
         back_populates="categories_relations"
     )
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'image_url': self.image_url,
+        }
+
     def to_dict_categories(self):
         return {
             'id': self.id,
-            'category_name': self.category_name,
+            'name': self.name,
             'image_url': self.image_url,
-            'category_recipes': self.recipes_relations.get_users_recipes(),
+            'category_recipes': [recipe.get_users_recipes() for recipe in self.recipes_relations],
         }

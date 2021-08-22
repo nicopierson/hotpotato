@@ -7,6 +7,8 @@ const SET_ALL_RECIPES_BELONG_TO_USER = 'recipes/setUsersRecipes'
 const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_NEW = 'recipes/setUsersRecipes/following/new'
 const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_TRENDING = 'recipes/setUsersRecipes/following/trending'
 
+
+
 const setRecipe = (recipe) => ({
     type: SET_RECIPE,
     recipe,
@@ -47,6 +49,8 @@ const setAllRecipesUserFollowByTrending = (recipes) => ({
     recipes,
 });
 
+
+
 export const getRecipe = (id) => async (dispatch) => {
     const response = await fetch(`/api/recipes/${id}`);
     const data = await response.json();
@@ -70,6 +74,7 @@ export const getAllRecipes = () => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 }
+
 
 // TODO Test State
 export const deleteRecipe = (id) => async (dispatch) => {
@@ -264,10 +269,14 @@ export const createRecipePhoto = (payload) => async (dispatch) => {
     }
 };
 
+
+
+
 export default function reducer(state = {}, action) {
     let newState = {
         ...state,
         users_recipes:null,
+        categories:null,
     }
     switch (action.type) {
         case SET_RECIPE:
