@@ -76,7 +76,7 @@ background-color: rgb(216, 233, 248);
 
 .pc__username{
   padding: 5px;
-  font-weight: bold;
+  font-weight:normal;
 }
 
 .pc__username:hover{
@@ -92,6 +92,7 @@ background-color: rgb(216, 233, 248);
   /* margin-right: 5px; */
   font-size: 0.9rem;
   color: rgb(136, 136, 136);
+  padding: 2px;
 }
 
 

@@ -35,11 +35,11 @@
 }
 
 .recipe-base-container, .recipe-photos-container{
-  min-height: 350px;
+  min-height: 800px;
 }
 
 .recipe-ingredients-container, .recipe-directions-container{
-  min-height: 300px;
+  min-height: 500px;
 }
 
 .recipe-comments-container{
