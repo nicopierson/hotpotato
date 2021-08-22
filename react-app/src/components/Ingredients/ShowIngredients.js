@@ -2,7 +2,7 @@ import styles from './ShowIngredients.module.css';
 import styleUtils from '../RecipeUtils.module.css';
 
 const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients }) => {
-    console.log(recipeIngredients);
+
     return (
         <div className={styles.ingredients_inner_container}>
             <div className={styleUtils.card_header}>
@@ -21,10 +21,7 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients }) => {
                         <div key={ ingredient.id } className={styleUtils.item_container}>
                             <div className={styles.measurements_container}>
                                 {ingredient.measurement &&
-                                <>
-                                    { ingredient.measurement }
-
-                                </>
+                                    ingredient.measurement 
                                 }
                             </div>
                             <div className={styles.ingredients_container}>

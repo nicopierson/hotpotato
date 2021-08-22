@@ -13,21 +13,20 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
     const [measurements, setMeasurements] = useState([]);
 
     const ingredientNumber = recipeIngredients.length;
-    console.log(recipeIngredients, ingredientNumber);
     
     useEffect(() => {
         dispatch(getRecipe(recipeId));
             if (ingredientNumber > 0) {
                 const addIngredients = [];
-                const ingredientsId = [];
+                const addIngredientsId = [];
                 const addMeasurements = [];
                 recipeIngredients.forEach(ingredient => {
                     addIngredients.push(ingredient.ingredient);
-                    ingredientsId.push(ingredient.id);
+                    addIngredientsId.push(ingredient.id);
                     addMeasurements.push(ingredient.measurement);
                 });
                 setIngredients(addIngredients);
-                setIngredientsId(ingredientsId);
+                setIngredientsId(addIngredientsId);
                 setMeasurements(addMeasurements);
             } else {
                 setShowEdit(false);
@@ -42,7 +41,7 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                 id: ingredientsId[idx],
                 measurement: measurements[idx],
                 ingredient,
-                recipe_id: recipeId,
+                recipe_id: +recipeId,
             }
             dispatch(updateIngredient(payload));
         });
@@ -81,7 +80,7 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
             >
                 <div className={styles.measurements_container}>
                     <h3>Measurements</h3>
-                    { recipeIngredients.length > 0 &&
+                    { recipeIngredients.length > 0 && measurements.length > 0 &&
                         recipeIngredients.map((ingredient, idx) => (
                             <div key={`measurement-input-${idx}`} className={styles.measurements_item}>
                                 <input                                     
@@ -97,7 +96,7 @@ const EditIngredients = ({ setShowEdit, isOwner, recipeIngredients, recipeId }) 
                 </div>
                 <div className={styles.ingredients_container}>
                     <h3>Ingredients</h3>
-                    { recipeIngredients.length > 0 &&
+                    { recipeIngredients.length > 0 && ingredients.length > 0 &&
                         recipeIngredients.map((ingredient, idx) => (
                             <div key={`ingredient-input-${idx}`} className={styles.ingredients_item}>
                                 <input

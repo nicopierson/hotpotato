@@ -16,7 +16,7 @@ const AddIngredientsInput = ({ setShowAdd, recipeId }) => {
         const payload = {
             ingredient: addIngredient,
             measurement: addMeasurement,
-            recipe_id: recipeId,
+            recipe_id: +recipeId,
         };
         dispatch(createIngredient(payload));
         setShowAdd(false);

@@ -5,7 +5,6 @@ import styleUtils from '../RecipeUtils.module.css';
 
 const AddIngredients = ({ recipeId }) => {
     const [showAdd, setShowAdd] = useState(false);
-    console.log(recipeId);
     
     return (
         <>
