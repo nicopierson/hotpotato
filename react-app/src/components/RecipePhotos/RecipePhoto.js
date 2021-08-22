@@ -100,13 +100,11 @@ const RecipePhoto = ({loaded}) => {
                     {isOwner &&
                         <button
                             onClick={() => setEditPhoto(true)}
-                    className='fas fa-edit recipe-carousel-edit'
-
+                            className='fas fa-edit recipe-carousel-edit'
                         ></button>
                     }
                 {/* enableAutoPlay */}
-                    <Carousel className='recipe-carousel' renderArrow={arrows}
-
+                    <Carousel className='recipe-carousel' enableAutoPlay renderArrow={arrows} 
                     >
                         {getPhotos()?.map(recipe => (
                             <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>
