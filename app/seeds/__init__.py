@@ -1,4 +1,3 @@
-from app.seeds.recipe_ingredients import seed_recipe_ingredients
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .likes import seed_likes, undo_likes
@@ -7,8 +6,7 @@ from .comments import seed_comments, undo_comments
 from .recipe_photos import seed_recipe_photos, undo_recipe_photos
 from .recipe_ingredients import seed_recipe_ingredients, undo_recipe_ingredients
 from .recipe_directions import seed_recipe_directions, undo_recipe_directions
-
-
+from .seed_recipe_from_json import seed_from_json, undo_seed_from_json
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -20,15 +18,12 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_recipes()
-    seed_comments()
-    seed_recipe_photos()
     seed_recipe_ingredients()
     seed_recipe_directions()
+    seed_from_json()
+    seed_comments()
+    seed_recipe_photos()
     seed_likes()
-
-
-
-    # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
@@ -36,12 +31,9 @@ def seed():
 def undo():
     undo_users()
     undo_recipes()
-    undo_comments()
-    undo_recipe_photos()
     undo_recipe_ingredients()
     undo_recipe_directions()
+    undo_seed_from_json()
+    undo_comments()
+    undo_recipe_photos()
     undo_likes()
-
-
-
-    # Add other undo functions here
