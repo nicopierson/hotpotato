@@ -13,7 +13,7 @@ export const RecipeForm = () => {
   const user_id = useSelector((state) => state.session.user?.id);
   const categories_from_server = useSelector((state)=> state.category?.categories)
 
-  console.log('categories!', categories_from_server)
+  
 
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -63,10 +63,7 @@ export const RecipeForm = () => {
 
     }, [dispatch])
 
-  console.log("set", categoriesSelected)
-  console.log("set", categoriesSelected)
-  console.log("set", categoriesSelected)
-  console.log("set", categoriesSelected)
+  
 
 
   return (

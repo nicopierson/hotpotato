@@ -27,7 +27,7 @@ export const ProfilePage = () => {
     }
   }, [dispatch])
 
-  if(recipeDetails) recipeDetails.forEach(recipe => console.log(recipe))
+
 
 
   return (

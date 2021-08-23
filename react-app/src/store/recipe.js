@@ -100,9 +100,6 @@ export const getAllRecipes = () => async (dispatch) => {
 export const getAllRecipesForHomePage = () => async (dispatch) => {
     const response = await fetch(`api/recipes/page/1`)
     const recipes  = await response.json();
-    console.log("recipes!", recipes)
-    console.log("recipes!", recipes)
-    console.log("recipes!", recipes)
 
     if (response.ok) {
         await dispatch(setAllRecipesForHomePage(recipes));
@@ -115,9 +112,6 @@ export const getAllRecipesForHomePage = () => async (dispatch) => {
 export const setMoreRecipesForHomePage = (page) => async (dispatch) => {
     const response = await fetch(`api/recipes/page/${page}`)
     const recipes  = await response.json();
-    console.log("recipes!", recipes)
-    console.log("recipes!", recipes)
-    console.log("recipes!", recipes)
 
     if (response.ok) {
         await dispatch(
@@ -134,8 +128,6 @@ export const setMoreRecipesForHomePage = (page) => async (dispatch) => {
 export const getAllRecipesForGivenCategory = (name) => async (dispatch) => {
     const response = await fetch(`/api/recipes/category/${name}`)
     const {categories} = await response.json();
-    console.log("my category recipes", categories);
-    console.log("my category recipes", categories);
 
     if (response.ok) {
         await dispatch(setAllRecipesForCategory(categories));
@@ -323,7 +315,6 @@ export const createIngredient = (payload) => async (dispatch) => {
 };
 
 export const createRecipePhoto = (payload) => async (dispatch) => {
-    console.log(payload, 'Payload_____PayloDD')
     const response = await fetch(`/api/recipes/${payload.recipe_id}/photos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -364,7 +355,6 @@ export default function reducer(state = {}, action) {
         case ADD_MORE_RECIPES_FOR_HOME:
             let updatedState = { ...state}
             updatedState.users_recipes.push(...action.recipes['recipes'])
-            console.log("updated staete", updatedState)
             return {...newState, ...state};
 
         case SET_ALL_RECIPES_FOR_CATEGORY:
