@@ -89,13 +89,30 @@ npm install
 ```
 
 3. In the `/` root directory, create a `.env` based on the `.env.example` with proper settings
+
 4. Setup your PostgreSQL user, password and database and ensure it matches your `.env` file
-5. Start the flask backend in the `/` root directory
+
+5. In the root folder, create the database by running in the terminal:
+```shell
+flask db create
+```
+
+6. In the root folder, migrate tables to the database by running in the terminal:
+```shell
+flask db migrate
+```
+
+7. In the root folder, seed the database by running in the terminal:
+```shell
+flask seed all
+```
+
+8. Start the flask backend in the `/` root directory
 ```shell
 flask run
 ```
 
-6. Start the frontend in the `/react-app` directory
+9. Start the frontend in the `/react-app` directory
 
 ```javascript
 npm start
@@ -159,29 +176,33 @@ useEffect(() => {
 ## Contact
 
 ### Casey Tuer
-* caseytuer@gmail.com
-* <a href="https://www.linkedin.com/in/caseytuer/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
-* [AngelList]()
-* <a href="https://www.linkedin.com/in/caseytuer/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+
+caseytuer@gmail.com
 
 ### Leslie Owiti
-* leslieowiti@yahoo.com
-* <a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
-* [AngelList]()
-* <a href="https://github.com/leslieowititech"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
+<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+
+leslieowiti@yahoo.com
 
 ### Nico Pierson
-* nicogpt@gmail.com
-* <a href="https://www.linkedin.com/in/nico-pierson/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
-* [AngelList](https://angel.co/u/nico-gerard-pierson)
-* <a href="https://github.com/nicopierson"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
+<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
+<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
 
+nicogpt@gmail.com
 
 ### Wes Trinh
-* westrinh00@gmail.com
-* <a href="#"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=flat&logo=linkedin&logoColor=white" /></a>
-* [AngelList]()
-* <a href="https://github.com/WesTrinhKL"><img src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
+<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
+<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+
+westrinh00@gmail.com
+
 
 ## Special Thanks
 * Any Special Thanks
