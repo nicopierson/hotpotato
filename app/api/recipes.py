@@ -81,9 +81,9 @@ def get_all_recipes_for_a_user(id):
 @recipe_routes.route('/page/<int:page>', methods=['GET'])
 # pagination, get recipes based on which page given
 def get_recipes_by_page(page=1):
-    per_page = 2  # change to 10 or more later
+    per_page = 30  # change to 10 or more later
     recipes = Recipe.query.paginate(page, per_page, error_out=False)
-    return {'recipes': [recipe.to_dict() for recipe in recipes.items]}
+    return {'recipes': [recipe.get_users_recipes() for recipe in recipes.items]}
 
 
 @recipe_routes.route('/<int:id>', methods=['GET'])

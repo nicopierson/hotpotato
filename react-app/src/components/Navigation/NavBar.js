@@ -127,6 +127,7 @@ const NavBar = () => {
 
 
             </li>
+
             {/* <li className="logout-btn navbar-li">
               <LogoutButton />
             </li> */}

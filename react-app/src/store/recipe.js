@@ -1,6 +1,7 @@
 export const SET_RECIPE = 'recipes/setRecipe';
 const SET_ALL_RECIPES = 'recipes/setAllRecipes';
 const SET_ALL_RECIPES_FOR_HOME = 'recipes/setAllRecipes/forhomepage';
+const ADD_MORE_RECIPES_FOR_HOME = 'recipes/addMoreRecipes/forhomepage';
 const DELETE_RECIPE = 'recipes/deleteRecipe';
 const ADD_RECIPE = 'recipes/addRecipe';
 const EDIT_RECIPE = 'recipes/editRecipe';
@@ -24,6 +25,12 @@ const setAllRecipesForHomePage = (recipes) => ({
     type: SET_ALL_RECIPES_FOR_HOME,
     recipes,
 });
+
+const addMoreRecipesForHomePage = (recipes) => ({
+    type: ADD_MORE_RECIPES_FOR_HOME,
+    recipes,
+});
+
 
 
 const setAllRecipesForCategory
@@ -91,7 +98,7 @@ export const getAllRecipes = () => async (dispatch) => {
 }
 
 export const getAllRecipesForHomePage = () => async (dispatch) => {
-    const response = await fetch('/api/recipes/')
+    const response = await fetch(`api/recipes/page/1`)
     const recipes  = await response.json();
     console.log("recipes!", recipes)
     console.log("recipes!", recipes)
@@ -104,6 +111,23 @@ export const getAllRecipesForHomePage = () => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 }
+
+export const setMoreRecipesForHomePage = (page) => async (dispatch) => {
+    const response = await fetch(`api/recipes/page/${page}`)
+    const recipes  = await response.json();
+    console.log("recipes!", recipes)
+    console.log("recipes!", recipes)
+    console.log("recipes!", recipes)
+
+    if (response.ok) {
+        await dispatch(
+            addMoreRecipesForHomePage(recipes));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 
 
 
@@ -336,6 +360,12 @@ export default function reducer(state = {}, action) {
         case SET_ALL_RECIPES_FOR_HOME:
             newState.users_recipes = action.recipes['recipes']
             return { ...state, ...newState };
+
+        case ADD_MORE_RECIPES_FOR_HOME:
+            let updatedState = { ...state}
+            updatedState.users_recipes.push(...action.recipes['recipes'])
+            console.log("updated staete", updatedState)
+            return {...newState, ...state};
 
         case SET_ALL_RECIPES_FOR_CATEGORY:
             newState.users_recipes = action.recipes['category_recipes']

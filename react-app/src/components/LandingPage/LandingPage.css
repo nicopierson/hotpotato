@@ -41,6 +41,8 @@
       /* z-index: 2; */
     }
 
+
+
     /* .react-multi-carousel-item{
     } */
     .category-item{
@@ -61,8 +63,16 @@
       height: 100px;
       top: 0;
       opacity: 0.5;
-      background-color: rgba(0, 0, 0, 0.801);
+      background-color: rgba(0, 0, 0, 0.925);
       /* z-index: 1; */
+    }
+    .test--selected{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      /* background-color: rgba(255, 255, 255, 0.5); */
+      /* z-index: 2; */
     }
 
 

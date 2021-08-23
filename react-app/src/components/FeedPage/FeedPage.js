@@ -74,6 +74,9 @@ export const FeedPage = () => {
               {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
             </div>}
       </div>}
+      <div className='explore-infinite-container'>
+        <div className="explore-infinite-button"> Load More</div>
+      </div>
 
 
 

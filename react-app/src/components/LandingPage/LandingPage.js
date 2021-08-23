@@ -8,6 +8,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { getAllRecipesForGivenCategory } from '../../store/recipe';
 import { getAllRecipesForHomePage } from '../../store/recipe';
+import { setMoreRecipesForHomePage } from '../../store/recipe';
 
 const LandingPage = () => {
   const dispatch = useDispatch()
@@ -20,17 +21,12 @@ const LandingPage = () => {
   const [bannerText, setBannerText] = useState('Your Next hotpotato Starts Here');
   const [categoryDescription, setCategoryDescription] = useState('search here for your next culinary inspiration or create a Hotpotato of your own!');
   const [categorySelected, setCategorySelected] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    dispatch(setAllCategories())
-    if (categorySelected){
-      dispatch(getAllRecipesForGivenCategory(categorySelected))
-    }
-    else{
-      dispatch(getAllRecipesForHomePage())
-    }
-    // dispatch(getAllRecipesUserFollowsByNew(user_id))
-  }, [dispatch, categorySelected])
+  console.log('current page', currentPage)
+  console.log('current page', currentPage)
+  console.log('current page', currentPage)
+
 
   const set_category_select = (value, description)=>{
     console.log("i am being clicked", categorySelected)
@@ -56,6 +52,19 @@ const LandingPage = () => {
       slidesToSlide: 1 // optional, default to 1.
     }
   };
+
+  useEffect(() => {
+    dispatch(setAllCategories())
+    if (categorySelected){
+      dispatch(getAllRecipesForGivenCategory(categorySelected))
+    }
+    else{
+      console.log("dispatching: ", currentPage)
+      currentPage === 1 ? dispatch(getAllRecipesForHomePage()): dispatch(setMoreRecipesForHomePage(currentPage))
+    }
+    // dispatch(getAllRecipesUserFollowsByNew(user_id))
+  }, [dispatch, categorySelected, currentPage])
+
 
 
   return (
@@ -91,7 +100,7 @@ const LandingPage = () => {
 
                   <div style={{backgroundImage: `url(${category.image_url})`, 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover'}} className="cbc__cover"></div>
 
-                  <div className="test"></div>
+                  <div className={categorySelected === category.name ? "test--selected": "test"}></div>
 
                   <div className="category-item">
                     {category.name}
@@ -122,7 +131,7 @@ const LandingPage = () => {
         </div>}
       </div>
       <div className='explore-infinite-container'>
-        <div className="explore-infinite-button"> Load More</div>
+        <div onClick={()=>setCurrentPage(currentPage+1)}className="explore-infinite-button"> Load More</div>
       </div>
 
     </div>
