@@ -1,9 +1,10 @@
-// import { Menu, Dropdown } from 'antd';
+import { Menu} from 'antd';
 import Dropdown from 'react-dropdown';
+// import Menu
 import 'react-dropdown/style.css';
 import './DropDownMenu.less';
 import './DropDownMenu.css'
-import { DownOutlined } from '@ant-design/icons';
+// import { DownOutlined } from '@ant-design/icons';
 // import 'antd/lib/button/style';
 import './DropDownMenu.css'
 import React, {useState} from 'react'
@@ -34,9 +35,13 @@ const DropDownMenu = ({user_id}) => {
     setMenuText("Surprise Me")
   }
 
-  const options = [
-    'one', 'two', 'three'
-  ];
+  const options = (
+    [
+    <li onClick={() => update_recipes_most_recent()}>Most Recent</li>,
+    <li onClick={() => update_recipes_by_trending()}>Trending</li>,
+    <li onClick={() => update_recipes_by_surprise()}>Surprise Me</li>
+  ]
+  );
 
   const defaultOption = options[0];
 
@@ -61,7 +66,8 @@ const DropDownMenu = ({user_id}) => {
           {menuText || "Sort Me"}  <DownOutlined />
         </a>
       </Dropdown> */}
-      <Dropdown options={options}  value={defaultOption} placeholder="Select an option" />;
+      <Dropdown options={options} onChange={Dropdown._onSelect} value={defaultOption} placeholder="Select an option" />;
+      {menuText || "Sort Me"}
     </>
   )
 }
