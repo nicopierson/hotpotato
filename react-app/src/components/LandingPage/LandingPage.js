@@ -32,10 +32,12 @@ const LandingPage = () => {
     // dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch], categorySelected)
 
-  const set_category_select = (value)=>{
+  const set_category_select = (value, description)=>{
     console.log("i am being clicked", categorySelected)
-    setCategorySelected(value)
-    dispatch(getAllRecipesForGivenCategory("vegan"))
+    setCategorySelected(value);
+    setBannerText(value);
+    setCategoryDescription(description);
+    dispatch(getAllRecipesForGivenCategory("vegan"));
 
   }
 
@@ -87,7 +89,7 @@ const LandingPage = () => {
                 // black transparent background
                 // onHover, cover text, cover transparent bg, keep background img
                 // on click add item to "select"
-                <div onClick={()=>set_category_select(category.name)} className="category-background-container" >
+                <div onClick={()=>set_category_select(category.name, category.description)} className="category-background-container" >
 
                   <div style={{backgroundImage: `url(${category.image_url})`, 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover'}} className="cbc__cover"></div>
 

@@ -49,7 +49,7 @@ const NavBar = () => {
                 RecipeEx
             </NavLink></li>
             <li className="navbar-btn-container">
-            <NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'
+            <NavLink to={`/feed`} exact={true} activeClassName='active'
               className="navbar-btn">
                 Your Feed
               </NavLink>
@@ -105,29 +105,24 @@ const NavBar = () => {
           {user &&
           <>
           {/* temporary logout, delete later */}
-            <li>
-              <LogoutButton />
-            </li>
-
             <li className="button-fix navbar-li">
               <CreateRecipeButton />
             </li>
 
-            <li className="profile-avatar">
-              <img className="profile-avatar__image" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef.png" />
-              {/* <div className="profile-background"></div> */}
-              <div className="profile-avatar__content">
-                <div>
-                  <LogoutButton />
-                </div>
-                <div>
-                  item 1
-                </div>
-                <div>
-                  item 2
-                </div>
+            <li>
+              <LogoutButton />
+            </li>
 
-              </div>
+            <li className="profile-avatar">
+              <NavLink  to={`/profile/${user.id}`} exact={true}
+              activeClassName='active'
+                className=""
+              >
+                <img className="profile-avatar__image" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef.png" />
+                {/* <div className="profile-background"></div> */}
+              </NavLink>
+
+
 
 
             </li>

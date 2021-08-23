@@ -96,6 +96,7 @@
 .button-fix.navbar-li {
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 
 .navbar-button-create {
@@ -175,7 +176,8 @@ button#demo-login-btn:hover {
     position: relative;
     cursor: pointer;
     margin-right: 30px;
-    margin-left: 30px;
+    margin-left: 20px;
+    z-index: 1;
 }
 
 .profile-avatar__image{
@@ -183,6 +185,10 @@ button#demo-login-btn:hover {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.profile-avatar__image:hover{
+    background-color: rgb(240, 218, 158);
 }
 
 .profile-avatar__content{
@@ -198,8 +204,8 @@ button#demo-login-btn:hover {
 .logout-style-button {
     /* display: inline-block; */
     border-style: none;
-    border-radius: 2px;
-    padding: 10px;
+    border-radius: 3px;
+    padding: 9px;
     /* margin-left: 20px; */
     text-decoration: none;
     background: black;
@@ -214,7 +220,7 @@ button#demo-login-btn:hover {
     /* display: none; */
     z-index: 1;
     /* position: absolute; */
-    margin-right: 12px;
+    margin-right: 6px;
 }
 
 .logout-style-button:hover {
@@ -222,10 +228,6 @@ button#demo-login-btn:hover {
     color: black;
 }
 
-
-.profile-avatar:hover .profile-avatar__content {
-    display: inline-block;
-}
 
 
 /* responsive queries*/

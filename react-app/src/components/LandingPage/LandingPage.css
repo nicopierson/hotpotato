@@ -82,8 +82,10 @@
   .bc__header{
     font-size: 40px;
     padding-bottom: 10px;
+    padding-top: 25px;
   }
 
   .bc__description{
     padding-bottom: 40px;
+    min-height: 9vh;
   }

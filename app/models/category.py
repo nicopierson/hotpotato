@@ -36,6 +36,7 @@ class Category(db.Model):
             'id': self.id,
             'name': self.name,
             'image_url': self.image_url,
+            'description': self.description
         }
 
     def to_dict_recipes_for_a_category(self):
@@ -43,5 +44,6 @@ class Category(db.Model):
             'id': self.id,
             'name': self.name,
             'image_url': self.image_url,
+            'description': self.description,
             'category_recipes': [recipe.get_users_recipes() for recipe in self.recipes_relations],
         }
