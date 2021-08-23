@@ -38,7 +38,7 @@ class Category(db.Model):
             'image_url': self.image_url,
         }
 
-    def to_dict_categories(self):
+    def to_dict_recipes_for_a_category(self):
         return {
             'id': self.id,
             'name': self.name,

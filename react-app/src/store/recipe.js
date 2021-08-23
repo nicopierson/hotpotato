@@ -6,7 +6,7 @@ const EDIT_RECIPE = 'recipes/editRecipe';
 const SET_ALL_RECIPES_BELONG_TO_USER = 'recipes/setUsersRecipes'
 const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_NEW = 'recipes/setUsersRecipes/following/new'
 const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_TRENDING = 'recipes/setUsersRecipes/following/trending'
-
+const SET_ALL_RECIPES_FOR_CATEGORY = '/recipes/category/getAll'
 
 
 const setRecipe = (recipe) => ({
@@ -18,6 +18,14 @@ const setAllRecipes = (recipes) => ({
     type: SET_ALL_RECIPES,
     recipes,
 });
+
+const setAllRecipesForCategory
+= (recipes) => ({
+    type: SET_ALL_RECIPES_FOR_CATEGORY,
+    recipes,
+});
+
+
 
 const deleteARecipe = (id) => ({
     type: DELETE_RECIPE,
@@ -69,6 +77,20 @@ export const getAllRecipes = () => async (dispatch) => {
 
     if (response.ok) {
         await dispatch(setAllRecipes(recipes));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const getAllRecipesForGivenCategory = (name) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/category/${name}`)
+    const {categories} = await response.json();
+    console.log("my category recipes", categories);
+    console.log("my category recipes", categories);
+
+    if (response.ok) {
+        await dispatch(setAllRecipesForCategory(categories));
         return response;
     } else {
         return ['An error occurred. Please try again.']
@@ -286,6 +308,9 @@ export default function reducer(state = {}, action) {
             action.recipes.forEach(recipe => {
                 newState[recipe.id] = recipe;
             });
+            return { ...state, ...newState };
+        case SET_ALL_RECIPES_FOR_CATEGORY:
+            newState.users_recipes = action.recipes['category_recipes']
             return { ...state, ...newState };
         case SET_ALL_RECIPES_BELONG_TO_USER:
             newState.users_recipes = action.recipes.recipes;

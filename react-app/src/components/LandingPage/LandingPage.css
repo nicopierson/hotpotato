@@ -25,7 +25,7 @@
   border-bottom: 1px solid rgb(201, 201, 201);
   border-right: 1px solid rgb(201, 201, 201);
   /* width: 20%; */
-  height: 60px;
+  height: 70px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -51,7 +51,7 @@
       font-weight: bold;
       z-index: 2;
       position: relative;
-      padding-top: 20px;
+      padding-top: 25px;
 
     }
 
@@ -64,6 +64,7 @@
       background-color: rgba(0, 0, 0, 0.801);
       z-index: 1;
     }
+
 
 
 .banner-container{

@@ -7,20 +7,15 @@ import { getAllRecipesForGivenUser } from '../../store/recipe';
 import { setAllCategories } from '../../store/category';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// import MobileDetect from "mobile-detect";
-// todo
+import { getAllRecipesForGivenCategory } from '../../store/recipe';
+
 const LandingPage = () => {
   const dispatch = useDispatch()
 
   const user_id = useSelector(state => state.session.user?.id);
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
+  const categories_from_server = useSelector((state)=> state.category?.categories)
 
-
-  // temporary categories
-  // https://leafyplace.com/types-of-cuisine/
-  let categories = ["spicy", "vegan", "dessert", "soul", "McDs", "dinner", "savory", "sweet", "meat", "appetizers", "beverages", "greens", "seafood", "North America", "South America", "Europe", "Africa", "Asia", "Australia", "Antartica", "Surprise" ]
-
-  const testing_img_url ="https://blogs.biomedcentral.com/on-medicine/wp-content/uploads/sites/6/2019/09/iStock-1131794876.t5d482e40.m800.xtDADj9SvTVFjzuNeGuNUUGY4tm5d6UGU5tkKM0s3iPk-620x342.jpg"
 
   const [deviceType, setDeviceType] = useState('desktop');
   const [bannerText, setBannerText] = useState('Your Next hotpotato Starts Here');
@@ -30,8 +25,19 @@ const LandingPage = () => {
   useEffect(() => {
     dispatch(getAllRecipesForGivenUser(user_id))
     dispatch(setAllCategories())
+    if (categorySelected){
+      dispatch(getAllRecipesForGivenCategory(categorySelected))
+
+    }
     // dispatch(getAllRecipesUserFollowsByNew(user_id))
-  }, [dispatch])
+  }, [dispatch], categorySelected)
+
+  const set_category_select = (value)=>{
+    console.log("i am being clicked", categorySelected)
+    setCategorySelected(value)
+    dispatch(getAllRecipesForGivenCategory("vegan"))
+
+  }
 
   const responsive = {
     desktop: {
@@ -54,7 +60,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <div className="select-category-container">
+      {categories_from_server && <div className="select-category-container">
         <div className="scc__carousel">
           <Carousel
             swipeable={false}
@@ -76,19 +82,19 @@ const LandingPage = () => {
             className="carousel-wrapper"
           >
             {/* for each category, create category style, onclick, run query with category to update redux store */}
-            {categories.map(category=>
+            {categories_from_server.map(category=>
                 // inline bg img based on category url
                 // black transparent background
                 // onHover, cover text, cover transparent bg, keep background img
                 // on click add item to "select"
-                <div className="category-background-container" >
+                <div onClick={()=>set_category_select(category.name)} className="category-background-container" >
 
-                  <div style={{backgroundImage: `url(${testing_img_url})`, 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover'}} className="cbc__cover"></div>
+                  <div style={{backgroundImage: `url(${category.image_url})`, 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover'}} className="cbc__cover"></div>
 
                   <div className="test"></div>
 
                   <div className="category-item">
-                    {category}
+                    {category.name}
                   </div>
                 </div>
             )}
@@ -102,7 +108,7 @@ const LandingPage = () => {
           {/* search results for... */}
 
         </div>
-      </div>
+      </div>}
 
       <div className="feed-page-wrapper">
         {recipeDetails && <div className="fpw-feed-container">
