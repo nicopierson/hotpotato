@@ -39,7 +39,7 @@
 }
 
 .recipe-ingredients-container, .recipe-directions-container{
-  min-height: 500px;
+  min-height: 800px;
 }
 
 .recipe-comments-container{

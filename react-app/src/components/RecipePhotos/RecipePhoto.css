@@ -245,6 +245,7 @@ div.rec-item-wrapper > * {
     margin: 0;
 }
 
+
 .dTGAUq {
     margin: 0;
 }
@@ -271,4 +272,13 @@ div.rec-item-wrapper > * {
 .sc-iCoGMd{
     margin-bottom: 0px;
     max-height: 50px;
+}
+
+.recipe-carousel{
+    /* min-height: vh; */
+    max-height: 80vh;
+}
+.recipe-carousel-images{
+    min-height: 800px;
+    max-height: 800px;
 }

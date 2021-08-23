@@ -3,11 +3,11 @@ import './LandingPage.css'
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import RecipeCardComponent from '../RecipeCardComponent';
-import { getAllRecipesForGivenUser } from '../../store/recipe';
 import { setAllCategories } from '../../store/category';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { getAllRecipesForGivenCategory } from '../../store/recipe';
+import { getAllRecipesForHomePage } from '../../store/recipe';
 
 const LandingPage = () => {
   const dispatch = useDispatch()
@@ -23,14 +23,14 @@ const LandingPage = () => {
   const [categorySelected, setCategorySelected] = useState(null);
 
   useEffect(() => {
-    dispatch(getAllRecipesForGivenUser(user_id))
+    dispatch(getAllRecipesForHomePage())
     dispatch(setAllCategories())
     if (categorySelected){
       dispatch(getAllRecipesForGivenCategory(categorySelected))
 
     }
     // dispatch(getAllRecipesUserFollowsByNew(user_id))
-  }, [dispatch], categorySelected)
+  }, [dispatch, categorySelected])
 
   const set_category_select = (value, description)=>{
     console.log("i am being clicked", categorySelected)

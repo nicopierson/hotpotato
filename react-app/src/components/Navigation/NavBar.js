@@ -42,12 +42,12 @@ const NavBar = () => {
                 className="navbar-btn">
                 Explore
               </NavLink></li>
-            <li className="navbar-btn-container">
+            {/* <li className="navbar-btn-container">
             <NavLink to='/view/recipe/1' exact={true}
             activeClassName='active'
               className="navbar-btn">
                 RecipeEx
-            </NavLink></li>
+            </NavLink></li> */}
             <li className="navbar-btn-container">
             <NavLink to={`/feed`} exact={true} activeClassName='active'
               className="navbar-btn">

@@ -62,8 +62,8 @@ def item_belongs_to_user_recipe(itemId, users_recipe_id, classObj):
 
 @recipe_routes.route('/', methods=['GET'])
 def get_all_recipes():
-    all_recipes = Recipe.query.limit(5).all()
-    return {'recipes': [recipe.to_dict() for recipe in all_recipes]}
+    all_recipes = Recipe.query.limit(30).all()
+    return {'recipes': [recipe.get_users_recipes() for recipe in all_recipes]}
 
 # TODO
 # need to add created date and end date to recipe

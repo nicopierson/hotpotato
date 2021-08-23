@@ -1,5 +1,6 @@
 export const SET_RECIPE = 'recipes/setRecipe';
 const SET_ALL_RECIPES = 'recipes/setAllRecipes';
+const SET_ALL_RECIPES_FOR_HOME = 'recipes/setAllRecipes/forhomepage';
 const DELETE_RECIPE = 'recipes/deleteRecipe';
 const ADD_RECIPE = 'recipes/addRecipe';
 const EDIT_RECIPE = 'recipes/editRecipe';
@@ -18,6 +19,12 @@ const setAllRecipes = (recipes) => ({
     type: SET_ALL_RECIPES,
     recipes,
 });
+
+const setAllRecipesForHomePage = (recipes) => ({
+    type: SET_ALL_RECIPES_FOR_HOME,
+    recipes,
+});
+
 
 const setAllRecipesForCategory
 = (recipes) => ({
@@ -82,6 +89,23 @@ export const getAllRecipes = () => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 }
+
+export const getAllRecipesForHomePage = () => async (dispatch) => {
+    const response = await fetch('/api/recipes/')
+    const recipes  = await response.json();
+    console.log("recipes!", recipes)
+    console.log("recipes!", recipes)
+    console.log("recipes!", recipes)
+
+    if (response.ok) {
+        await dispatch(setAllRecipesForHomePage(recipes));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+
 
 export const getAllRecipesForGivenCategory = (name) => async (dispatch) => {
     const response = await fetch(`/api/recipes/category/${name}`)
@@ -309,9 +333,14 @@ export default function reducer(state = {}, action) {
                 newState[recipe.id] = recipe;
             });
             return { ...state, ...newState };
+        case SET_ALL_RECIPES_FOR_HOME:
+            newState.users_recipes = action.recipes['recipes']
+            return { ...state, ...newState };
+
         case SET_ALL_RECIPES_FOR_CATEGORY:
             newState.users_recipes = action.recipes['category_recipes']
             return { ...state, ...newState };
+
         case SET_ALL_RECIPES_BELONG_TO_USER:
             newState.users_recipes = action.recipes.recipes;
             return { ...state, ...newState };

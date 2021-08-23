@@ -20,7 +20,7 @@ export const FeedPage = () => {
 
   useEffect(() => {
     dispatch(getAllRecipesForGivenUser(user_id))
-    //dispatch(getAllRecipesUserFollowsByNew(user_id))
+    // dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch])
 
 

@@ -53,7 +53,7 @@ const AddInput = ({ setShowAdd, recipeDirections, recipeId }) => {
                     disabled={!addDirection}
                 >
                     <i className='fas fa-check-circle'></i>
-                    <span>Add {addDirection}</span>
+                    <span>Add Step</span>
                 </button>
             </div>
         </div>

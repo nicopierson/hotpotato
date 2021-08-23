@@ -102,13 +102,13 @@ const RecipePhoto = ({loaded}) => {
                             onClick={() => setEditPhoto(true)}
 
                     className='fas fa-pen recipe-carousel-add'
-                        
-                        > 
+
+                        >
                     <div className="add-photo-carousel-text">Add Photo</div></button>
 
                     }
                 {/* enableAutoPlay */}
-                    <Carousel className='recipe-carousel' enableAutoPlay renderArrow={arrows} 
+                    <Carousel className='recipe-carousel'  renderArrow={arrows}
                     >
                         {getPhotos()?.map(recipe => (
                             <img src={recipe.img_url} alt={recipe} key={recipe.id} className='recipe-carousel-images'/>

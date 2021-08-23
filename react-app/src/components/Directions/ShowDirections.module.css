@@ -12,10 +12,10 @@
 
 .steps_item
 {
-    border-bottom: 2px solid rgb(255, 145, 145);
+    /* border-bottom: 2px solid rgb(255, 145, 145); */
     /* margin-top: 10px; */
     /* margin-bottom: 10px; */
-    max-width: fit-content;
+    /* max-width: fit-content; */
 }
 
 .directions_step
