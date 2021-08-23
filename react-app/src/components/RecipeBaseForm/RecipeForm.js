@@ -4,21 +4,33 @@ import './CreateRecipeForm.css';
 import { createRecipe } from '../../store/recipe';
 import { useHistory } from 'react-router';
 import './CreateRecipeForm.css'
+import { setAllCategories } from '../../store/category';
 
 export const RecipeForm = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
   const user_id = useSelector((state) => state.session.user?.id);
+  const categories_from_server = useSelector((state)=> state.category?.categories)
 
+  console.log('categories!', categories_from_server)
 
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  // const [userId, setUserId] = useState(1);
+  const [categoriesSelected, setCategoriesSelected] = useState(new Set());
   const [errors, setErrors] = useState([]);
 
   const setTitleE = (e) => setTitle(e.target.value);
   const setImageUrlE = (e) => setImageUrl(e.target.value);
+
+  const removeCategoryFromState = (category_name) =>{
+    const arr = [...categoriesSelected].filter(x => x !== category_name)
+    setCategoriesSelected(new Set(arr))
+  }
+
+  const addCategoryToState = (category_name) =>{
+    setCategoriesSelected(() => new Set([...categoriesSelected, category_name]))
+  }
 
   const onFormSubmitCreateRecipeBase = (e)=>{
     e.preventDefault();
@@ -42,6 +54,18 @@ export const RecipeForm = () => {
       })
     // }
   }
+
+
+
+  useEffect(() => {
+    dispatch(setAllCategories())
+
+    }, [dispatch])
+
+  console.log("set", categoriesSelected)
+  console.log("set", categoriesSelected)
+  console.log("set", categoriesSelected)
+  console.log("set", categoriesSelected)
 
 
   return (
@@ -70,6 +94,24 @@ export const RecipeForm = () => {
             </div>
           </div>
 
+          {/* FORM Categories */}
+          <div className="create-recipe-base-card">
+            <div>
+              <label className="create-recipe-base-label">
+                Select A Few Categories
+              </label>
+            </div>
+            <div className="crbc__categories">
+              {categories_from_server && categories_from_server.map(category=>{
+                // add conditional rendering for style if category in array
+                // onclick add to state
+                return <div onClick={()=>categoriesSelected.has(category.name) ? removeCategoryFromState(category.name) : addCategoryToState(category.name)} className={categoriesSelected.has(category.name) ? "crbc-c__category--selected": "crbc-c__category" }> {category.name} </div>
+              })}
+
+            </div>
+          </div>
+
+
         <div className="create-recipe-base-card">
             <div>
             <label className="create-recipe-base-label">
@@ -84,6 +126,9 @@ export const RecipeForm = () => {
                   onChange={setImageUrlE}
                   type="text" />
             </div>
+
+
+
           {imageUrl &&
           <div id="create-recipe-base-image-preview"
           className="create-recipe-base-card">
