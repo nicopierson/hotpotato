@@ -32,6 +32,7 @@ const NavBar = () => {
               className="navbar-title navbar-btn-container"
             >
               HOTPOTATO
+
             </NavLink>
           </li>
           {user &&
@@ -126,6 +127,7 @@ const NavBar = () => {
 
 
             </li>
+
             {/* <li className="logout-btn navbar-li">
               <LogoutButton />
             </li> */}

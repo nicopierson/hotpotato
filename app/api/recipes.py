@@ -81,9 +81,9 @@ def get_all_recipes_for_a_user(id):
 @recipe_routes.route('/page/<int:page>', methods=['GET'])
 # pagination, get recipes based on which page given
 def get_recipes_by_page(page=1):
-    per_page = 2  # change to 10 or more later
+    per_page = 30  # change to 10 or more later
     recipes = Recipe.query.paginate(page, per_page, error_out=False)
-    return {'recipes': [recipe.to_dict() for recipe in recipes.items]}
+    return {'recipes': [recipe.get_users_recipes() for recipe in recipes.items]}
 
 
 @recipe_routes.route('/<int:id>', methods=['GET'])
@@ -125,10 +125,22 @@ def get_all_recipes_based_on_name(name):
 def create_recipe_post():
     form = RecipeCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         if current_user_matches_client_user(form.user_id.data):
+            # print("categories", form['categories_relations'].data)
             create_recipe = Recipe()
-            form.populate_obj(create_recipe)
+            create_recipe.user_id = form.user_id.data
+            create_recipe.name = form.name.data
+            create_recipe.thumbnail_url = form.thumbnail_url.data
+
+            for category in form['categories_relations'].data:
+                print("this", type(category))
+                print("this", category)
+                print("this", category)
+                categoryInstance = Category.query.filter_by(
+                    name=category).one()
+                create_recipe.categories_relations.append(categoryInstance)
             db.session.add(create_recipe)
             db.session.commit()
             return create_recipe.to_dict()

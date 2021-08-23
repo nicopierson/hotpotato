@@ -6,7 +6,7 @@
     height: 50px;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1001;
     display: flex;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     padding-top: 10px;
@@ -29,6 +29,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    margin: auto;
+    padding-right: 5%;
 }
 
 .navbar-search__input-wrapper{
@@ -218,7 +220,7 @@ button#demo-login-btn:hover {
     -webkit-appearance: none;
     -moz-appearance: none;
     /* display: none; */
-    z-index: 1;
+    /* z-index: 100000; */
     /* position: absolute; */
     margin-right: 6px;
 }

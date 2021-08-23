@@ -62,3 +62,33 @@
     background: white;
     color: black;
 }
+
+/* categories */
+.crbc__categories{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.crbc-c__category{
+  padding: 2px 4px;
+  margin: 2px 4px;
+  background-color: rgb(190, 190, 190);
+  color: aliceblue;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.crbc-c__category:hover{
+  background-color: black;
+  color: white;
+}
+
+.crbc-c__category--selected{
+  padding: 2px 4px;
+  margin: 2px 4px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+}

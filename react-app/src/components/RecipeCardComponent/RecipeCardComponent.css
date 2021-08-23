@@ -1,6 +1,6 @@
 .recipe-card-wrapper{
   display: flex;
-  flex: 20%;
+  /* flex: 20%; */
   /* align-content: flex-start; */
   padding-left: 20px;
 

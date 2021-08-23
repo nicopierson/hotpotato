@@ -50,7 +50,7 @@ def upgrade():
     op.create_table('recipes',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('thumbnail_url', sa.String(
-                        length=500), nullable=True),
+                        length=1500), nullable=True),
                     sa.Column('name', sa.String(length=255), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),

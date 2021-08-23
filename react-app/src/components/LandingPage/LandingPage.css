@@ -41,6 +41,8 @@
       /* z-index: 2; */
     }
 
+
+
     /* .react-multi-carousel-item{
     } */
     .category-item{
@@ -49,7 +51,7 @@
       text-align: center;
       color: white;
       font-weight: bold;
-      z-index: 2;
+      /* z-index: 2; */
       position: relative;
       padding-top: 25px;
 
@@ -61,8 +63,16 @@
       height: 100px;
       top: 0;
       opacity: 0.5;
-      background-color: rgba(0, 0, 0, 0.801);
-      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.925);
+      /* z-index: 1; */
+    }
+    .test--selected{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      /* background-color: rgba(255, 255, 255, 0.5); */
+      /* z-index: 2; */
     }
 
 
@@ -88,4 +98,36 @@
   .bc__description{
     padding-bottom: 40px;
     min-height: 9vh;
+  }
+
+.explore-infinite-container{
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+  .explore-infinite-button{
+    margin: auto;
+    width: 180px;
+    padding: 6px 10px 6px 10px;
+    border-style: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin-bottom: 15px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgb(243, 243, 243);
+  }
+
+  .explore-infinite-button:hover{
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   }

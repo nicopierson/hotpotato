@@ -14,8 +14,15 @@ ul {
     padding-inline-start: 0px;
 }
 
-body { padding-top: 50px; }
+body {
+    padding-top: 50px;
+    /* min-height: 100vh; */
+}
 
 input:focus-visible {
     outline: 2px solid black;
+}
+
+.container-app{
+    min-height: 90vh;
 }
