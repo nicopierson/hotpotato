@@ -39,7 +39,7 @@ const DropDownMenu = ({user_id}) => {
     [
     <li onClick={() => update_recipes_most_recent()}>Most Recent</li>,
     <li onClick={() => update_recipes_by_trending()}>Trending</li>,
-    <li onClick={() => update_recipes_by_surprise()}>Surprise Me</li>
+    // <li onClick={() => update_recipes_by_surprise()}>Surprise Me</li>
   ]
   );
 
@@ -66,7 +66,7 @@ const DropDownMenu = ({user_id}) => {
           {menuText || "Sort Me"}  <DownOutlined />
         </a>
       </Dropdown> */}
-      <Dropdown options={options} onChange={Dropdown._onSelect} value={defaultOption} placeholder="Select an option" />
+      <Dropdown options={options} onChange={Dropdown._onSelect} value={menuText} placeholder="Select an option" />
     </>
   )
 }

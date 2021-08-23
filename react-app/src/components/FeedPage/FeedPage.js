@@ -3,7 +3,8 @@ import './FeedPage.css'
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesUserFollowsByNew } from '../../store/recipe';
-import { getAllRecipesForGivenUser } from '../../store/recipe';
+// import { getAllRecipesForGivenUser } from '../../store/recipe';
+// import { getAllRecipesUserFollowsByTrending } from '../../store/recipe';
 
 import  RecipeCardComponent  from '../RecipeCardComponent/';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
@@ -19,8 +20,8 @@ export const FeedPage = () => {
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
 
   useEffect(() => {
-    dispatch(getAllRecipesForGivenUser(user_id))
-    // dispatch(getAllRecipesUserFollowsByNew(user_id))
+    // dispatch(getAllRecipesForGivenUser(user_id))
+    dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch])
 
 
