@@ -125,13 +125,32 @@ def get_all_recipes_based_on_name(name):
 def create_recipe_post():
     form = RecipeCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # print("categories", request.form['categories'])
+
     if form.validate_on_submit():
         if current_user_matches_client_user(form.user_id.data):
+            print("categories", form['categories_relations'].data)
+            print("categories", form['categories_relations'].data)
             create_recipe = Recipe()
-            form.populate_obj(create_recipe)
+            create_recipe.user_id = form.user_id.data
+            create_recipe.name = form.name.data
+            create_recipe.thumbnail_url = form.thumbnail_url.data
+
+            # get each category by name, then append it to create_recipe
+            for category in form['categories_relations'].data:
+                print("this", type(category))
+                print("this", category)
+                print("this", category)
+                categoryInstance = Category.query.filter_by(
+                    name=category).one()
+                create_recipe.categories_relations.append(categoryInstance)
             db.session.add(create_recipe)
             db.session.commit()
+
+            # create_recipe.categories_relations(request)
+
             return create_recipe.to_dict()
+            # return {"yes": "thankyou"}
         return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

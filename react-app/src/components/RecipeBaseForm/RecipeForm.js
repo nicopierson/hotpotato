@@ -39,7 +39,8 @@ export const RecipeForm = () => {
       const payload = {
         name: title,
         thumbnail_url: imageUrl,
-        user_id: user_id
+        user_id: user_id,
+        categories_relations: [...categoriesSelected]
       }
       setErrors([]);
       dispatch(createRecipe(payload)).then( (data)=>{
