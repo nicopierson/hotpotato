@@ -110,6 +110,7 @@ const LandingPage = () => {
         </div>
       </div>}
 
+      {/* cards */}
       <div className="feed-page-wrapper">
         {recipeDetails && <div className="fpw-feed-container">
 
@@ -120,6 +121,10 @@ const LandingPage = () => {
               </div>}
         </div>}
       </div>
+      <div className='explore-infinite-container'>
+        <div className="explore-infinite-button"> Load More</div>
+      </div>
+
     </div>
   )
 }

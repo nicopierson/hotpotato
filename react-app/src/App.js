@@ -44,7 +44,7 @@ function App() {
           </Route>
           <Route path='/view/recipe/:recipeId' exact={true}>
             <ViewEditRecipePage />
-          </Route>
+        </Route>
           <Route path='/card' exact={true}>
             <RecipeCardComponent />
           </Route>

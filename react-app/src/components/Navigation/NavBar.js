@@ -32,6 +32,7 @@ const NavBar = () => {
               className="navbar-title navbar-btn-container"
             >
               HOTPOTATO
+
             </NavLink>
           </li>
           {user &&

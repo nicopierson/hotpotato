@@ -81,7 +81,7 @@
   /* flex: 50%; */
   display: flex;
   padding: 10px;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   width: 80%;
   margin: auto;
@@ -91,10 +91,10 @@
 
 
 
-.fpw-feed-container__recipe-cards::after{
+/* .fpw-feed-container__recipe-cards::after{
   content: "  ";
-  flex: 500;
-}
+  flex: 300;
+} */
 
 @media only screen and (max-width: 700px) {
   .hsc__title{

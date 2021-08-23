@@ -19,15 +19,6 @@ export const FeedPage = () => {
 
   const [searchBy, setsearchBy] = useState("Most Recent")
 
-  const options = (
-    [
-      <li onClick={()=>{setsearchBy("Most Recent")}}>new</li>,
-      <li onClick={()=>{setsearchBy("Trending")}}>trending</li>,
-    // <li onClick={() => update_recipes_by_surprise()}>Surprise Me</li>
-    ]
-  );
-
-
   useEffect(() => {
     // dispatch(getAllRecipesForGivenUser(user_id))
     switch (searchBy) {
