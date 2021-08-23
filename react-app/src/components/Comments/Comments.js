@@ -14,14 +14,14 @@ const Comments = () => {
     const [showEdit, setShowEdit] = useState(false);
 
     return (
-        <div >
+        <>
             {!showEdit &&
                 <ShowComments
                     recipeId={recipeId}
                     comments={comments}
                 />
             }
-        </div>
+        </>
     );
 };
 

@@ -59,7 +59,7 @@ export function ModalVerify({ offVerify, onClose,children }) {
         {children}
         <div className="display-buttons">
           <div  className="button-style-stay" onClick={offVerify}>Stay</div>
-          <div className="button-style-exit" onClick={verifyAndClose}>Leave</div>
+          <div className="button-style-exit" onClick={verifyAndClose}>Exit</div>
         </div>
 
 

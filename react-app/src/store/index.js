@@ -6,6 +6,7 @@ import comment from './comments';
 import follow from './follow';
 import profile from './profile';
 import like from './like';
+import category from './category';
 
 
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   follow,
   profile,
   like,
+  category
 
 });
 

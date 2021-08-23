@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 import RecipeCardComponent  from './components/RecipeCardComponent';
 import ProfilePage  from './components/ProfilePage';
 import FeedPage from './components/FeedPage';
-
+import LandingPage from './components/LandingPage/LandingPage';
 
 
 function App() {
@@ -47,6 +47,9 @@ function App() {
         <Route path='/card' exact={true}>
           <RecipeCardComponent />
         </Route>
+        <Route path='/explore' exact={true}>
+          <LandingPage />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -62,6 +65,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/' exact={true} >
+            <Redirect to="/explore" />
         </ProtectedRoute>
         <Route path='/profile/:userId' exact={true}>
           <ProfilePage />

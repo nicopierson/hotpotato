@@ -9,18 +9,13 @@ export const RecipeForm = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state) => state.session.user);
+  const user_id = useSelector((state) => state.session.user?.id);
 
 
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   // const [userId, setUserId] = useState(1);
   const [errors, setErrors] = useState([]);
-
-  let userId;
-  if(user) userId = user.id;
-  console.log("this is the user id from recipeForm!!", user.id)
-
 
   const setTitleE = (e) => setTitle(e.target.value);
   const setImageUrlE = (e) => setImageUrl(e.target.value);
@@ -32,12 +27,11 @@ export const RecipeForm = () => {
       const payload = {
         name: title,
         thumbnail_url: imageUrl,
-        user_id: userId
+        user_id: user_id
       }
       setErrors([]);
       dispatch(createRecipe(payload)).then( (data)=>{
-        // setTimeout(()=>console.log("loading"), 3000)
-        if(data){
+        if(data && data.id){
           history.push(`/view/recipe/${data.id}`);
           window.location.reload();
         }
@@ -90,7 +84,7 @@ export const RecipeForm = () => {
                   onChange={setImageUrlE}
                   type="text" />
             </div>
-          {imageUrl && 
+          {imageUrl &&
           <div id="create-recipe-base-image-preview"
           className="create-recipe-base-card">
               <img src={imageUrl} alt="Can't Find"
