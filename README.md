@@ -176,34 +176,34 @@ useEffect(() => {
 ## Contact
 
 ### Casey Tuer
-<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height:28px; vertical-align:middle"/></a>
-<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" style="height: 35px;vertical-align:middle"/></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 caseytuer@gmail.com
 
 ### Leslie Owiti
-<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align:middle"/></a>
-<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" style="height:35px; vertical-align:middle"/></a>
+<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle"/></a>
 
 leslieowiti@yahoo.com
 
 ### Nico Pierson
-<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
-<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px; vertical-align:middle"/></a>
-<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" style="height:35px; vertical-align:middle"/></a>
+<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 nicogpt@gmail.com
 
 ### Wes Trinh
-<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height:28px; vertical-align:middle"/></a>
-<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" style="height:35px; vertical-align:middle"/></a>
+<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 westrinh00@gmail.com
 
 
 ## Special Thanks
 * Any Special Thanks
-* Mentors who have given me their time and effort: [Zach](https://github.com/zdwatts), [Ed](https://github.com/edherm), and [Javier](https://github.com/javiermortiz) 
+* Mentors who have given us their time and effort: [Zach](https://github.com/zdwatts), [Ed](https://github.com/edherm), and [Javier](https://github.com/javiermortiz) 
