@@ -169,37 +169,37 @@ useEffect(() => {
 
 1. __Search__ - search recipes or chefs
 
-2. __Second__ - second feature description
+2. __Edit Profile__ - users edit profile info and add banner
 
-3. __Third__ - third feature description
+3. __Add Tags__ - add tags to recipes and profile
 
 ## Contact
 
 ### Casey Tuer
-<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height:28px; vertical-align:middle"/></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" style="height: 35px;vertical-align:middle"/></a>
 
 caseytuer@gmail.com
 
 ### Leslie Owiti
-<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align:middle"/></a>
+<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" style="height:35px; vertical-align:middle"/></a>
 
 leslieowiti@yahoo.com
 
 ### Nico Pierson
-<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
+<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px; vertical-align:middle"/></a>
+<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" style="height:35px; vertical-align:middle"/></a>
 
 nicogpt@gmail.com
 
 ### Wes Trinh
-<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" style="height:28px; vertical-align:middle"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height:28px; vertical-align:middle"/></a>
+<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" style="height:35px; vertical-align:middle"/></a>
 
 westrinh00@gmail.com
 
