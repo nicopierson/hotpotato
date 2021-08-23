@@ -33,7 +33,7 @@ const ViewEditRecipePage = () => {
   // fetching the recipe based on ID and adding it to the store.
   useEffect(() => {
     dispatch(getRecipe(recipeId));
-    if (user.id) {
+    if (user?.id) {
       dispatch(loadLikes(user.id));
     }
   }, [dispatch, recipeId])
