@@ -29,6 +29,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    margin: auto;
+    padding-right: 5%;
 }
 
 .navbar-search__input-wrapper{
