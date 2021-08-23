@@ -91,4 +91,8 @@
 
   }
 
+  .fpw-feed-container{
+    min-height: 90vh;
+  }
+
 }

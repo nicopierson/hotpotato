@@ -6,6 +6,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* position: absolute;
+  bottom: 0; */
+
 }
 
 .footer_container p
@@ -35,7 +38,7 @@
 .footer_social > div {
   display: flex;
   flex-direction: column;
-  margin: 0px 20px 0px 20px; 
+  margin: 0px 20px 0px 20px;
   padding-bottom: 10px;
 }
 

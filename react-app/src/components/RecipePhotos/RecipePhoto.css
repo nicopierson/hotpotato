@@ -276,7 +276,7 @@ div.rec-item-wrapper > * {
 
 .recipe-carousel{
     /* min-height: vh; */
-    max-height: 80vh;
+    /* max-height: 80vh; */
 }
 .recipe-carousel-images{
     min-height: 800px;
