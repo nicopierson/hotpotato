@@ -23,7 +23,7 @@ Hotpotato is a recipe portfolio App that assists users to discover and comment n
 
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
-* <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL" /></a>
+* <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL&logoColor=white" /></a>
 * <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"></a>
 * <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"></a>
 * <a href="https://redux.js.org/"><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white"></a>
@@ -139,49 +139,100 @@ npm start
 
 ## Technical Implementation Details
 
-### First Implementation
-First Description
+### Follow
+Follow feature was a key element for our project and we implemented by creating a self-referential table from the Users table. It was also necessary to add class methods to follow and to unfollow a user or chef. It was challenging to integrate the table and append or remove users to the table.
+
+Part of our user model is shown below:
+
+```python
+follows = db.Table(
+  "follows",
+  db.Column("user_id_follow_owner", db.Integer,
+            db.ForeignKey("users.id")),
+  db.Column("user_id_follower", db.Integer, db.ForeignKey("users.id"))
+)
+followers = db.relationship(
+  "User",
+  secondary=follows,
+  primaryjoin=(follows.c.user_id_follow_owner == id),
+  secondaryjoin=(follows.c.user_id_follower == id),
+  backref=db.backref("follows", lazy="dynamic"),
+  lazy="dynamic"
+)
+
+def follow(self, user):
+  if not self.is_following(user):
+    self.follows.append(user)
+    return user
+  return False
+
+def unfollow(self, user):
+  if self.is_following(user):
+    self.follows.remove(user)
+    return user
+  return False
+```
+
+In order to connect the backend to the frontend, we connected the `follows` api routes to update the following in the redux store. When the Follow component button is clicked, either a removeFollowing or createFollowing dispatch action is called to update the follow and profile slice of state in redux store. As a result the Profile page will re-render because React notices a change in the profile state and updates the followers attribute and the follow button.
+
+```javascript
+export const removeFollowing = (id) => async (dispatch) => {
+    const response = await fetch(`/api/follows/users/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        await dispatch(deleteFollowing(id));
+        await dispatch(getProfile(id));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const createFollowing = (id) => async (dispatch) => {
+    const response = await fetch(`/api/follows/users/${id}`, {
+        method: 'POST',
+    });
+
+    if (response.ok) {
+        const { following } = await response.json();
+        await dispatch(addFollowing(following));
+        await dispatch(getProfile(id));
+        return following;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+```
+
+### Integrating React Carousel
+In order to show more than main thumbnail, we integrated a third-party react component.
 
 Code snippet is shown here:
 
 ```javascript
-const [state, setState] = useState(false);
+<Carousel 
+  className='recipe-carousel' 
+  renderArrow={arrows} 
+>
+  { getPhotos()?.map(recipe => (
+    <img 
+      src={recipe.img_url} 
+      alt={recipe} 
+      key={recipe.id} className='recipe-carousel-images'
+    />
+  ))}
 
-useEffect(() => {
+  { getVideos()?.map(video => (
+      <ReactPlayer url={video}></ReactPlayer>
+    ))
+  }
 
-}, [state]);
-```
-
-Second Description
-
-```javascript
-return (
-    <div>
-      {show &&
-         <Recipe 
-            setState={setState}
-          />
-      }
-      {!show &&
-         <EditRecipe 
-            setState={setState}
-         />
-      }
-    </div>
-  );
-```
-
-### Second Implementation
-Second Description
-
-Code snippet is shown here:
-
-```javascript
-const [state, setState] = useState(false);
-
-useEffect(() => {
-
-}, [state]);
+  {addVideo &&
+    <ReactPlayer url={videoUrl}></ReactPlayer>
+  }
+</Carousel>
 ```
 
 
@@ -189,38 +240,38 @@ useEffect(() => {
 
 1. __Search__ - search recipes or chefs
 
-2. __Second__ - second feature description
+2. __Edit Profile__ - users edit profile info and add banner
 
-3. __Third__ - third feature description
+3. __Add Tags__ - add tags to recipes and profile
 
 
 ## Contact
 
 ### Casey Tuer
-<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://www.linkedin.com/in/caseytuer/"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 caseytuer@gmail.com
 
 ### Leslie Owiti
-<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/leslie-owiti-0b447952/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle"/></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/leslieowititech"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle"/></a>
 
 leslieowiti@yahoo.com
 
 ### Nico Pierson
-<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/nico-pierson/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="https://angel.co/u/nico-gerard-pierson"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/nicopierson"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 nicogpt@gmail.com
 
 ### Wes Trinh
-<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" style="height: 28px; vertical-align: middle;"/></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" style="height: 28px;vertical-align: middle;"/></a>
-<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" style="height: 35px; vertical-align: middle;"/></a>
+<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 westrinh00@gmail.com
 
