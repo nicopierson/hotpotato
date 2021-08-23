@@ -7,15 +7,9 @@ import ShowRecipeBase from './ShowRecipeBase';
 
 const RecipeBaseDetails = () => {
   let {recipeId} = useParams();
-  // console.log(recipeId, 'RECIPEBASEDETAILS*******')
-  // const dispatch = useDispatch()
   const userId = useSelector(state => state.session.user?.id);
   const recipeDetails= useSelector((state) => state.recipe[recipeId]);
 
-  // const [name, setName] = useState('');
-  // const [thumbnail_url, setThumbnail_url] = useState('');
-  // const [likes, setLikes] = useState(null);
-  // const [recipeId, setRecipeId] = useState(null);
   const recipeOwnerId = recipeDetails?.user_id;
   const isOwner = userId === recipeOwnerId;
   const baseLikes = recipeDetails?.likes;
@@ -24,16 +18,7 @@ const RecipeBaseDetails = () => {
   // const baseDescription //add later
 
   const [showEdit, setShowEdit] = useState(false);
-  // if (recipeDetails) {
-  //   // console.log('recipe details comments', recipeDetails.name);
-  //   for (const [key,value] of Object.entries(recipeDetails)){
-  //     console.log(key, value)
-  //   }
-  // }
-
-  // useEffect(()=>{
-  //   dispatch(getRecipe(id))
-  // }, [dispatch, id])
+  
 
 
   return (

@@ -30,7 +30,6 @@ const RecipePhoto = ({loaded}) => {
     const getPhotos = () => {
         let recipePhotos
         if(recipeData){
-            // console.log(recipeData.photos, 'photos______Phots')
             recipePhotos = recipeData.photos
         }
         return recipePhotos
@@ -40,14 +39,12 @@ const RecipePhoto = ({loaded}) => {
         let recipeVideo
 
         if(recipeData){
-            // console.log(recipeData.photos, 'Photos___________')
             let data = recipeData.photos?.map(item => {
                 return item.video_url
             })
 
             recipeVideo = data
         }
-        // console.log(recipeVideo, 'videossss')
 
         return recipeVideo
     }

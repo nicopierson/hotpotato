@@ -23,13 +23,10 @@ const LandingPage = () => {
   const [categorySelected, setCategorySelected] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log('current page', currentPage)
-  console.log('current page', currentPage)
-  console.log('current page', currentPage)
+ 
 
 
   const set_category_select = (value, description)=>{
-    console.log("i am being clicked", categorySelected)
     setCategorySelected(value);
     setBannerText(value);
     setCategoryDescription(description);
@@ -59,7 +56,6 @@ const LandingPage = () => {
       dispatch(getAllRecipesForGivenCategory(categorySelected))
     }
     else{
-      console.log("dispatching: ", currentPage)
       currentPage === 1 ? dispatch(getAllRecipesForHomePage()): dispatch(setMoreRecipesForHomePage(currentPage))
     }
     // dispatch(getAllRecipesUserFollowsByNew(user_id))
