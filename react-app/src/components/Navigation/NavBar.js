@@ -28,7 +28,7 @@ const NavBar = () => {
       <ul className="navbar-ul">
         <div className="navbar-li navbar-title-and-feed">
           <li>
-            <NavLink to='/' exact={true} activeClassName='active'
+            <NavLink to='/explore' exact={true} activeClassName='active'
               className="navbar-title navbar-btn-container"
             >
               HOTPOTATO
