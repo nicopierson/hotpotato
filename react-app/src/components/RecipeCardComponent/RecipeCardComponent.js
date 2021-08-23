@@ -37,7 +37,8 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
               {`${likes}`}
             </div>
             {/* <i className="fas fa-heart rc-mc__likes-icon like-hover"> </i> */}
-            <i className="far fa-heart rc-mc__likes-icon"></i>
+            <i className="fas fa-heart rc-mc__likes-icon"></i>
+
           </div>
         </div>
       </div>

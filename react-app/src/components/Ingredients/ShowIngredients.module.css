@@ -7,6 +7,8 @@
 .ingredients_container
 {
     width: 95%;
+    /* text-align: right; */
+    /* font-size: 12px; */
 }
 
 .card_form h3
@@ -17,4 +19,36 @@
 .ingredients_item, .measurements_item
 {
     margin-bottom: 5px;
+}
+@media only screen and (max-width: 1400px) {
+    .measurements_container
+    {
+        font-size: 16px;
+    }
+    .ingredients_container
+    {
+        width: 90%;
+        font-size: 16px;
+    }
+  }
+
+@media only screen and (max-width: 750px) {
+    .measurements_container
+    {
+        font-size: 12px;
+    }
+    .ingredients_container
+    {
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .measurements_container
+    {
+        font-size: 10px;
+    }
+    .ingredients_container
+    {
+        font-size: 10px;
+    }
 }

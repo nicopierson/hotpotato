@@ -1,12 +1,14 @@
 """fetch_json.py
 
-description: script that fetches all json data from spoontacular api based on 
+description: script that fetches all json data from spoontacular api based on
 the parameters array and saves the data as a json file in the current directory.
 
 API_KEY - add your own api key using an account from spoontacular.com
 """
 
-import json, requests
+import json
+import requests
+
 
 def save_file(json_data, file_name):
     with open(file_name, "w") as write_file:
@@ -14,13 +16,13 @@ def save_file(json_data, file_name):
 
 
 file_name = './recipes.json'
-API_KEY='spoontacular_api_key'
+API_KEY = 'spoontacular_api_key'
 includeIngredients = True
 addRecipeInformation = True
 fillIngredients = True
 
 parameters = [
-    {  
+    {
         'apiKey': API_KEY,
         'diet': 'vegetarian',
         'cuisine': '',
@@ -30,7 +32,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'italian',
@@ -40,7 +42,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'japanese',
@@ -50,7 +52,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'vietnamese',
@@ -60,7 +62,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'indian',
@@ -70,7 +72,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'thai',
@@ -80,7 +82,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'greek',
@@ -90,7 +92,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'french',
@@ -100,7 +102,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'caribbean',
@@ -110,7 +112,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'african',
@@ -120,7 +122,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'mexican',
@@ -130,7 +132,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'mediterranean',
@@ -140,7 +142,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'southern',
@@ -150,7 +152,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'german',
@@ -160,7 +162,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'cajun',
@@ -170,7 +172,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'american',
@@ -180,7 +182,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'korean',
@@ -190,7 +192,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'jewish',
@@ -200,7 +202,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'spanish',
@@ -210,7 +212,7 @@ parameters = [
         'offset': 0,
         'fillIngredients': fillIngredients,
     },
-    {  
+    {
         'apiKey': API_KEY,
         'diet': '',
         'cuisine': 'irish',
@@ -246,7 +248,8 @@ parameters = [
 json_data = {'results': []}
 
 for parameter in parameters:
-    response_url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey={apiKey}&cuisine={cuisine}&diet={diet}&includeIngredients={includeIngredients}&addRecipeInformation={addRecipeInformation}&number={number}&offset={offset}&fillIngredients={fillIngredients}'.format(**parameter)
+    response_url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey={apiKey}&cuisine={cuisine}&diet={diet}&includeIngredients={includeIngredients}&addRecipeInformation={addRecipeInformation}&number={number}&offset={offset}&fillIngredients={fillIngredients}'.format(
+        **parameter)
     response = requests.get(response_url)
 
     data = json.loads(response.text)

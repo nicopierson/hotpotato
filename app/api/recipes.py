@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Recipe, db, RecipeDirection, RecipeIngredient, RecipePhoto
+from app.models import Recipe, Category, db, RecipeDirection, RecipeIngredient, RecipePhoto
 from app.forms import (
     RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm,
     RecipePhotosCreateForm, RecipeDirectionsUpdateForm, RecipeIngredientsUpdateForm
@@ -62,8 +62,8 @@ def item_belongs_to_user_recipe(itemId, users_recipe_id, classObj):
 
 @recipe_routes.route('/', methods=['GET'])
 def get_all_recipes():
-    all_recipes = Recipe.query.limit(5).all()
-    return {'recipes': [recipe.to_dict() for recipe in all_recipes]}
+    all_recipes = Recipe.query.limit(30).all()
+    return {'recipes': [recipe.get_users_recipes() for recipe in all_recipes]}
 
 # TODO
 # need to add created date and end date to recipe
@@ -92,6 +92,29 @@ def get_single_recipe(id):
     single_recipe = Recipe.query.get(id)
     # print("lazy loaded", single_recipe.photo_relation)
     return single_recipe.get_recipes_with_all_relationship()
+
+# -----categories + recipes-----
+
+
+@recipe_routes.route('/categories', methods=['GET'])
+def get_all_categories_and_details():
+    all_categories = Category.query.all()
+    return {'categories': [category.to_dict() for category in all_categories]}
+
+
+@recipe_routes.route('/category/<string:name>', methods=['GET'])
+def get_all_recipes_based_on_name(name):
+    category_by_name = Category.query.filter_by(name=name).one()
+    return {'categories': category_by_name.to_dict_recipes_for_a_category()}
+
+
+# @recipe_routes.route('/category/<int:id>', methods=['GET'])
+# # gets all recipes for a given category
+# def get_all_recipes_for_a_given_category(category):
+#     all_recipes_for_category = Recipe.query.filter_by(user_id=id).all()
+#     return {'recipes': [recipe.get_users_recipes() for recipe in all_recipes_for_category]}
+
+# -------------------------------
 
 
 # ---------------recipes CRUD route-----------------

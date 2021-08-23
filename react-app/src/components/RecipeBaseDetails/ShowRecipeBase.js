@@ -1,4 +1,4 @@
-
+import React from 'react'
 
 const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes}) => {
   return (
@@ -10,13 +10,13 @@ const ShowRecipeBase = ({setShowEdit, isOwner, thumbnail_url, name, likes}) => {
               {name}
             </div>
             <div className="recipe-base-header__icon-container">
-              {isOwner &&
+              {/* {isOwner &&
                   <i
                       onClick={() => setShowEdit(true)}
                       className='fas fa-edit recipe-base-header__edit-icon'
                   >
                   </i>
-              }
+              } */}
             </div>
 
             <div className="recipe-base__likes">

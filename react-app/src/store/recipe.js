@@ -1,11 +1,14 @@
 export const SET_RECIPE = 'recipes/setRecipe';
 const SET_ALL_RECIPES = 'recipes/setAllRecipes';
+const SET_ALL_RECIPES_FOR_HOME = 'recipes/setAllRecipes/forhomepage';
 const DELETE_RECIPE = 'recipes/deleteRecipe';
 const ADD_RECIPE = 'recipes/addRecipe';
 const EDIT_RECIPE = 'recipes/editRecipe';
 const SET_ALL_RECIPES_BELONG_TO_USER = 'recipes/setUsersRecipes'
 const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_NEW = 'recipes/setUsersRecipes/following/new'
 const SET_ALL_RECIPES_USER_FOLLOWING_ORDERBY_TRENDING = 'recipes/setUsersRecipes/following/trending'
+const SET_ALL_RECIPES_FOR_CATEGORY = '/recipes/category/getAll'
+
 
 const setRecipe = (recipe) => ({
     type: SET_RECIPE,
@@ -16,6 +19,20 @@ const setAllRecipes = (recipes) => ({
     type: SET_ALL_RECIPES,
     recipes,
 });
+
+const setAllRecipesForHomePage = (recipes) => ({
+    type: SET_ALL_RECIPES_FOR_HOME,
+    recipes,
+});
+
+
+const setAllRecipesForCategory
+= (recipes) => ({
+    type: SET_ALL_RECIPES_FOR_CATEGORY,
+    recipes,
+});
+
+
 
 const deleteARecipe = (id) => ({
     type: DELETE_RECIPE,
@@ -47,6 +64,8 @@ const setAllRecipesUserFollowByTrending = (recipes) => ({
     recipes,
 });
 
+
+
 export const getRecipe = (id) => async (dispatch) => {
     const response = await fetch(`/api/recipes/${id}`);
     const data = await response.json();
@@ -70,6 +89,38 @@ export const getAllRecipes = () => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 }
+
+export const getAllRecipesForHomePage = () => async (dispatch) => {
+    const response = await fetch('/api/recipes/')
+    const recipes  = await response.json();
+    console.log("recipes!", recipes)
+    console.log("recipes!", recipes)
+    console.log("recipes!", recipes)
+
+    if (response.ok) {
+        await dispatch(setAllRecipesForHomePage(recipes));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+
+
+export const getAllRecipesForGivenCategory = (name) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/category/${name}`)
+    const {categories} = await response.json();
+    console.log("my category recipes", categories);
+    console.log("my category recipes", categories);
+
+    if (response.ok) {
+        await dispatch(setAllRecipesForCategory(categories));
+        return response;
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 
 // TODO Test State
 export const deleteRecipe = (id) => async (dispatch) => {
@@ -264,10 +315,14 @@ export const createRecipePhoto = (payload) => async (dispatch) => {
     }
 };
 
+
+
+
 export default function reducer(state = {}, action) {
     let newState = {
         ...state,
         users_recipes:null,
+        categories:null,
     }
     switch (action.type) {
         case SET_RECIPE:
@@ -278,6 +333,14 @@ export default function reducer(state = {}, action) {
                 newState[recipe.id] = recipe;
             });
             return { ...state, ...newState };
+        case SET_ALL_RECIPES_FOR_HOME:
+            newState.users_recipes = action.recipes['recipes']
+            return { ...state, ...newState };
+
+        case SET_ALL_RECIPES_FOR_CATEGORY:
+            newState.users_recipes = action.recipes['category_recipes']
+            return { ...state, ...newState };
+
         case SET_ALL_RECIPES_BELONG_TO_USER:
             newState.users_recipes = action.recipes.recipes;
             return { ...state, ...newState };

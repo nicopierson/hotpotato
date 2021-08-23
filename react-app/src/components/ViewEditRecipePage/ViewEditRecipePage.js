@@ -20,13 +20,15 @@ import { loadLikes } from '../../store/like';
 
 const ViewEditRecipePage = () => {
   const history = useHistory()
-  
+
   //the /:id from url
   let { recipeId } = useParams();
   const user = useSelector(state => state.session.user);
 
   const [deleted, setDeleted] = useState(false);
   const dispatch = useDispatch()
+
+  // const recipeDetails= useSelector((state) => state.recipe[recipeId]);
 
   // fetching the recipe based on ID and adding it to the store.
   useEffect(() => {
@@ -50,7 +52,7 @@ const ViewEditRecipePage = () => {
       <div className="content-container">
         <div className='recipe-utilities'>
           <button className='recipe-util-btn fas fa-minus-circle recipe-delete' value={deleted} onClick={() => setDeleted(true)}></button>
-          <Like recipeId={+recipeId}/> 
+          <Like recipeId={+recipeId}/>
           <button className='recipe-share fas fa-share recipe-util-btn'></button>
         </div>
         <div className="recipe-base-container">
