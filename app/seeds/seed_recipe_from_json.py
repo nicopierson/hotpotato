@@ -27,14 +27,15 @@ def seed_from_json():
 
     added = set()
     # keep track of current row, since there are repeats
-    row_offset = 0
+    ROW_OFFSETS = 0
+    ROW_START = 1
 
     for idx in range(len(json_data['results'])):
         recipe = json_data['results'][idx]
-        recipe_id = idx + 1 + row_offset
+        recipe_id = idx + 1 + ROW_OFFSETS + ROW_START
 
         if recipe['title'] in added:
-            row_offset -= 1
+            ROW_OFFSETS -= 1
 
         # "cuisines": [
         #     "Chinese",
