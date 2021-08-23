@@ -31,13 +31,13 @@ class Category(db.Model):
         back_populates="categories_relations"
     )
     
-    def add(self, recipe):
+    def add_recipe(self, recipe):
         if not self.is_repeat(recipe):
             self.categories_recipes.append(recipe)
             return recipe
         return False
 
-    def remove(self, recipe):
+    def remove_recipe(self, recipe):
         if self.is_repeat(recipe):
             self.categories_recipes.remove(recipe)
             return recipe

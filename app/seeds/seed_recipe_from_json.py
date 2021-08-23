@@ -37,23 +37,18 @@ def seed_from_json():
         if recipe['title'] in added:
             ROW_OFFSETS -= 1
 
-        # "cuisines": [
-        #     "Chinese",
-        #     "Asian"
-        # ],
-
         # check if recipe is already added
         if not recipe['title'] in added:
             added.add(recipe['title'])
 
             # Recipe
-            db.session.add(Recipe(
+            new_recipe = Recipe(
                 thumbnail_url=recipe['image'],
                 name=recipe['title'],
                 user_id=random.randint(1, NUM_OF_USERS),
-
-
-            ))
+            )
+                
+            db.session.add(new_recipe)
 
             # RecipeDirection
             if len(recipe['analyzedInstructions']) > 0:
@@ -74,15 +69,45 @@ def seed_from_json():
                         recipe_id=recipe_id,
                     ))
                     
+
             # add categories
+            if recipe['vegan']:
+                category = Category.query.filter(Category.name == "vegan").first()
+                category.recipes_relations.append(new_recipe)
+                
             if recipe['vegetarian']:
-                db.session.add(Category);
-
-            # vegan.recipes_relations.append(garlic_basil_french_fries)
-            # vegan.recipes_relations.append(broccoli_tofu)
-
-            # db.session.add(vegan)
-            # db.session.commit()
+                category = Category.query.filter(Category.name == "vegetarian").first()
+                category.recipes_relations.append(new_recipe)
+                
+            if recipe['glutenFree']:
+                category = Category.query.filter(Category.name == "gluten free").first()
+                category.recipes_relations.append(new_recipe)
+                
+            if recipe['dairyFree']:
+                category = Category.query.filter(Category.name == "dairy free").first()
+                category.recipes_relations.append(new_recipe)
+                
+            if recipe['veryHealthy']:
+                category = Category.query.filter(Category.name == "healthy").first()
+                category.recipes_relations.append(new_recipe)
+                
+            # categories for cuisines
+            if recipe['cuisines']: 
+                for cuisine in recipe['cuisines']:
+                    category_name = cuisine.lower()
+                    
+                    if category_name == "african":
+                        category = Category.query.filter(Category.name == "chadian").first()
+                    else:
+                        category = Category.query.filter(Category.name == category_name).first()
+                        
+                    if category:
+                        category.recipes_relations.append(new_recipe)
+                        
+            # surprise me
+            if random.randint(1, NUM_OF_USERS) > 7:
+                category = Category.query.filter(Category.name == "surprise me").first()
+                category.recipes_relations.append(new_recipe)
 
         db.session.commit()
 
