@@ -30,6 +30,22 @@ class Category(db.Model):
         secondary=categories_recipes,
         back_populates="categories_relations"
     )
+    
+    def add(self, recipe):
+        if not self.is_repeat(recipe):
+            self.categories_recipes.append(recipe)
+            return recipe
+        return False
+
+    def remove(self, recipe):
+        if self.is_repeat(recipe):
+            self.categories_recipes.remove(recipe)
+            return recipe
+        return False
+    
+    def is_repeat(self, recipe):
+        return len(list(filter(
+            lambda categories: categories.recipes == recipe.id, self.categories_recipes.all()))) > 0
 
     def to_dict(self):
         return {

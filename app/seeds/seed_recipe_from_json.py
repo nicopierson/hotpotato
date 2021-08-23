@@ -3,7 +3,7 @@ import json
 import random
 from pathlib import Path
 from fractions import Fraction
-from app.models import Recipe, RecipeDirection, RecipeIngredient, db
+from app.models import Recipe, RecipeDirection, RecipeIngredient, Category, db
 
 
 def open_file(file_name):
@@ -73,6 +73,16 @@ def seed_from_json():
                             Fraction(ingredient['amount'])) + ' ' + ingredient['unit'],
                         recipe_id=recipe_id,
                     ))
+                    
+            # add categories
+            if recipe['vegetarian']:
+                db.session.add(Category);
+
+            # vegan.recipes_relations.append(garlic_basil_french_fries)
+            # vegan.recipes_relations.append(broccoli_tofu)
+
+            # db.session.add(vegan)
+            # db.session.commit()
 
         db.session.commit()
 
