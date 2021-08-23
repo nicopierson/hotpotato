@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src='#' >
+  <img src='./readme-assets/images/hotpotato.png' >
 </p>
 
 # Hotpotato
@@ -20,6 +20,7 @@ Hotpotato is a recipe portfolio App that assists users to discover and comment n
 | 5. [Contact](#contact) |
 | 6. [Special Thanks](#special-thanks) |
 
+
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
 * <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL" /></a>
@@ -31,41 +32,58 @@ Hotpotato is a recipe portfolio App that assists users to discover and comment n
 * <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
 * <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
 
+
 ## Features
+
+### Sign In and Sign Up
+![Sign Up](./readme-assets/images/signup.jpg)
+![Login](./readme-assets/images/login.jpg)
 
 ### Feed Page
 Hotpotato feed displays all recipes and chefs
 Discover and search for new recipes
-![Splash Page]()
-* Example - ./readme_assets/sign_up.jpg
+![Feed Page](./readme-assets/images/feed.jpg)
 
-### Sign In and Sign Up
-![Sign Up]()
-![Sign In]()
+### Sort Recipes in Feed
+Sort Recipes based on a category
+![Feed Sort by Category](./readme-assets/images/feed-sort.jpg)
 
 ### View Recipe
 Single recipe of name, photos, ingredients, directions, and comments
-![Recipe Page]()
-
-### Edit Recipe Ingredients
-Edit a recipe direction(s) in the database
-![Edit Recipe Direction]()
-
-### Edit Recipe Directions
-Edit a recipe direction(s) in the database
-![Edit Recipe Direction]()
-
-### Comment
-Users can add comments for a recipe
-![Review]()
-
-### Edit and Delete Comment
-Edited Comment is highlighted and can be deleted
-![Review Edit Delete]()
+![Recipe Page](./readme-assets/images/recipe-page.jpg)
 
 ### Add Recipe
 Add a new recipe to the database
-![Add Recipe]()
+![Add Recipe](./readme-assets/images/recipe-add.jpg)
+Cancel adding recipe
+![Cancel Add Recipe](./readme-assets/images/recipe-add-cancel.jpg)
+
+### Create, Read, Update, Delete Recipe Preparations
+View preparations to make recipe
+![Recipe Preparations](./readme-assets/images/preparations.png)
+Edit and Add a recipe preparation(s) in the database
+![Edit Recipe Preparations](./readme-assets/images/preparations-edit.png)
+![Add Recipe Preparations](./readme-assets/images/preparations-add.png)
+
+### Create, Read, Update, Delete Recipe Ingredients
+View Ingredients to make recipe
+![Recipe Ingredients](./readme-assets/images/ingredients.png)
+Edit and Add a recipe preparation(s) in the database
+![Edit Recipe Ingredients](./readme-assets/images/ingredients-edit.png)
+![Add Recipe Ingredients](./readme-assets/images/ingredients-add.png)
+
+### Comment
+Users can add comments for a recipe
+![Comments](./readme-assets/images/comments.png)
+
+### Follow
+Follow or unfollow a chef
+
+<span>
+<img alt="follow" src="./readme-assets/images/follow.png" height=300/>
+<img alt="unfollow" src="./readme-assets/images/following.png" height=300/>
+</span>
+
 
 ## Installation
 To build/run project locally, please follow these steps:
@@ -118,6 +136,7 @@ flask run
 npm start
 ```
 
+
 ## Technical Implementation Details
 
 ### First Implementation
@@ -165,6 +184,7 @@ useEffect(() => {
 }, [state]);
 ```
 
+
 ## Future Features
 
 1. __Search__ - search recipes or chefs
@@ -172,6 +192,7 @@ useEffect(() => {
 2. __Second__ - second feature description
 
 3. __Third__ - third feature description
+
 
 ## Contact
 
@@ -205,5 +226,4 @@ westrinh00@gmail.com
 
 
 ## Special Thanks
-* Any Special Thanks
-* Mentors who have given me their time and effort: [Zach](https://github.com/zdwatts), [Ed](https://github.com/edherm), and [Javier](https://github.com/javiermortiz) 
+* Mentors who have given us their time and effort: [Zach](https://github.com/zdwatts), [Ed](https://github.com/edherm), and [Javier](https://github.com/javiermortiz) 
