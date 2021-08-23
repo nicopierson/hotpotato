@@ -49,7 +49,7 @@
       text-align: center;
       color: white;
       font-weight: bold;
-      z-index: 2;
+      /* z-index: 2; */
       position: relative;
       padding-top: 25px;
 
@@ -62,7 +62,7 @@
       top: 0;
       opacity: 0.5;
       background-color: rgba(0, 0, 0, 0.801);
-      z-index: 1;
+      /* z-index: 1; */
     }
 
 

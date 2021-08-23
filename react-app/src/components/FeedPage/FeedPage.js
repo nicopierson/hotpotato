@@ -1,28 +1,50 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import './FeedPage.css'
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesUserFollowsByNew } from '../../store/recipe';
 // import { getAllRecipesForGivenUser } from '../../store/recipe';
 // import { getAllRecipesUserFollowsByTrending } from '../../store/recipe';
+import { getAllRecipesUserFollowsByTrending } from '../../store/recipe';
 
 import  RecipeCardComponent  from '../RecipeCardComponent/';
-import DropDownMenu from '../DropDownMenu/DropDownMenu';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 export const FeedPage = () => {
   const dispatch = useDispatch()
-  // const {userId} = useParams();
-
   const user_id = useSelector(state => state.session.user?.id);
-
-  // if sort is new use recipeDetails = ....
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
+
+  const [searchBy, setsearchBy] = useState("Most Recent")
+
+  const options = (
+    [
+      <li onClick={()=>{setsearchBy("Most Recent")}}>new</li>,
+      <li onClick={()=>{setsearchBy("Trending")}}>trending</li>,
+    // <li onClick={() => update_recipes_by_surprise()}>Surprise Me</li>
+    ]
+  );
+
 
   useEffect(() => {
     // dispatch(getAllRecipesForGivenUser(user_id))
-    dispatch(getAllRecipesUserFollowsByNew(user_id))
-  }, [dispatch])
+    switch (searchBy) {
+      case 'Most Recent':
+        dispatch(getAllRecipesUserFollowsByNew(user_id))
+        break;
+      case 'Trending':
+        dispatch(getAllRecipesUserFollowsByTrending(user_id))
+        break;
+      default:
+        // dispatch(getAllRecipesUserFollowsByNew(user_id))
+        break;
+    }
+
+  }, [dispatch, searchBy])
+
+
 
 
   return (
@@ -35,10 +57,22 @@ export const FeedPage = () => {
           <div className="header-sort-container">
             <div className="hsc__title"> <span>View your follows </span>  <span>& interests </span>  </div>
             <div className="hsc__sort-container">
-              <div className ="hsc-sc__sort-label"> sort</div>
+
+              {/* <div className ="hsc-sc__sort-label">
+                 <div className="sort-sort">sort</div>
+              </div> */}
 
               <div className="hsc-sc__drop-down">
-                {user_id && <DropDownMenu user_id={user_id}></DropDownMenu>}
+                <div className="dropdown">
+                  <span>{searchBy}</span>
+                  <i className="fas fa-caret-down hhsc-sc-dd__sort-icon"></i>
+
+                  <div className="dropdown-content">
+                    <div onClick={()=>setsearchBy('Most Recent')} className="dropdown-button">Most Recent</div>
+                    <div onClick={()=>setsearchBy('Trending')} className="dropdown-button">Trending</div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

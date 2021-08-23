@@ -16,18 +16,18 @@ const LandingPage = () => {
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
   const categories_from_server = useSelector((state)=> state.category?.categories)
 
-
   const [deviceType, setDeviceType] = useState('desktop');
   const [bannerText, setBannerText] = useState('Your Next hotpotato Starts Here');
   const [categoryDescription, setCategoryDescription] = useState('search here for your next culinary inspiration or create a Hotpotato of your own!');
   const [categorySelected, setCategorySelected] = useState(null);
 
   useEffect(() => {
-    dispatch(getAllRecipesForHomePage())
     dispatch(setAllCategories())
     if (categorySelected){
       dispatch(getAllRecipesForGivenCategory(categorySelected))
-
+    }
+    else{
+      dispatch(getAllRecipesForHomePage())
     }
     // dispatch(getAllRecipesUserFollowsByNew(user_id))
   }, [dispatch, categorySelected])
@@ -37,8 +37,6 @@ const LandingPage = () => {
     setCategorySelected(value);
     setBannerText(value);
     setCategoryDescription(description);
-    dispatch(getAllRecipesForGivenCategory("vegan"));
-
   }
 
   const responsive = {
