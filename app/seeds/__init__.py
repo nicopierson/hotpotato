@@ -18,6 +18,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_categories()
     seed_recipes()
     seed_recipe_ingredients()
     seed_recipe_directions()
@@ -25,15 +26,13 @@ def seed():
     seed_comments()
     seed_recipe_photos()
     seed_likes()
-    seed_categories()
-
-    # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_categories()
     undo_recipes()
     undo_recipe_ingredients()
     undo_recipe_directions()
@@ -41,4 +40,3 @@ def undo():
     undo_comments()
     undo_recipe_photos()
     undo_likes()
-    undo_categories()
