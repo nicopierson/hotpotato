@@ -42,7 +42,7 @@ const LoginForm = () => {
               ))}
             </div>
             <div className="form-input">
-              <div className="form-title">Sign In</div>
+              <div className="form-title">Login</div>
               <div className="already-signed-up">New User?
               <NavLink to='/sign-up' exact={true}
                 activeClassName='active'

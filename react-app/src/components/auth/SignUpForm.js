@@ -60,7 +60,7 @@ const SignUpForm = () => {
                 className="navbar-btn navbar-btn-signed-out"
                 id="navbar-login-btn"
               >
-                Sign In
+                Login
               </NavLink>
               </div>
             <div className="form-input-label">
