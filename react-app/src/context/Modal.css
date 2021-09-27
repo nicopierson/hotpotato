@@ -26,8 +26,10 @@
   background-color:white;
   border-radius: 7px;
   height: auto;
+  max-height: 90vh;
   width: 500px;
   padding: 1.5em;
+  overflow: auto;
 }
 
 /* #modal-content-verify{
