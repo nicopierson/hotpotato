@@ -13,7 +13,7 @@ export const RecipeForm = () => {
   const user_id = useSelector((state) => state.session.user?.id);
   const categories_from_server = useSelector((state)=> state.category?.categories)
 
-  
+
 
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -63,7 +63,7 @@ export const RecipeForm = () => {
 
     }, [dispatch])
 
-  
+
 
 
   return (
@@ -119,7 +119,7 @@ export const RecipeForm = () => {
             <div>
             <input className="create-recipe-base-input"
                   placeholder="www.tofuscrambleimage.com"
-                  required
+
                   value={imageUrl}
                   onChange={setImageUrlE}
                   type="text" />
