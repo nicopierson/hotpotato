@@ -24,6 +24,7 @@
     margin-bottom: 15px;
 
 
+
 }
 
 .profile-list-item{
@@ -33,12 +34,17 @@
     justify-content:space-between;
     /* border: 1px solid green; */
     width: 100%;
+    text-align: end;
+
 }
 
 .profile-image{
   /* height: 100%; */
   display: inline-block;
-
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  background-color: rgb(216, 243, 252);
 }
 
 .user-side-bar-container{
