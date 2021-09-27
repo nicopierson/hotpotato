@@ -1,6 +1,6 @@
 .measurements_container
 {
-    width: 40%;
+    min-width: 30%;
     padding: 0 20px 0 20px;
 }
 
@@ -9,6 +9,12 @@
     width: 95%;
     /* text-align: right; */
     /* font-size: 12px; */
+}
+.ingredients_elements
+{
+    text-overflow: ellipsis;
+    width: 500px;
+    overflow:hidden;
 }
 
 .card_form h3
@@ -29,6 +35,10 @@
     {
         width: 90%;
         font-size: 16px;
+    }
+    .ingredients_elements
+    {
+        text-overflow: ellipsis;
     }
   }
 
