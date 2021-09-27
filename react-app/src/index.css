@@ -26,3 +26,24 @@ input:focus-visible {
 .container-app{
     min-height: 90vh;
 }
+
+
+/* general error handling */
+.error-group-container{
+    /* will be different depending on situation, just add --mutation */
+    min-height: 50px;
+    padding-top: 10px;
+}
+.error-group{
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    /* align-items: center; */
+    padding: 0;
+}
+
+.error-text{
+    margin: 2px 0;
+    font-size: 12px;
+    color: #CD5D7D;
+}
