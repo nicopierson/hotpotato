@@ -57,9 +57,9 @@ input:focus-visible {
     height:4px; */
 }
 ::-webkit-scrollbar-track {
-    background:#eee;
+    background:rgb(224, 224, 224);
     /* border: thin solid lightgray; */
-    border-radius:5px;
+    /* border-radius:5px; */
 }
 ::-webkit-scrollbar-thumb {
     background:#b4b4b4;
