@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, Field
-from wtforms.validators import DataRequired
-# from app.models import Recipe
+from wtforms.validators import DataRequired, Length
+# from app.models import Recipe1
 
 
 class ListField(Field):
@@ -10,9 +10,12 @@ class ListField(Field):
 
 
 class RecipeCreateForm(FlaskForm):
-    thumbnail_url = StringField(validators=[DataRequired()])
+
+    thumbnail_url = StringField(validators=[Length(
+        max=1500, message="URL for image cannot be more than 1500 characters")])
     user_id = IntegerField(validators=[DataRequired()])
-    name = StringField(validators=[DataRequired()])
+    name = StringField(validators=[DataRequired(), Length(
+        max=255, message="Creation title cannot be more than 255 characters long")])
     categories_relations = ListField()
 
 

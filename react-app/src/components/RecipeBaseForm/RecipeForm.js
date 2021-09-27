@@ -13,7 +13,7 @@ export const RecipeForm = () => {
   const user_id = useSelector((state) => state.session.user?.id);
   const categories_from_server = useSelector((state)=> state.category?.categories)
 
-  
+
 
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -33,9 +33,11 @@ export const RecipeForm = () => {
   }
 
   const onFormSubmitCreateRecipeBase = (e)=>{
+    console.log("start 0")
     e.preventDefault();
     // if(!user) history.push('/')
     // else{
+      console.log("start 0")
       const payload = {
         name: title,
         thumbnail_url: imageUrl,
@@ -48,10 +50,15 @@ export const RecipeForm = () => {
           history.push(`/view/recipe/${data.id}`);
           window.location.reload();
         }
-
+        else if(data && data.errors){
+          setErrors(data.errors);
+          console.log("error1")
+        }
+        else{
+          setErrors(['something went wrong, please try again.'])
+        }
       }).catch(async (res) =>{
-        const data = res
-        if(data && data.errors) setErrors(data.errors);
+        setErrors(['something went wrong, please try again.'])
       })
     // }
   }
@@ -63,7 +70,7 @@ export const RecipeForm = () => {
 
     }, [dispatch])
 
-  
+
 
 
   return (
@@ -71,13 +78,13 @@ export const RecipeForm = () => {
       <form onSubmit={onFormSubmitCreateRecipeBase}>
 
         <div className="create-recipe-base-title"> Start Your Creation</div>
-          <ul className="error-group">
-              {errors.map((error, idx) => <li key={idx}>*{error}</li>)}
-          </ul>
 
           {/* FORM INPUTS */}
           <div className="create-recipe-base-card">
             <div>
+              <ul className="error-group">
+                  {errors.map((error, idx) => error.includes("Creation") && <li className="error-text" key={idx}>*{error}</li>)}
+              </ul>
               <label className="create-recipe-base-label">
                 Title
               </label>
@@ -112,6 +119,9 @@ export const RecipeForm = () => {
 
         <div className="create-recipe-base-card">
             <div>
+            <ul className="error-group">
+                  {errors.map((error, idx) => error.includes("URL") && <li className="error-text" key={idx}>*{error}</li>)}
+              </ul>
             <label className="create-recipe-base-label">
                 Image url (optional)
               </label>
@@ -119,7 +129,7 @@ export const RecipeForm = () => {
             <div>
             <input className="create-recipe-base-input"
                   placeholder="www.tofuscrambleimage.com"
-                  required
+
                   value={imageUrl}
                   onChange={setImageUrlE}
                   type="text" />
@@ -134,12 +144,14 @@ export const RecipeForm = () => {
               id="create-recipe-preview-image" />
             </div>
           }
+
+            <div className="create-button-input-wrapper">
+              <button className="submit-list-button"
+              id="start-creation-btn" type="submit">Start Creation</button>
+            </div>
           </div>
 
-          <div className="input-wrapper">
-            <button className="submit-list-button"
-            id="start-creation-btn" type="submit">Start Creation</button>
-          </div>
+
 
 
       </form>

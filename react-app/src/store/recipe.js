@@ -160,7 +160,7 @@ export const createRecipe = (payload) => async (dispatch) => {
         body: JSON.stringify( payload ),
     });
 
-    if (response.ok) {
+    if (response) {
         const recipe = await response.json();
         await dispatch(addRecipe(recipe));
         return recipe;

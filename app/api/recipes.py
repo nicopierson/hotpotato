@@ -5,33 +5,9 @@ from app.forms import (
     RecipeCreateForm, RecipeDirectionsCreateForm, RecipeIngredientsCreateForm,
     RecipePhotosCreateForm, RecipeDirectionsUpdateForm, RecipeIngredientsUpdateForm
 )
-
+from app.api.utils.error_handlers import validation_errors_to_error_messages, authorization_errors_to_error_messages, input_errors_to_error_messages
 
 recipe_routes = Blueprint('recipes', __name__)
-
-
-def validation_errors_to_error_messages(validation_errors):
-    # helper function to collect and display errors
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages
-
-
-def authorization_errors_to_error_messages(message="unauthorized user"):
-    return {'errors': message}, 401
-
-
-def input_errors_to_error_messages(message="incorrect input"):
-    return {'errors': message}, 401
-
-
-def viewUser():
-    # delete later, for testing
-    print("DATA: ", current_user)
-    print("the current user is: ", current_user.get_id())
-    print("the current user DIR: ", dir(current_user))
 
 
 def current_user_matches_client_user(user_sent_id):
@@ -135,9 +111,7 @@ def create_recipe_post():
             create_recipe.thumbnail_url = form.thumbnail_url.data
 
             for category in form['categories_relations'].data:
-                print("this", type(category))
-                print("this", category)
-                print("this", category)
+                # print("this", type(category))
                 categoryInstance = Category.query.filter_by(
                     name=category).one()
                 create_recipe.categories_relations.append(categoryInstance)

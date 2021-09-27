@@ -23,8 +23,10 @@
   margin:auto;
   background-color: white;
   margin-top: 40px;
-  border-bottom: 1px solid rgb(201, 201, 201);
-  border-right: 1px solid rgb(201, 201, 201);
+  border-bottom: 0.5px solid rgb(226, 226, 226);
+  border-right: 0.5px solid rgb(226, 226, 226);
+  box-shadow: 0 1px 3px rgb(25 25 25 / 10%);
+  border-radius: 4px;
 }
 
 

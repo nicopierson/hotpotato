@@ -1,6 +1,6 @@
 import Follow from '../Follow';
 
-import profileImg from '../../assets/images/demo_profile.png';
+import profileImg from '../../images/chef.png';
 
 import './ProfileCard.css'
 

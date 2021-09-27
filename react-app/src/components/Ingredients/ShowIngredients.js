@@ -21,10 +21,10 @@ const ShowIngredients = ({ setShowEdit, isOwner, recipeIngredients }) => {
                         <div key={ ingredient.id } className={styleUtils.item_container}>
                             <div className={styles.measurements_container}>
                                 {ingredient.measurement &&
-                                    ingredient.measurement 
+                                    ingredient.measurement
                                 }
                             </div>
-                            <div className={styles.ingredients_container}>
+                            <div className={styles.ingredients_elements}>
                                 { ingredient.ingredient }
                             </div>
                         </div>
