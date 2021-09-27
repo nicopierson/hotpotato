@@ -144,12 +144,14 @@ export const RecipeForm = () => {
               id="create-recipe-preview-image" />
             </div>
           }
+
+            <div className="create-button-input-wrapper">
+              <button className="submit-list-button"
+              id="start-creation-btn" type="submit">Start Creation</button>
+            </div>
           </div>
 
-          <div className="input-wrapper">
-            <button className="submit-list-button"
-            id="start-creation-btn" type="submit">Start Creation</button>
-          </div>
+
 
 
       </form>

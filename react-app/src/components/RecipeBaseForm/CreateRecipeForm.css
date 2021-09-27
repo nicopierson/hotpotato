@@ -36,9 +36,14 @@
   /* padding-right: 1em; */
   margin-right: 2em;
 }
+.create-button-input-wrapper{
+  display: flex;
+  justify-content: end;
+}
 
 #start-creation-btn {
-    float: right;
+    /* float: right; */
+
     border-style: none;
     border-radius: 2px;
     padding: 10px;

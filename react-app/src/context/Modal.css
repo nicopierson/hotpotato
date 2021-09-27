@@ -28,6 +28,7 @@
   height: auto;
   max-height: 90vh;
   width: 500px;
+  max-width: 80vw;
   padding: 1.5em;
   overflow: auto;
 }
