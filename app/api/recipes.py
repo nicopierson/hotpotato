@@ -111,9 +111,7 @@ def create_recipe_post():
             create_recipe.thumbnail_url = form.thumbnail_url.data
 
             for category in form['categories_relations'].data:
-                print("this", type(category))
-                print("this", category)
-                print("this", category)
+                # print("this", type(category))
                 categoryInstance = Category.query.filter_by(
                     name=category).one()
                 create_recipe.categories_relations.append(categoryInstance)
