@@ -269,8 +269,8 @@ leslieowiti@yahoo.com
 nicogpt@gmail.com
 
 ### Wes Trinh
-<a href="#"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
-<a href="#"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://www.linkedin.com/in/wes-trinh-28b526220/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="https://angel.co/u/wes-trinh"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
 <a href="https://github.com/WesTrinhKL"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 westrinh00@gmail.com
