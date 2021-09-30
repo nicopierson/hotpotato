@@ -44,7 +44,8 @@ class Recipe(db.Model):
             'name': self.name,
             'user_id': self.user_id,
             'likes': len(self.like_relation),
-            'username': self.userRelation.username
+            'username': self.userRelation.username,
+            'profile_img': self.userRelation.profile_img,
         }
 
     # def get_recipes_that_user_follows(self):

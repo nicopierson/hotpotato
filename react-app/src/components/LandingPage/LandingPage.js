@@ -122,7 +122,7 @@ const LandingPage = () => {
             {recipeDetails &&
               <div className="fpw-feed-container__recipe-cards" >
                 {/* render users recipes based on who they follow */}
-                {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
+                {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username} profileImg={recipe.profile_img}/>))}
               </div>}
         </div>}
       </div>

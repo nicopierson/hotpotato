@@ -3,10 +3,9 @@ import './RecipeCardComponent.css'
 import { useHistory } from 'react-router';
 import chef from '../../images/chef.png'
 
-export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, username}) => {
+export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, username, profileImg}) => {
   const default_image_url = 'https://i1.wp.com/seonkyounglongest.com/wp-content/uploads/2020/06/silken-tofu-soup-1-mini.jpg?fit=1000%2C667&ssl=1'
   const default_profile_url = chef;
-  let profile_image;
 
   const history = useHistory();
 
@@ -16,7 +15,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
 
 
         {/* image */}
-        <div style={{backgroundImage: `url(${thumbnail_url? thumbnail_url: default_image_url})`, height:'100%', width:'100%', 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover', 'objectFit': 'cover' }} className="recipe-card">
+        <div style={{backgroundImage: `url(${thumbnail_url ? thumbnail_url: default_image_url})`, height:'100%', width:'100%', 'backgroundRepeat':'no-repeat', 'backgroundSize':'cover', 'objectFit': 'cover' }} className="recipe-card">
           <div className="recipe-card__image-container" onClick={()=>{history.push(`/view/recipe/${id}`)}}>
             <div className="rc-ic--appear-on-hover">
               <div className="rc-ic__title"> {`${name}`}</div>
@@ -28,7 +27,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
         <div className="recipe-card__metadata-container" >
           <div className="profile-container" onClick={()=>{history.push(`/profile/${user_id}`)}} >
             <div className="pc__image-container" >
-              <img className="pc-ic__image" src={`${profile_image? profile_image: default_profile_url}`} alt="" />
+              <img className="pc-ic__image" src={`${profileImg ? profileImg: default_profile_url}`} alt="" />
             </div>
             <div className="pc__username">{`${username}`}</div>
           </div>

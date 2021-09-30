@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import './FeedPage.css'
-import { useParams } from 'react-router';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRecipesUserFollowsByNew } from '../../store/recipe';
 // import { getAllRecipesForGivenUser } from '../../store/recipe';
@@ -8,7 +8,7 @@ import { getAllRecipesUserFollowsByNew } from '../../store/recipe';
 import { getAllRecipesUserFollowsByTrending } from '../../store/recipe';
 
 import  RecipeCardComponent  from '../RecipeCardComponent/';
-import Dropdown from 'react-dropdown';
+// import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 
@@ -71,7 +71,7 @@ export const FeedPage = () => {
           {recipeDetails &&
             <div className="fpw-feed-container__recipe-cards" >
               {/* render users recipes based on who they follow */}
-              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
+              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username} profileImg={recipe.profile_img}/>))}
             </div>}
       </div>}
       <div className='explore-infinite-container'>
