@@ -5,8 +5,6 @@ import AddLike from './AddLike';
 import RemoveLike from './RemoveLike';
 import '../ViewEditRecipePage/ViewEditRecipePage.css';
 
-import styles from './Like.module.css';
-
 const Like = ({ recipeId }) => {
     const userId = useSelector(state => state.session.user?.id);
 

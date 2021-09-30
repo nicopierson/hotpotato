@@ -10,6 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_img = db.Column(db.String(500))
 
     recipeRelation = db.relationship('Recipe', back_populates='userRelation')
     comment_relation = db.relationship(
@@ -100,7 +101,7 @@ class User(db.Model, UserMixin):
         people_user_follow = User.query.get_or_404(id).get_followings()
         return sorted([recipe.get_users_recipes() for user in people_user_follow for recipe in user.recipeRelation], key=lambda i: i['likes'], reverse=True)
 
-    @ staticmethod
+    @staticmethod
     # not useful to get all followers as there will be many repeats
     # returns list of list of follow and follower
     def get_all_followers():
@@ -108,7 +109,7 @@ class User(db.Model, UserMixin):
                          for user in users.followers.all()]
         return follower_list
 
-    @ staticmethod
+    @staticmethod
     # def get_all_people_that_user_is_following():
     def to_list(followers):
         return [follower.id for follower in followers]
