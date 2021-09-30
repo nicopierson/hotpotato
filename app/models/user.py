@@ -77,6 +77,7 @@ class User(db.Model, UserMixin):
             'appreciations': len(self.like_relation),
             'followings': len(self.follows.all()),
             'followers': len(self.followers.all()),
+            'profile_img': self.profile_img,
         }
 
     def to_dict_user_with_recipe(self):
