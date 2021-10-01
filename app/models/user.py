@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_img = db.Column(db.String(500), nullable=False)
+    profile_img = db.Column(db.String(500))
 
     recipeRelation = db.relationship('Recipe', back_populates='userRelation')
     comment_relation = db.relationship(

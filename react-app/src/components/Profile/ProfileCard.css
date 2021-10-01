@@ -55,3 +55,13 @@
 .outer-div{
     width: 70%;
 }
+
+.profile_container input.errors_input
+{
+    border: solid 1px red;
+}
+
+.errors_input
+{
+    border: solid 1px red;
+}

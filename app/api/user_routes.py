@@ -31,6 +31,8 @@ def profile_update(id):
         if user_is_owner(id):
             user = User.query.get_or_404(id)
             form.populate_obj(user)
+            if not user.profile_img:
+                user.profile_img = 'https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png'
             try:
                 db.session.add(user)
                 db.session.commit()

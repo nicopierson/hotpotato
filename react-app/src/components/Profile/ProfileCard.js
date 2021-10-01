@@ -1,4 +1,5 @@
 import Follow from '../Follow';
+import ProfileUpdate from './ProfileUpdate';
 
 import './ProfileCard.css'
 
@@ -6,6 +7,11 @@ const ProfileCard = ({ profile, isOwner }) => {
 
     return (
         <div className='test-container'>
+            {isOwner &&
+                <ProfileUpdate 
+                    profile={profile}
+                />
+            }
             <div className='profile-image-div'>
                 <img 
                     alt='profile' 
