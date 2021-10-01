@@ -65,9 +65,9 @@ function App() {
           <ProtectedRoute path='/' exact={true} >
               <Redirect to="/explore" />
           </ProtectedRoute>
-          <Route path='/profile/:userId' exact={true}>
+          <ProtectedRoute path='/profile/:userId' exact={true}>
             <ProfilePage />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       </div>
 

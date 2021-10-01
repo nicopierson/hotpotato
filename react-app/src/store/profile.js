@@ -1,4 +1,5 @@
 import { getAllRecipesForGivenUser } from "./recipe";
+import { setUser } from "./session";
 
 const SET_PROFILE = 'follows/setProfile';
 
@@ -30,6 +31,7 @@ export const updateProfile = (payload) => async (dispatch) => {
         const user = await response.json();
         await dispatch(setProfile(user));
         await dispatch(getAllRecipesForGivenUser(user.id));
+        await dispatch(setUser(user));
         return { 'id': user.id };
     } else if (response.status < 500) {
         const data = await response.json();
