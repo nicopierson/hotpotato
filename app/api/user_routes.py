@@ -2,8 +2,9 @@ from flask import Blueprint, request
 from flask_login import login_required
 from app.models import User, db
 from app.forms.profile_form import ProfileForm
-from .recipes import current_user_matches_client_user, authorization_errors_to_error_messages
-
+from app.api.utils.error_handlers import (
+    throw_authorization_error, user_is_owner, throw_validation_error, throw_server_error
+)
 
 user_routes = Blueprint('users', __name__)
 
@@ -21,16 +22,20 @@ def user(id):
     return user.to_dict()
 
 
-# TODO test the editing of this route, password is not added to ProfileForm: keep old pw
 @user_routes.route('/<int:id>', methods=['PUT'])
+@login_required
 def profile_update(id):
-        form = ProfileForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            if current_user_matches_client_user(form.user_id.data):
-                user = User.query.get(id)
-                form.populate_obj(user)
+    form = ProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if user_is_owner(id):
+            user = User.query.get_or_404(id)
+            form.populate_obj(user)
+            try:
                 db.session.add(user)
                 db.session.commit()
                 return user.to_dict()
-            return authorization_errors_to_error_messages("Please try to post as yourself! Unauthorized Access.")
+            except:
+                return throw_server_error()
+        return throw_authorization_error()
+    return throw_validation_error(form.errors)
