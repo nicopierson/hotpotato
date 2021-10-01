@@ -4,6 +4,7 @@ import { createComment, deleteComment, getAllComments, updateComment } from '../
 import { NavLink } from 'react-router-dom';
 
 import './Comments.css'
+import defaultProfileImg from '../../images/chef.png'
 
 
 const ShowComments = ({ comments, recipeId }) => {
@@ -18,7 +19,7 @@ const ShowComments = ({ comments, recipeId }) => {
     // const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        dispatch(getAllComments())
+        dispatch(getAllComments());
     }, [dispatch]);
 
     const handleDelete = (e, id) => {
@@ -69,8 +70,10 @@ const ShowComments = ({ comments, recipeId }) => {
             {user && 
             <div className="new-comment-container">
                 <div>
-                    <img className="new-comment-avatar" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt='chef'/>
-                    <div className="current-user-username">{currentUserName}</div>
+                    <NavLink to={`/profile/${user.id}`}>
+                        <img className="new-comment-avatar" src={user.profile_img ? user.profile_img : defaultProfileImg} alt='chef'/>
+                        <div className="current-user-username">{currentUserName}</div>
+                    </NavLink>
                 </div>
                 <div className="new-comment-form-container">
                     <form
@@ -117,7 +120,9 @@ const ShowComments = ({ comments, recipeId }) => {
             {comments &&
                 comments.map((comment) => (
                     <div className="single-comment">
-                        <img src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef" className="new-comment-avatar"></img>
+                        <NavLink to={`/profile/${comment.user_id}`}>
+                            <img src={comment.profile_img} alt="chef" className="new-comment-avatar"></img>
+                        </NavLink>
                         <div
                             key={comment.id}
                             className="single-comment-container"

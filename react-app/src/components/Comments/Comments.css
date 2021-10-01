@@ -16,6 +16,8 @@
 .new-comment-avatar {
     width: 50px;
     height: 50px;
+    border-radius: 50px;
+    object-fit: cover;
 }
 
 .new-comment-form-container {
@@ -78,6 +80,8 @@
 .current-user-username {
     text-align: center;
     font-weight: 700;
+    text-decoration: none;
+    color: #000;
 }
 
 .join-the-conversation {

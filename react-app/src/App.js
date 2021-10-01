@@ -58,9 +58,6 @@ function App() {
             <User />
           </ProtectedRoute>
 
-          <ProtectedRoute path='/profile/:userId' exact={true} >
-            <ProfilePage />
-          </ProtectedRoute>
           <ProtectedRoute path='/feed' exact={true} >
             <FeedPage />
           </ProtectedRoute>

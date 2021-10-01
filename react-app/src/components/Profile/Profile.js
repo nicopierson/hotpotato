@@ -20,6 +20,7 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(getProfile(userId))
+        window.scrollTo(0, 0);
     }, [dispatch, userId]);
 
     return (

@@ -6,6 +6,7 @@ import { CreateRecipeButton } from './CreateRecipeButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/session';
 import './NavBar.css'
+import defaultProfileImg from '../../images/chef.png';
 
 const NavBar = () => {
 
@@ -119,7 +120,7 @@ const NavBar = () => {
               activeClassName='active'
                 className=""
               >
-                <img className="profile-avatar__image" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef.png" />
+                <img className="profile-avatar__image" src={user.profile_img ? user.profile_img : defaultProfileImg} alt="chef.png" />
                 {/* <div className="profile-background"></div> */}
               </NavLink>
 
