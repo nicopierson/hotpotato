@@ -72,10 +72,12 @@
     background-color: rgb(244, 244, 244);
     border: rgb(159, 159, 159) solid 1px;
     color: rgb(172, 170, 170);
+    padding: 10px;
 }
 
 .cancel_button:hover
 {
+    cursor: pointer;
     background-color: rgb(224, 224, 224);
     border: rgb(70, 70, 70) solid 1px;
     color: #000;
@@ -87,6 +89,13 @@
     color: #fff;
     border: #81EAAB solid 1px;
     margin-right: 10px;
+    padding: 10px;
+}
+
+.save_button:hover
+{
+    cursor: pointer;
+    background-color: #1ce36c;
 }
 
 .save_button i

@@ -17,9 +17,9 @@ const ProfileUpdate = ({ profile }) => {
     };
 
     return (
-        <>
+        <div className='profile__edit-btn'>
             <i
-                className='fas fa-edit edit_item_white'
+                className='fas fa-edit'
                 onClick={handleUpdate}
             >
             </i>
@@ -45,7 +45,7 @@ const ProfileUpdate = ({ profile }) => {
                     </div>
                 </ModalVerify>
             }
-            </>
+            </div>
     )
 };
 
