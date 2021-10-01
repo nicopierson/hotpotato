@@ -4,7 +4,6 @@ import { createComment, deleteComment, getAllComments, updateComment } from '../
 import { NavLink } from 'react-router-dom';
 
 import './Comments.css'
-import defaultProfileImg from '../../images/chef.png'
 
 
 const ShowComments = ({ comments, recipeId }) => {
@@ -71,7 +70,7 @@ const ShowComments = ({ comments, recipeId }) => {
             <div className="new-comment-container">
                 <div>
                     <NavLink to={`/profile/${user.id}`}>
-                        <img className="new-comment-avatar" src={user.profile_img ? user.profile_img : defaultProfileImg} alt='chef'/>
+                        <img className="new-comment-avatar" src={user.profile_img} alt='chef'/>
                         <div className="current-user-username">{currentUserName}</div>
                     </NavLink>
                 </div>

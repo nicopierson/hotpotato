@@ -1,7 +1,5 @@
 import Follow from '../Follow';
 
-import profileDefault from '../../images/chef.png';
-
 import './ProfileCard.css'
 
 const ProfileCard = ({ profile, isOwner }) => {
@@ -11,7 +9,7 @@ const ProfileCard = ({ profile, isOwner }) => {
             <div className='profile-image-div'>
                 <img 
                     alt='profile' 
-                    src={ profile.profile_img ? profile.profile_img : profileDefault } 
+                    src={profile.profile_img} 
                     className='profile-image'
                 />
             </div>

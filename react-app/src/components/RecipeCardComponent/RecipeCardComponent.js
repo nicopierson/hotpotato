@@ -1,11 +1,9 @@
 import React from 'react'
 import './RecipeCardComponent.css'
 import { useHistory } from 'react-router';
-import chef from '../../images/chef.png'
 
 export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, username, profileImg}) => {
   const default_image_url = 'https://i1.wp.com/seonkyounglongest.com/wp-content/uploads/2020/06/silken-tofu-soup-1-mini.jpg?fit=1000%2C667&ssl=1'
-  const default_profile_url = chef;
 
   const history = useHistory();
 
@@ -27,7 +25,7 @@ export const RecipeCardComponent = ({name, thumbnail_url, user_id, likes, id, us
         <div className="recipe-card__metadata-container" >
           <div className="profile-container" onClick={()=>{history.push(`/profile/${user_id}`)}} >
             <div className="pc__image-container" >
-              <img className="pc-ic__image" src={`${profileImg ? profileImg: default_profile_url}`} alt="" />
+              <img className="pc-ic__image" src={profileImg} alt="" />
             </div>
             <div className="pc__username">{`${username}`}</div>
           </div>
