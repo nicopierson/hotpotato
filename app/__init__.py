@@ -12,6 +12,7 @@ from .api.likes_routes import like_routes
 from .api.recipes import recipe_routes
 from .api.follow_routes import follow_routes
 from .api.comments import comment_routes
+from .api.profile_routes import profile_routes
 
 
 
@@ -41,6 +42,7 @@ app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(recipe_routes, url_prefix='/api/recipes')
 app.register_blueprint(follow_routes, url_prefix='/api/follows')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(profile_routes, url_prefix='/api/profile')
 
 db.init_app(app)
 Migrate(app, db)
