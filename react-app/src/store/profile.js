@@ -1,3 +1,6 @@
+import { getAllRecipesForGivenUser } from "./recipe";
+import { setUser } from "./session";
+
 const SET_PROFILE = 'follows/setProfile';
 
 const setProfile = (user) => ({
@@ -23,14 +26,22 @@ export const updateProfile = (payload) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
     });
-    const user = await response.json();
 
     if (response.ok) {
+        const user = await response.json();
         await dispatch(setProfile(user));
-        return response;
+        await dispatch(getAllRecipesForGivenUser(user.id));
+        await dispatch(setUser(user));
+        return { 'id': user.id };
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data;
+        }
     } else {
-        return ['An error occurred. Please try again.']
+        return {'errors': [ {'field': 'server', 'message': 'An error occurred. Please try again.'} ]};
     }
+
 }
 
 const initialState = {};

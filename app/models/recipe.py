@@ -44,7 +44,8 @@ class Recipe(db.Model):
             'name': self.name,
             'user_id': self.user_id,
             'likes': len(self.like_relation),
-            'username': self.userRelation.username
+            'username': self.userRelation.username,
+            'profile_img': self.userRelation.profile_img,
         }
 
     # def get_recipes_that_user_follows(self):
@@ -56,7 +57,7 @@ class Recipe(db.Model):
             'id': self.id,
             'thumbnail_url': self.thumbnail_url,
             'name': self.name,
-            'comments': [{'id': comment.id, 'comment': comment.comment, 'user_id': comment.user_id, 'recipe_id': comment.recipe_id, 'username': comment.user_relation.username} for comment in self.comment_relation],
+            'comments': [{'id': comment.id, 'comment': comment.comment, 'user_id': comment.user_id, 'recipe_id': comment.recipe_id, 'username': comment.user_relation.username, 'profile_img': comment.user_relation.profile_img} for comment in self.comment_relation],
             'photos': [{'id': photo.id, 'video_url': photo.video_url, 'img_url': photo.img_url, 'recipe_id': photo.recipe_id} for photo in self.photo_relation],
             'recipe_ingredients': sorted([ingredient.to_dict() for ingredient in self.recipe_ingredient_relation], key=lambda i: i['id']),
             # example of sorting a diction by the key of age ---> sorted(lis, key = lambda i: i['age'])

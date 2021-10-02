@@ -55,3 +55,28 @@
 .outer-div{
     width: 70%;
 }
+
+.profile_container input.errors_input
+{
+    border: solid 1px red;
+}
+
+.errors_input
+{
+    border: solid 1px red;
+}
+
+.profile__edit-btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profile__edit-btn i {
+    color: #a5a5a5;
+}
+
+.profile__edit-btn i:hover {
+    color: #000;
+    cursor: pointer;
+}

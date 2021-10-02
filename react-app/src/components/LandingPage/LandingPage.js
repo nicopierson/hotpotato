@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './LandingPage.css'
 import {useSelector, useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+
 import RecipeCardComponent from '../RecipeCardComponent';
 import { setAllCategories } from '../../store/category';
 import Carousel from "react-multi-carousel";
@@ -13,7 +13,7 @@ import { setMoreRecipesForHomePage } from '../../store/recipe';
 const LandingPage = () => {
   const dispatch = useDispatch()
 
-  const user_id = useSelector(state => state.session.user?.id);
+  // const user_id = useSelector(state => state.session.user?.id);
   const recipeDetails= useSelector((state) => state.recipe?.users_recipes);
   const categories_from_server = useSelector((state)=> state.category?.categories)
 
@@ -122,7 +122,7 @@ const LandingPage = () => {
             {recipeDetails &&
               <div className="fpw-feed-container__recipe-cards" >
                 {/* render users recipes based on who they follow */}
-                {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
+                {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username} profileImg={recipe.profile_img}/>))}
               </div>}
         </div>}
       </div>

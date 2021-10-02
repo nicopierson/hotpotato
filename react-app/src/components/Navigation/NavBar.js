@@ -119,7 +119,7 @@ const NavBar = () => {
               activeClassName='active'
                 className=""
               >
-                <img className="profile-avatar__image" src="https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png" alt="chef.png" />
+                <img className="profile-avatar__image" src={user.profile_img} alt="chef.png" />
                 {/* <div className="profile-background"></div> */}
               </NavLink>
 

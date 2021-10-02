@@ -12,7 +12,7 @@ const Profile = () => {
     const { userId } = useParams();
 
     /* isOwner used to check if owner of profile page */
-    const user = useSelector(state => state.session.user);
+    const user = useSelector(state => state.session?.user);
     const isOwner = user.id === +userId;
 
     const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(getProfile(userId))
+        window.scrollTo(0, 0);
     }, [dispatch, userId]);
 
     return (

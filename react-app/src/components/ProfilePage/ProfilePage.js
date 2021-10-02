@@ -47,7 +47,7 @@ export const ProfilePage = () => {
         <div className="users-recipes-container">
           {recipeDetails &&
             <div className="users-recipes-cards" >
-              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username}/>))}
+              {recipeDetails.map(recipe=>(<RecipeCardComponent key={recipe.id} id={recipe.id} name={recipe.name} thumbnail_url={recipe.thumbnail_url} user_id={recipe.user_id} likes={recipe.likes} username={recipe.username} profileImg={recipe.profile_img}/>))}
             </div>}
         </div>
 
