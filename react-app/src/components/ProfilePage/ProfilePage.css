@@ -36,7 +36,8 @@
   flex-wrap: wrap;
   padding: 10px;
   margin-left: 20px;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 22px;
   /* min-width: 100%; */
 
 }
