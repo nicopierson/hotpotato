@@ -60,7 +60,7 @@ const NavBar = () => {
           }
         </div>
         <div className="navbar-li navbar-search">
-          <div className="navbar-search__input-wrapper">
+          {/* <div className="navbar-search__input-wrapper">
             <input
               className="navbar-search-input"
               key="search-bar"
@@ -69,7 +69,7 @@ const NavBar = () => {
 
             <i className="fas fa-search navbar-icon-search--icon navbar-icon-search"></i>
 
-          </div>
+          </div> */}
 
 
         </div>
