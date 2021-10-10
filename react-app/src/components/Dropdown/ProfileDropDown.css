@@ -1,0 +1,115 @@
+/*dropdown: container - hover*/
+.user-navbar-container:hover .dropdown-content-container{
+  display: block;
+
+
+}
+  /* link */
+  .avatar-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  /* dropdown content */
+  .dropdown-content-container{
+    display: none;
+    background-color: rgb(243, 245, 246);
+    position: relative;
+    height: fit-content;
+
+  }
+    .triangle-container{
+      width: 100px;
+      height: 100px;
+      /* color: red; */
+      position: absolute;
+      right: 5px;
+    }
+      .dropdown-triangle-arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid rgb(255, 255, 255);
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        z-index: 100;
+      }
+
+    .user-navbar-content{
+      background-color: white;
+      width: 200px;
+      height: fit-content;
+      position: absolute;
+      top: 15px;
+      right: 0px;
+      padding: 20px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.24);
+      border-radius: 4px;
+    }
+
+      .unc_hr-container{
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .unc_hr{
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        color: rgb(243, 245, 246);
+
+        /* margin-top: 2px;
+        margin-bottom: 2px; */
+      }
+      .unc__item{
+        padding: 5px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+      .unc__item:hover{
+        cursor: pointer;
+        background-color: rgb(243, 245, 246);
+        width: 100%;
+      }
+
+.nc-l-uu__profile{
+  border-left: 1px solid rgb(177, 177, 177);
+  padding-top: 2px;
+
+}
+
+
+/* dropdown utilities like icons */
+.logout-container{
+  display: flex;
+  /* justify-content: flex-start; */
+}
+
+.settings-icon, .home-icon, .logout-icon{
+  color: rgb(134, 134, 134);
+  margin-right: 5px;
+}
+
+.logout-icon{
+  padding-top: 5px;
+}
+
+.user-navbar-logout{
+  display: flex;
+}
+
+/* no drop cursor for unavailable services */
+div .no-drop{
+  cursor: no-drop;
+}
+div .no-drop:hover{
+  cursor: no-drop;
+}
+div span .no-drop{
+  cursor: no-drop;
+}
+div span .no-drop:hover{
+  cursor: no-drop;
+}

@@ -5,6 +5,7 @@ import LogoutButton from '../auth/LogoutButton';
 import { CreateRecipeButton } from './CreateRecipeButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/session';
+import ProfileDropDown from '../Dropdown/ProfileDropDown';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -59,7 +60,7 @@ const NavBar = () => {
           }
         </div>
         <div className="navbar-li navbar-search">
-          <div className="navbar-search__input-wrapper">
+          {/* <div className="navbar-search__input-wrapper">
             <input
               className="navbar-search-input"
               key="search-bar"
@@ -68,7 +69,7 @@ const NavBar = () => {
 
             <i className="fas fa-search navbar-icon-search--icon navbar-icon-search"></i>
 
-          </div>
+          </div> */}
 
 
         </div>
@@ -110,18 +111,18 @@ const NavBar = () => {
               <CreateRecipeButton />
             </li>
 
-            <li>
+            {/* <li>
               <LogoutButton />
-            </li>
+            </li> */}
 
             <li className="profile-avatar">
-              <NavLink  to={`/profile/${user.id}`} exact={true}
+              {/* <NavLink  to={`/profile/${user.id}`} exact={true}
               activeClassName='active'
                 className=""
               >
                 <img className="profile-avatar__image" src={user.profile_img} alt="chef.png" />
-                {/* <div className="profile-background"></div> */}
-              </NavLink>
+              </NavLink> */}
+              <ProfileDropDown user={user} LogoutButton={LogoutButton}/>
 
 
 
