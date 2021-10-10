@@ -1,16 +1,20 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 import './ProfileDropDown.css'
-
+import chef from '../../images/chef.png'
+import { NavLink } from 'react-router-dom';
 const ProfileDropDown = ({ LogoutButton, user}) => {
 
   const history = useHistory();
   const go_to_profile = ()=>{
-    history.push('/profile')
+    history.push(`/profile/${user.id}`)
   }
   return (
     <div>
       <div className="user-navbar-container">
+        <NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active'>
+          <img className="profile-avatar__image" src={user.profile_img} alt={chef} />
+        </NavLink>
         <div className="dropdown-content-container">
           <div className="triangle-container">
             <div className="dropdown-triangle-arrow-up"></div>
@@ -25,7 +29,7 @@ const ProfileDropDown = ({ LogoutButton, user}) => {
             <div className="unc_hr-container">
               <hr className="unc_hr" />
             </div>
-            {user && <div className="user-navbar-logout unc__item "> <i class="fas fa-sign-out-alt logout-icon"></i> Logout Button </div>}
+            {user && <div className="logout-container"><LogoutButton /> </div>}
           </div>
         </div>
       </div>

@@ -167,16 +167,7 @@ button#demo-login-btn:hover {
 /* ---avatar and logout button--- */
 
 .profile-avatar {
-    /* width: 100px; */
-    /* height: 50px;
-    margin: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-    z-index: 5; */
-    /* background-image: url("https://hotpotatorecipes.s3.us-west-1.amazonaws.com/chef.png"); */
-    /* background-color: red; */
     position: relative;
-    cursor: pointer;
     margin-right: 30px;
     margin-left: 20px;
     z-index: 1;

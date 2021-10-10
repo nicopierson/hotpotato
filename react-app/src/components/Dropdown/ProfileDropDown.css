@@ -82,6 +82,11 @@
 
 
 /* dropdown utilities like icons */
+.logout-container{
+  display: flex;
+  /* justify-content: flex-start; */
+}
+
 .settings-icon, .home-icon, .logout-icon{
   color: rgb(134, 134, 134);
   margin-right: 5px;
@@ -93,4 +98,18 @@
 
 .user-navbar-logout{
   display: flex;
+}
+
+/* no drop cursor for unavailable services */
+div .no-drop{
+  cursor: no-drop;
+}
+div .no-drop:hover{
+  cursor: no-drop;
+}
+div span .no-drop{
+  cursor: no-drop;
+}
+div span .no-drop:hover{
+  cursor: no-drop;
 }
